@@ -130,6 +130,7 @@ async function configRoutes(app) {
     const apiVersion  = Number.isFinite(+race.api_version) ? +race.api_version : 3;
     const endpointUrl = `${ORIGIN}/api/v${apiVersion}/api.cfm`;
     const pagesBase   = `${ORIGIN}/api/v${apiVersion}/modules/pages`;
+    const nodeApiBase = 'https://eventoapi.com/v1';
 
     // 3. Build response — mirrors CF config.cfm field for field
     const data = {};
@@ -221,7 +222,7 @@ async function configRoutes(app) {
     // --- Menu ---
     data.menu = {
       created: '12/20/2024',
-      items:   pages.map((item) => buildPage(item, pagesBase, endpointUrl, race_id)),
+      items:   pages.map((item) => buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase)),
     };
 
     // --- Adverts ---
@@ -375,9 +376,9 @@ async function configRoutes(app) {
 }
 
 // ---------------------------------------------------------------------------
-// Page builder — mirrors CF config.cfm createPage() switch/case exactly
+// Page builder — uses Node API endpoints instead of CF modules
 // ---------------------------------------------------------------------------
-function buildPage(item, pagesBase, endpointUrl, race_id) {
+function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase) {
   const page = { id: item.id, title: item.title, icon: item.icon };
 
   switch (item.type) {
@@ -385,7 +386,7 @@ function buildPage(item, pagesBase, endpointUrl, race_id) {
       page.type          = 'link';
       page.open_external = item.open_external == 1;
       page.link_type     = item.external_source?.toLowerCase().includes('pdf') ? 'pdf' : 'web';
-      page.link          = { url: `${pagesBase}/redirect.cfm?page_id=${item.id}` };
+      page.link          = { url: item.external_source };
       break;
 
     case 'assistant':
@@ -428,17 +429,17 @@ function buildPage(item, pagesBase, endpointUrl, race_id) {
 
     case 'carousel':
       page.type     = 'carousel';
-      page.carousel = { url: `${pagesBase}/carousel.cfm?page_id=${item.id}` };
+      page.carousel = { url: `${nodeApiBase}/carousel/${item.id}` };
       break;
 
     case 'list':
       page.type  = 'pages';
-      page.pages = { url: `${pagesBase}/list.cfm?page_id=${item.id}` };
+      page.pages = { url: `${nodeApiBase}/list/${item.id}` };
       break;
 
     case 'schedule':
       page.type     = 'schedule';
-      page.schedule = { url: `${pagesBase}/schedule.cfm?page_id=${item.id}` };
+      page.schedule = { url: `${nodeApiBase}/schedule/${item.id}` };
       break;
 
     case 'social_storyslider':

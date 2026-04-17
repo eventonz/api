@@ -18,6 +18,9 @@ async function v1Routes(app) {
   app.register(require('./rr_webhook'),    { prefix: '/rr_webhook' });
   app.register(require('./tracks'),        { prefix: '/tracks' });
   app.register(require('./timer_events'),  { prefix: '/timer/events' });
+  app.register(require('./schedule'),      { prefix: '/schedule' });
+  app.register(require('./list'),          { prefix: '/list' });
+  app.register(require('./carousel'),      { prefix: '/carousel' });
   // app.register(require('./splits'),   { prefix: '/splits' });
   // app.register(require('./tracking'), { prefix: '/tracking' });
   // app.register(require('./assistant'),{ prefix: '/assistant' });
