@@ -3,6 +3,7 @@
 # Quick deployment script for Evento Node API
 # Run on DigitalOcean droplet after initial setup
 #
+# Usage: ssh root@YOUR_DROPLET_IP 'cd /root/node-api && bash DEPLOY.sh'
 
 set -e  # Exit on error
 

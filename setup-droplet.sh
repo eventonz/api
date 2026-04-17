@@ -183,8 +183,8 @@ if [ -d "node-api" ]; then
     git pull
 else
     echo "Cloning repository..."
-    # Note: You'll need to configure git access if private repo
-    git clone https://github.com/YOUR_ORG/node-api.git
+    # Clone via HTTPS (will prompt for GitHub credentials or use SSH key)
+    git clone https://github.com/eventonz/api.git node-api
     cd node-api
 fi
 
