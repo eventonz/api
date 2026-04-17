@@ -34,8 +34,6 @@ app.get('/', async (request, reply) => {
 Endpoints:
   • GET  /health          - Health check
   • POST /v1/*            - API v1 (requires authentication)
-
-Documentation: https://github.com/eventonz/api
   `);
 });
 
