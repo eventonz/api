@@ -18,6 +18,7 @@ async function v1Routes(app) {
   app.register(require('./rr_webhook'),    { prefix: '/rr_webhook' });
   app.register(require('./tracks'),        { prefix: '/tracks' });
   app.register(require('./timer_events'),  { prefix: '/timer/events' });
+  app.register(require('./redirect'),      { prefix: '/redirect' });
   app.register(require('./schedule'),      { prefix: '/schedule' });
   app.register(require('./list'),          { prefix: '/list' });
   app.register(require('./carousel'),      { prefix: '/carousel' });
