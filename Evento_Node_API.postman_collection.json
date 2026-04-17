@@ -1,0 +1,905 @@
+{
+	"info": {
+		"_postman_id": "evento-node-api-2024",
+		"name": "Evento Node API",
+		"description": "Complete API collection for Evento Node API v1 endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "61e66bc8567dc8dfdc11dc623c3a5659a9463959a2d375938be525d2747243a3",
+				"type": "string"
+			}
+		]
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				},
+				"description": "Health check endpoint (no auth required)"
+			}
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/events/:appid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								":appid"
+							],
+							"variable": [
+								{
+									"key": "appid",
+									"value": "2",
+									"description": "App ID (e.g., 2 = Epic Series)"
+								}
+							]
+						},
+						"description": "Get all events for an app (both upcoming and past)"
+					}
+				},
+				{
+					"name": "Get Upcoming Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/events/:appid/upcoming",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								":appid",
+								"upcoming"
+							],
+							"variable": [
+								{
+									"key": "appid",
+									"value": "2",
+									"description": "App ID"
+								}
+							]
+						},
+						"description": "Get only upcoming events"
+					}
+				},
+				{
+					"name": "Get Past Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/events/:appid/past",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"events",
+								":appid",
+								"past"
+							],
+							"variable": [
+								{
+									"key": "appid",
+									"value": "2",
+									"description": "App ID"
+								}
+							]
+						},
+						"description": "Get only past events"
+					}
+				}
+			]
+		},
+		{
+			"name": "App Version",
+			"item": [
+				{
+					"name": "Get App Version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/app_version/:app_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"app_version",
+								":app_id"
+							],
+							"variable": [
+								{
+									"key": "app_id",
+									"value": "2",
+									"description": "App ID"
+								}
+							]
+						},
+						"description": "Get iOS/Android version info and store URLs"
+					}
+				},
+				{
+					"name": "Update App Version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"version\": \"79.0.0\",\n  \"android_version\": \"79.0.0\",\n  \"ios_store_url\": \"https://apps.apple.com/app/id1369346770\",\n  \"android_store_url\": \"https://play.google.com/store/apps/details?id=nz.netproject.mtbseries\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/app_version/:app_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"app_version",
+								":app_id"
+							],
+							"variable": [
+								{
+									"key": "app_id",
+									"value": "2",
+									"description": "App ID"
+								}
+							]
+						},
+						"description": "Update app version strings"
+					}
+				}
+			]
+		},
+		{
+			"name": "App Install",
+			"item": [
+				{
+					"name": "Track Install",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"app_id\": 2,\n  \"platform\": \"ios\",\n  \"install_version\": \"78.0.0\",\n  \"device_id\": \"test-device-123\",\n  \"installed_at\": \"2026-04-14T10:30:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/app_install",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"app_install"
+							]
+						},
+						"description": "Track app installation"
+					}
+				}
+			]
+		},
+		{
+			"name": "Config",
+			"item": [
+				{
+					"name": "Get Race Config (Full)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/config/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"config",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Get full race configuration. Returns config with _hash field."
+					}
+				},
+				{
+					"name": "Get Race Config (with Hash Check)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/config/:race_id?hash=7469ae9595143271249c1ed58a557a9ab238a75f41a616b5f11ed44bdfcaebcd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"config",
+								":race_id"
+							],
+							"query": [
+								{
+									"key": "hash",
+									"value": "7469ae9595143271249c1ed58a557a9ab238a75f41a616b5f11ed44bdfcaebcd",
+									"description": "Hash from previous response - returns 304 if unchanged"
+								}
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Check if config changed. Returns 304 Not Modified if hash matches, or 200 with full config if changed."
+					}
+				},
+				{
+					"name": "Fast Config Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/config/:race_id/check?hash=7469ae9595143271249c1ed58a557a9ab238a75f41a616b5f11ed44bdfcaebcd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"config",
+								":race_id",
+								"check"
+							],
+							"query": [
+								{
+									"key": "hash",
+									"value": "7469ae9595143271249c1ed58a557a9ab238a75f41a616b5f11ed44bdfcaebcd",
+									"description": "Hash to check against (required)"
+								}
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Fast poll endpoint. Returns 304 if unchanged, 200 with full config if changed, or 302 redirect if cache cold."
+					}
+				}
+			]
+		},
+		{
+			"name": "Athletes",
+			"item": [
+				{
+					"name": "List All Athletes (Page 1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pageNumber\": 1,\n  \"searchstring\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/athletes/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"athletes",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Get all athletes paginated (20 per page). Empty searchstring returns full list for search page."
+					}
+				},
+				{
+					"name": "List All Athletes (Page 2)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pageNumber\": 2,\n  \"searchstring\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/athletes/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"athletes",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Example of pagination - fetch page 2 of athletes"
+					}
+				},
+				{
+					"name": "Search Athletes by Name/Bib",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pageNumber\": 1,\n  \"searchstring\": \"buff\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/athletes/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"athletes",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Filter athletes by name, bib number, info, or extra fields. Returns matching results paginated."
+					}
+				},
+				{
+					"name": "Fetch Specific Athletes by ID",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"edition\": \"2026\",\n  \"athletes\": [\"1\", \"2\", \"3\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/athletes/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"athletes",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Fetch specific athletes by edition and athlete_id array (used for followed athletes refresh). Returns patchedathletes array."
+					}
+				}
+			]
+		},
+		{
+			"name": "Follow",
+			"item": [
+				{
+					"name": "Follow Athlete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"player_id\": \"123456789\",\n  \"event_id\": 93,\n  \"number\": \"3\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/follow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"follow"
+							]
+						},
+						"description": "Follow an athlete. Returns 201 on success, 405 if already following."
+					}
+				},
+				{
+					"name": "Follow Athlete (with Contest)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"player_id\": \"123456789\",\n  \"event_id\": 93,\n  \"number\": \"3\",\n  \"contest\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/follow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"follow"
+							]
+						},
+						"description": "Follow an athlete with contest filter (for multi-race events)."
+					}
+				},
+				{
+					"name": "Unfollow Athlete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"player_id\": \"123456789\",\n  \"event_id\": 93,\n  \"number\": \"3\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/follow",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"follow"
+							]
+						},
+						"description": "Unfollow an athlete. Returns success even if wasn't followed (idempotent)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "Push Timing Data (Direct Race ID)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"race_no\": \"42\",\n  \"athlete_id\": \"12345\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"contest_id\": 1,\n  \"split_id\": 5,\n  \"race_time\": \"01:23:45\",\n  \"tod\": \"12:34:56\",\n  \"start\": \"11:11:11\",\n  \"lat\": -36.8485,\n  \"lng\": 174.7633\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/tracks/race/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"tracks",
+								"race",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Evento race ID"
+								}
+							]
+						},
+						"description": "Push timing data using direct Evento race ID. Generic Evento format example."
+					}
+				},
+				{
+					"name": "Push Timing Data (SportSplits)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"race_no\": \"42\",\n  \"split_id\": 5,\n  \"race_time\": \"01:23:45\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/tracks/sportsplits/:ss_raceid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"tracks",
+								"sportsplits",
+								":ss_raceid"
+							],
+							"variable": [
+								{
+									"key": "ss_raceid",
+									"value": "12345",
+									"description": "SportSplits race ID"
+								}
+							]
+						},
+						"description": "Push timing data via SportSplits race ID lookup. Evento resolves to internal race ID."
+					}
+				},
+				{
+					"name": "Push Timing Data (RaceTec)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"race_no\": \"42\",\n  \"split_id\": 5,\n  \"race_time\": \"01:23:45\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/tracks/racetec/:racetec_apikey",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"tracks",
+								"racetec",
+								":racetec_apikey"
+							],
+							"variable": [
+								{
+									"key": "racetec_apikey",
+									"value": "your-racetec-key",
+									"description": "RaceTec API key"
+								}
+							]
+						},
+						"description": "Push timing data via RaceTec API key lookup."
+					}
+				},
+				{
+					"name": "Push Timing Data (RaceResult)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"evento_created\": true,\n  \"bib\": \"42\",\n  \"rr_splitid\": \"FINISH\",\n  \"race_time\": \"01:23:45\",\n  \"tod\": \"12:34:56\",\n  \"start\": \"1\",\n  \"finish\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/tracks/raceresult/:rr_eventid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"tracks",
+								"raceresult",
+								":rr_eventid"
+							],
+							"variable": [
+								{
+									"key": "rr_eventid",
+									"value": "12345",
+									"description": "RaceResult event ID"
+								}
+							]
+						},
+						"description": "Push timing data via RaceResult event ID lookup. Example shows Evento exporter format."
+					}
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Get Notifications for Race",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/notifications/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"notifications",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Get sent notifications for a race from the last 14 days. Returns array of notification records with id, title, content, and urlopen."
+					}
+				}
+			]
+		},
+		{
+			"name": "RaceResult Webhook",
+			"item": [
+				{
+					"name": "Receive RaceResult Data (Ugo's Format)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"Bib\": \"101\",\n    \"Firstname\": \"John\",\n    \"Lastname\": \"Smith\",\n    \"Contest\": \"Marathon\",\n    \"SplitID\": \"5\",\n    \"RR_SplitID\": \"FINISH\",\n    \"SplitToD\": \"2024-04-14T10:30:00\",\n    \"SplitRaceTime\": \"02:45:30\",\n    \"SplitGunTime\": \"02:45:30\",\n    \"Start\": \"1\",\n    \"Finish\": \"1\",\n    \"Message_en\": \"Finished\"\n  }\n]"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/rr_webhook/:rr_eventid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"rr_webhook",
+								":rr_eventid"
+							],
+							"variable": [
+								{
+									"key": "rr_eventid",
+									"value": "12345",
+									"description": "RaceResult Event ID"
+								}
+							]
+						},
+						"description": "Receive timing data from RaceResult (native format - array)"
+					}
+				},
+				{
+					"name": "Receive RaceResult Data (Evento Format)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"evento_created\": true,\n  \"bib\": \"101\",\n  \"firstname\": \"John\",\n  \"lastname\": \"Smith\",\n  \"contestid\": \"1\",\n  \"rr_splitid\": \"FINISH\",\n  \"race_time\": \"02:45:30\",\n  \"tod\": \"2024-04-14T10:30:00\",\n  \"start\": \"1\",\n  \"finish\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/rr_webhook/:rr_eventid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"rr_webhook",
+								":rr_eventid"
+							],
+							"variable": [
+								{
+									"key": "rr_eventid",
+									"value": "12345",
+									"description": "RaceResult Event ID"
+								}
+							]
+						},
+						"description": "Receive timing data from RaceResult (Evento exporter format - single struct)"
+					}
+				}
+			]
+		},
+		{
+			"name": "Timer Events",
+			"item": [
+				{
+					"name": "Get Timer Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{timer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/timer/events",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"timer",
+								"events"
+							]
+						},
+						"description": "Get events available to this timer (requires timer-specific auth token)"
+					}
+				},
+				{
+					"name": "Push Timer Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{timer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"race_id\": 93,\n  \"athlete_id\": 1,\n  \"split_id\": \"5\",\n  \"time\": \"02:45:30\",\n  \"timestamp\": \"2024-04-14T10:30:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/timer/events/:race_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"timer",
+								"events",
+								":race_id"
+							],
+							"variable": [
+								{
+									"key": "race_id",
+									"value": "93",
+									"description": "Race ID"
+								}
+							]
+						},
+						"description": "Push timing data from timer device (requires timer-specific auth token)"
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "timer_token",
+			"value": "your-timer-specific-token-here",
+			"type": "string"
+		}
+	]
+}
