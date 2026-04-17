@@ -12,6 +12,33 @@ app.register(require('@fastify/helmet'));
 app.register(require('@fastify/cors'), { origin: '*' });
 app.register(require('@fastify/sensible'));
 
+// Root endpoint with ASCII art
+app.get('/', async (request, reply) => {
+  reply.type('text/plain').send(`
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   ███████╗██╗   ██╗███████╗███╗   ██╗████████╗ ██████╗       ║
+║   ██╔════╝██║   ██║██╔════╝████╗  ██║╚══██╔══╝██╔═══██╗      ║
+║   █████╗  ██║   ██║█████╗  ██╔██╗ ██║   ██║   ██║   ██║      ║
+║   ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██║   ██║      ║
+║   ███████╗ ╚████╔╝ ███████╗██║ ╚████║   ██║   ╚██████╔╝      ║
+║   ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝       ║
+║                                                               ║
+║                       NODE API v1.0                           ║
+║                  https://eventoapi.com                        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+🚀 Evento API is running
+
+Endpoints:
+  • GET  /health          - Health check
+  • POST /v1/*            - API v1 (requires authentication)
+
+Documentation: https://github.com/eventonz/api
+  `);
+});
+
 // Health check — no version prefix, used by DO Load Balancer
 app.get('/health', async () => ({ status: 'ok' }));
 
