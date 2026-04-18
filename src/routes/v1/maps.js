@@ -1,4 +1,4 @@
-const { pool } = require('../../db');
+const pool = require('../../config/database');
 const { S3Client, PutObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 
 // DigitalOcean Spaces configuration
