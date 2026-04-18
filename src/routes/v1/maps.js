@@ -20,7 +20,7 @@ module.exports = async function (fastify, opts) {
    * Query params:
    *  - elevation: true|false (default: true)
    */
-  fastify.get('/maps/:uuid', async (request, reply) => {
+  fastify.get('/:uuid', async (request, reply) => {
     const { uuid } = request.params;
     const { elevation = 'true' } = request.query;
 
@@ -70,7 +70,7 @@ module.exports = async function (fastify, opts) {
    *   "elevation": [...]       // Optional: elevation data array
    * }
    */
-  fastify.post('/maps/:uuid', async (request, reply) => {
+  fastify.post('/:uuid', async (request, reply) => {
     const { uuid } = request.params;
     const { geojson, default_style = 'outdoors', title, elevation } = request.body;
 
@@ -164,7 +164,7 @@ module.exports = async function (fastify, opts) {
    * GET /v1/maps/race/:race_id
    * Get all maps for a race
    */
-  fastify.get('/maps/race/:race_id', async (request, reply) => {
+  fastify.get('/race/:race_id', async (request, reply) => {
     const { race_id } = request.params;
 
     try {
@@ -186,7 +186,7 @@ module.exports = async function (fastify, opts) {
    * GET /v1/maps/:uuid/validate/:token
    * Check if token is valid for a map (for public/private map access)
    */
-  fastify.get('/maps/:uuid/validate/:token', async (request, reply) => {
+  fastify.get('/:uuid/validate/:token', async (request, reply) => {
     const { uuid, token } = request.params;
 
     try {
