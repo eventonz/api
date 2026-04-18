@@ -40,6 +40,15 @@ Endpoints:
 // Health check — no version prefix, used by DO Load Balancer
 app.get('/health', async () => ({ status: 'ok' }));
 
+// Debug endpoint to see which PM2 instance handles request
+app.get('/debug', async () => ({
+  instance_pid: process.pid,
+  uptime_seconds: Math.floor(process.uptime()),
+  memory_mb: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
+  node_version: process.version,
+  pm2_instance_id: process.env.NODE_APP_INSTANCE || 0
+}));
+
 // Versioned API routes
 // New URL: eventoapi.com/v1/...
 // Old API: eventotracker.com/api/v4/... (still running on ColdFusion)
