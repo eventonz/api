@@ -54,6 +54,9 @@ app.get('/debug', async () => ({
 // Old API: eventotracker.com/api/v4/... (still running on ColdFusion)
 app.register(require('./routes/v1'), { prefix: '/v1' });
 
+// Click-tracking redirect — public, unversioned: eventoapi.com/link/:page_id
+app.register(require('./routes/link'), { prefix: '/link' });
+
 // Future versions added here:
 // app.register(require('./routes/v2'), { prefix: '/v2' });
 

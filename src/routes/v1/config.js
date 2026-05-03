@@ -386,7 +386,7 @@ function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase) {
       page.type          = 'link';
       page.open_external = item.open_external == 1;
       page.link_type     = item.external_source?.toLowerCase().includes('pdf') ? 'pdf' : 'web';
-      page.link          = { url: `${nodeApiBase}/redirect/${item.id}` };
+      page.link          = { url: `https://eventoapi.com/link/${item.id}` };
       break;
 
     case 'assistant':

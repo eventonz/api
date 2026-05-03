@@ -1,8 +1,8 @@
-const pool = require('../../config/database');
+const pool = require('../config/database');
 
-async function redirectRoutes(app) {
+async function linkRoutes(app) {
   // ---------------------------------------------------------------------------
-  // GET /redirect/:page_id
+  // GET /link/:page_id
   // Tracks page visits and redirects to external URL (replaces redirect.cfm)
   // ---------------------------------------------------------------------------
   app.get('/:page_id', {
@@ -16,10 +16,8 @@ async function redirectRoutes(app) {
   }, async (request, reply) => {
     const { page_id } = request.params;
 
-    // Increment visit count (async, don't wait)
     pool.query('UPDATE pages SET visits = visits + 1 WHERE id = $1', [page_id]).catch(() => {});
 
-    // Get external URL
     const { rows } = await pool.query(
       'SELECT external_source FROM pages WHERE id = $1',
       [page_id]
@@ -29,9 +27,8 @@ async function redirectRoutes(app) {
       return reply.notFound('Page not found');
     }
 
-    // Redirect to the external URL
     return reply.redirect(302, rows[0].external_source);
   });
 }
 
-module.exports = redirectRoutes;
+module.exports = linkRoutes;
