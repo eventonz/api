@@ -16,6 +16,7 @@
     "@fastify/cors": "^11.2.0",
     "@fastify/helmet": "^13.0.2",
     "@fastify/sensible": "^6.0.4",
+    "@logtail/pino": "^0.5.8",
     "dotenv": "^17.3.1",
     "fastify": "^5.8.4",
     "fastify-plugin": "^5.1.0",

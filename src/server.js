@@ -1,10 +1,29 @@
 require('dotenv').config();
 const Fastify = require('fastify');
 
+function buildLoggerConfig() {
+  const level = process.env.LOG_LEVEL || (process.env.NODE_ENV === 'production' ? 'warn' : 'info');
+  const token = process.env.LOGTAIL_SOURCE_TOKEN;
+  const host  = process.env.LOGTAIL_INGESTING_HOST;
+
+  if (!token || !host) {
+    return { level };
+  }
+
+  return {
+    level,
+    transport: {
+      target: '@logtail/pino',
+      options: {
+        sourceToken: token,
+        options: { endpoint: `https://${host}` },
+      },
+    },
+  };
+}
+
 const app = Fastify({
-  logger: process.env.NODE_ENV === 'production'
-    ? { level: 'warn' }
-    : { level: 'info' },
+  logger: buildLoggerConfig(),
   trustProxy: true,
 });
 
