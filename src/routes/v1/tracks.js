@@ -19,7 +19,7 @@ const {
   raceconfigByRaceResult,
 } = require('../../services/raceConfig');
 
-const QUEUE_KEY = 'worker_queue';
+const QUEUE_KEY = 'tracks_queue';
 
 // Race must be live, in test mode, or within data reception window.
 function acceptsData(raceobj) {
