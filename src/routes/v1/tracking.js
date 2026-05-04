@@ -90,7 +90,17 @@ async function trackingRoutes(app) {
     const raceId = Number(request.body.race_id);
     const tracks = (request.body.tracks || []).map(String);
 
-    const race = await raceconfigByRaceId(raceId);
+    let race;
+    const cached = await redis.get(`raceobj:race:${raceId}`);
+    if (cached) {
+      try { race = JSON.parse(cached); } catch { /* fall through to PG */ }
+    }
+    if (!race) {
+      race = await raceconfigByRaceId(raceId);
+      if (race) {
+        redis.setex(`raceobj:race:${raceId}`, 300, JSON.stringify(race)).catch(() => {});
+      }
+    }
     if (!race) return reply.notFound('Race not found');
 
     let isWithinReceptionWindow = false;
