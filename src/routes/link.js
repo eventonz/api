@@ -27,7 +27,7 @@ async function linkRoutes(app) {
       return reply.notFound('Page not found');
     }
 
-    return reply.redirect(302, rows[0].external_source);
+    return reply.redirect(rows[0].external_source, 302);
   });
 }
 
