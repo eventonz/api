@@ -1,5 +1,5 @@
-const pool  = require('../../config/database');
 const redis = require('../../config/redis');
+const { raceconfigByRaceId } = require('../../services/raceConfig');
 
 // Mirrors API/api/v4/modules/tracking.cfm + tracking_scripts/general.cfm
 
@@ -90,13 +90,8 @@ async function trackingRoutes(app) {
     const raceId = Number(request.body.race_id);
     const tracks = (request.body.tracks || []).map(String);
 
-    const { rows } = await pool.query(
-      `SELECT timezone, islive, data_reception_start, data_reception_end, tracking_scriptv3
-         FROM races WHERE id = $1 LIMIT 1`,
-      [raceId]
-    );
-    if (rows.length === 0) return reply.notFound('Race not found');
-    const race = rows[0];
+    const race = await raceconfigByRaceId(raceId);
+    if (!race) return reply.notFound('Race not found');
 
     let isWithinReceptionWindow = false;
     if (race.data_reception_start && race.data_reception_end) {
