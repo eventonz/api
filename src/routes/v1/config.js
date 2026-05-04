@@ -128,9 +128,9 @@ async function configRoutes(app) {
 
     const race        = raceRows[0];
     const apiVersion  = Number.isFinite(+race.api_version) ? +race.api_version : 3;
-    const endpointUrl = `${ORIGIN}/api/v${apiVersion}/api.cfm`;
-    const pagesBase   = `${ORIGIN}/api/v${apiVersion}/modules/pages`;
     const nodeApiBase = 'https://eventoapi.com/v1';
+    const endpointUrl = nodeApiBase;
+    const pagesBase   = `${ORIGIN}/api/v${apiVersion}/modules/pages`;
 
     // 3. Build response — mirrors CF config.cfm field for field
     const data = {};
@@ -399,7 +399,7 @@ function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase) {
       page.type               = 'assistantv2';
       page.sourceId           = item.content;
       page.assistant_id       = item.content;
-      page.assistant_base_url = 'https://eventotracker.com/api/v4/api.cfm';
+      page.assistant_base_url = 'https://eventoapi.com/v1';
       page.prefixprompt       = '';
       break;
 

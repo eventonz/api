@@ -6,7 +6,12 @@ function buildLoggerConfig() {
   const token = process.env.LOGTAIL_SOURCE_TOKEN;
   const host  = process.env.LOGTAIL_INGESTING_HOST;
 
-  if (!token || !host) {
+  if (!token || !host) return { level };
+
+  try {
+    require.resolve('@logtail/pino');
+  } catch {
+    console.error('[logger] @logtail/pino not installed — falling back to stdout');
     return { level };
   }
 
