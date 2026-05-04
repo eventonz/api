@@ -20,5 +20,15 @@ jobs:
             cd /root/node-api
             git pull origin main
             npm install --production
-            pm2 restart evento-api
+
+            # Pin PG_HOST to the current managed-DB host (was pointing at a
+            # decommissioned droplet). Host is not secret; password is.
+            PG_HOST_CURRENT='db-postgresql-3-may-2026-do-user-3724083-0.j.db.ondigitalocean.com'
+            if grep -q '^PG_HOST=' .env; then
+              sed -i "s|^PG_HOST=.*|PG_HOST=${PG_HOST_CURRENT}|" .env
+            else
+              echo "PG_HOST=${PG_HOST_CURRENT}" >> .env
+            fi
+
+            pm2 restart evento-api --update-env
             echo "✅ Deployment complete"
