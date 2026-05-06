@@ -19,8 +19,7 @@ async function eventsRoutes(app) {
       [appid]
     );
     if (appRows.length === 0) return reply.notFound('App not found');
-    const appRow     = appRows[0];
-    const apiVersion = Number.isFinite(+appRow.api_version) ? +appRow.api_version : 3;
+    const appRow = appRows[0];
 
     // 3. Load races — cutoff is 2 days ago (matches ColdFusion behaviour)
     const cutoff = new Date();
@@ -39,7 +38,16 @@ async function eventsRoutes(app) {
       racesWhere += ` AND (r.status = 'open' OR r.status = 'closed')`;
     }
 
-    const orderBy = eventsFilter === 'past' ? 'r.event_date DESC' : 'r.event_date ASC';
+    let orderBy;
+    if (eventsFilter === 'past') {
+      orderBy = 'r.event_date DESC';
+    } else if (eventsFilter === 'upcoming') {
+      orderBy = 'r.event_date ASC';
+    } else if (!appRow.show_past && !appRow.show_upcoming) {
+      orderBy = 'r.event_date ASC';
+    } else {
+      orderBy = 'r.event_date DESC';
+    }
 
     const { rows: races } = await pool.query(
       `SELECT r.* FROM races r
@@ -73,7 +81,7 @@ async function eventsRoutes(app) {
     const normalItems = [];
 
     for (const race of races) {
-      const item = buildEventItem(race, apiVersion);
+      const item = buildEventItem(race);
       if (race.size === 'large') {
         largeItems.push(item);
       } else {
@@ -116,8 +124,8 @@ function buildPromoCard(row) {
   return card;
 }
 
-function buildEventItem(race, apiVersion) {
-  const configUrl = `https://eventotracker.com/api/v${apiVersion}/api.cfm/config/${race.id}`;
+function buildEventItem(race) {
+  const configUrl = `https://eventoapi.com/v1/config/${race.id}`;
   const item      = {};
 
   if (race.mode === 'rr_results') {
