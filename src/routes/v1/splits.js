@@ -2,7 +2,7 @@ const { buildSplits } = require('../../services/splits');
 
 // Mirrors API/api/v4/modules/splits.cfm
 //
-// GET /v1/splits/:race_id?bib=...&id=...&contest=...
+// GET /v1/splits/race/:race_id?bib=...&id=...&contest=...
 //
 // CF reads:
 //   r_id        from path (or ?race=)
@@ -10,7 +10,7 @@ const { buildSplits } = require('../../services/splits');
 //   url.id      athlete_id
 //   url.contest currently selected contest
 async function splitsRoutes(app) {
-  app.get('/:race_id', {
+  app.get('/race/:race_id', {
     schema: {
       params: {
         type: 'object',
