@@ -33,5 +33,30 @@ module.exports = {
       out_file: '/var/log/evento-api/out.log',
       error_file: '/var/log/evento-api/error.log',
     },
+    {
+      name: 'evento-track-worker',
+      script: './src/workers/trackWorker.js',
+
+      // Fork mode, multiple instances for parallel queue consumption
+      instances: 2,
+      exec_mode: 'fork',
+
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '256M',
+      kill_timeout: 5000,
+
+      env: {
+        NODE_ENV: 'production',
+      },
+      env_development: {
+        NODE_ENV: 'development',
+      },
+
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      merge_logs: true,
+      out_file: '/var/log/evento-api/worker-out.log',
+      error_file: '/var/log/evento-api/worker-error.log',
+    },
   ],
 };

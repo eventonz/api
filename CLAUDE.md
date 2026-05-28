@@ -63,15 +63,15 @@ PORT=3000
 NODE_ENV=production
 
 # PostgreSQL
-PG_HOST=db-postgresql-syd1-nov-1-do-user-3724083-0.g.db.ondigitalocean.com
+PG_HOST=db-postgresql-3-may-2026-do-user-3724083-0.j.db.ondigitalocean.com
 PG_PORT=25061
 PG_DATABASE=evento_pool
 PG_USER=doadmin
 PG_PASSWORD=<redacted>
 PG_SSL=true
 
-# Redis
-REDIS_HOST=db-valkey-syd1-68344-do-user-3724083-0.g.db.ondigitalocean.com
+# Redis / Valkey
+REDIS_HOST=db-valkey-syd1-09683-do-user-3724083-0.j.db.ondigitalocean.com
 REDIS_PORT=25061
 REDIS_PASSWORD=<redacted>
 REDIS_TLS=true
@@ -157,7 +157,7 @@ tail -f /var/log/nginx/evento-api.error.log
 node scripts/list-apps.js
 
 # Connect to PostgreSQL directly
-psql -h db-postgresql-syd1-nov-1-do-user-3724083-0.g.db.ondigitalocean.com \
+psql -h db-postgresql-3-may-2026-do-user-3724083-0.j.db.ondigitalocean.com \
      -p 25061 -U doadmin -d evento_pool
 ```
 
@@ -216,19 +216,90 @@ npm start
 
 ## Endpoints
 
-### Public (No Auth)
-- `GET /` - ASCII art homepage
-- `GET /health` - Health check (used by load balancer)
+### Public — no auth
+| Method | Path | Notes |
+|---|---|---|
+| GET  | `/`        | ASCII art homepage |
+| GET  | `/health`  | Health check (load balancer probe) |
+| GET  | `/debug`   | Process / instance info |
 
-### API v1 (Requires Bearer Token)
-- `GET /v1/events/:appid` - All events for app
-- `GET /v1/events/:appid/upcoming` - Upcoming events
-- `GET /v1/events/:appid/past` - Past events
-- `GET /v1/config/:raceid` - Race configuration
-- `GET /v1/athletes/:raceid` - Athletes/participants
-- `GET /v1/tracks/:raceid/:athleteid` - Live tracking data
-- `POST /v1/raceresult/:rr_eventid` - RaceResult webhook
-- And more... (see `src/routes/v1/` for full list)
+### Public timer / webhook — no auth (URL identifier is the gate)
+| Method | Path | Notes |
+|---|---|---|
+| POST | `/v1/tracks/race/:race_id`               | Direct Evento race ID; enqueues to `worker_queue` |
+| POST | `/v1/tracks/sportsplits/:ss_raceid`      | SportSplits ID; enqueues to `worker_queue` |
+| POST | `/v1/tracks/racetec/:racetec_apikey`     | RaceTec API key; enqueues to `worker_queue` |
+| POST | `/v1/tracks/raceresult/:rr_eventid`      | RaceResult event ID; enqueues to `worker_queue` |
+| POST | `/v1/rr_webhook/:race_id`                | RaceResult participant_update webhook; enqueues to `worker_queue` |
+| POST | `/v1/adverts/:uuid`                      | body `{action:'impression'\|'click'}` — increments counter |
+
+### Authenticated `/v1/*` — Bearer token required
+**Events**
+- `GET /v1/events/:appid`                  — All events for an app
+- `GET /v1/events/:appid/upcoming`         — Upcoming
+- `GET /v1/events/:appid/past`             — Past
+
+**Config**
+- `GET /v1/config/:race_id`                — Full race config (mobile app payload)
+- `GET /v1/config/:race_id/check`          — Lightweight config check
+
+**Athletes** *(POST = search/paginate; PATCH = validate-by-edition)*
+- `POST  /v1/athletes/:race_id`            — body `{pageNumber, searchstring}`
+- `PATCH /v1/athletes/:race_id`            — body `{edition, athletes:[athlete_id…]}`
+
+**Notifications**
+- `GET /v1/notifications/:race_id`
+
+**Follow** *(inline, not queued — UI needs the response)*
+- `POST   /v1/follow`                      — body `{event_id, player_id, number, contest?}`
+- `DELETE /v1/follow`                      — body `{event_id, player_id, number}`
+
+**Settings** *(OneSignal segment toggles)*
+- `POST /v1/settings`                      — body `{race_id, player_id, notifications}`
+- `GET  /v1/settings/:player_id`
+
+**Assistant** *(Race Day Assistant — RAG via aievento DB)*
+- `POST /v1/assistant/report`              — body `{race_id, content}`
+- `GET  /v1/assistant/:uuid`               — public config `{status, initialMessage, title, color}`
+- `POST /v1/assistant/:uuid`               — chat — body `{message, messages?, source?}`
+
+**App**
+- `POST /v1/app_install`                   — body `{app_id, platform, install_version, device_id, installed_at}`
+- `GET  /v1/app_version/:app_id`           — Redis cached (30 min TTL); `X-Cache: HIT/MISS`
+- `POST /v1/app_version/:app_id`           — Update + bust cache
+
+**Timer events** (admin)
+- `POST   /v1/timer/events`
+- `PATCH  /v1/timer/events/:rr_event_id`
+- `DELETE /v1/timer/events/:rr_event_id`
+
+**CMS pages**
+- `GET /v1/redirect/:page_id`
+- `GET /v1/schedule/:page_id`
+- `GET /v1/list/:page_id`
+- `GET /v1/carousel/:page_id`
+
+**Maps**
+- `GET  /v1/maps/:uuid`                    — Map JSON (geojson + elevation)
+- `POST /v1/maps/:uuid`                    — Upload to DigitalOcean Spaces
+- `GET  /v1/maps/race/:race_id`            — Maps for a race
+- `GET  /v1/maps/:uuid/validate/:token`    — Validate map token
+
+**RaceResult** *(scheduled pull — internal/org-only)*
+- `POST /v1/raceresult/pull/:race_id`      — Pulls splits from the RaceResult feed for the given **Evento race_id**, groups by athlete, and writes each athlete's splits to Redis under `redis_splits:{race_id}:athlete:{athlete_id}`. Returns `{rows, athletes, ms}`.
+  - **Auth: Bearer token required** — must be an Evento-issued API key. This endpoint is not for public/3rd-party use; it is intended to be triggered by an internal scheduler (cron / GitHub Actions / EasyCron) so timing data refreshes automatically. Without a valid token the request is rejected at the auth middleware, so the endpoint cannot be triggered from outside the organisation.
+  - RR feed URL is resolved server-side from race config (RR token never appears in the request URL).
+  - Ported from `API/util/groupingtest.cfm`; a standalone CLI version lives at `node-api/scripts/pull-rr-splits.js` for one-off / cron-on-droplet use.
+
+### Not yet implemented
+- `POST /v1/tracking`                       — Read endpoint for live tracking page (body `{race_id, tracks:[athlete_id…]}`). Pending.
+- `/v1/splits`                              — Per-athlete split details. Pending.
+- `/v1/assistant_knowledge`, `/v1/assistant_map` — Admin/embed endpoints (CF-only).
+- Various legacy CF endpoints not yet ported (`racemap`, `solo`, `solosplits`).
+
+### Worker queue
+- **Redis LIST `worker_queue`** — envelope `{race_id, datetime, endpoint, payload}`. Consumed by `src/workers/trackWorker.js` (BRPOP). Endpoints handled: `tracks/race`, `tracks/sportsplits`, `tracks/racetec`, `tracks/raceresult`, `rr_webhook`.
+- **Redis LIST `athlete_push_queue`** — populated by track pipeline (`services/trackPush.js`). Consumed by the separate **push-worker** repo (OneSignal sender).
 
 ## Creating a New Droplet
 
