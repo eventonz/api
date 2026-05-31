@@ -12,6 +12,7 @@
 
 const { raceconfigByRaceId } = require('../raceConfig');
 const sportsplits = require('./transformers/sportsplits');
+const raceresult  = require('./transformers/raceresult');
 const { buildHeader } = require('./buildHeader');
 const athleteDetailV2 = require('./athleteDetailV2');
 
@@ -38,6 +39,22 @@ async function buildSplits({ raceId, bib, athleteId, contest }) {
     case 'sportsplits': {
       const result = await sportsplits.transform(raceobj, {
         bib, athleteId, raceId,
+      });
+      livetiming  = result.livetiming;
+      contestType = result.contestType;
+      break;
+    }
+    // RaceResult family — all routed to the single therace-based transformer.
+    case 'timit':
+    case 'popupraces':
+    case 'timit_epicseries':
+    case 'racebase':
+    case 'secondwind':
+    case 'solemotive':
+    case 'therace':
+    case 'chronoconsult': {
+      const result = await raceresult.transform(raceobj, {
+        athleteId, raceId, contest: contestId,
       });
       livetiming  = result.livetiming;
       contestType = result.contestType;
