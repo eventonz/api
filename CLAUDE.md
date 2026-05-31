@@ -18,12 +18,33 @@ Node.js rewrite of the Evento API using Fastify framework. Replaces the legacy C
 
 **Droplet Details**:
 - Provider: DigitalOcean
+- Droplet: `evento-node-api` (ID `565467830`), IP `134.199.152.100`
 - Region: Sydney (syd1)
-- Size: 1GB RAM, 1 vCPU
+- Size: **upgrading 1 vCPU / 1 GB (`s-1vcpu-1gb`) → 2 vCPU / 2 GB (`s-2vcpu-2gb`)**
 - OS: Ubuntu 22.04 LTS
-- IP: Check via `doctl compute droplet list | grep evento-node-api`
+- DNS: `eventoapi.com` A record points **directly** at this droplet (no load balancer in front)
 
 **Deployment Location**: `/root/node-api/` on droplet
+
+### Scaling note — upgrading to 2 cores
+
+We are upgrading this droplet to **2 vCPUs** to run more API workers. No load balancer
+is needed for this: PM2 `cluster` mode (`instances: 'max'` in `ecosystem.config.js`) is
+the in-box balancer — its master binds port 3000 and round-robins connections across one
+worker per core. On the old 1-vCPU box `'max'` resolved to a single worker; on 2 cores it
+runs 2 API workers automatically, with nginx still proxying to `localhost:3000` unchanged.
+
+Resize steps (CPU/RAM-only resize is reversible; do **not** add `--resize-disk`):
+```bash
+doctl compute droplet-action power-off 565467830 --wait
+doctl compute droplet-action resize  565467830 --size s-2vcpu-2gb --wait
+doctl compute droplet-action power-on  565467830 --wait
+# then on the droplet: pm2 restart ecosystem.config.js   (workers scale to core count)
+```
+
+A **DigitalOcean load balancer is only required for horizontal scaling across multiple
+droplets** (see "Switching to Load Balancer" below) — not for using multiple cores on this
+one. The app is stateless (state in managed Postgres + Valkey), so that path is open later.
 
 ## Auto-Deploy Setup
 

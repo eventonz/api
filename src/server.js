@@ -36,6 +36,14 @@ app.register(require('@fastify/helmet'));
 app.register(require('@fastify/cors'), { origin: '*' });
 app.register(require('@fastify/sensible'));
 
+// Cluster visibility: tag every response with the PM2 worker / pid that served it.
+// In cluster mode PM2 sets NODE_APP_INSTANCE to 0,1,2… (one per core). Watch which
+// worker answers with:  curl -sI https://eventoapi.com/health | grep -i x-worker
+const WORKER_ID = process.env.NODE_APP_INSTANCE ?? '0';
+app.addHook('onRequest', async (request, reply) => {
+  reply.header('X-Worker', `id=${WORKER_ID} pid=${process.pid}`);
+});
+
 // Root endpoint with ASCII art
 app.get('/', async (request, reply) => {
   reply.type('text/plain').send(`

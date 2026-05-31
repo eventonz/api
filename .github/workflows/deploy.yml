@@ -36,5 +36,10 @@ jobs:
               echo "REDIS_HOST=${REDIS_HOST_CURRENT}" >> .env
             fi
 
-            pm2 restart evento-api --update-env
+            # Apply ecosystem.config.js (graceful reload): picks up instance-count
+            # changes and starts BOTH evento-api (2 cluster workers) and
+            # evento-track-worker. Plain `pm2 restart` did neither.
+            pm2 startOrReload ecosystem.config.js --update-env
+            pm2 save
+            pm2 status
             echo "✅ Deployment complete"

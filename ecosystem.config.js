@@ -4,8 +4,9 @@ module.exports = {
       name: 'evento-api',
       script: './src/server.js',
 
-      // Cluster mode: one worker per CPU core
-      instances: 'max',
+      // Cluster mode: 2 workers (droplet has 2 vCPUs as of the 2-core upgrade).
+      // Use 'max' instead to auto-track core count if the droplet is resized again.
+      instances: 2,
       exec_mode: 'cluster',
 
       // Auto-restart on crash
