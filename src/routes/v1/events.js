@@ -138,6 +138,8 @@ function buildEventItem(race) {
     item.background_image = race.large_image || '';
     if (race.startlist != null) item.startlist = !!race.startlist;
     if (race.live      != null) item.live      = !!race.live;
+    // App routes RRPublish calls through /v1/rrpublish when true (rr-proxy)
+    if (race.rr_proxy) item.rr_proxy = true;
     if (race.registration_url) {
       item.registration_url  = race.registration_url;
       item.registration_text = race.registration_text || 'Register';
