@@ -135,7 +135,11 @@ function applyOverrides(rrId, config, overrides) {
       const o = overrides.lists[list?.Name];
       if (!o) continue;
       matched.add(list.Name);
-      if (o.hidden) list.Mode = 'hidden';        // app filters non-empty Mode
+      // Visibility is bidirectional (the app shows a list iff Mode is empty):
+      //   hidden:true → force-hide a normally-visible list
+      //   show:true   → reveal a list RaceResult marked hidden
+      if (o.hidden) list.Mode = 'hidden';
+      else if (o.show) list.Mode = '';
       if (o.label)  list.ShowAs = o.label;       // app prefers ShowAs over Name
       const evento = {};
       for (const k of ['layout', 'line2', 'showFields', 'hideFields']) {

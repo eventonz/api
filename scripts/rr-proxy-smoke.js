@@ -117,6 +117,21 @@ async function direct(pathAndQuery) {
       !mLists.some(l => l.ShowAs === 'Ghost'));
   }
 
+  // 6b. force-show — reveal a list RaceResult marked hidden (Mode -> '')
+  const hiddenList = lists.find(l => (l.Mode || '').length);
+  if (hiddenList) {
+    overrideRows = [{ overrides: { v: 1, lists: { [hiddenList.Name]: { show: true } } } }];
+    store.delete(`rrpublish:overrides:${rrId}`);
+    for (const k of [...store.keys()]) if (k.startsWith('rrpublish:rsp:')) store.delete(k);
+    const pf = await proxyGet(rrId, cfgPath, {});
+    const pfj = JSON.parse(pf.body);
+    const fLists = pfj.lists || pfj.TabConfig?.Lists || [];
+    const revealed = fLists.find(l => l.Name === hiddenList.Name);
+    check('force-show: RR-hidden list Mode cleared to ""', revealed && revealed.Mode === '');
+  } else {
+    console.log('skip force-show — no RR-hidden list in config');
+  }
+
   console.log(`\n${passed} checks passed`);
   process.exit(0);
 })().catch((err) => { console.error(err.message); process.exit(1); });
