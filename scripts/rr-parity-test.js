@@ -31,8 +31,12 @@ if (EVENTS.length === 0) {
   process.exit(2);
 }
 
-// Fields allowed to differ between direct and proxied payloads
-const IGNORED_KEYS = new Set(['server', '_evento']);
+// Fields allowed to differ between direct and proxied payloads:
+//   server  — the proxy's one mutation
+//   _evento — display-override block the proxy may inject
+//   Time    — RaceResult's own server clock/uptime counter, ticks between the
+//             two separate fetches; volatile, not content
+const IGNORED_KEYS = new Set(['server', '_evento', 'Time']);
 
 let failures = 0;
 let comparisons = 0;
