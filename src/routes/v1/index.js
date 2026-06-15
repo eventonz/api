@@ -13,9 +13,10 @@ async function v1Routes(app) {
   // ---------------------------------------------------------------------------
   // Public — no bearer required
   // ---------------------------------------------------------------------------
-  app.register(require('./tracks'),     { prefix: '/tracks' });
-  app.register(require('./rr_webhook'), { prefix: '/rr_webhook' });
-  app.register(require('./adverts'),    { prefix: '/adverts' });
+  app.register(require('./tracks'),        { prefix: '/tracks' });
+  app.register(require('./rr_webhook'),    { prefix: '/rr_webhook' });
+  app.register(require('./rr_follow_push'),{ prefix: '/rr_follow_push' });
+  app.register(require('./adverts'),       { prefix: '/adverts' });
 
   // ---------------------------------------------------------------------------
   // Authenticated — bearer required
@@ -28,6 +29,7 @@ async function v1Routes(app) {
     authed.register(require('./athletes'),      { prefix: '/athletes' });
     authed.register(require('./config'),        { prefix: '/config' });
     authed.register(require('./follow'),        { prefix: '/follow' });
+    authed.register(require('./rr_follow'),     { prefix: '/rr_follow' });
     authed.register(require('./app_install'),   { prefix: '/app_install' });
     authed.register(require('./app_version'),   { prefix: '/app_version' });
     authed.register(require('./timer_events'),  { prefix: '/timer/events' });
