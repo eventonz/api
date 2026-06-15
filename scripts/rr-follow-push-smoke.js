@@ -80,7 +80,11 @@ function nowTod() {
   const e = enqueued[0];
   check('finish enqueued once', r.statusCode === 202 && enqueued.length === 1);
   check('include_player_ids resolved', e && e.include_player_ids.length === 2);
-  check('finish message built', e && e.message === 'Jane Smith has finished in a time of 1:49:58 (Provisional)');
+  check('title (heading) = event name', e && e.headings && e.headings.en === 'Smoke Test Race');
+  check('body translated en/fr/es/de', e && e.contents &&
+    e.contents.en === 'Jane Smith has finished in a time of 1:49:58 (Provisional)' &&
+    e.contents.fr.includes('a terminé') && e.contents.es.includes('ha terminado') &&
+    e.contents.de.includes('Ziel erreicht'));
   check('race_id resolved from config', e && e.race_id === 42);
 
   // 3. replayed finish → deduped (no new enqueue)

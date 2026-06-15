@@ -36,6 +36,18 @@ function isTruthy(v) {
   return v === 1 || v === '1' || v === true || v === 'true';
 }
 
+// Finish-message body per language (en/fr/es/de). OneSignal picks by device
+// language and falls back to `en`.
+function finishContents(name, raceTime) {
+  const t = raceTime ? ` ${raceTime}` : '';
+  return {
+    en: `${name} has finished in a time of${t} (Provisional)`,
+    fr: `${name} a terminé en un temps de${t} (provisoire)`,
+    es: `${name} ha terminado en un tiempo de${t} (provisional)`,
+    de: `${name} hat in einer Zeit von${t} das Ziel erreicht (vorläufig)`,
+  };
+}
+
 async function rrFollowPushRoutes(app) {
   app.post('/:rr_eventid', {
     schema: {
@@ -91,17 +103,22 @@ async function rrFollowPushRoutes(app) {
 
       const name = `${item.firstname ?? ''} ${item.lastname ?? ''}`.trim() || (item.name ?? 'Your athlete');
       const raceTime = item.race_time ?? '';
+      const eventName = raceobj.race_name || 'Results';
+      const contents = finishContents(name, raceTime);
       const entry = JSON.stringify({
         raceNo: String(item.bib ?? ''),
         athlete_id: athleteId,
         race_id: Number(raceobj.r_id),
         name,
-        race_name: raceobj.race_name,
+        race_name: eventName,
         splitname: 'Finish',
         racetime: raceTime,
         os_appid: raceobj.onesignal_id,
         os_restkey: raceobj.onesignal_restkey,
-        message: `${name} has finished in a time of ${raceTime} (Provisional)`,
+        // Title = event name (same across languages); body translated per language.
+        headings: { en: eventName },
+        contents,
+        message: contents.en, // fallback / logging
         split_tod: tod,
         timezone: raceobj.timezone,
         include_player_ids: rows.map((r) => r.player_id).filter(Boolean),
