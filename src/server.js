@@ -30,6 +30,7 @@ function buildLoggerConfig() {
 const app = Fastify({
   logger: buildLoggerConfig(),
   trustProxy: true,
+  ignoreTrailingSlash: true,
 });
 
 app.register(require('@fastify/helmet'));

@@ -153,7 +153,7 @@ async function configRoutes(app) {
 
     data.athlete_details = {
       version: race.athlete_details_version,
-      url:     `${endpointUrl}/splits/race/${race_id}/?bib=#{number}&id=#{id}&contest=#{contest}`,
+      url:     `${endpointUrl}/splits/race/${race_id}?bib=#{number}&id=#{id}&contest=#{contest}`,
     };
 
     // Contest display map (v4+)
