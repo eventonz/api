@@ -21,9 +21,9 @@ async function eventsRoutes(app) {
     if (appRows.length === 0) return reply.notFound('App not found');
     const appRow = appRows[0];
 
-    // 3. Load races — cutoff is 2 days ago (matches ColdFusion behaviour)
+    // 3. Load races — cutoff is 1 day ago (matches ColdFusion behaviour)
     const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - 2);
+    cutoff.setDate(cutoff.getDate() - 1);
 
     let racesWhere = 'ar.app_id = $1';
     const racesParams = [appid];
