@@ -74,6 +74,86 @@ async function getLatestTracksRedis(tracks, raceId) {
   return out;
 }
 
+// ---------------------------------------------------------------------------
+// RR-live fallback: derive tracking payloads from the redis_splits cache
+// (written by services/raceresultPull.js). Used for athletes with no
+// tracking:race:* key when the race is live with use_redis enabled.
+//
+// Leg records are stored alongside splits in redis_splits; they are excluded
+// here by an ALLOWLIST — only rr_splitids configured in event.splits count.
+// Legs never appear in that list (they live in event.legs), so nothing
+// leg-shaped can become an athlete's "last split".
+// ---------------------------------------------------------------------------
+async function getTracksFromRedisSplits(athleteIds, raceId, race) {
+  if (!athleteIds.length) return [];
+  const keys = athleteIds.map((id) => `redis_splits:${raceId}:athlete:${id}`);
+  const values = await redis.mget(keys);
+
+  // rr_splitid → its event + position among that event's configured splits
+  const bySplitId = new Map();
+  for (const ev of (race.events || [])) {
+    const cfgSplits = Array.isArray(ev.splits) ? ev.splits : [];
+    cfgSplits.forEach((s, i) => {
+      const sid = Number(s.rr_splitid);
+      if (sid > 0) bySplitId.set(sid, { ev, cfgSplits, i });
+    });
+  }
+
+  const out = [];
+  for (let k = 0; k < values.length; k++) {
+    if (!values[k]) continue;
+    let records;
+    try { records = JSON.parse(values[k]); } catch { continue; }
+    if (!Array.isArray(records)) continue;
+
+    // Last crossed configured course split (highest feed SplitID with a ToD)
+    let best = null;
+    for (const rec of records) {
+      const hit = bySplitId.get(Number(rec.RR_SplitID));
+      if (!hit) continue;                                  // leg or unconfigured
+      if (String(rec.SplitToD || '').trim() === '') continue; // not crossed yet
+      if (!best || Number(rec.SplitID) > Number(best.rec.SplitID)) {
+        best = { rec, ...hit };
+      }
+    }
+    if (!best) continue;
+
+    const { rec, ev, cfgSplits, i } = best;
+    const total   = Number(ev.distance) || 0;
+    const dist    = Number(cfgSplits[i].split_distance) || 0;
+    const isFinal = i === cfgSplits.length - 1;
+    const pct     = isFinal ? 100
+      : (total > 0 ? Number(((dist / total) * 100).toFixed(2)) : 0);
+    const next    = cfgSplits[i + 1];
+    const nextPct = (next && total > 0)
+      ? Number(((Number(next.split_distance) / total) * 100).toFixed(2))
+      : 100;
+
+    // Same payload shape trackPersistence.insertRedis writes, so the
+    // rendering loop below consumes both sources identically.
+    out.push({
+      athlete_id:        String(athleteIds[k]),
+      raceNo:            rec.Bib ?? '',
+      distance:          dist,
+      name:              '',
+      use_tracking_path: ev.use_tracking_path,
+      marker_text:       race.marker_text ?? '',
+      racetime:          rec.SplitRaceTime ?? '',
+      splitname:         cfgSplits[i].name,
+      splitracetime:     rec.SplitRaceTime ?? '',
+      percent_course:    pct,
+      course_distance:   total,
+      speed:             Number(rec.SplitSpeed) || 0,
+      isgps:             false,
+      next_splitpercent: nextPct,
+      contest_id:        ev.contest_id,
+      splittod:          rec.SplitToD ?? '',
+      live_camera_url:   '',
+    });
+  }
+  return out;
+}
+
 async function trackingRoutes(app) {
   app.post('/', {
     schema: {
@@ -119,8 +199,20 @@ async function trackingRoutes(app) {
       return { islive: true, message: 'No tracking Script', tracks: [] };
     }
 
-    const latest = await getLatestTracksRedis(tracks, raceId);
-    const tz     = race.timezone || 'UTC';
+    let latest = await getLatestTracksRedis(tracks, raceId);
+
+    // RR-live: fill gaps from the redis_splits cache. Webhook-pushed
+    // tracking:race:* keys stay primary (fresher); the 2-3 min pull snapshot
+    // covers athletes the webhook hasn't reported.
+    if (race.islive && race.use_redis) {
+      const have    = new Set(latest.map((t) => String(t.athlete_id)));
+      const missing = tracks.filter((id) => !have.has(id));
+      if (missing.length) {
+        latest = latest.concat(await getTracksFromRedisSplits(missing, raceId, race));
+      }
+    }
+
+    const tz = race.timezone || 'UTC';
 
     const out = [];
     for (const t of latest) {
