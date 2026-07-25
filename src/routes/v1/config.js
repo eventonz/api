@@ -422,6 +422,7 @@ function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase, race) {
       if (race.thumbnail)         page.small_image      = race.thumbnail;
       if (race.startlist != null) page.startlist        = !!race.startlist;
       if (race.live      != null) page.live             = !!race.live;
+      page.opens_athlete_detail = item.linkdetails != 0;
       if (race.registration_url) {
         page.registration_url  = race.registration_url;
         page.registration_text = race.registration_text || 'Register';
