@@ -232,9 +232,10 @@ async function buildEventObj(ev, r_id) {
     cert_link:        ev.cert_link,
     use_net_times:    ev.use_net_times       == 1,
     await_at_next_split: ev.await_at_next_split == 1,
-    // If use_tracking_path is blank, default to contest_id (matches CF)
-    use_tracking_path: ev.use_tracking_path?.trim()
-                         ? ev.use_tracking_path
+    // If use_tracking_path is blank, default to contest_id (matches CF).
+    // Coerce first: the column can come back numeric, and numbers have no .trim().
+    use_tracking_path: String(ev.use_tracking_path ?? '').trim()
+                         ? String(ev.use_tracking_path).trim()
                          : String(ev.contest_id),
     use_estimates:    ev.use_estimates  == 1,
     is_tracking:      ev.is_tracking    == 1,
