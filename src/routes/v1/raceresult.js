@@ -14,15 +14,15 @@ const { raceconfigByRaceId } = require('../../services/raceConfig');
 const { pullRaceResultSplits } = require('../../services/raceresultPull');
 
 async function raceresultRoutes(app) {
-  app.post('/pull/:race_id', {
-    schema: {
-      params: {
-        type: 'object',
-        properties: { race_id: { type: 'integer' } },
-        required: ['race_id'],
-      },
+  const pullSchema = {
+    params: {
+      type: 'object',
+      properties: { race_id: { type: 'integer' } },
+      required: ['race_id'],
     },
-  }, async (request, reply) => {
+  };
+
+  const pullHandler = async (request, reply) => {
     const raceId = Number(request.params.race_id);
 
     const raceobj = await raceconfigByRaceId(raceId);
@@ -47,7 +47,12 @@ async function raceresultRoutes(app) {
       request.log.error({ err, raceId }, 'raceresult pull failed');
       return reply.code(502).send({ error: err.message });
     }
-  });
+  };
+
+  // GET is cron-friendly: schedulers like EasyCron often send POST with an
+  // empty application/json body, which Fastify rejects (FST_ERR_CTP_EMPTY_JSON_BODY).
+  app.post('/pull/:race_id', { schema: pullSchema }, pullHandler);
+  app.get('/pull/:race_id',  { schema: pullSchema }, pullHandler);
 }
 
 module.exports = raceresultRoutes;
