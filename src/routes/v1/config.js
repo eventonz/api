@@ -247,21 +247,25 @@ async function configRoutes(app) {
       }];
     }
 
-    // --- Results tab (pages where type='results' and tabbar=true) ---
-    const tabbarResults = pages.filter((p) => p.type === 'results' && p.tabbar);
+    // --- Results tab (pages where type='results'/'rr_results' and tabbar=true) ---
+    const tabbarResults = pages.filter(
+      (p) => (p.type === 'results' || p.type === 'rr_results') && p.tabbar
+    );
     if (tabbarResults.length >= 1) {
       const tr = tabbarResults[0];
       data.results = {
         show_results: true,
-        config: {
-          icon:               tr.icon,
-          id:                 tr.id,
-          type:               'results',
-          supplier:           'sportsplits',
-          sportsplits_raceid: tr.ssraceid,
-          title:              tr.title,
-          opens_athlete_detail: tr.linkdetails != 0,
-        },
+        config: tr.type === 'rr_results'
+          ? buildPage(tr, pagesBase, endpointUrl, race_id, nodeApiBase, race)
+          : {
+              icon:               tr.icon,
+              id:                 tr.id,
+              type:               'results',
+              supplier:           'sportsplits',
+              sportsplits_raceid: tr.ssraceid,
+              title:              tr.title,
+              opens_athlete_detail: tr.linkdetails != 0,
+            },
       };
     }
 
