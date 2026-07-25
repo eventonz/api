@@ -105,6 +105,30 @@ async function expireRedisSplits(raceId, ttlSecs) {
   return touched;
 }
 
+// Delete the race's EasyCron pull job (mirrors deletecronjob in the CMS
+// easycron.cfc) and clear races.live_cron_job_id. Best-effort: a failure
+// here must not block persisting the results.
+async function deleteLiveCronJob(raceId) {
+  const token = process.env.EASYCRON_TOKEN || 'eac22c05b94fba92e7ba604a1060e7ba';
+  try {
+    const { rows } = await pool.query(
+      'SELECT live_cron_job_id FROM races WHERE id = $1', [raceId]
+    );
+    const jobId = Number(rows[0]?.live_cron_job_id) || 0;
+    if (jobId > 0) {
+      await fetch(
+        `https://www.easycron.com/rest/delete?token=${token}&id=${jobId}`
+      );
+    }
+    await pool.query(
+      'UPDATE races SET live_cron_job_id = 0 WHERE id = $1', [raceId]
+    );
+    return jobId;
+  } catch {
+    return 0;
+  }
+}
+
 async function finaliseRaceResult({ raceId, feedUrl, resultsTable }) {
   const table = String(resultsTable || '').trim();
   if (!table || !/^[a-z_][a-z0-9_]*$/.test(table)) {
@@ -112,6 +136,10 @@ async function finaliseRaceResult({ raceId, feedUrl, resultsTable }) {
   }
 
   const t0 = Date.now();
+
+  // Stop the scheduled pulls first so no fresh pull races the final import.
+  const cronJobDeleted = await deleteLiveCronJob(raceId);
+
   const records = await fetchSplits(feedUrl);
   const tFetch = Date.now() - t0;
 
@@ -143,6 +171,7 @@ async function finaliseRaceResult({ raceId, feedUrl, resultsTable }) {
     rows: records.length,
     upserted: inserted,
     skipped,
+    cronJobDeleted,
     redisKeysExpiring: expired,
     ms: { fetch: tFetch, db: tDb, total: Date.now() - t0 },
   };
