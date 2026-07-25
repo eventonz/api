@@ -30,10 +30,13 @@ async function raceresultRoutes(app) {
       return reply.code(404).send({ error: 'Race not found' });
     }
 
-    const feedUrl = raceobj.timing?.rr_splits || raceobj.rr_splits;
+    // Prefer the splits-specific feed; fall back to races.rr_results — the
+    // same URL the CF importer (splits.cfc update_live_timing_table) pulls.
+    const feedUrl = raceobj.timing?.rr_splits || raceobj.rr_splits
+      || raceobj.timing?.rr_results || raceobj.rr_results;
     if (!feedUrl) {
       return reply.code(400).send({
-        error: 'No RaceResult splits feed URL configured for this race (races.rr_splits)',
+        error: 'No RaceResult feed URL configured for this race (races.rr_splits / races.rr_results)',
       });
     }
 
