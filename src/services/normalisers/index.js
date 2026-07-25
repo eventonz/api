@@ -1,33 +1,27 @@
 /**
- * Normaliser Dispatcher — Stage 2 (stub)
+ * Normaliser Dispatcher — Stage 2
  *
  * Routes the raw POST payload to the correct timer-specific normaliser,
  * returning either:
  *   { trackdata }        — single athlete (SportSplits, RR API path, etc.)
  *   { trackdataarray }   — multiple athletes (Ugo's RaceResult array, RaceTec batch)
  *
- * Stage 2 normalisers slot in here. Until each is built, the pass-through
- * default lets you test the pipeline end-to-end with pre-normalised payloads.
+ * The converter is selected by the INGEST ENDPOINT, mirroring the CF API
+ * where /raceresult/{rr_eventid} includes convert_data/raceresult.cfm
+ * regardless of the race's timing script. /tracks/race receives
+ * pre-normalised Evento-format payloads (pass-through).
  */
 
-function normalise(payload, raceobj) {
-  const script = raceobj.timing?.script ?? '';
+const raceresult = require('./raceresult');
 
-  switch (script) {
-    // Stage 2 — add normaliser imports here as they are built:
-    // case 'sportsplits':       return require('./sportsplits').normalise(payload, raceobj);
-    // case 'sportsplits_epic':  return require('./sportsplits_epic').normalise(payload, raceobj);
-    // case 'raceresult':        return require('./raceresult').normalise(payload, raceobj);
-    // case 'racetec':
-    // case 'ses':
-    // case 'bluechip':          return require('./racetec').normalise(payload, raceobj);
-    // case 'therace':
-    // case 'timit':
-    // case 'chronoconsult':
-    // case 'solemotive':
-    // case 'secondwind':
-    // case 'popupraces':
-    // case 'racebase':          return require('./therace').normalise(payload, raceobj);
+function normalise(payload, raceobj, endpoint, raceId) {
+  switch (endpoint) {
+    case 'tracks/raceresult':
+      return raceresult.normalise(payload, raceobj, raceId);
+
+    // Stage 2 — remaining normalisers slot in here as they are ported:
+    // case 'tracks/sportsplits': return require('./sportsplits').normalise(payload, raceobj, raceId);
+    // case 'tracks/racetec':     return require('./racetec').normalise(payload, raceobj, raceId);
 
     default:
       // Pass-through: expects payload to already be normalised trackdata.

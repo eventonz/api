@@ -58,7 +58,7 @@ async function dispatch(job) {
   }
 
   if (endpoint.startsWith('tracks/')) {
-    return handleTracksJob(race_id, payload);
+    return handleTracksJob(race_id, payload, endpoint);
   }
   if (endpoint === 'rr_webhook') {
     return handleRrWebhook(race_id, payload);
@@ -70,7 +70,7 @@ async function dispatch(job) {
 // ---------------------------------------------------------------------------
 // tracks/* — full pipeline
 // ---------------------------------------------------------------------------
-async function handleTracksJob(race_id, body) {
+async function handleTracksJob(race_id, body, endpoint) {
   const raceobj = await raceconfigByRaceId(race_id);
   if (!raceobj?.r_id) {
     console.warn('[worker] race not found at process time:', race_id);
@@ -82,7 +82,7 @@ async function handleTracksJob(race_id, body) {
 
   if (!isWithinReceptionWindow(raceobj)) return;
 
-  const { trackdata, trackdataarray } = normalise(body, raceobj);
+  const { trackdata, trackdataarray } = normalise(body, raceobj, endpoint, race_id);
   const athletes = trackdataarray ?? [trackdata];
 
   for (const td of athletes) {
