@@ -377,6 +377,44 @@ function appendLegs(items, livetiming, ds) {
 }
 
 // ---------------------------------------------------------------------------
+// Live camera clips — videos for splits the athlete has passed.
+// Mirrors CF athlete_detail_v2.cfm B.5: one YouTube link per camera-covered
+// split, seeked to (split TOD - camera start - 10s). Rendered above the table.
+// ---------------------------------------------------------------------------
+function todToSecs(t) {
+  const parts = String(t).split('.')[0].split(':');
+  return (Number(parts[0]) || 0) * 3600 + (Number(parts[1]) || 0) * 60 + (Number(parts[2]) || 0);
+}
+
+function buildCamVideos(livetiming, raceobj) {
+  const camLookup = {};
+  for (const evt of raceobj.events || []) {
+    for (const cam of evt.live_cameras || []) camLookup[cam.split_id] = cam;
+  }
+  if (!Object.keys(camLookup).length) return null;
+
+  const videos = [];
+  for (const sp of livetiming.splits || []) {
+    if (sp.visible != 1 || !String(sp.tod || '').trim()) continue;
+    const cam = camLookup[sp.id];
+    if (!cam) continue;
+    let offset = 0;
+    try {
+      offset = todToSecs(sp.tod) - todToSecs(cam.start_time) - 10;
+    } catch (_) {
+      offset = 0;
+    }
+    if (offset <= 0) continue;
+    videos.push({
+      url:           `https://youtu.be/${cam.yt_video_id}?t=${offset}&app=desktop`,
+      title:         '',
+      thumbnail_url: '',
+    });
+  }
+  return videos.length ? { type: 'videos', data: videos } : null;
+}
+
+// ---------------------------------------------------------------------------
 // Entry
 // ---------------------------------------------------------------------------
 function build(livetiming, raceobj, displaySettings, header) {
@@ -386,6 +424,9 @@ function build(livetiming, raceobj, displaySettings, header) {
   if (header.isFinished) {
     insertFinishInfolist(items, livetiming);
   }
+
+  const camVideos = buildCamVideos(livetiming, raceobj);
+  if (camVideos) items.push(camVideos);
 
   if (ds.type === 'journey') {
     items.push(buildJourney(livetiming, ds, raceobj));
