@@ -31,12 +31,34 @@ function groupByAthlete(splits) {
   return byAthlete;
 }
 
+// Safety net: keys evaporate on their own even if finalise never runs.
+const SPLITS_TTL_SECS = 72 * 3600;
+
+// Commands per pipeline flush. Large feeds (200K+ records / tens of thousands
+// of athletes) in ONE pipeline build a huge outbound buffer and stall the
+// event loop; chunking keeps memory flat and yields between flushes so live
+// API requests on this worker keep being served.
+const PIPELINE_CHUNK = 1000;
+
+const yieldLoop = () => new Promise((resolve) => setImmediate(resolve));
+
 async function writeToRedis(raceId, byAthlete) {
-  const pipeline = redis.pipeline();
+  let pipeline = redis.pipeline();
+  let inChunk = 0;
   for (const [athleteId, splits] of byAthlete) {
-    pipeline.set(`redis_splits:${raceId}:athlete:${athleteId}`, JSON.stringify(splits));
+    pipeline.set(
+      `redis_splits:${raceId}:athlete:${athleteId}`,
+      JSON.stringify(splits),
+      'EX', SPLITS_TTL_SECS
+    );
+    if (++inChunk >= PIPELINE_CHUNK) {
+      await pipeline.exec();
+      await yieldLoop();
+      pipeline = redis.pipeline();
+      inChunk = 0;
+    }
   }
-  await pipeline.exec();
+  if (inChunk > 0) await pipeline.exec();
   return byAthlete.size;
 }
 

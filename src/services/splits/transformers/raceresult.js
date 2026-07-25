@@ -7,13 +7,19 @@
  * the migration decision; the legacy timit.cfm / popupraces.cfm variants are
  * not ported separately.
  *
- * Source of truth is the per-timer Postgres results table named by
- * raceobj.timing.results_table (NOT the redis_splits cache). Produces a
- * `livetiming` object with the same shape sportsplits.js emits, so downstream
- * build_header + athlete_detail_v2 consume it identically.
+ * Source of truth depends on whether the race is live:
+ *   - LIVE (races.islive AND races.use_redis, RR events only): read the raw
+ *     feed records from `redis_splits:{race_id}:athlete:{athlete_id}` (written
+ *     by services/raceresultPull.js every few minutes) and map the PascalCase
+ *     feed fields onto the results-table column names.
+ *   - Not live (or Redis unavailable): the per-timer Postgres results table
+ *     named by raceobj.timing.results_table — unchanged legacy path.
+ * Produces a `livetiming` object with the same shape sportsplits.js emits, so
+ * downstream build_header + athlete_detail_v2 consume it identically.
  */
 
 const pool = require('../../../config/database');
+const redis = require('../../../config/redis');
 
 // Postgres folds unquoted identifiers to lowercase, so the columns the legacy
 // CF read in mixed case (SplitPredictedToD, SplitPredictedRaceTime) most likely
@@ -28,6 +34,29 @@ function makeRowReader(row) {
   };
 }
 
+// Map one raw RaceResult feed record (as stored in redis_splits by
+// raceresultPull.js) onto the results-table column names the reader logic
+// below expects. Field-name source of truth: insertBatch() in
+// API/cfc/eventssplits/splits.cfc — same mapping the Postgres importer uses.
+function feedRecordToRow(rec) {
+  const get = makeRowReader(rec); // feed keys are PascalCase; read case-insensitively
+  const rrSplitId = Number(get('rr_splitid')) || 0;
+  return {
+    split_id:               rrSplitId > 0 ? rrSplitId : (Number(get('splitid')) || 0),
+    rr_splitid:             rrSplitId,
+    split_tod:              get('splittod'),
+    split_gun:              get('splitracetime'),
+    split_chip:             get('splitchiptime'),
+    overall_rank:           get('splitoverallrank'),
+    gender_rank:            get('splitgenderrank'),
+    agegroup_rank:          get('splitagegrouprank'),
+    splitpace:              get('splitpace'),
+    splitpredictedtod:      get('splitpredictedtod'),
+    splitpredictedracetime: get('splitpredictedracetime'),
+    splitspeed:             get('splitspeed'),
+  };
+}
+
 /**
  * Run the raceresult transformer.
  * @returns {{ livetiming: object, contestType: string|null, error: string|null }}
@@ -35,22 +64,38 @@ function makeRowReader(row) {
 async function transform(raceobj, { athleteId, raceId, contest }) {
   const livetiming = {};
 
-  // --- Resolve + validate the results table name (pg can't parameterize it) ---
-  const table = (raceobj.timing?.results_table || raceobj.results_table || '').trim();
-  if (!table || !/^[a-z_][a-z0-9_]*$/.test(table)) {
-    return { livetiming, contestType: 'nodata', error: null };
-  }
-
   // --- Row selection: always keyed on athlete_id (the stable Evento identifier) ---
   if (!athleteId) return { livetiming, contestType: 'nodata', error: null };
-  let rows;
-  try {
-    ({ rows } = await pool.query(
-      `SELECT * FROM ${table} WHERE athlete_id = $1 AND race_id = $2`,
-      [String(athleteId), Number(raceId)]
-    ));
-  } catch (err) {
-    return { livetiming, contestType: 'nodata', error: err.message };
+  let rows = null;
+
+  // LIVE path: serve from the redis_splits cache, keeping race-day reads off
+  // Postgres. A clean miss (key not set yet) means the athlete has no splits
+  // yet — do NOT fall through to Postgres, which isn't being written while
+  // live. Only a Redis *error* (Valkey down) falls back to the table.
+  if (raceobj.islive && raceobj.use_redis) {
+    try {
+      const raw = await redis.get(`redis_splits:${raceId}:athlete:${athleteId}`);
+      const records = raw ? JSON.parse(raw) : [];
+      rows = (Array.isArray(records) ? records : []).map(feedRecordToRow);
+    } catch {
+      rows = null; // Redis unavailable — fall back to Postgres below
+    }
+  }
+
+  if (rows === null) {
+    // --- Resolve + validate the results table name (pg can't parameterize it) ---
+    const table = (raceobj.timing?.results_table || raceobj.results_table || '').trim();
+    if (!table || !/^[a-z_][a-z0-9_]*$/.test(table)) {
+      return { livetiming, contestType: 'nodata', error: null };
+    }
+    try {
+      ({ rows } = await pool.query(
+        `SELECT * FROM ${table} WHERE athlete_id = $1 AND race_id = $2`,
+        [String(athleteId), Number(raceId)]
+      ));
+    } catch (err) {
+      return { livetiming, contestType: 'nodata', error: err.message };
+    }
   }
 
   // --- Contest resolution (therace: livetiming.contest_id = url.contest) ---
