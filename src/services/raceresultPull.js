@@ -81,4 +81,4 @@ async function pullRaceResultSplits({ raceId, feedUrl }) {
   };
 }
 
-module.exports = { pullRaceResultSplits };
+module.exports = { pullRaceResultSplits, fetchSplits };

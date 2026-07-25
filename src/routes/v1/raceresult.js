@@ -12,14 +12,22 @@
 
 const { raceconfigByRaceId } = require('../../services/raceConfig');
 const { pullRaceResultSplits } = require('../../services/raceresultPull');
+const { finaliseRaceResult } = require('../../services/raceresultFinalise');
 const redis = require('../../config/redis');
 
-const PULL_STATUS_KEY = (raceId) => `redis_splits:pull:status:${raceId}`;
+const PULL_STATUS_KEY     = (raceId) => `redis_splits:pull:status:${raceId}`;
+const FINALISE_STATUS_KEY = (raceId) => `redis_splits:finalise:status:${raceId}`;
 const PULL_STATUS_TTL = 72 * 3600;
 
 async function setPullStatus(raceId, status) {
   try {
     await redis.set(PULL_STATUS_KEY(raceId), JSON.stringify(status), 'EX', PULL_STATUS_TTL);
+  } catch { /* status is best-effort */ }
+}
+
+async function setFinaliseStatus(raceId, status) {
+  try {
+    await redis.set(FINALISE_STATUS_KEY(raceId), JSON.stringify(status), 'EX', PULL_STATUS_TTL);
   } catch { /* status is best-effort */ }
 }
 
@@ -85,11 +93,68 @@ async function raceresultRoutes(app) {
     return reply.code(200).send(JSON.parse(raw));
   };
 
+  // Stop-live: one final RR pull persisted to the race's Postgres results
+  // table, then the redis_splits keys get a short TTL. RR events only.
+  // Background by default (the CMS shouldn't wait 30s); ?wait=1 = sync.
+  const finaliseHandler = async (request, reply) => {
+    const raceId = Number(request.params.race_id);
+
+    const raceobj = await raceconfigByRaceId(raceId);
+    if (!raceobj?.r_id) {
+      return reply.code(404).send({ error: 'Race not found' });
+    }
+    if (!raceobj.israceresult) {
+      return reply.code(400).send({ error: 'Not a RaceResult event — nothing to finalise' });
+    }
+
+    const feedUrl = raceobj.timing?.rr_splits || raceobj.rr_splits
+      || raceobj.timing?.rr_results || raceobj.rr_results;
+    if (!feedUrl) {
+      return reply.code(400).send({
+        error: 'No RaceResult feed URL configured for this race (races.rr_splits / races.rr_results)',
+      });
+    }
+    const resultsTable = raceobj.timing?.results_table || raceobj.results_table;
+
+    const run = () => finaliseRaceResult({ raceId, feedUrl, resultsTable });
+
+    if (String(request.query?.wait || '') === '1') {
+      try {
+        const result = await run();
+        await setFinaliseStatus(raceId, { state: 'done', ...result });
+        return reply.code(200).send(result);
+      } catch (err) {
+        request.log.error({ err, raceId }, 'raceresult finalise failed');
+        await setFinaliseStatus(raceId, { state: 'error', raceId, error: err.message });
+        return reply.code(502).send({ error: err.message });
+      }
+    }
+
+    setFinaliseStatus(raceId, { state: 'running', raceId }).catch(() => {});
+    run()
+      .then((result) => setFinaliseStatus(raceId, { state: 'done', ...result }))
+      .catch((err) => {
+        request.log.error({ err, raceId }, 'raceresult background finalise failed');
+        return setFinaliseStatus(raceId, { state: 'error', raceId, error: err.message });
+      });
+    return reply.code(202).send({ started: true, raceId });
+  };
+
+  const finaliseStatusHandler = async (request, reply) => {
+    const raceId = Number(request.params.race_id);
+    const raw = await redis.get(FINALISE_STATUS_KEY(raceId));
+    if (!raw) return reply.code(404).send({ error: 'No finalise recorded for this race' });
+    return reply.code(200).send(JSON.parse(raw));
+  };
+
   // GET is cron-friendly: schedulers like EasyCron often send POST with an
   // empty application/json body, which Fastify rejects (FST_ERR_CTP_EMPTY_JSON_BODY).
   app.post('/pull/:race_id', { schema: pullSchema }, pullHandler);
   app.get('/pull/:race_id',  { schema: pullSchema }, pullHandler);
   app.get('/pull/:race_id/status', { schema: pullSchema }, statusHandler);
+  app.post('/finalise/:race_id', { schema: pullSchema }, finaliseHandler);
+  app.get('/finalise/:race_id',  { schema: pullSchema }, finaliseHandler);
+  app.get('/finalise/:race_id/status', { schema: pullSchema }, finaliseStatusHandler);
 }
 
 module.exports = raceresultRoutes;
