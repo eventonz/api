@@ -73,7 +73,7 @@ async function configRoutes(app) {
         `SELECT * FROM pages
          WHERE type = ANY(ARRAY['link','carousel','storyslider','social_storyslider',
                                 'eventomap','list','assistant','assistantv2','schedule',
-                                'feed','divider','inapp','results','leaderboard'])
+                                'feed','divider','inapp','results','rr_results','leaderboard'])
            AND race_id = $1
            AND (status = 'published' OR status = 'Published')
          ORDER BY sort_order ASC`,
@@ -222,7 +222,7 @@ async function configRoutes(app) {
     // --- Menu ---
     data.menu = {
       created: '12/20/2024',
-      items:   pages.map((item) => buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase)),
+      items:   pages.map((item) => buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase, race)),
     };
 
     // --- Adverts ---
@@ -378,7 +378,7 @@ async function configRoutes(app) {
 // ---------------------------------------------------------------------------
 // Page builder — uses Node API endpoints instead of CF modules
 // ---------------------------------------------------------------------------
-function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase) {
+function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase, race) {
   const page = { id: item.id, title: item.title, icon: item.icon };
 
   switch (item.type) {
@@ -408,6 +408,24 @@ function buildPage(item, pagesBase, endpointUrl, race_id, nodeApiBase) {
       page.supplier           = 'sportsplits';
       page.sportsplits_raceid = item.ssraceid;
       page.opens_athlete_detail = item.linkdetails != 0;
+      break;
+
+    case 'rr_results':
+      // RaceResult results page — same screen as the rr_results event type,
+      // but activated per-event as a menu page (like the SportSplits one).
+      // All flags come from the races row; the pages row only toggles it on.
+      page.type       = 'rr_results';
+      page.rr_eventid = race.rr_eventid;
+      page.show_medals = !!race.show_medals;
+      if (race.theme_dark)        page.theme            = `#${race.theme_dark}`;
+      if (race.large_image)       page.background_image = race.large_image;
+      if (race.thumbnail)         page.small_image      = race.thumbnail;
+      if (race.startlist != null) page.startlist        = !!race.startlist;
+      if (race.live      != null) page.live             = !!race.live;
+      if (race.registration_url) {
+        page.registration_url  = race.registration_url;
+        page.registration_text = race.registration_text || 'Register';
+      }
       break;
 
     case 'eventomap':
