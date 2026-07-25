@@ -42,6 +42,7 @@ async function v1Routes(app) {
     authed.register(require('./tracking'),      { prefix: '/tracking' });
     authed.register(require('./splits'),        { prefix: '/splits' });
     authed.register(require('./raceresult'),    { prefix: '/raceresult' });
+    authed.register(require('./racemap'),       { prefix: '/racemap' });
     authed.register(require('./rrpublish'),     { prefix: '/rrpublish' });
   });
 }
