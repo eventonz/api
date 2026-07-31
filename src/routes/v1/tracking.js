@@ -239,12 +239,20 @@ async function trackingRoutes(app) {
         ? `GPS Update, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} \nSpeed: ${speed} km/h`
         : `Last Timing Split, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} `;
 
+      // Behaviour when the prediction overruns the next timing point is a
+      // RACE SETTING (races.tracking_predict_mode):
+      //   'await' (default) — park at the next mat, zero speed, "Awaiting
+      //                       Update" until it actually fires
+      //   'continue'        — keep extrapolating past un-fired mats at the
+      //                       last-known speed (capped at 100)
       try {
-        if (latestPosition > Number(t.next_splitpercent)) {
+        if (race.tracking_predict_mode !== 'continue'
+            && latestPosition > Number(t.next_splitpercent)) {
           latestPosition = Number(t.next_splitpercent);
           speed = 0;
           message = 'Awaiting Update';
         }
+        if (latestPosition > 100) latestPosition = 100;
       } catch { /* swallow */ }
 
       const trackRacetime = t.racetime || '';
