@@ -99,10 +99,6 @@ async function buildRaceObj(whereClause, params) {
     rr_startlist:        r.rr_startlist    ?? '',
     timer:               r.timer           ?? '',
     marker_text:         r.marker_text     ?? '',
-    // 'await' (default) parks a marker at the next timing point when the
-    // prediction overruns it; 'continue' keeps extrapolating past it.
-    // Column may not exist yet — code defaults safely until the migration.
-    tracking_predict_mode: (r.tracking_predict_mode ?? 'await'),
     rr_payloadtype:      r.rr_payloadtype  ?? '',
     athlete_key:         r.athlete_key?.trim() || 'athlete_id',
     raceno_bib_limit:    (r.raceno_bib_limit != null && !isNaN(r.raceno_bib_limit))
