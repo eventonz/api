@@ -105,8 +105,10 @@ async function insertResultsTable(race_id, trackdata, raceobj) {
 //
 // Writes the athlete's current tracking position to Redis.
 // Key: tracking:race:{r_id}:{athlete_id}
-// No TTL — keys persist until the next split overwrites them (matches CF).
+// 2-day TTL (refreshed on every split) — tracking is race-day-only data, so
+// dead races clean themselves out of Valkey instead of persisting forever.
 // ---------------------------------------------------------------------------
+const TRACKING_KEY_TTL_SECS = 2 * 24 * 3600;
 async function insertRedis(race_id, trackdata, context, live_camera_url) {
   const {
     split_distance,
@@ -138,7 +140,7 @@ async function insertRedis(race_id, trackdata, context, live_camera_url) {
     live_camera_url:   live_camera_url ?? '',
   };
 
-  await redis.set(key, JSON.stringify(payload));
+  await redis.set(key, JSON.stringify(payload), 'EX', TRACKING_KEY_TTL_SECS);
 
   return { key, payload };
 }

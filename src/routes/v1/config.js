@@ -95,7 +95,7 @@ async function configRoutes(app) {
       ),
       // Tracking paths via eventoMaps (getPathsFromEventoMaps CFC)
       pool.query(
-        `SELECT e.contest_id, e.eventdescr, e.elevation_y_scale,
+        `SELECT e.contest_id, e.eventdescr, e.elevation_y_scale, e.is_tracking,
                 m.geojson_file, m.edited
          FROM events e
          JOIN maps m ON e.eventomap = m.uuid
@@ -281,6 +281,9 @@ async function configRoutes(app) {
             name:         `p_${p.contest_id}`,
             contest:      p.contest_id,
             contest_name: p.eventdescr,
+            // per-contest CMS flag — contests with a course but no live
+            // tracking (fun runs, kids dashes) carry is_tracking: false
+            is_tracking:  p.is_tracking == 1 || p.is_tracking === true,
             // seconds since Unix epoch — mirrors CF dateDiff("s", epoch, edited)
             updated:      Math.floor(new Date(p.edited).getTime() / 1000),
           };

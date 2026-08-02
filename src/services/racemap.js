@@ -16,6 +16,10 @@ const { raceconfigByRaceId } = require('./raceConfig');
 
 const fmt1 = (n) => Number((Number(n) || 0).toFixed(1));
 
+// 2-day TTL on tracking keys (matches trackPersistence.insertRedis) — race-day
+// data only, dead races expire out of Valkey by themselves.
+const TRACKING_KEY_TTL_SECS = 2 * 24 * 3600;
+
 // "HH:mm:ss" in the given IANA timezone for a UTC date
 function todInTz(date, tz) {
   const parts = new Intl.DateTimeFormat('en-GB', {
@@ -233,7 +237,7 @@ async function refreshRaceMap(raceId) {
       if (isFinished) finishedCount++;
 
       const key = `tracking:race:${raceId}:${athleteData.athlete_id}`;
-      await redis.set(key, JSON.stringify(payload));
+      await redis.set(key, JSON.stringify(payload), 'EX', TRACKING_KEY_TTL_SECS);
       if (sampleKeys.length < 3) sampleKeys.push(key);
       recordUpdated++;
 
