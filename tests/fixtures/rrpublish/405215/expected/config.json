@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "rrId": "405215",
+  "lang": "en",
+  "event": {
+    "name": "Genève Triathlon",
+    "eventOver": true,
+    "accentColor": "#c8352f"
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "1",
+      "name": "Standard"
+    },
+    {
+      "id": "2",
+      "name": "Standard Relais"
+    },
+    {
+      "id": "3",
+      "name": "Short"
+    },
+    {
+      "id": "4",
+      "name": "Short Relais"
+    },
+    {
+      "id": "5",
+      "name": "Youth League Homme"
+    },
+    {
+      "id": "6",
+      "name": "Youth League Femme"
+    },
+    {
+      "id": "7",
+      "name": "Découverte"
+    },
+    {
+      "id": "8",
+      "name": "Découverte Relais"
+    },
+    {
+      "id": "9",
+      "name": "Half"
+    },
+    {
+      "id": "10",
+      "name": "Half Relais"
+    },
+    {
+      "id": "11",
+      "name": "Kidsathlon"
+    },
+    {
+      "id": "12",
+      "name": "Parents & Enfants"
+    },
+    {
+      "id": "13",
+      "name": "Écoliers (11-13)"
+    }
+  ],
+  "lists": [
+    {
+      "id": "6EAE16",
+      "name": "06-Online results|Final",
+      "displayName": "Classement Scratch",
+      "contest": "1",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "37C008",
+      "name": "06-Online results|Classement Scratch Relais",
+      "displayName": "Classement Scratch",
+      "contest": "2",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "F2EE3E",
+      "name": "06-Online results|Final",
+      "displayName": "Classement Scratch",
+      "contest": "3",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "5444D9",
+      "name": "06-Online results|Classement Scratch Relais",
+      "displayName": "Classement Scratch",
+      "contest": "4",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "542513",
+      "name": "06-Online results|Final",
+      "displayName": "Classement Scratch",
+      "contest": "5",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "A4CA50",
+      "name": "06-Online results|Final",
+      "displayName": "Classement Scratch",
+      "contest": "6",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "255BFB",
+      "name": "06-Online results|Final",
+      "displayName": "Classement",
+      "contest": "7",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "7CC299",
+      "name": "06-Online results|Classement Scratch Relais",
+      "displayName": "Classement",
+      "contest": "8",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "B1CE54",
+      "name": "06-Online results|Final",
+      "displayName": "Classement Scratch",
+      "contest": "9",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "805840",
+      "name": "06-Online results|Classement Scratch Relais",
+      "displayName": "Classement Scratch",
+      "contest": "10",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "20C5E8",
+      "name": "06-Online results|Classement Scratch Enfants",
+      "displayName": "Classement Scratch",
+      "contest": "11",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "10F161",
+      "name": "06-Online results|Classement Scratch Enfants",
+      "displayName": "Classement Scratch",
+      "contest": "12",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "58AA20",
+      "name": "06-Online results|Classement Scratch Enfants",
+      "displayName": "Classement Scratch",
+      "contest": "13",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ]
+}

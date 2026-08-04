@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "rrId": "405141",
+  "lang": "en",
+  "event": {
+    "name": "Marathon du Vercors",
+    "eventOver": true,
+    "accentColor": "#23c089"
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "0",
+      "name": "General"
+    }
+  ],
+  "lists": [
+    {
+      "id": "DC7BF3",
+      "name": "01-Chronométrage|Final",
+      "displayName": "Classement Général",
+      "contest": "0",
+      "leaderCount": 10,
+      "evento": null
+    }
+  ]
+}

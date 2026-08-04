@@ -1,0 +1,391 @@
+{
+  "Elements": [
+    {
+      "ID": "bquZLc_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "bquZLc",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowTOD": true,
+            "ShowGunTime": false,
+            "ShowChipTime": true,
+            "ShowSectorTime": false,
+            "ShowPace": false,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "vyyVCP_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "vyyVCP",
+          "Type": "legs",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": false,
+            "ShowPace": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel1",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "Lo1ydi",
+      "Type": "html",
+      "Styles": "",
+      "ClassName": "",
+      "Children": null,
+      "Config": {
+        "Text": "<p style=\"text-align: center;\">Click on the picture to share on your social network</p>\n\n<p style=\"text-align: center;\"><a href=\"https://api.raceresult.com/405215/PSARTVAWO4Y54TQOKHR3CCJPWQVQHE8B?bib=10009\" target=\"_blank\" rel=\"nofollow noopener\"><img alt=\"\" src=\"https://api.raceresult.com/405215/PSARTVAWO4Y54TQOKHR3CCJPWQVQHE8B?bib=10009\" width=\"100%\"/> </a></p>\n"
+      }
+    },
+    {
+      "ID": "bDE4M5_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "bDE4M5",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "{EN:Start|FR:Partis}",
+          "Exists": true,
+          "TOD": "07:00:02",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Swim - Finish Lap 1 - 750 m|FR:Natation - Fin tour 1 - 750 m}",
+          "Exists": true,
+          "TOD": "07:10:33",
+          "Chip": "10:32",
+          "RO": 3,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Swim Finish|FR:Fin natation}",
+          "Exists": true,
+          "TOD": "07:21:15",
+          "Chip": "21:14",
+          "RO": 2,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Bike Start|FR:Départ vélo}",
+          "Exists": true,
+          "TOD": "07:23:52",
+          "Chip": "23:51",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike - Côte d'Or - 10,3 km|FR:Vélo - Côte d'Or - 10,3 km}",
+          "Exists": true,
+          "TOD": "07:40:46",
+          "Chip": "40:45",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike - Ponton de baignade - 18 km|FR:Vélo - Ponton de baignade - 18 km}",
+          "Exists": true,
+          "TOD": "07:50:41",
+          "Chip": "50:40",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike - Côte d'Or - 29,3 km|FR:Vélo - Côte d'Or - 29,3 km}",
+          "Exists": true,
+          "TOD": "08:08:05",
+          "Chip": "1:08:04",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike - Ponton de baignade - 37 km|FR:Vélo - Ponton de baignade - 37 km}",
+          "Exists": true,
+          "TOD": "08:18:05",
+          "Chip": "1:18:04",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike Finish|FR:Fin vélo}",
+          "Exists": true,
+          "TOD": "08:19:48",
+          "Chip": "1:19:47",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run Start|FR:Départ course à pied}",
+          "Exists": true,
+          "TOD": "08:21:39",
+          "Chip": "1:21:38",
+          "RO": 2,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+          "Exists": true,
+          "TOD": "08:23:49",
+          "Chip": "1:23:47",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+          "Exists": true,
+          "TOD": "08:30:32",
+          "Chip": "1:30:31",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+          "Exists": true,
+          "TOD": "08:34:04",
+          "Chip": "1:34:03",
+          "RO": 2,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Finish Lap 1 - 4,9 km|FR:Course à pied - Fin Tour 1 - 4,9 km}",
+          "Exists": true,
+          "TOD": "08:37:30",
+          "Chip": "1:37:29",
+          "RO": 2,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Rampe de Cologny - 5,9 km|FR:Course à pied - Rampe de Cologny - 5,9 km}",
+          "Exists": true,
+          "TOD": "08:41:16",
+          "Chip": "1:41:15",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Jardins - 7,9 km|FR:Course à pied - Jardins - 7,9 km}",
+          "Exists": true,
+          "TOD": "08:47:51",
+          "Chip": "1:47:50",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Run - Feed - 8,9 km|FR:Course à pied - Ravito - 8,9 km}",
+          "Exists": true,
+          "TOD": "08:51:17",
+          "Chip": "1:51:16",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Home Stretch|FR:Dernière ligne droite}",
+          "Exists": true,
+          "TOD": "08:54:40",
+          "Chip": "1:54:39",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Finish|FR:Arrivée}",
+          "Exists": true,
+          "TOD": "08:55:01",
+          "Chip": "1:55:00",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        }
+      ],
+      "Legs": [
+        {
+          "Name": "{EN:Swim|FR:Natation}",
+          "Exists": true,
+          "Time": "21:14",
+          "Speed": "1:24 min/100m",
+          "RO": 2,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Transition 1|FR:Transition 1}",
+          "Exists": true,
+          "Time": "02:37",
+          "RO": 3,
+          "RG": 3,
+          "RA": 3
+        },
+        {
+          "Name": "{EN:Bike|FR:Vélo}",
+          "Exists": true,
+          "Time": "55:56",
+          "Speed": "42.9 km/h",
+          "RO": 2,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Transition 2|FR:Transition 2}",
+          "Exists": true,
+          "Time": "01:51",
+          "RO": 2,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Run|FR:Course à pied}",
+          "Exists": true,
+          "Time": "33:22",
+          "Speed": "3:20 min/km",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Swim - Lap 1|FR:Natation - Tour 1}",
+          "Exists": true,
+          "Time": "10:32",
+          "Speed": "1:24 min/100m",
+          "RO": 3,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Swim - Lap 2|FR:Natation - Tour 2}",
+          "Exists": true,
+          "Time": "10:42",
+          "Speed": "1:25 min/100m",
+          "RO": 3,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Bike - Lap 1|FR:Vélo - Tour 1}",
+          "Exists": true,
+          "Time": "26:49",
+          "Speed": "40.2 km/h",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "{EN:Bike - Lap 2|FR:Vélo - Tour 2}",
+          "Exists": true,
+          "Time": "29:07",
+          "Speed": "45.3 km/h",
+          "RO": 9,
+          "RG": 9,
+          "RA": 7
+        },
+        {
+          "Name": "{EN:Run - Lap 1|FR:Course à pied - Tour 1}",
+          "Exists": true,
+          "Time": "15:51",
+          "Speed": "3:14 min/km",
+          "RO": 2,
+          "RG": 2,
+          "RA": 2
+        },
+        {
+          "Name": "{EN:Run - Lap 2|FR:Course à pied - Tour 2}",
+          "Exists": true,
+          "Time": "17:31",
+          "Speed": "3:26 min/km",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        }
+      ]
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "b1b1b2a6657556e778bb01e2782d97b6",
+  "LiveUpdateInterval": 10,
+  "MID": 339706,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73728,
+  "PID": 2826,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "#3ab2db",
+  "User": null
+}

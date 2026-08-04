@@ -1,0 +1,150 @@
+{
+  "Elements": [
+    {
+      "ID": "usfU6l",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "fzquQp",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": false,
+            "ShowSectorTime": true,
+            "ShowPace": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": false,
+            "HidePrediction": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "PLughr",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "tGuaIg",
+          "Type": "list",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false,
+            "List": "00 - CONCURRENTS|Palmares ITRA_détails"
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsDetails",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "hnMtow",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "bAeOCs",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false,
+            "CertificateSets": [
+              {
+                "Mode": "",
+                "Name": "1 - Diplome",
+                "ShowAs": "",
+                "Picture": "",
+                "Contest": "0"
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "Tc7eJa",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "EG3BZ3",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Arrivée - km 12,7",
+          "Exists": false,
+          "RO": -1,
+          "RG": -1,
+          "RA": -1
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "c4eb9c133f7379f0435a15780334cf04",
+  "LiveUpdateInterval": 10,
+  "MID": 45469,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73725,
+  "PID": 1785,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "",
+  "User": null
+}

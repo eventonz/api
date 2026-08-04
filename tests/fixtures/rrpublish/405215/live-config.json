@@ -1,0 +1,2554 @@
+{
+  "key": "b1b1b2a6657556e778bb01e2782d97b6",
+  "contests": {
+    "1": "Standard",
+    "2": "Standard Relais",
+    "3": "Short",
+    "4": "Short Relais",
+    "5": "Youth League Homme",
+    "6": "Youth League Femme",
+    "7": "Découverte",
+    "8": "Découverte Relais",
+    "9": "Half",
+    "10": "Half Relais",
+    "11": "Kidsathlon",
+    "12": "Parents & Enfants",
+    "13": "Écoliers (11-13)"
+  },
+  "splits": [
+    {
+      "ID": 753,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 993,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1057,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1087,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1104,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1121,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1138,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1190,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1280,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1365,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 770,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 958,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 13,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1012,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 3,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1066,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 7,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1097,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 5,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1115,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 8,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1133,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 6,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1157,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1221,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1247,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 11,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1292,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 4,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1301,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 12,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1384,
+      "Name": "Swim",
+      "Label": "{EN:Swim|FR:Natation}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 771,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 959,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 13,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1013,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 3,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1067,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 7,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1098,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 5,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1116,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 8,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1134,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 6,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1158,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1222,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1248,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 11,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1293,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 4,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1302,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 12,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1385,
+      "Name": "Transition1",
+      "Label": "{EN:Transition 1|FR:Transition 1}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 754,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 750 m|FR:Natation - Fin tour 1 - 750 m}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1139,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 750 m|FR:Natation - Fin tour 1 - 950 m}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1191,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 750 m|FR:Natation - Fin tour 1 - 950 m}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1366,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 750 m|FR:Natation - Fin tour 1 - 750 m}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 772,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 960,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 13,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1014,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 3,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1068,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 7,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1099,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 5,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1117,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 8,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1135,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 6,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1159,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1223,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1249,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 11,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1294,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 4,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1303,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 12,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1386,
+      "Name": "Bike",
+      "Label": "{EN:Bike|FR:Vélo}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 755,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 995,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1058,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1102,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 250 m|FR:Natation - Fin tour 1 - 250 m}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1105,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1122,
+      "Name": "SwimSplit1",
+      "Label": "{EN:Swim - Finish Lap 1 - 250 m|FR:Natation - Fin tour 1 - 250 m}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1140,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1192,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1236,
+      "Name": "Start",
+      "Label": "{EN:Start|FR:Partis}",
+      "SplitType": 0,
+      "Contest": 13,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 1281,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1367,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 756,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 996,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1059,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1088,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1106,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1123,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1141,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1193,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1282,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1368,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 773,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1015,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 3,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1069,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 7,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1100,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 5,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1118,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 8,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1136,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 6,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1160,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1224,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1295,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 4,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1387,
+      "Name": "Transition2",
+      "Label": "{EN:Transition 2|FR:Transition 2}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 757,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Côte d'Or - 10,3 km|FR:Vélo - Côte d'Or - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 997,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Côte d'Or - 10,3 km|FR:Vélo -Côte d'Or - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1060,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Half turn - 4,5 km|FR:Vélo - Demi tour - 4,5 km}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1089,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1107,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Half turn - 4,5 km|FR:Vélo - Demi tour - 4,5 km}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1124,
+      "Name": "BikeStart",
+      "Label": "{EN:Bike Start|FR:Départ vélo}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1142,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Bellebouche - 12 km|FR:Vélo - Bellebouche - 11 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1194,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Bellebouche - 12 km|FR:Vélo - Bellebouche - 11 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1283,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Côte d'Or - 10,3 km|FR:Vélo -Côte d'Or - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1369,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Côte d'Or - 10,3 km|FR:Vélo - Côte d'Or - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 774,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1016,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 3,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1070,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 7,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1101,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 5,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1119,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 8,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1137,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 6,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1161,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1225,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1296,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 4,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1388,
+      "Name": "Run",
+      "Label": "{EN:Run|FR:Course à pied}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 775,
+      "Name": "SwimLap1",
+      "Label": "{EN:Swim - Lap 1|FR:Natation - Tour 1}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1162,
+      "Name": "SwimLap1",
+      "Label": "{EN:Swim - Lap 1|FR:Natation - Tour 1}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1226,
+      "Name": "SwimLap1",
+      "Label": "{EN:Swim - Lap 1|FR:Natation - Tour 1}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1389,
+      "Name": "SwimLap1",
+      "Label": "{EN:Swim - Lap 1|FR:Natation - Tour 1}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 776,
+      "Name": "SwimLap2",
+      "Label": "{EN:Swim - Lap 2|FR:Natation - Tour 2}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1163,
+      "Name": "SwimLap2",
+      "Label": "{EN:Swim - Lap 2|FR:Natation - Tour 2}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1227,
+      "Name": "SwimLap2",
+      "Label": "{EN:Swim - Lap 2|FR:Natation - Tour 2}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1390,
+      "Name": "SwimLap2",
+      "Label": "{EN:Swim - Lap 2|FR:Natation - Tour 2}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 758,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 18 km|FR:Vélo - Ponton de baignade - 18 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 998,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 18 km|FR:Vélo - Ponton de baignade - 18 km}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1143,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 22 km|FR:Vélo - Ponton de baignade - 22 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1195,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 22 km|FR:Vélo - Ponton de baignade - 22 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1284,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 18 km|FR:Vélo - Ponton de baignade - 18 km}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1370,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 18 km|FR:Vélo - Ponton de baignade - 18 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 777,
+      "Name": "BikeLap1",
+      "Label": "{EN:Bike - Lap 1|FR:Vélo - Tour 1}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1164,
+      "Name": "BikeLap1",
+      "Label": "{EN:Bike - Lap 1|FR:Vélo - Tour 1}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1228,
+      "Name": "BikeLap1",
+      "Label": "{EN:Bike - Lap 1|FR:Vélo - Tour 1}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1391,
+      "Name": "BikeLap1",
+      "Label": "{EN:Bike - Lap 1|FR:Vélo - Tour 1}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 778,
+      "Name": "BikeLap2",
+      "Label": "{EN:Bike - Lap 2|FR:Vélo - Tour 2}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1165,
+      "Name": "BikeLap2",
+      "Label": "{EN:Bike - Lap 2|FR:Vélo - Tour 2}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1229,
+      "Name": "BikeLap2",
+      "Label": "{EN:Bike - Lap 2|FR:Vélo - Tour 2}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1392,
+      "Name": "BikeLap2",
+      "Label": "{EN:Bike - Lap 2|FR:Vélo - Tour 2}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1144,
+      "Name": "BikeSplit3",
+      "Label": "{EN:Bike - Bellebouche - 34 km|FR:Vélo - Bellebouche - 34 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1196,
+      "Name": "BikeSplit3",
+      "Label": "{EN:Bike - Bellebouche - 34 km|FR:Vélo - Bellebouche - 34 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1304,
+      "Name": "BikeSplit3",
+      "Label": "{EN:Bike - Côte d'Or - 29,3 km|FR:Vélo - Côte d'Or - 29,3 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1371,
+      "Name": "BikeSplit3",
+      "Label": "{EN:Bike - Côte d'Or - 29,3 km|FR:Vélo - Côte d'Or - 29,3 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 779,
+      "Name": "RunLap1",
+      "Label": "{EN:Run - Lap 1|FR:Course à pied - Tour 1}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1186,
+      "Name": "BikeLap3",
+      "Label": "{EN:Bike - Lap 3|FR:Vélo - Tour 3}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1230,
+      "Name": "BikeLap3",
+      "Label": "{EN:Bike - Lap 3|FR:Vélo - Tour 3}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1393,
+      "Name": "RunLap1",
+      "Label": "{EN:Run - Lap 1|FR:Course à pied - Tour 1}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 780,
+      "Name": "RunLap2",
+      "Label": "{EN:Run - Lap 2|FR:Course à pied - Tour 2}",
+      "SplitType": 9,
+      "Contest": 1,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1187,
+      "Name": "BikeLap4",
+      "Label": "{EN:Bike - Lap 4|FR:Vélo - Tour 4}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1231,
+      "Name": "BikeLap4",
+      "Label": "{EN:Bike - Lap 4|FR:Vélo - Tour 4}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1394,
+      "Name": "RunLap2",
+      "Label": "{EN:Run - Lap 2|FR:Course à pied - Tour 2}",
+      "SplitType": 9,
+      "Contest": 2,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1145,
+      "Name": "BikeSplit4",
+      "Label": "{EN:Bike - Ponton de baignade - 44 km|FR:Vélo - Ponton de baignade - 44 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1197,
+      "Name": "BikeSplit4",
+      "Label": "{EN:Bike - Ponton de baignade - 44 km|FR:Vélo - Ponton de baignade - 44 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1166,
+      "Name": "RunLap1",
+      "Label": "{EN:Run - Lap 1|FR:Course à pied - Tour 1}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1232,
+      "Name": "RunLap1",
+      "Label": "{EN:Run - Lap 1|FR:Course à pied - Tour 1}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 760,
+      "Name": "BikeSplit4",
+      "Label": "{EN:Bike - Ponton de baignade - 37 km|FR:Vélo - Ponton de baignade - 37 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1001,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1090,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Half turn - 4,5 km|FR:Vélo - Demi tour - 4,5 km}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1103,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 8 km|FR:Vélo - Ponton de baignade - 8 km}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1108,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 8 km|FR:Vélo - Ponton de baignade - 8 km}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1125,
+      "Name": "BikeSplit1",
+      "Label": "{EN:Bike - Half turn - 4,5 km|FR:Vélo - Demi tour - 4,5 km}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1174,
+      "Name": "BikeSplit5",
+      "Label": "{EN:Bike - Bellebouche - 56 km|FR:Vélo - Bellebouche - 56 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1198,
+      "Name": "BikeSplit5",
+      "Label": "{EN:Bike - Bellebouche - 56 km|FR:Vélo - Bellebouche - 56 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1285,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1372,
+      "Name": "BikeSplit4",
+      "Label": "{EN:Bike - Ponton de baignade - 37 km|FR:Vélo - Ponton de baignade - 37 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1167,
+      "Name": "RunLap2",
+      "Label": "{EN:Run - Lap 2|FR:Course à pied - Tour 2}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1233,
+      "Name": "RunLap2",
+      "Label": "{EN:Run - Lap 2|FR:Course à pied - Tour 2}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 761,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 955,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 13,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1002,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1175,
+      "Name": "BikeSplit6",
+      "Label": "{EN:Bike - Ponton de baignade - 67 km|FR:Vélo - Ponton de baignade - 67 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1199,
+      "Name": "BikeSplit6",
+      "Label": "{EN:Bike - Ponton de baignade - 67 km|FR:Vélo - Ponton de baignade - 67 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1244,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 11,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1286,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1298,
+      "Name": "SwimFinish",
+      "Label": "{EN:Swim Finish|FR:Fin natation}",
+      "SplitType": 0,
+      "Contest": 12,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 1373,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1188,
+      "Name": "RunLap3",
+      "Label": "{EN:Run - Lap 3|FR:Course à pied - Tour 3}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1234,
+      "Name": "RunLap3",
+      "Label": "{EN:Run - Lap 3|FR:Course à pied - Tour 3}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 762,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1003,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1061,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1109,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1120,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 8 km|FR:Vélo - Ponton de baignade - 8 km}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1126,
+      "Name": "BikeSplit2",
+      "Label": "{EN:Bike - Ponton de baignade - 8 km|FR:Vélo - Ponton de baignade - 8 km}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1176,
+      "Name": "BikeSplit7",
+      "Label": "{EN:Bike - Bellebouche - 79 km|FR:Vélo - Bellebouche - 79 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1200,
+      "Name": "BikeSplit7",
+      "Label": "{EN:Bike - Bellebouche - 79 km|FR:Vélo - Bellebouche - 79 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1287,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1374,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1062,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1091,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1110,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1127,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1189,
+      "Name": "RunLap4",
+      "Label": "{EN:Run - Lap 4|FR:Course à pied - Tour 4}",
+      "SplitType": 9,
+      "Contest": 9,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 1235,
+      "Name": "RunLap4",
+      "Label": "{EN:Run - Lap 4|FR:Course à pied - Tour 4}",
+      "SplitType": 9,
+      "Contest": 10,
+      "TypeOfSport": 0
+    },
+    {
+      "ID": 763,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1004,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1177,
+      "Name": "BikeSplit8",
+      "Label": "{EN:Bike - Ponton de baignade - 89 km|FR:Vélo - Ponton de baignade - 89 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1201,
+      "Name": "BikeSplit8",
+      "Label": "{EN:Bike - Ponton de baignade - 89 km|FR:Vélo - Ponton de baignade - 89 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1288,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1375,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 764,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1005,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1146,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1202,
+      "Name": "BikeFinish",
+      "Label": "{EN:Bike Finish|FR:Fin vélo}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 11
+    },
+    {
+      "ID": 1289,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1376,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 765,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1147,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1203,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1377,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 766,
+      "Name": "RunSplit4",
+      "Label": "{EN:Run - Finish Lap 1 - 4,9 km|FR:Course à pied - Fin Tour 1 - 4,9 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1148,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1204,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1378,
+      "Name": "RunSplit4",
+      "Label": "{EN:Run - Finish Lap 1 - 4,9 km|FR:Course à pied - Fin Tour 1 - 4,9 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 767,
+      "Name": "RunSplit5",
+      "Label": "{EN:Run - Rampe de Cologny - 5,9 km|FR:Course à pied - Rampe de Cologny - 5,9 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1063,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1092,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1111,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1128,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1149,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1205,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Jardins - 2,7 km|FR:Course à pied - Jardins - 2,7 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1379,
+      "Name": "RunSplit5",
+      "Label": "{EN:Run - Rampe de Cologny - 5,9 km|FR:Course à pied - Rampe de Cologny - 5,9 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 956,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 13,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 961,
+      "Name": "RunSplit6",
+      "Label": "{EN:Run - Jardins - 7,9 km|FR:Course à pied - Jardins - 7,9 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1071,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Half turn - 2,1 km|FR:Course à pied - Demi tour - 2,1 km}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1093,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1112,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Half turn - 2,1 km|FR:Course à pied - Demi tour - 2,1 km}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1129,
+      "Name": "RunSplit1",
+      "Label": "{EN:Run - Rampe de Cologny - 0,7 km|FR:Course à pied - Rampe de Cologny - 0,7 km}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1150,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1206,
+      "Name": "RunSplit3",
+      "Label": "{EN:Run - Feed - 3,7 km|FR:Course à pied - Ravito - 3,7 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1245,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 11,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1299,
+      "Name": "RunStart",
+      "Label": "{EN:Run Start|FR:Départ course à pied}",
+      "SplitType": 0,
+      "Contest": 12,
+      "TypeOfSport": 250
+    },
+    {
+      "ID": 1380,
+      "Name": "RunSplit6",
+      "Label": "{EN:Run - Jardins - 7,9 km|FR:Course à pied - Jardins - 7,9 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 957,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 13,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 962,
+      "Name": "RunSplit7",
+      "Label": "{EN:Run - Feed - 8,9 km|FR:Course à pied - Ravito - 8,9 km}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1010,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1064,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1094,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Half turn - 2,1 km|FR:Course à pied - Demi tour - 2,1 km}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1113,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1130,
+      "Name": "RunSplit2",
+      "Label": "{EN:Run - Half turn - 2,1 km|FR:Course à pied - Demi tour - 2,1 km}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1151,
+      "Name": "RunSplit4",
+      "Label": "{EN:Run - Finish Lap 1 - 5 km|FR:Course à pied - Fin Tour 1 - 5 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1207,
+      "Name": "RunSplit4",
+      "Label": "{EN:Run - Finish Lap 1 - 5 km|FR:Course à pied - Fin Tour 1 - 5 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1246,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 11,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1290,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1300,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 12,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1381,
+      "Name": "RunSplit7",
+      "Label": "{EN:Run - Feed - 8,9 km|FR:Course à pied - Ravito - 8,9 km}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 768,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1011,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1065,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1095,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1114,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 8,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1131,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1152,
+      "Name": "RunSplit5",
+      "Label": "{EN:Run - Rampe de Cologny - 6 km|FR:Course à pied - Rampe de Cologny - 6 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1208,
+      "Name": "RunSplit5",
+      "Label": "{EN:Run - Rampe de Cologny - 6 km|FR:Course à pied - Rampe de Cologny - 6 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1291,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1382,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 769,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1096,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1132,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1153,
+      "Name": "RunSplit6",
+      "Label": "{EN:Run - Jardins - 8 km|FR:Course à pied - Jardins - 8 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1209,
+      "Name": "RunSplit6",
+      "Label": "{EN:Run - Jardins - 8 km|FR:Course à pied - Jardins - 8 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1383,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1154,
+      "Name": "RunSplit7",
+      "Label": "{EN:Run - Feed - 9 km|FR:Course à pied - Ravito - 9 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1210,
+      "Name": "RunSplit7",
+      "Label": "{EN:Run - Feed - 9 km|FR:Course à pied - Ravito - 9 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1178,
+      "Name": "RunSplit8",
+      "Label": "{EN:Run - Finish Lap 2 - 10,3 km|FR:Course à pied - Fin Tour 2 - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1211,
+      "Name": "RunSplit8",
+      "Label": "{EN:Run - Finish Lap 2 - 10,3 km|FR:Course à pied - Fin Tour 2 - 10,3 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1179,
+      "Name": "RunSplit9",
+      "Label": "{EN:Run - Rampe de Cologny - 11,3 km|FR:Course à pied - Rampe de Cologny - 11,3 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1212,
+      "Name": "RunSplit9",
+      "Label": "{EN:Run - Rampe de Cologny - 11,3 km|FR:Course à pied - Rampe de Cologny - 11,3 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1180,
+      "Name": "RunSplit10",
+      "Label": "{EN:Run - Jardins - 13,3 km|FR:Course à pied - Jardins - 13,3 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1213,
+      "Name": "RunSplit10",
+      "Label": "{EN:Run - Jardins - 13,3 km|FR:Course à pied - Jardins - 13,3 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1181,
+      "Name": "RunSplit11",
+      "Label": "{EN:Run - Ravito - 14,3 km|FR:Course à pied - Ravito - 14,3 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1214,
+      "Name": "RunSplit11",
+      "Label": "{EN:Run - Ravito - 14,3 km|FR:Course à pied - Ravito - 14,3 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1182,
+      "Name": "RunSplit12",
+      "Label": "{EN:Run - Fin Tour 3 - 15,6 km|FR:Course à pied - Fin Tour 3 - 15,6 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1215,
+      "Name": "RunSplit12",
+      "Label": "{EN:Run - Fin Tour 3 - 15,6 km|FR:Course à pied - Fin Tour 3 - 15,6 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1183,
+      "Name": "RunSplit13",
+      "Label": "{EN:Run - Rampe de Cologny - 16,6 km|FR:Course à pied - Rampe de Cologny - 16,6 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1216,
+      "Name": "RunSplit13",
+      "Label": "{EN:Run - Rampe de Cologny - 16,6 km|FR:Course à pied - Rampe de Cologny - 16,6 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1184,
+      "Name": "RunSplit14",
+      "Label": "{EN:Run - Jardins - 18,6 km|FR:Course à pied - Jardins - 18,6 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1217,
+      "Name": "RunSplit14",
+      "Label": "{EN:Run - Jardins - 18,6 km|FR:Course à pied - Jardins - 18,6 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1185,
+      "Name": "RunSplit15",
+      "Label": "{EN:Run - Ravito - 19,6 km|FR:Course à pied - Ravito - 19,6 km}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1218,
+      "Name": "RunSplit15",
+      "Label": "{EN:Run - Ravito - 19,6 km|FR:Course à pied - Ravito - 19,6 km}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1155,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1219,
+      "Name": "Spotter",
+      "Label": "{EN:Home Stretch|FR:Dernière ligne droite}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1156,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 9,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 1220,
+      "Name": "Finish",
+      "Label": "{EN:Finish|FR:Arrivée}",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    }
+  ],
+  "eventname": "Genève Triathlon",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73727,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "#c8352f",
+  "ListCommentsEnabled": {
+    "details": true,
+    "details0": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "live",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "whenactive",
+    "ActiveFrom": "2026-07-04T00:00:00+02:00",
+    "ActiveUntil": "2026-07-05T17:00:00+02:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details0",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "1",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "8585A4"
+        },
+        {
+          "Name": "06-Online results|LIVE RELAIS",
+          "Mode": "hidden",
+          "Contest": "2",
+          "ShowAs": "LIVE",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "details",
+          "ID": "4D6996"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "3",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "C7054D"
+        },
+        {
+          "Name": "06-Online results|LIVE RELAIS",
+          "Mode": "hidden",
+          "Contest": "4",
+          "ShowAs": "LIVE",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "details",
+          "ID": "0F5E03"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "5",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "9AC21A"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "6",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "DB5B3C"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "7",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "DDF37E"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "8",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "details",
+          "ID": "ADB766"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "",
+          "Contest": "9",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "322993"
+        },
+        {
+          "Name": "06-Online results|LIVE RELAIS",
+          "Mode": "",
+          "Contest": "10",
+          "ShowAs": "LIVE",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "details",
+          "ID": "849154"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "11",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "F8C7F2"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "12",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "89028B"
+        },
+        {
+          "Name": "06-Online results|LIVE",
+          "Mode": "hidden",
+          "Contest": "13",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 0,
+          "Details": "",
+          "ID": "A2E91E"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "details0",
+    "Lists": [
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "1",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "8585A4"
+      },
+      {
+        "Name": "06-Online results|LIVE RELAIS",
+        "Mode": "hidden",
+        "Contest": "2",
+        "ShowAs": "LIVE",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "4D6996"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "3",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "C7054D"
+      },
+      {
+        "Name": "06-Online results|LIVE RELAIS",
+        "Mode": "hidden",
+        "Contest": "4",
+        "ShowAs": "LIVE",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "0F5E03"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "5",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "9AC21A"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "6",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "DB5B3C"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "7",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "DDF37E"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "8",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "ADB766"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "",
+        "Contest": "9",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "322993"
+      },
+      {
+        "Name": "06-Online results|LIVE RELAIS",
+        "Mode": "",
+        "Contest": "10",
+        "ShowAs": "LIVE",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "849154"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "11",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "F8C7F2"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "12",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "89028B"
+      },
+      {
+        "Name": "06-Online results|LIVE",
+        "Mode": "hidden",
+        "Contest": "13",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "A2E91E"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": {
+    "1": "#3ab2db",
+    "2": "#3ab2db",
+    "3": "#f79942",
+    "4": "#f79942",
+    "5": "#2e54a5",
+    "6": "#2e54a5",
+    "7": "#8658a1",
+    "8": "#8658a1",
+    "9": "#d5272c",
+    "10": "#d5272c",
+    "11": "#cf91bf",
+    "12": "#f4783c",
+    "13": "#6cb05a"
+  }
+}

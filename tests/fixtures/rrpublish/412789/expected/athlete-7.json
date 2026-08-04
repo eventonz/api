@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 1,
+  "pid": "7",
+  "splitConfig": "11011011001",
+  "show": {
+    "legs": true,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": true,
+    "ageGroupRank": false,
+    "tod": true,
+    "gun": true,
+    "chip": false,
+    "sector": false,
+    "pace": true
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "TOD",
+          "label": "TOD"
+        },
+        {
+          "key": "Speed",
+          "label": "Speed"
+        },
+        {
+          "key": "Gun",
+          "label": "Gun"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Started",
+        "time": "00:00",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "TOD": "07:20:00",
+          "Speed": "",
+          "Gun": "00:00",
+          "RO": "",
+          "RG": ""
+        }
+      },
+      {
+        "name": "End of Run 1",
+        "time": "04:18",
+        "segment": "4:18",
+        "delta": null,
+        "values": {
+          "TOD": "07:24:18",
+          "Speed": "4:18 min/km",
+          "Gun": "04:18",
+          "RO": "7",
+          "RG": "7"
+        }
+      },
+      {
+        "name": "SkiErg",
+        "time": "08:47",
+        "segment": "4:29",
+        "delta": -4,
+        "values": {
+          "TOD": "07:28:47",
+          "Speed": "",
+          "Gun": "08:47",
+          "RO": "11",
+          "RG": "11"
+        }
+      },
+      {
+        "name": "End of Run 2",
+        "time": "13:11",
+        "segment": "4:24",
+        "delta": 4,
+        "values": {
+          "TOD": "07:33:11",
+          "Speed": "4:23 min/km",
+          "Gun": "13:11",
+          "RO": "7",
+          "RG": "7"
+        }
+      },
+      {
+        "name": "SledPush",
+        "time": "15:54",
+        "segment": "2:43",
+        "delta": 3,
+        "values": {
+          "TOD": "07:35:54",
+          "Speed": "",
+          "Gun": "15:54",
+          "RO": "4",
+          "RG": "4"
+        }
+      },
+      {
+        "name": "End of Run 3",
+        "time": "20:09",
+        "segment": "4:15",
+        "delta": 1,
+        "values": {
+          "TOD": "07:40:09",
+          "Speed": "4:14 min/km",
+          "Gun": "20:09",
+          "RO": "3",
+          "RG": "3"
+        }
+      },
+      {
+        "name": "SledPull",
+        "time": "23:46",
+        "segment": "3:37",
+        "delta": 2,
+        "values": {
+          "TOD": "07:43:46",
+          "Speed": "",
+          "Gun": "23:46",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "End of Run 4",
+        "time": "27:59",
+        "segment": "4:13",
+        "delta": 0,
+        "values": {
+          "TOD": "07:47:59",
+          "Speed": "4:13 min/km",
+          "Gun": "27:59",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Burpee Broad Jump",
+        "time": "30:11",
+        "segment": "2:12",
+        "delta": 0,
+        "values": {
+          "TOD": "07:50:11",
+          "Speed": "",
+          "Gun": "30:11",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "End of Run 5",
+        "time": "34:25",
+        "segment": "4:14",
+        "delta": 0,
+        "values": {
+          "TOD": "07:54:25",
+          "Speed": "4:14 min/km",
+          "Gun": "34:25",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Row",
+        "time": "39:06",
+        "segment": "4:41",
+        "delta": 0,
+        "values": {
+          "TOD": "07:59:06",
+          "Speed": "",
+          "Gun": "39:06",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "End of Run 6",
+        "time": "43:21",
+        "segment": "4:15",
+        "delta": 0,
+        "values": {
+          "TOD": "08:03:21",
+          "Speed": "4:15 min/km",
+          "Gun": "43:21",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Farmers Carry",
+        "time": "45:47",
+        "segment": "2:26",
+        "delta": 0,
+        "values": {
+          "TOD": "08:05:47",
+          "Speed": "",
+          "Gun": "45:47",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "End of Run 7",
+        "time": "50:03",
+        "segment": "4:16",
+        "delta": 0,
+        "values": {
+          "TOD": "08:10:03",
+          "Speed": "4:16 min/km",
+          "Gun": "50:03",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "SanbagLunges",
+        "time": "54:25",
+        "segment": "4:22",
+        "delta": 0,
+        "values": {
+          "TOD": "08:14:25",
+          "Speed": "",
+          "Gun": "54:25",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "End of Run 8",
+        "time": "58:49",
+        "segment": "4:24",
+        "delta": 0,
+        "values": {
+          "TOD": "08:18:49",
+          "Speed": "4:24 min/km",
+          "Gun": "58:49",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Wallballs_Finish",
+        "time": "63:32",
+        "segment": "4:43",
+        "delta": 0,
+        "values": {
+          "TOD": "08:23:32",
+          "Speed": "",
+          "Gun": "63:32",
+          "RO": "1",
+          "RG": "1"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [
+        {
+          "key": "Time",
+          "label": "Time"
+        },
+        {
+          "key": "Speed",
+          "label": "Speed"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Run1",
+        "time": "04:18",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Time": "04:18",
+          "Speed": "4:18 min/km",
+          "RO": "7",
+          "RG": "7"
+        }
+      },
+      {
+        "name": "SkiErg",
+        "time": "04:29",
+        "segment": "0:11",
+        "delta": -2,
+        "values": {
+          "Time": "04:29",
+          "Speed": "",
+          "RO": "9",
+          "RG": "9"
+        }
+      },
+      {
+        "name": "Run2",
+        "time": "04:23",
+        "segment": null,
+        "delta": 3,
+        "values": {
+          "Time": "04:23",
+          "Speed": "4:23 min/km",
+          "RO": "6",
+          "RG": "6"
+        }
+      },
+      {
+        "name": "SledPush",
+        "time": "02:43",
+        "segment": null,
+        "delta": 4,
+        "values": {
+          "Time": "02:43",
+          "Speed": "",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Run3",
+        "time": "04:14",
+        "segment": "1:31",
+        "delta": 0,
+        "values": {
+          "Time": "04:14",
+          "Speed": "4:14 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "SledPull",
+        "time": "03:36",
+        "segment": null,
+        "delta": 1,
+        "values": {
+          "Time": "03:36",
+          "Speed": "",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Run4",
+        "time": "04:13",
+        "segment": "0:37",
+        "delta": -1,
+        "values": {
+          "Time": "04:13",
+          "Speed": "4:13 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Burpee",
+        "time": "02:11",
+        "segment": null,
+        "delta": 1,
+        "values": {
+          "Time": "02:11",
+          "Speed": "",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Run5",
+        "time": "04:14",
+        "segment": "2:03",
+        "delta": -1,
+        "values": {
+          "Time": "04:14",
+          "Speed": "4:14 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Row",
+        "time": "04:40",
+        "segment": "0:26",
+        "delta": 0,
+        "values": {
+          "Time": "04:40",
+          "Speed": "",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Run6",
+        "time": "04:15",
+        "segment": null,
+        "delta": 0,
+        "values": {
+          "Time": "04:15",
+          "Speed": "4:15 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "FarmersCarry",
+        "time": "02:25",
+        "segment": null,
+        "delta": 1,
+        "values": {
+          "Time": "02:25",
+          "Speed": "",
+          "RO": "1",
+          "RG": "1"
+        }
+      },
+      {
+        "name": "Run7",
+        "time": "04:16",
+        "segment": "1:51",
+        "delta": -1,
+        "values": {
+          "Time": "04:16",
+          "Speed": "4:16 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "SandbagLunge",
+        "time": "04:21",
+        "segment": "0:05",
+        "delta": 0,
+        "values": {
+          "Time": "04:21",
+          "Speed": "",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Run8",
+        "time": "04:24",
+        "segment": "0:03",
+        "delta": 0,
+        "values": {
+          "Time": "04:24",
+          "Speed": "4:24 min/km",
+          "RO": "2",
+          "RG": "2"
+        }
+      },
+      {
+        "name": "Wallballs",
+        "time": "04:42",
+        "segment": "0:18",
+        "delta": 0,
+        "values": {
+          "Time": "04:42",
+          "Speed": "",
+          "RO": "2",
+          "RG": "2"
+        }
+      }
+    ]
+  },
+  "hyrox": [
+    {
+      "kind": "run",
+      "label": "Run 1",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "04:18",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "SkiErg",
+      "icon": "figure.skiing.crosscountry",
+      "reached": true,
+      "main": "08:47",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 2",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "13:11",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Sled Push",
+      "icon": "figure.strengthtraining.traditional",
+      "reached": true,
+      "main": "15:54",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 3",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "20:09",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Sled Pull",
+      "icon": "figure.cross.training",
+      "reached": true,
+      "main": "23:46",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 4",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "27:59",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Burpee Broad Jump",
+      "icon": "figure.mixed.cardio",
+      "reached": true,
+      "main": "30:11",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 5",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "34:25",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "RowErg",
+      "icon": "figure.rower",
+      "reached": true,
+      "main": "39:06",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 6",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "43:21",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Farmers Carry",
+      "icon": "dumbbell.fill",
+      "reached": true,
+      "main": "45:47",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 7",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "50:03",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Sandbag Lunges",
+      "icon": "figure.strengthtraining.functional",
+      "reached": true,
+      "main": "54:25",
+      "sub": ""
+    },
+    {
+      "kind": "run",
+      "label": "Run 8",
+      "icon": "figure.run",
+      "reached": true,
+      "main": "58:49",
+      "sub": ""
+    },
+    {
+      "kind": "station",
+      "label": "Wall Balls",
+      "icon": "basketball.fill",
+      "reached": true,
+      "main": "63:32",
+      "sub": ""
+    },
+    {
+      "kind": "extra",
+      "label": "{EN:Started|DE:Gestartet|FR:Partis}",
+      "icon": "flag.fill",
+      "reached": true,
+      "main": "00:00",
+      "sub": ""
+    }
+  ]
+}

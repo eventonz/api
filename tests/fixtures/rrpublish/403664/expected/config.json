@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "rrId": "403664",
+  "lang": "en",
+  "event": {
+    "name": "Run24",
+    "eventOver": true,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "0",
+      "name": "General"
+    }
+  ],
+  "lists": [
+    {
+      "id": "FE7747",
+      "name": "01-Chronométrage|Classement par épreuve",
+      "displayName": "Classement",
+      "contest": "0",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ]
+}

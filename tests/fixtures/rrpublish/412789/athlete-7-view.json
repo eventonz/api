@@ -1,0 +1,419 @@
+{
+  "Elements": [
+    {
+      "ID": "EaBwEl_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "EaBwEl",
+          "Type": "legs",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false,
+            "ShowPace": true,
+            "HidePrediction": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel1",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "SH6Wsv_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "SH6Wsv",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": false,
+            "ShowSectorTime": false,
+            "ShowPace": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false,
+            "HidePrediction": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "Rohsea_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "Rohsea",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "CertificateSets": [
+              {
+                "Mode": "",
+                "Name": "Finisher Certificate",
+                "ShowAs": "Finisher Certificate",
+                "Picture": "",
+                "Contest": "0"
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "G0L4kp_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "G0L4kp",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "{EN:Started|DE:Gestartet|FR:Partis}",
+          "Exists": false,
+          "TOD": "07:20:00",
+          "Gun": "00:00",
+          "RO": -1,
+          "RG": -1
+        },
+        {
+          "Name": "End of Run 1",
+          "Exists": true,
+          "TOD": "07:24:18",
+          "Gun": "04:18",
+          "Speed": "4:18 min/km",
+          "RO": 7,
+          "RG": 7
+        },
+        {
+          "Name": "SkiErg",
+          "Exists": true,
+          "TOD": "07:28:47",
+          "Gun": "08:47",
+          "RO": 11,
+          "RG": 11
+        },
+        {
+          "Name": "End of Run 2",
+          "Exists": true,
+          "TOD": "07:33:11",
+          "Gun": "13:11",
+          "Speed": "4:23 min/km",
+          "RO": 7,
+          "RG": 7
+        },
+        {
+          "Name": "SledPush",
+          "Exists": true,
+          "TOD": "07:35:54",
+          "Gun": "15:54",
+          "RO": 4,
+          "RG": 4
+        },
+        {
+          "Name": "End of Run 3",
+          "Exists": true,
+          "TOD": "07:40:09",
+          "Gun": "20:09",
+          "Speed": "4:14 min/km",
+          "RO": 3,
+          "RG": 3
+        },
+        {
+          "Name": "SledPull",
+          "Exists": true,
+          "TOD": "07:43:46",
+          "Gun": "23:46",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "End of Run 4",
+          "Exists": true,
+          "TOD": "07:47:59",
+          "Gun": "27:59",
+          "Speed": "4:13 min/km",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Burpee Broad Jump",
+          "Exists": true,
+          "TOD": "07:50:11",
+          "Gun": "30:11",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "End of Run 5",
+          "Exists": true,
+          "TOD": "07:54:25",
+          "Gun": "34:25",
+          "Speed": "4:14 min/km",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Row",
+          "Exists": true,
+          "TOD": "07:59:06",
+          "Gun": "39:06",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "End of Run 6",
+          "Exists": true,
+          "TOD": "08:03:21",
+          "Gun": "43:21",
+          "Speed": "4:15 min/km",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Farmers Carry",
+          "Exists": true,
+          "TOD": "08:05:47",
+          "Gun": "45:47",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "End of Run 7",
+          "Exists": true,
+          "TOD": "08:10:03",
+          "Gun": "50:03",
+          "Speed": "4:16 min/km",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "SanbagLunges",
+          "Exists": true,
+          "TOD": "08:14:25",
+          "Gun": "54:25",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "End of Run 8",
+          "Exists": true,
+          "TOD": "08:18:49",
+          "Gun": "58:49",
+          "Speed": "4:24 min/km",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "{DE:Ziel|EN:Wallballs_Finish|FR:Arrivée}",
+          "Exists": true,
+          "TOD": "08:23:32",
+          "Gun": "63:32",
+          "RO": 1,
+          "RG": 1
+        }
+      ],
+      "Legs": [
+        {
+          "Name": "Run1",
+          "Exists": true,
+          "Time": "04:18",
+          "Speed": "4:18 min/km",
+          "RO": 7,
+          "RG": 7
+        },
+        {
+          "Name": "SkiErg",
+          "Exists": true,
+          "Time": "04:29",
+          "RO": 9,
+          "RG": 9
+        },
+        {
+          "Name": "Run2",
+          "Exists": true,
+          "Time": "04:23",
+          "Speed": "4:23 min/km",
+          "RO": 6,
+          "RG": 6
+        },
+        {
+          "Name": "SledPush",
+          "Exists": true,
+          "Time": "02:43",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Run3",
+          "Exists": true,
+          "Time": "04:14",
+          "Speed": "4:14 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "SledPull",
+          "Exists": true,
+          "Time": "03:36",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Run4",
+          "Exists": true,
+          "Time": "04:13",
+          "Speed": "4:13 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Burpee",
+          "Exists": true,
+          "Time": "02:11",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Run5",
+          "Exists": true,
+          "Time": "04:14",
+          "Speed": "4:14 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Row",
+          "Exists": true,
+          "Time": "04:40",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Run6",
+          "Exists": true,
+          "Time": "04:15",
+          "Speed": "4:15 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "FarmersCarry",
+          "Exists": true,
+          "Time": "02:25",
+          "RO": 1,
+          "RG": 1
+        },
+        {
+          "Name": "Run7",
+          "Exists": true,
+          "Time": "04:16",
+          "Speed": "4:16 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "SandbagLunge",
+          "Exists": true,
+          "Time": "04:21",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Run8",
+          "Exists": true,
+          "Time": "04:24",
+          "Speed": "4:24 min/km",
+          "RO": 2,
+          "RG": 2
+        },
+        {
+          "Name": "Wallballs",
+          "Exists": true,
+          "Time": "04:42",
+          "RO": 2,
+          "RG": 2
+        }
+      ]
+    },
+    "Fields": null,
+    "Certificates": [
+      {
+        "label": "Finisher Certificate",
+        "cs": "Finisher Certificate",
+        "pic": ""
+      }
+    ],
+    "IsFavorite": false
+  },
+  "key": "fee7d82ff6e0636261308dadb9d372ea",
+  "LiveUpdateInterval": 10,
+  "MID": 189047,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 70130,
+  "PID": 7,
+  "TimerLogo": "PopUp Shape.png",
+  "TimerURL": "www.popupraces.ie",
+  "Color": "",
+  "User": null
+}

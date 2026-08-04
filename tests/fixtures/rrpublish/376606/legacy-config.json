@@ -1,0 +1,712 @@
+{
+  "key": "f177a7cb65798d76db2ea945083182f3",
+  "contests": {
+    "1": "ULTRA",
+    "2": "HALF",
+    "3": "CLASSIC DUO",
+    "4": "CLASSIC SOLO",
+    "5": "SPRINT DUO",
+    "6": "SPRINT RELAIS",
+    "7": "SPRINT SOLO"
+  },
+  "splits": [
+    {
+      "ID": 498,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 254
+    },
+    {
+      "ID": 530,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 548,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 562,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 572,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 583,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 254
+    },
+    {
+      "ID": 588,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 254
+    },
+    {
+      "ID": 499,
+      "Name": "Split1",
+      "Label": "Tour 1",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 531,
+      "Name": "Split1",
+      "Label": "Hameau du Pont - 4km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 549,
+      "Name": "Split1",
+      "Label": "Hameau du Pont - 4km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 563,
+      "Name": "Split1",
+      "Label": "Hameau du Pont - 4km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 573,
+      "Name": "Split1",
+      "Label": "Hameau du Pont - 4km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 584,
+      "Name": "Split1",
+      "Label": "Tour 1",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 589,
+      "Name": "Split1",
+      "Label": "Tour 1",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 500,
+      "Name": "Split2",
+      "Label": "Tour 2",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 532,
+      "Name": "Split2",
+      "Label": "Marzols - 8km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 550,
+      "Name": "Split2",
+      "Label": "Marzols - 8km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 564,
+      "Name": "Split2",
+      "Label": "La Cadeno - 6km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 574,
+      "Name": "Split2",
+      "Label": "La Cadeno - 6km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 585,
+      "Name": "Split2",
+      "Label": "Tour 2",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 590,
+      "Name": "Split2",
+      "Label": "Tour 2",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 533,
+      "Name": "Split3",
+      "Label": "La Cadeno - 10km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 551,
+      "Name": "Split3",
+      "Label": "La Cadeno - 10km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 565,
+      "Name": "Split3",
+      "Label": "Parking de l'Etoile - 9km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 575,
+      "Name": "Split3",
+      "Label": "Parking de l'Etoile - 9km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 582,
+      "Name": "Split3",
+      "Label": "Pré-Arrivée",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 586,
+      "Name": "Split3",
+      "Label": "Pré-Arrivée",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 591,
+      "Name": "Split3",
+      "Label": "Pré-Arrivée",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 501,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 534,
+      "Name": "Split4",
+      "Label": "Parking de l'Etoile - 13km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 552,
+      "Name": "Split4",
+      "Label": "Parking de l'Etoile - 13km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 566,
+      "Name": "Split4",
+      "Label": "Galetas - 11km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 576,
+      "Name": "Split4",
+      "Label": "Galetas - 11km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 587,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 592,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 7,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 535,
+      "Name": "Split5",
+      "Label": "Route de la Palud - 15km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 553,
+      "Name": "Split5",
+      "Label": "Route de la Palud - 15km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 567,
+      "Name": "Split5",
+      "Label": "Aiguines - 15km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 577,
+      "Name": "Split5",
+      "Label": "Aiguines - 15km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 536,
+      "Name": "Split6",
+      "Label": "Plein Voir - 20km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 554,
+      "Name": "Split6",
+      "Label": "Plein Voir - 20km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 568,
+      "Name": "Split6",
+      "Label": "Les Bastides - 20km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 578,
+      "Name": "Split6",
+      "Label": "Les Bastides - 20km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 537,
+      "Name": "Split7",
+      "Label": "Colle de l'Olivier - 25km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 555,
+      "Name": "Split7",
+      "Label": "Colle de l'Olivier - 25km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 569,
+      "Name": "Split7",
+      "Label": "Clos de Rouvier - 22km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 579,
+      "Name": "Split7",
+      "Label": "Clos de Rouvier - 22km",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 538,
+      "Name": "Split8",
+      "Label": "Galetas - 28km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 556,
+      "Name": "Split8",
+      "Label": "Galetas - 28km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 570,
+      "Name": "Spotter",
+      "Label": "Pré-arrivée",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 580,
+      "Name": "Spotter",
+      "Label": "Pré-arrivée",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 539,
+      "Name": "Split9",
+      "Label": "Aiguines - 33km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 557,
+      "Name": "Split9",
+      "Label": "Aiguines - 33km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 571,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 581,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 540,
+      "Name": "Split10",
+      "Label": "Les Bastides - 38km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 558,
+      "Name": "Split10",
+      "Label": "Les Bastides - 38km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 541,
+      "Name": "Split11",
+      "Label": "Bauduen - 44km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 559,
+      "Name": "Split11",
+      "Label": "Clos de Rouvier - 39km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 542,
+      "Name": "Split12",
+      "Label": "Sulagran - 48km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 560,
+      "Name": "Spotter",
+      "Label": "Pré-arrivée",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 543,
+      "Name": "Split13",
+      "Label": "Club de Voile de Bauduen - 50km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 561,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 547,
+      "Name": "Split14",
+      "Label": "Bauduen - 51km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 544,
+      "Name": "Split15",
+      "Label": "Clos de Rouvier - 57km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 545,
+      "Name": "Spotter",
+      "Label": "Pré-arrivée",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 546,
+      "Name": "Finish",
+      "Label": "Arrivée",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    }
+  ],
+  "lists": [
+    {
+      "Name": "01-Chronométrage|LIVE",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "LIVE",
+      "Format": "V",
+      "Live": 1,
+      "Sortable": 0,
+      "Leader": 0,
+      "ID": "728574"
+    },
+    {
+      "Name": "01-Chronométrage|01-Classement général DUO",
+      "Mode": "",
+      "Contest": "1",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "AB625B"
+    },
+    {
+      "Name": "01-Chronométrage|01-Classement général DUO",
+      "Mode": "",
+      "Contest": "3",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "CB9ED5"
+    },
+    {
+      "Name": "01-Chronométrage|01-Classement général DUO",
+      "Mode": "",
+      "Contest": "5",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "CD13DB"
+    },
+    {
+      "Name": "01-Chronométrage|02-Classement général SOLO",
+      "Mode": "",
+      "Contest": "2",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "BC1B10"
+    },
+    {
+      "Name": "01-Chronométrage|02-Classement général SOLO",
+      "Mode": "",
+      "Contest": "4",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "38CC0C"
+    },
+    {
+      "Name": "01-Chronométrage|02-Classement général SOLO",
+      "Mode": "",
+      "Contest": "6",
+      "ShowAs": "Classement Général",
+      "Format": "VP",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "74220E"
+    },
+    {
+      "Name": "00-Starlists|Concurrents inscrits",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "Course SOLO",
+      "Format": "V",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "450461"
+    },
+    {
+      "Name": "00-Starlists|Equipes inscrites",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "Courses DUO",
+      "Format": "V",
+      "Live": 0,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "58ABD0"
+    },
+    {
+      "Name": "04-Gestion de Course|10-Runners expected per split Orga",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "Dashboard",
+      "Format": "V",
+      "Live": 1,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "37277F"
+    },
+    {
+      "Name": "01-Speaker|Podium Finish line + Spotter+LastSplit",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "",
+      "Format": "V",
+      "Live": 1,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "94F795"
+    },
+    {
+      "Name": "02-Podiums|01-Podium SOLO",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "",
+      "Format": "VP",
+      "Live": 1,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "E754CD"
+    },
+    {
+      "Name": "02-Podiums|01-Podium DUO",
+      "Mode": "hidden",
+      "Contest": "0",
+      "ShowAs": "",
+      "Format": "VP",
+      "Live": 1,
+      "Sortable": 1,
+      "Leader": 0,
+      "ID": "C5B076"
+    }
+  ],
+  "infotext": "",
+  "LinkCertificates": false,
+  "LeaderboardHideCount": false,
+  "DisableiComments": false,
+  "PhotographerEventID": "",
+  "eventname": "Swimrunman - Gorges du Verdon",
+  "showResults": true,
+  "showParticipants": false,
+  "showLive": false,
+  "showCertificates": true,
+  "ListSelector": "dropdown",
+  "SplitConfig": "11010011010",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73726,
+  "server": "my-aus-1.raceresult.com"
+}

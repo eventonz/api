@@ -1,0 +1,36 @@
+{
+  "rrId": "376606",
+  "recordedAt": "2026-08-04T18:28:45.825Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "01-Chronométrage|01-Classement général DUO",
+      "contest": "1"
+    },
+    {
+      "file": "list-1.json",
+      "listname": "01-Chronométrage|01-Classement général DUO",
+      "contest": "2"
+    },
+    {
+      "file": "list-2.json",
+      "listname": "01-Chronométrage|01-Classement général DUO",
+      "contest": "3"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "376",
+      "detailsPath": "details0",
+      "legacyPath": "RRPublish/data",
+      "splitsPath": "RRPublish/data"
+    },
+    {
+      "pid": "266",
+      "detailsPath": "details0",
+      "legacyPath": "RRPublish/data",
+      "splitsPath": "RRPublish/data"
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

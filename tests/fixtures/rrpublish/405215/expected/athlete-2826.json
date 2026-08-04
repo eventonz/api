@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "pid": "2826",
+  "splitConfig": "11011110101",
+  "show": {
+    "legs": true,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": true,
+    "ageGroupRank": true,
+    "tod": true,
+    "gun": false,
+    "chip": true,
+    "sector": false,
+    "pace": true
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "Chip",
+          "label": "Race time"
+        },
+        {
+          "key": "TOD",
+          "label": "TOD"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        },
+        {
+          "key": "RA",
+          "label": "Category"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Start",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Chip": "",
+          "TOD": "07:00:02",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Swim - Finish Lap 1 - 750 m",
+        "time": "10:32",
+        "segment": null,
+        "delta": -2,
+        "values": {
+          "Chip": "10:32",
+          "TOD": "07:10:33",
+          "RO": "3",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Swim Finish",
+        "time": "21:14",
+        "segment": "10:42",
+        "delta": 1,
+        "values": {
+          "Chip": "21:14",
+          "TOD": "07:21:15",
+          "RO": "2",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Bike Start",
+        "time": "23:51",
+        "segment": "2:37",
+        "delta": 1,
+        "values": {
+          "Chip": "23:51",
+          "TOD": "07:23:52",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike - Côte d'Or - 10,3 km",
+        "time": "40:45",
+        "segment": "16:54",
+        "delta": 0,
+        "values": {
+          "Chip": "40:45",
+          "TOD": "07:40:46",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike - Ponton de baignade - 18 km",
+        "time": "50:40",
+        "segment": "9:55",
+        "delta": 0,
+        "values": {
+          "Chip": "50:40",
+          "TOD": "07:50:41",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike - Côte d'Or - 29,3 km",
+        "time": "1:08:04",
+        "segment": "17:24",
+        "delta": 0,
+        "values": {
+          "Chip": "1:08:04",
+          "TOD": "08:08:05",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike - Ponton de baignade - 37 km",
+        "time": "1:18:04",
+        "segment": "10:00",
+        "delta": 0,
+        "values": {
+          "Chip": "1:18:04",
+          "TOD": "08:18:05",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike Finish",
+        "time": "1:19:47",
+        "segment": "1:43",
+        "delta": 0,
+        "values": {
+          "Chip": "1:19:47",
+          "TOD": "08:19:48",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run Start",
+        "time": "1:21:38",
+        "segment": "1:51",
+        "delta": -1,
+        "values": {
+          "Chip": "1:21:38",
+          "TOD": "08:21:39",
+          "RO": "2",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Rampe de Cologny - 0,7 km",
+        "time": "1:23:47",
+        "segment": "2:09",
+        "delta": 1,
+        "values": {
+          "Chip": "1:23:47",
+          "TOD": "08:23:49",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Jardins - 2,7 km",
+        "time": "1:30:31",
+        "segment": "6:44",
+        "delta": 0,
+        "values": {
+          "Chip": "1:30:31",
+          "TOD": "08:30:32",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Feed - 3,7 km",
+        "time": "1:34:03",
+        "segment": "3:32",
+        "delta": -1,
+        "values": {
+          "Chip": "1:34:03",
+          "TOD": "08:34:04",
+          "RO": "2",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Finish Lap 1 - 4,9 km",
+        "time": "1:37:29",
+        "segment": "3:26",
+        "delta": 0,
+        "values": {
+          "Chip": "1:37:29",
+          "TOD": "08:37:30",
+          "RO": "2",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Rampe de Cologny - 5,9 km",
+        "time": "1:41:15",
+        "segment": "3:46",
+        "delta": 1,
+        "values": {
+          "Chip": "1:41:15",
+          "TOD": "08:41:16",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Jardins - 7,9 km",
+        "time": "1:47:50",
+        "segment": "6:35",
+        "delta": 0,
+        "values": {
+          "Chip": "1:47:50",
+          "TOD": "08:47:51",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Run - Feed - 8,9 km",
+        "time": "1:51:16",
+        "segment": "3:26",
+        "delta": 0,
+        "values": {
+          "Chip": "1:51:16",
+          "TOD": "08:51:17",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Home Stretch",
+        "time": "1:54:39",
+        "segment": "3:23",
+        "delta": 0,
+        "values": {
+          "Chip": "1:54:39",
+          "TOD": "08:54:40",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Finish",
+        "time": "1:55:00",
+        "segment": "0:21",
+        "delta": 0,
+        "values": {
+          "Chip": "1:55:00",
+          "TOD": "08:55:01",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [
+        {
+          "key": "Time",
+          "label": "Time"
+        },
+        {
+          "key": "Speed",
+          "label": "Speed"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        },
+        {
+          "key": "RA",
+          "label": "Category"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Swim",
+        "time": "21:14",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Time": "21:14",
+          "Speed": "1:24 min/100m",
+          "RO": "2",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Transition 1",
+        "time": "02:37",
+        "segment": null,
+        "delta": -1,
+        "values": {
+          "Time": "02:37",
+          "Speed": "",
+          "RO": "3",
+          "RG": "3",
+          "RA": "3"
+        }
+      },
+      {
+        "name": "Bike",
+        "time": "55:56",
+        "segment": "53:19",
+        "delta": 1,
+        "values": {
+          "Time": "55:56",
+          "Speed": "42.9 km/h",
+          "RO": "2",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Transition 2",
+        "time": "01:51",
+        "segment": null,
+        "delta": 0,
+        "values": {
+          "Time": "01:51",
+          "Speed": "",
+          "RO": "2",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Run",
+        "time": "33:22",
+        "segment": "31:31",
+        "delta": 1,
+        "values": {
+          "Time": "33:22",
+          "Speed": "3:20 min/km",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Swim - Lap 1",
+        "time": "10:32",
+        "segment": null,
+        "delta": -2,
+        "values": {
+          "Time": "10:32",
+          "Speed": "1:24 min/100m",
+          "RO": "3",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Swim - Lap 2",
+        "time": "10:42",
+        "segment": "0:10",
+        "delta": 0,
+        "values": {
+          "Time": "10:42",
+          "Speed": "1:25 min/100m",
+          "RO": "3",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Bike - Lap 1",
+        "time": "26:49",
+        "segment": "16:07",
+        "delta": 2,
+        "values": {
+          "Time": "26:49",
+          "Speed": "40.2 km/h",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Bike - Lap 2",
+        "time": "29:07",
+        "segment": "2:18",
+        "delta": -8,
+        "values": {
+          "Time": "29:07",
+          "Speed": "45.3 km/h",
+          "RO": "9",
+          "RG": "9",
+          "RA": "7"
+        }
+      },
+      {
+        "name": "Run - Lap 1",
+        "time": "15:51",
+        "segment": null,
+        "delta": 7,
+        "values": {
+          "Time": "15:51",
+          "Speed": "3:14 min/km",
+          "RO": "2",
+          "RG": "2",
+          "RA": "2"
+        }
+      },
+      {
+        "name": "Run - Lap 2",
+        "time": "17:31",
+        "segment": "1:40",
+        "delta": 1,
+        "values": {
+          "Time": "17:31",
+          "Speed": "3:26 min/km",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      }
+    ]
+  },
+  "hyrox": null
+}

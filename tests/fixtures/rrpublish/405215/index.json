@@ -1,0 +1,36 @@
+{
+  "rrId": "405215",
+  "recordedAt": "2026-08-04T18:28:47.091Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "06-Online results|Final",
+      "contest": "1"
+    },
+    {
+      "file": "list-1.json",
+      "listname": "06-Online results|Classement Scratch Relais",
+      "contest": "2"
+    },
+    {
+      "file": "list-2.json",
+      "listname": "06-Online results|Final",
+      "contest": "3"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "2826",
+      "detailsPath": "details0",
+      "legacyPath": "results",
+      "splitsPath": null
+    },
+    {
+      "pid": "2808",
+      "detailsPath": "details0",
+      "legacyPath": "results",
+      "splitsPath": null
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

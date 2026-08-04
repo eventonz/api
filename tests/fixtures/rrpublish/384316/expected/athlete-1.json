@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "pid": "1",
+  "splitConfig": "01011111011",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": true,
+    "ageGroupRank": true,
+    "tod": true,
+    "gun": true,
+    "chip": false,
+    "sector": true,
+    "pace": true
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "TOD",
+          "label": "TOD"
+        },
+        {
+          "key": "Speed",
+          "label": "Speed"
+        },
+        {
+          "key": "Gun",
+          "label": "Gun"
+        },
+        {
+          "key": "Sector",
+          "label": "Sector"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        },
+        {
+          "key": "RA",
+          "label": "Category"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Col de Malval - km 16,7",
+        "time": "1:22:29",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "TOD": "06:22:55",
+          "Speed": "4:56 min/km",
+          "Gun": "1:22:29",
+          "Sector": "1:22:29",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Montromant- km 35,3",
+        "time": "3:02:26",
+        "segment": "1:39:57",
+        "delta": 0,
+        "values": {
+          "TOD": "08:02:52",
+          "Speed": "5:22 min/km",
+          "Gun": "3:02:26",
+          "Sector": "1:39:57",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Pomeys - Base de vie - km 52,1",
+        "time": "4:24:32",
+        "segment": "1:22:06",
+        "delta": 0,
+        "values": {
+          "TOD": "09:24:58",
+          "Speed": "4:53 min/km",
+          "Gun": "4:24:32",
+          "Sector": "1:22:06",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Saint-Christo-en-Jarez - km 69",
+        "time": "5:48:52",
+        "segment": "1:24:20",
+        "delta": 0,
+        "values": {
+          "TOD": "10:49:18",
+          "Speed": "4:59 min/km",
+          "Gun": "5:48:52",
+          "Sector": "1:24:20",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Saint-Didier-sous-Riverie - km 87,5",
+        "time": "7:23:54",
+        "segment": "1:35:02",
+        "delta": 0,
+        "values": {
+          "TOD": "12:24:20",
+          "Speed": "5:08 min/km",
+          "Gun": "7:23:54",
+          "Sector": "1:35:02",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Saint-André-la-Côte - km 94,9",
+        "time": "8:09:44",
+        "segment": "45:50",
+        "delta": 0,
+        "values": {
+          "TOD": "13:10:10",
+          "Speed": "6:11 min/km",
+          "Gun": "8:09:44",
+          "Sector": "45:50",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      },
+      {
+        "name": "Arrivée - km 105.4",
+        "time": "9:03:10",
+        "segment": "53:26",
+        "delta": 0,
+        "values": {
+          "TOD": "14:03:36",
+          "Speed": "5:05 min/km",
+          "Gun": "9:03:10",
+          "Sector": "53:26",
+          "RO": "1",
+          "RG": "1",
+          "RA": "1"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

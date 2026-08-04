@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "rrId": "384316",
+  "lang": "en",
+  "event": {
+    "name": "Ultra Trail des Coursières",
+    "eventOver": true,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": true,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "0",
+      "name": "General"
+    }
+  ],
+  "lists": [
+    {
+      "id": "2423AD",
+      "name": "01 - AFFICHAGE|LIVE EXTRA",
+      "displayName": "SUIVI LIVE",
+      "contest": "0",
+      "leaderCount": 5,
+      "evento": null
+    },
+    {
+      "id": "6F296D",
+      "name": "01 - AFFICHAGE|Final",
+      "displayName": "Final",
+      "contest": "0",
+      "leaderCount": 5,
+      "evento": null
+    }
+  ]
+}

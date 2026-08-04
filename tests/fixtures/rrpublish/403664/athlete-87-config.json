@@ -1,0 +1,98 @@
+{
+  "key": "1bdd7a760e0cae2d4c5dce1959cada72",
+  "contests": {
+    "1": "L'Unique",
+    "2": "Le Binôme",
+    "3": "Le Crew",
+    "4": "Le Squad",
+    "5": "La Clique"
+  },
+  "splits": [],
+  "eventname": "Run24",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73722,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {
+    "details": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2026-06-12T00:00:00+02:00",
+    "ActiveUntil": "2100-12-31T23:59:59+01:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "03-Affichage|LIVE",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "SUIVI LIVE",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "C77457"
+        },
+        {
+          "Name": "01-Chronométrage|Classement par épreuve",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "Classement",
+          "Format": "VP",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "FE7747"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "details",
+    "Lists": [
+      {
+        "Name": "03-Affichage|LIVE",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "SUIVI LIVE",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "C77457"
+      },
+      {
+        "Name": "01-Chronométrage|Classement par épreuve",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "Classement",
+        "Format": "VP",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details",
+        "ID": "FE7747"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

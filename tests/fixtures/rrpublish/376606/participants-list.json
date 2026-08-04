@@ -1,0 +1,1810 @@
+{
+  "list": {
+    "ListName": "00-Starlists|Equipes inscrites",
+    "BottomPicture": "",
+    "BottomPictureShow": 0,
+    "ColumnHeadsFontName": "",
+    "ColumnHeadsFontSize": 8,
+    "ColumnHeadsFontBold": true,
+    "ColumnHeadsFontItalic": false,
+    "ColumnHeadsFontUnderlined": false,
+    "ColumnHeadsColor": "",
+    "ColumnHeadsShow": 2,
+    "Columns": 1,
+    "ColumnSpacing": 5,
+    "CoverSheet": "",
+    "BackSheet": "",
+    "Design": "Fond Portrait",
+    "DesignShow": 2,
+    "EveryOtherLineGray": true,
+    "FontName": "Arial",
+    "FontSize": 8,
+    "FooterFontName": "",
+    "FooterFontSize": 8,
+    "FooterFontBold": true,
+    "FooterFontItalic": false,
+    "FooterFontUnderlined": false,
+    "FooterColor": "",
+    "GrayLine": false,
+    "HeadLine1": "Swimrunman - Gorges du Verdon",
+    "HeadLine1FontName": "",
+    "HeadLine1FontSize": 16,
+    "HeadLine1FontBold": false,
+    "HeadLine1FontItalic": false,
+    "HeadLine1FontUnderlined": true,
+    "HeadLine2": "Equipes inscrites",
+    "HeadLine1Color": "",
+    "HeadLine1Show": 0,
+    "HeadLine2FontName": "",
+    "HeadLine2FontSize": 12,
+    "HeadLine2FontBold": true,
+    "HeadLine2FontItalic": false,
+    "HeadLine2FontUnderlined": false,
+    "HeadLine2Color": "",
+    "HeadLine2Show": 2,
+    "HeightBottomPicture": 40,
+    "LineColor": "",
+    "LineBackColor": "",
+    "LineDynamicFormat": "",
+    "LineSpacing": 1,
+    "MaxRecords": 0,
+    "MultiplierField": "",
+    "PageFormat": 0,
+    "PageMarginBottom": 35,
+    "PageMarginLeft": 10,
+    "PageMarginRight": 10,
+    "PageMarginTop": 65,
+    "PageSize": 3,
+    "PageHeight": 297,
+    "PageWidth": 210,
+    "SepLine": false,
+    "TopRightPicture": "",
+    "TopRightPictureShow": 0,
+    "ListHeaderText": "",
+    "ListFooterText": "",
+    "ListHeaderFooterFontName": "",
+    "ListHeaderFooterFontSize": 10,
+    "ListHeaderFooterFontBold": false,
+    "ListHeaderFooterFontItalic": false,
+    "ListHeaderFooterFontUnderlined": false,
+    "ListHeaderFooterAlignment": 1,
+    "Remarks": "",
+    "LastChange": "2026-05-08 21:51:32",
+    "FooterText1": "Powered by RACE RESULT",
+    "FooterText2": "Chronométrage et classements - CHRONO CONSULT - www.chronoconsult.fr",
+    "FooterText3": "[page] / [pages]",
+    "Orders": [
+      {
+        "Expression": "CONTEST",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "CONTEST.NAME",
+        "Descending": false,
+        "Grouping": 3,
+        "GroupFilterDefault": 0,
+        "GroupFilterLabel": "Épreuve",
+        "PageBreak": 1,
+        "FontName": "",
+        "FontSize": 10,
+        "FontBold": true,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "#fcfcfc",
+        "BackgroundColor": "#0000ff",
+        "Spacing": 2
+      },
+      {
+        "Expression": "SexeEquipe",
+        "Descending": false,
+        "Grouping": 3,
+        "GroupFilterDefault": 2,
+        "GroupFilterLabel": "Catégorie",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 10,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "\"Départ \"&format([CONTEST.START.DECIMAL];\"Hh\\hmm\")",
+        "Descending": false,
+        "Grouping": 1,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "BIB",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      }
+    ],
+    "Filters": [
+      {
+        "OrConjunction": false,
+        "Expression1": "Equipe",
+        "Operator": "=",
+        "Expression2": "1"
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "CONTEST",
+        "Operator": "<",
+        "Expression2": "20"
+      }
+    ],
+    "Fields": [
+      {
+        "Expression": "BIB",
+        "Label": "Dos",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "ucase([NomEquipe])",
+        "Label": "Equipe",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": -1
+      },
+      {
+        "Expression": "AfficherEquipiers",
+        "Label": "Noms",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      }
+    ],
+    "SelectorResults": []
+  },
+  "data": {
+    "#1_ULTRA": {
+      "#1_Départ 6h00": [
+        [
+          "6",
+          "278",
+          "ÖPERATION ÖVER-LOUTRES",
+          "Gael POUCHIN, Thomas HELLNER"
+        ],
+        [
+          "13",
+          "347",
+          "S&P TRAVELS & TOURS",
+          "Jean-Marie SAUVEE, Eric POTIER"
+        ],
+        [
+          "15",
+          "245",
+          "MYSWIM",
+          "Guillaume CRESPEL, Jonathan HERCELIN"
+        ],
+        [
+          "17",
+          "214",
+          "IMPERIAL BROTHERS",
+          "Loïc LEMPEREUR, Arnaud LEMPEREUR"
+        ],
+        [
+          "18",
+          "329",
+          "AGA & TOMEK - ENVOL/TRICLUB",
+          "Agnieszka BARTOSZEWICZ, Tomasz KOWALCZYK"
+        ],
+        [
+          "19",
+          "224",
+          "TEAM ENVOL MATH ET YANIS",
+          "Yanis LINGE, Matthieu ERNOUT"
+        ],
+        [
+          "22",
+          "313",
+          "UN QUI NAGE UN QUI COURT",
+          "Matteo KOZLOWSKI, Jérémy GUÉRIN"
+        ],
+        [
+          "26",
+          "223",
+          "BEN & MATH",
+          "Benjamin CATERNET, Mathias HARMAND"
+        ],
+        [
+          "28",
+          "334",
+          "LES TÊTARDS DU VERDON",
+          "Thomas PERRIGUEY, Hugo HERMET"
+        ],
+        [
+          "29",
+          "268",
+          "ZUGSTON, WE HAVE A BEAUBLEM !",
+          "Emile BEAU, Alexandre ZUGER"
+        ],
+        [
+          "30",
+          "290",
+          "GUI & NICO",
+          "Nicolas ATIENZA, Guillaume VIRELAUDE"
+        ],
+        [
+          "33",
+          "238",
+          "TWO BOYZ ONE CUP",
+          "Louis KIELWASSER, Hugo KIELWASSER"
+        ],
+        [
+          "34",
+          "342",
+          "LES OLDS BAC",
+          "Vincent DESNOYERS, Samuel LECONTE"
+        ],
+        [
+          "35",
+          "212",
+          "NEEDLES",
+          "Yves THOMASSIN, Nicolas BOCCHECIAMPE"
+        ],
+        [
+          "36",
+          "254",
+          "LES FADAS DU VERDON",
+          "Robin BLANCHARD, Thierry ELLENA"
+        ],
+        [
+          "40",
+          "221",
+          "FOREST ET FLIPPER",
+          "Aurélien JOUNIAUX, Maxence LEMOINE"
+        ],
+        [
+          "43",
+          "292",
+          "TEAM ORCA",
+          "Benno EMKEN, Mirja LANDSBERG"
+        ],
+        [
+          "47",
+          "235",
+          "LÉLOOÖOORNIDAS",
+          "Pierre LE ROUX, Olivier BESCOND"
+        ],
+        [
+          "48",
+          "299",
+          "TIB&SQUAL",
+          "Thibault POCLET, Pascal DURNIAK"
+        ],
+        [
+          "49",
+          "266",
+          "LIZYAN",
+          "Yann SUDEIX, Liza PEUDEMIER"
+        ],
+        [
+          "52",
+          "198",
+          "MORNINGSTAR BELGIUM",
+          "Nicolas BRUYÈRE, Quentin BULTEAU"
+        ],
+        [
+          "54",
+          "354",
+          "LA TEAM ROCKET",
+          "Rémi MORENO, Ruben THIBOUT"
+        ],
+        [
+          "55",
+          "285",
+          "SWIMRUN FOURAS #1",
+          "Julien BEGUEC, Jean-Baptiste VEQUE"
+        ],
+        [
+          "56",
+          "193",
+          "LA MINI ET LA BÊTE",
+          "Jessica SCHOHN, Corentin THOMAS"
+        ],
+        [
+          "59",
+          "330",
+          "BANANAS TEAM",
+          "Benjamin SOULIÉ, Agnès ROZENBERG"
+        ],
+        [
+          "60",
+          "369",
+          "LA SELEÇÃO",
+          "Thomas MESSIEUX, Joël WOLFENSBERGER"
+        ],
+        [
+          "61",
+          "396",
+          "LES MEUFS CHAUDES DE TA RÉGION",
+          "Henri LE BOZEC, Yanis SALAH"
+        ],
+        [
+          "65",
+          "194",
+          "LES KINÉS GIVRÉS",
+          "Mickael BARBÉ, Pierre MEYER"
+        ],
+        [
+          "66",
+          "360",
+          "TEAM 1990",
+          "Céline HUMBERT, Antoine BOISSIER"
+        ],
+        [
+          "67",
+          "253",
+          "1981, LE RETOUR",
+          "Joël LE DEROFF, Alexandre LUCAS"
+        ],
+        [
+          "68",
+          "376",
+          "TEAM MITJAFIGA",
+          "Jean-Baptiste MITJAVILLE, Cédric FIGAROLA"
+        ]
+      ]
+    },
+    "#2_HALF": {
+      "#2_Départ 7h30": [
+        [
+          "3002",
+          "203",
+          "LES FRANGINS INDOMPTABLES 1",
+          "Alexis PARRADO, Amaury PARRADO"
+        ],
+        [
+          "3003",
+          "323",
+          "MAMA TIA VU L'ÉQUIPE",
+          "Marie RESPLANDY-BERNARD, Mateo COQUIL"
+        ],
+        [
+          "3006",
+          "302",
+          "LES MOJITOS",
+          "Wilfried DEVELTER, Guillaume BRISON"
+        ],
+        [
+          "3011",
+          "232",
+          "LES GRANDES PERCHES",
+          "Leontine BOS, Nathalie BARBIER"
+        ],
+        [
+          "3012",
+          "392",
+          "SEB&LOLO",
+          "Laurent MARQUEZ, Sébastien ROUQUIE"
+        ],
+        [
+          "3015",
+          "305",
+          "SWIN & CNO LES ROIS DE LA PLAQUE",
+          "Davy DALMAR, Alexandre BŒUF"
+        ],
+        [
+          "3017",
+          "229",
+          "UN BOUT DE PAIN",
+          "Abel ELATTIQUI, Adrien ANTHINIAC"
+        ],
+        [
+          "3024",
+          "197",
+          "ÖTILLÖVE",
+          "Orbélinda QUIN ORE, Thibault LE ROUX MALLOUF"
+        ],
+        [
+          "3026",
+          "286",
+          "AVANTI NISSA",
+          "Aymeric FABRE, Sebastien OLIVETTI"
+        ],
+        [
+          "3028",
+          "180",
+          "GAINERZ",
+          "Benjamin RIVOIRE, Maxime BLANC"
+        ],
+        [
+          "3029",
+          "382",
+          "GAINER’Z",
+          "Tristan MANNEVILLE, Thibault DUQUENNOY"
+        ],
+        [
+          "3030",
+          "403",
+          "LEARTISTES",
+          "Lea RAFFIN-LUXEMBOURG, Guillaume BARTOLOMEI"
+        ],
+        [
+          "3031",
+          "370",
+          "A FOND DANS LA GORGE",
+          "Robin DELOUX, William VERSAEVEL"
+        ],
+        [
+          "3032",
+          "246",
+          "UNKNOWN PARTNERS",
+          "Théaud DUVAL, Antoine LIGOT"
+        ],
+        [
+          "3034",
+          "200",
+          "LEMMMONS",
+          "Lionel GIRARDIN, Malika BAPST"
+        ],
+        [
+          "3035",
+          "314",
+          "VCT",
+          "Jean-Philippe CHRISTOPH, Aurelien SEUNES"
+        ],
+        [
+          "3036",
+          "304",
+          "LES ZÉPARPILLÉS",
+          "Xavier BLOT, Franck DENIS"
+        ],
+        [
+          "3037",
+          "262",
+          "2CAP",
+          "Victor GARCIA, Stephanie DECAP"
+        ],
+        [
+          "3041",
+          "287",
+          "LES PACHOLES",
+          "Christophe CASORLA, Melanie RINGEVAL"
+        ],
+        [
+          "3043",
+          "309",
+          "RASCASSE",
+          "Atlan ALVAREZ, Nina MACHETTE"
+        ],
+        [
+          "3044",
+          "236",
+          "MAFIA CASSOULET - TOULOUSE TRIATHLON",
+          "Benoit RICAUT LAROSE, Nicolas BOUSQUET"
+        ],
+        [
+          "3047",
+          "282",
+          "EQUIPE CONVERGENCE CARCASSONNE",
+          "Sixtine HARTMANN, Maelle LEBOULLEUX"
+        ],
+        [
+          "3048",
+          "375",
+          "LES SPORTIFS HYBRIDES",
+          "Suzy HELAINE, Quentin MANCEL"
+        ],
+        [
+          "3052",
+          "258",
+          "LES GORGES PROFONDES",
+          "Quentin LEVÉ, Dylan LEVÉ"
+        ],
+        [
+          "3056",
+          "233",
+          "LES GLANDS ISLANDAIS",
+          "Arnaud CLEMENCE, Aurélien DAUSSIN"
+        ],
+        [
+          "3057",
+          "371",
+          "LES TENDONS FRAGILES",
+          "Gautier MASBOU, Francois POIRIER"
+        ],
+        [
+          "3058",
+          "240",
+          "TOUTENKOMBI",
+          "Jean Michel AH KONG, Maxime DUCHENE"
+        ],
+        [
+          "3060",
+          "249",
+          "LES TUILES",
+          "Max VILANOVA, Gaspard POIRE"
+        ],
+        [
+          "3061",
+          "242",
+          "LES MICLO",
+          "François MICLO, Victor MICLO"
+        ],
+        [
+          "3062",
+          "260",
+          "LA MELONNADE",
+          "Tom MOREL JOURNEL, Aihnoa BERECHOECHEA"
+        ],
+        [
+          "3063",
+          "259",
+          "LV",
+          "Leeloo DAGORN, Valentin BÉRET"
+        ],
+        [
+          "3066",
+          "170",
+          "RAID UP CHAVILLE",
+          "Christophe DEVILLERS, Jean-Hervé NEAU"
+        ],
+        [
+          "3067",
+          "165",
+          "MOUSTACHUS BOUFFEUR DE Q",
+          "Hubert DELACHAUX, Thomas SOYEZ"
+        ],
+        [
+          "3068",
+          "213",
+          "TEAM US CENON",
+          "Maxime LABESSOUILLE, Leo LECLERCQ"
+        ],
+        [
+          "3076",
+          "215",
+          "LA PAIRE MYSTÈRE !",
+          "Guillaume SENAN, Jean-Maxime ROBIN LA SPINA"
+        ],
+        [
+          "3077",
+          "166",
+          "TEAM 68",
+          "Eric CHANEL, Philippe PRADIGNAC"
+        ],
+        [
+          "3078",
+          "241",
+          "CARO ET BRRRR UNO",
+          "Bruno MASSE, Caroline HIEBEL"
+        ],
+        [
+          "3079",
+          "217",
+          "LES DUB",
+          "Helene DUBOIS, Alexis DUBOIS"
+        ],
+        [
+          "3080",
+          "300",
+          "LES DAHUS",
+          "Jean Georges ALIX, Gabin ALIX"
+        ],
+        [
+          "3081",
+          "207",
+          "LES FARTAS",
+          "Corentin SIMONNOT, Marc Antoine GRYCAN"
+        ],
+        [
+          "3082",
+          "310",
+          "GOOD VIBES TEAM",
+          "Luis VELASCO, Jean LE GALL"
+        ],
+        [
+          "3083",
+          "225",
+          "CHILL CHILL",
+          "Juliette AUBER, Aymeric TROADEC"
+        ]
+      ]
+    },
+    "#3_CLASSIC DUO": {
+      "#3_Départ 8h00": [
+        [
+          "1003",
+          "188",
+          "LES ZINCROYABLES",
+          "Enora DHAUTEL, Ines DELOUARD"
+        ],
+        [
+          "1004",
+          "366",
+          "LES DARONS",
+          "Jean Francois LABATUT, Jerome FABRY"
+        ],
+        [
+          "1006",
+          "348",
+          "LES NINJAS",
+          "Katel BENJAMIN, Raphael BRIEU"
+        ],
+        [
+          "1007",
+          "374",
+          "LES BRETONS EN CAVALES",
+          "Emma LANDIER, Christophe LANDIER"
+        ],
+        [
+          "1011",
+          "281",
+          "LES NORDISTES",
+          "Patrick ROZANSKI, Romane ROZANSKI"
+        ],
+        [
+          "1013",
+          "204",
+          "LES SPÉS",
+          "David BENOIST, Lilian ROZIE"
+        ],
+        [
+          "1014",
+          "271",
+          "BIBICHE",
+          "Prisca PERIN, Stéphane DUFOUR"
+        ],
+        [
+          "1015",
+          "294",
+          "LES POULPES MOUILLÉS",
+          "Maxence MERLEY, Antoine VAUCHER"
+        ],
+        [
+          "1016",
+          "239",
+          "CADRE DYNAMIQUE",
+          "Clement SERASSE, Jules BENOIT"
+        ],
+        [
+          "1017",
+          "311",
+          "VILGAY",
+          "Cecile VIALETTE, Yohann GAUDUCHEAU"
+        ],
+        [
+          "1018",
+          "234",
+          "REUZE PAPA",
+          "Eric COLPAERT, Jean Marc VIGUIE"
+        ],
+        [
+          "1019",
+          "284",
+          "ROVINCE",
+          "Romain BERTONCINI, Vincent BERTONCINI"
+        ],
+        [
+          "1020",
+          "401",
+          "SWIMSPRITZ",
+          "Sharon DAHAN, Emilie BORJA"
+        ],
+        [
+          "1023",
+          "367",
+          "LES TORTUES",
+          "Joseph ICART, Franck VUAILLAT"
+        ],
+        [
+          "1026",
+          "303",
+          "RESTONSGROUPÉS",
+          "Morgane BERGEROT, Alexandre PLASTRE"
+        ],
+        [
+          "1028",
+          "175",
+          "ANNE ET BEN JAMAIS À LA TRAINE",
+          "Anne ARMAND, Benjamin BONNIER"
+        ],
+        [
+          "1032",
+          "379",
+          "LES POISSONS PANÉS",
+          "Christophe MEDINA, Frédéric BRINSTER"
+        ],
+        [
+          "1034",
+          "378",
+          "A DÉFAUT D'ÊTRE BON SOYONS ÉLÉGANT",
+          "Marc VAUCHEY, Gregory MIANE"
+        ],
+        [
+          "1036",
+          "326",
+          "MOUSS LA BELLE LN",
+          "Julien MOUSTAKIR, Helene COINTET"
+        ],
+        [
+          "1037",
+          "288",
+          "TORUK MAKTO",
+          "Philippe MATHON, Julie MATHON"
+        ],
+        [
+          "1039",
+          "312",
+          "ELLE NAGE LUI COURT",
+          "Cédric LUTSEN, Bonnie LOTHIER"
+        ],
+        [
+          "1041",
+          "173",
+          "POULPES FICTION",
+          "Yann LALLINEC, Marie LALLINEC JACQ"
+        ],
+        [
+          "1043",
+          "383",
+          "BINAL",
+          "Benoît NOEL, Pascal ALARY"
+        ],
+        [
+          "1044",
+          "337",
+          "TEAM SWIMRUNITÖ - COKE",
+          "Corantin DEGEZ, Kevin STEPIEN"
+        ],
+        [
+          "1045",
+          "398",
+          "MELAUGER",
+          "Chloé MELEN, Valentin AMAUGER"
+        ],
+        [
+          "1046",
+          "279",
+          "TEENY ET PENNY",
+          "Juliette MINNI, Maxime BRIGE"
+        ],
+        [
+          "1048",
+          "397",
+          "LES HÉROS DE MAIZAL",
+          "Olivier VOLLE, Jonathan CHAZALET"
+        ],
+        [
+          "1049",
+          "327",
+          "LES GRANDS BLEUS",
+          "Jean Baptiste BONVALET, Vincent SERRE"
+        ],
+        [
+          "1050",
+          "167",
+          "BELLATORES AMPHIBII",
+          "Ferrer Morro PERE, Bartolomé Scheneider INÈS"
+        ],
+        [
+          "1053",
+          "391",
+          "LES YÉTIS 16",
+          "Antoine MARCK, Lucas JOST"
+        ],
+        [
+          "1054",
+          "340",
+          "LES INCONNUS",
+          "Faustine DOMONT, Romain FOREL"
+        ],
+        [
+          "1055",
+          "256",
+          "S&N",
+          "Simon DEFORGE, Nicolas BILLARD"
+        ],
+        [
+          "1056",
+          "211",
+          "LES MACRO GONZ",
+          "Isabel FONTES BAPTISTA, Juliette FLAMENT"
+        ],
+        [
+          "1058",
+          "269",
+          "ON AVAIT DIT DEUX HEURES",
+          "Frederic WUILQUE, Delphine HOCHEDEZ"
+        ],
+        [
+          "1067",
+          "206",
+          "PAS CERTAINS D'Y ARRIVER",
+          "Frederic CAUVIN, Amandine SUGNER"
+        ],
+        [
+          "1068",
+          "333",
+          "LES BEBERT",
+          "Christophe BERGERET, Lise BERGERET"
+        ],
+        [
+          "1071",
+          "335",
+          "TEAM AU DÉFI PAPA ET MAMAN",
+          "Samuel FROGER, Nadia MILLOT"
+        ],
+        [
+          "1072",
+          "389",
+          "LES SALES NAGEUSES",
+          "Celine FLORY, Lucile BERTHET"
+        ],
+        [
+          "1073",
+          "368",
+          "LES HYDRO-TITANS",
+          "Paul ROUSSEL, Thomas RELOT"
+        ],
+        [
+          "1074",
+          "362",
+          "MATASIKO",
+          "Alexandre SAINT-MACARY, Arnaud DE MARCH PORTE"
+        ],
+        [
+          "1075",
+          "394",
+          "LESDIABS",
+          "Sam DIAB, Alex DIAB"
+        ],
+        [
+          "1077",
+          "339",
+          "LES MAMOURS",
+          "Julien GILLON, Émilie RICHARD"
+        ],
+        [
+          "1081",
+          "331",
+          "LES PATATES",
+          "Eva MARIOTTO, Valentin DE BEIL"
+        ],
+        [
+          "1084",
+          "244",
+          "JEANNINE VA AU LAC",
+          "Agathe BRUGGER, Adeline GEROGES"
+        ],
+        [
+          "1086",
+          "168",
+          "DOUBLE S",
+          "Charlène SERRES, Lise SERRES"
+        ],
+        [
+          "1088",
+          "169",
+          "POKER FACES",
+          "Emilie MALLEA, Paul-Laurent PERRET"
+        ],
+        [
+          "1091",
+          "388",
+          "LES FAUX FRÈRES",
+          "Maxime CAMANI, Anthony BRUN"
+        ],
+        [
+          "1092",
+          "275",
+          "EN BALADE",
+          "Valerie LE ROUX, Mari IWAKURA"
+        ],
+        [
+          "1093",
+          "308",
+          "PADDLES PATROUILLE - SWIMRUN MONACO",
+          "Jérôme POTOT, Armand IUREA"
+        ],
+        [
+          "1094",
+          "301",
+          "LE YO & FÉLIX",
+          "Félix ENGELHARD, Yoann PERIGNON"
+        ],
+        [
+          "1097",
+          "355",
+          "FEEL & GOOD",
+          "Yann VANNIEUWENHUYSE, Émilie CHAVIGNAY"
+        ],
+        [
+          "1098",
+          "385",
+          "LES TÊTARDS EN BASKET",
+          "Fabien JOLY, Romain SGARD"
+        ],
+        [
+          "1100",
+          "267",
+          "LES BEAUX FRÈRES",
+          "Filip LANGIEWICZ, Thomas CORNET"
+        ],
+        [
+          "1102",
+          "176",
+          "ROSCELLA",
+          "Pierre Louis HIREL, Sylvain BONACHERA"
+        ],
+        [
+          "1103",
+          "274",
+          "MEILLEURS À L'APÉRO",
+          "Matthieu TROUVÉ, Jimmy COUTANT"
+        ],
+        [
+          "1105",
+          "343",
+          "LES MAXOLOTLS",
+          "Régis FONTANEZ, Maxime PORCU"
+        ],
+        [
+          "1106",
+          "280",
+          "SKINSWIMRUN",
+          "Alexis BARRANCA, Rémi STRIZZOLO"
+        ],
+        [
+          "1107",
+          "243",
+          "LES ROU À LO",
+          "Pierre ROUAULT, Philippe ROUAULT"
+        ],
+        [
+          "1108",
+          "216",
+          "LES 2 LA-BAS",
+          "Guillaume PUISSANT, Thomas DUCHATEL"
+        ],
+        [
+          "1109",
+          "261",
+          "TWO BE FREE",
+          "Stephane HADJIAN, Jérôme MOULIN"
+        ],
+        [
+          "1111",
+          "219",
+          "LES MOTIVÉS DE LA DERNIÈRE MINUTE",
+          "Adrien FREVIL, Fharès MANSRI"
+        ],
+        [
+          "1112",
+          "319",
+          "FLAMINGO RIDERS",
+          "Nicolas GRIERE, Nadège GARGOT"
+        ],
+        [
+          "1114",
+          "358",
+          "NICONU",
+          "Nicolas LE FUR, Emmanuel RUBIO"
+        ],
+        [
+          "1115",
+          "283",
+          "DUMB ET DUMBER",
+          "Clement VERGISON, Maxime LEMAIRE"
+        ],
+        [
+          "1116",
+          "208",
+          "ALBAMAX",
+          "Albane GAUVIN, Max GRUFFY"
+        ],
+        [
+          "1119",
+          "289",
+          "LES PIEDCASSO",
+          "Fanny LAURENÇON, Andy GENARD"
+        ],
+        [
+          "1120",
+          "189",
+          "TENEL",
+          "Natacha DARMET, Emilien JACOB"
+        ],
+        [
+          "1122",
+          "228",
+          "SAINT-JACQUES LA NOIX",
+          "Marie-Alix COZ, Nadal SANTA LORENZO"
+        ],
+        [
+          "1123",
+          "399",
+          "FAMILLE CHOKBAR",
+          "Hugues CHOCART, Lisa CHOCART"
+        ],
+        [
+          "1125",
+          "205",
+          "QUAND TE REVERRAI JE, VERDON MERVEILLEUX",
+          "Aurore DOMANGE, Zoe GARAT"
+        ],
+        [
+          "1127",
+          "307",
+          "LES AÉROGLISSEURS",
+          "Alexis CHAPOLARD, Arnaud DORON"
+        ],
+        [
+          "1128",
+          "400",
+          "G&A",
+          "Gilles DEURVEILHER, Alfred HAWAWINI"
+        ],
+        [
+          "1130",
+          "380",
+          "DAMBRIFRERES",
+          "Matthieu DAMBRICOURT, Pierre DAMBRICOURT"
+        ],
+        [
+          "1132",
+          "332",
+          "WAFAACOLAS",
+          "Wafaâ AMAL, Nicolas RIFAUT"
+        ],
+        [
+          "1133",
+          "393",
+          "LES SMISKIS MALICIEUX",
+          "Antoine DEURVEILHER, Camille DELANNOY"
+        ],
+        [
+          "1134",
+          "172",
+          "ALTUS TEAM",
+          "Thomas PERNETTE, Tanguy PAYOUX DELATTRE"
+        ],
+        [
+          "1135",
+          "257",
+          "LOIRE TO SWIM, BORN TO RUN",
+          "Antoine-Romain ROZWADOWSKI, Cindy VIOLON"
+        ],
+        [
+          "1136",
+          "199",
+          "LES PETITS CŒURS DE L'US CAGNES",
+          "Julia CARRASCO, Alexandre SAINT ALBIN"
+        ],
+        [
+          "1137",
+          "187",
+          "TAGA",
+          "Paul HADJI-LAZARO, Lorenzo TASSISTRO"
+        ],
+        [
+          "1141",
+          "248",
+          "PÈREFILLE",
+          "Frémont AGATHE, Rodolphe FRÉMONT"
+        ],
+        [
+          "1143",
+          "296",
+          "SLOW & FURIOUS",
+          "Francois GUYOT, Randi AYMAN"
+        ],
+        [
+          "1144",
+          "210",
+          "CIGALERUS TEAM",
+          "Norbert LLOBERA BALASCH, Lluís PLANAGUMÀ BRUM"
+        ],
+        [
+          "1145",
+          "352",
+          "ESVL TRIATHLON",
+          "Patrick SOUSSAN, Andre COCHE"
+        ],
+        [
+          "1146",
+          "270",
+          "LA BICHE ET LE DAUPHIN",
+          "Olivier BISELLO, Laura FAIVRE-RAMPANT"
+        ],
+        [
+          "1147",
+          "171",
+          "NO PRESSURE",
+          "Barbara THIERART, Chrystele DUMONT"
+        ],
+        [
+          "1148",
+          "174",
+          "LAIT KANARS BOITEUX",
+          "Nikolaï AVGERINOS, Jade BERGERÈS"
+        ],
+        [
+          "1149",
+          "195",
+          "PAEA BOYZ",
+          "Romain LIGEROT, Louis LIGEROT"
+        ],
+        [
+          "1150",
+          "251",
+          "FRAISE BASILIC",
+          "Eglantine SILVESTRE, Olivier DUTOIT"
+        ],
+        [
+          "1151",
+          "191",
+          "JEFFING",
+          "Jorge CLAY, Sarah HEATHER"
+        ],
+        [
+          "1152",
+          "341",
+          "MELONS",
+          "Melissa EWIN, Owen MCGIRR"
+        ],
+        [
+          "1153",
+          "357",
+          "DUO AUDACIEUX",
+          "Pierig LEBIGRE, Martin ORLIAC"
+        ],
+        [
+          "1154",
+          "297",
+          "AQUABORNIX",
+          "Gabor ERDELYI, Nicolas LORET"
+        ],
+        [
+          "1156",
+          "377",
+          "LES CLIMATOSPORTIFS",
+          "Romain CHAUVET, Guilhem TEISSIER"
+        ],
+        [
+          "1157",
+          "387",
+          "LULIE",
+          "Ludovic DELABRE, Aurélie BOYER"
+        ],
+        [
+          "1159",
+          "298",
+          "CLAIRE ET SYLVAIN",
+          "Claire RIMBAULT, Sylvain RIMBAULT"
+        ],
+        [
+          "1161",
+          "231",
+          "LES COUZES",
+          "Julia GUILLAUME BURNET, Séverine HANNESSE"
+        ],
+        [
+          "1162",
+          "381",
+          "LES SISTERS",
+          "Cassandre CHATARD, Coralie CORNET"
+        ],
+        [
+          "1163",
+          "184",
+          "LES PETITS CANARDS",
+          "Frank GEERTSEN, Benjamin SCHRAUWEN"
+        ],
+        [
+          "1164",
+          "131",
+          "POMPIERS BON OEIL",
+          "Thomas LABOUHEURE, Jérémy MARTINEZ"
+        ],
+        [
+          "1165",
+          "14",
+          "LES KIFFEUR.EUSES",
+          "Tobie VATIMBELLA, Hortense SAILLARD"
+        ],
+        [
+          "1166",
+          "356",
+          "LA TORPILLE ET LA CHÈVRE",
+          "Anouchka DREUX, Gabriela BRIEN"
+        ],
+        [
+          "1167",
+          "150",
+          "ERWAN & VINCENT",
+          "Vincent GAUBERT, Erwan SIGNOR"
+        ],
+        [
+          "1168",
+          "86",
+          "L'INSTANT SWIMRUN",
+          "Emeryc GENNESSON, Matthieu POULLAIN"
+        ],
+        [
+          "1169",
+          "372",
+          "LA REVANCHE DES PENTAPOTES",
+          "Mathieu PAGANINI, Jean Marc MADEC"
+        ],
+        [
+          "1171",
+          "23",
+          "LES COPAINS",
+          "Gauvain JOLY, Edward JEZEQUEL"
+        ]
+      ]
+    },
+    "#4_SPRINT DUO": {
+      "#4_Départ 8h30": [
+        [
+          "108",
+          "408",
+          "40 SPLASH AND RUN",
+          "Elodie HERNANDEZ, Aurélien MOUGENOT"
+        ],
+        [
+          "111",
+          "361",
+          "LES SHAYS",
+          "Fanny PAUL, Maud PAUL"
+        ],
+        [
+          "120",
+          "209",
+          "MENTHALUB",
+          "Olivier LUBRANO, Guillaume MANTE"
+        ],
+        [
+          "121",
+          "182",
+          "LES DORYPHORES DU 13",
+          "François BOISSON, Sophie BRUSTLEIN"
+        ],
+        [
+          "122",
+          "295",
+          "LES TRUITES EN BASKETS",
+          "Axelle GAUCHER, Camille JOUNEAU"
+        ],
+        [
+          "123",
+          "325",
+          "OM2FOREVER",
+          "Philippe ROCHIGNEUX, Alexandre LAURENT"
+        ],
+        [
+          "124",
+          "365",
+          "SWIM RUN & RHUM",
+          "Pierre-Yves MANNHART, Olivier SCHNEIDERLIN"
+        ],
+        [
+          "125",
+          "315",
+          "MARSEILLE BB",
+          "Amelia ASTOUL, Camille GONZALEZ"
+        ],
+        [
+          "126",
+          "252",
+          "EMMA & LIO",
+          "Lionel MESNIER, Emma MESNIER"
+        ],
+        [
+          "127",
+          "185",
+          "LES BELLES(CON)SŒURS",
+          "Maëlle LAVALLÉE, Justine LEFEVRE"
+        ],
+        [
+          "129",
+          "349",
+          "LOS TIGRES 🐯",
+          "Nils MELLET, Mathilde BEAUPÉRIN"
+        ],
+        [
+          "130",
+          "318",
+          "LES P’TITS LOUPS",
+          "Matteo GESNOT, Clara BREZILLON"
+        ],
+        [
+          "131",
+          "373",
+          "LA MACAGNA",
+          "Noël ZININI, Agnés VALLETTA"
+        ],
+        [
+          "133",
+          "192",
+          "LES DÉRAPÉS",
+          "Hamid EL MADANI, Emilie EL MADANI"
+        ],
+        [
+          "134",
+          "277",
+          "BEN&TONY'S",
+          "Anthony DUMAS, Benoit GILBERT"
+        ],
+        [
+          "135",
+          "317",
+          "VINS & CECE",
+          "Celia LOGEAIS, Vincent DEMOZAY"
+        ],
+        [
+          "3084",
+          "336",
+          "LES SUPER BRASSEUSES",
+          "Carole CANABADY, Chloé SARAIDARIAN"
+        ],
+        [
+          "3086",
+          "404",
+          "MIDNIGHT",
+          "Erwan TILLY, Laurie-Anne LANIER"
+        ],
+        [
+          "3087",
+          "363",
+          "LES VINTAGES",
+          "Florence CARATTI, Nathalie BRÉGENT"
+        ],
+        [
+          "3088",
+          "328",
+          "SQUIRREL POWER",
+          "Clementine CANTALUPPI, Fabrice CANTALUPPI"
+        ],
+        [
+          "3090",
+          "306",
+          "TEAM CROQUETTE",
+          "Marion VERSINI, Loic VERSINI"
+        ],
+        [
+          "3091",
+          "345",
+          "LES SIRÈNES DE VITROLLES",
+          "Delphine GREGORIADES, Laetitia MADEC"
+        ],
+        [
+          "3092",
+          "190",
+          "LESLOULOUTESSAONOISES",
+          "Caroline MALUGANI, Florine BELUCHE"
+        ],
+        [
+          "3094",
+          "338",
+          "NUS COMME UN VERDON",
+          "Thomas BARD, Romain CHARLES"
+        ],
+        [
+          "3097",
+          "351",
+          "TEAM PHACOCHÈRES",
+          "Eleonore LEMAIRE, Camille FOULQUIER"
+        ],
+        [
+          "3099",
+          "390",
+          "LES RODRI SISTERS",
+          "Antoinette PATUREL, Clotilde RODRIGUEZ"
+        ],
+        [
+          "3100",
+          "222",
+          "TEAM KO",
+          "Marc KARNAT, Margot OHNIMUS"
+        ],
+        [
+          "3103",
+          "272",
+          "LES MEDUSES",
+          "Lina ROSSÉ, Alexandre RAMON"
+        ],
+        [
+          "3104",
+          "350",
+          "AMPHIBIENS VERTICAUX",
+          "Theo MAUDUIT, Cédric GRASSO"
+        ],
+        [
+          "3106",
+          "384",
+          "LES POTOS",
+          "Alexandre GUILLE, Sébastien MATTIOLI"
+        ],
+        [
+          "3109",
+          "202",
+          "DANCING QUEEEN",
+          "Ludmila SURUN, Jade DATHIS"
+        ],
+        [
+          "3112",
+          "230",
+          "LLAPAPUECH",
+          "Adelie VERSEPUECH, Victor LLAPASSET"
+        ],
+        [
+          "3114",
+          "237",
+          "LA CRAMPE ET L’ENCLUME",
+          "Jamel ITRI, Tiphaine GIROUD"
+        ],
+        [
+          "3115",
+          "322",
+          "JURI'SPLASH",
+          "Sandy BASSET, Julie BAUDOUR"
+        ],
+        [
+          "3118",
+          "178",
+          "YOANN ET PAULINE",
+          "Yoann VERGNIAUD, Pauline BEAUFORT"
+        ],
+        [
+          "3122",
+          "196",
+          "TONTON LAPINE",
+          "Marie J, Sébastien ARTHAUD"
+        ],
+        [
+          "3123",
+          "218",
+          "SOTO BABY",
+          "Thomas PADOVANI, Solenn LE SQUER"
+        ],
+        [
+          "3124",
+          "263",
+          "CHAMBORDLIFE",
+          "Corine SIMON, Damien ROTIER"
+        ],
+        [
+          "3125",
+          "186",
+          "LES HOMARDS PEINARDS",
+          "Simon BELUGOU, Nicolas GAUTIER"
+        ],
+        [
+          "3126",
+          "250",
+          "CARMAT",
+          "Carine CHAUSSON, Matthieu RONIN"
+        ],
+        [
+          "3127",
+          "276",
+          "SARDINES EN COURSE",
+          "Mary SENFAUTE, Vincent ROUGIER"
+        ],
+        [
+          "3129",
+          "386",
+          "LES ORNITHORYNQUES",
+          "Lauriane GROSS, Tristan MARTIN"
+        ],
+        [
+          "3131",
+          "181",
+          "ET MON CUL C'EST DU POULET?",
+          "Susie LARDY, Guillaume HELIAS"
+        ],
+        [
+          "3132",
+          "201",
+          "SELLES & POIVRE",
+          "Cecile COLLE CECILE, Cyril COLLE"
+        ],
+        [
+          "3133",
+          "265",
+          "LES TARENTULES",
+          "Raphaël ARTERO, Vincent JOURDIN"
+        ],
+        [
+          "3134",
+          "346",
+          "JEUNE ET COOL",
+          "Elise AMBLARD, Maud TISNE"
+        ],
+        [
+          "3135",
+          "324",
+          "FLIP FLOP FAMILY",
+          "Alexandra CASONI, Thomas SYOEN"
+        ],
+        [
+          "3136",
+          "247",
+          "BB BP PA",
+          "Alexia VIGIER, Pauline DEVERLANGES"
+        ],
+        [
+          "3137",
+          "359",
+          "ARECHE DE TRAÎNER !",
+          "Hortense DE NICOLAY, Anne-Sophie DUPARC"
+        ],
+        [
+          "3139",
+          "364",
+          "MANDARINS MIXTE",
+          "Laurent VALETTE, Amélie VALENTIN"
+        ],
+        [
+          "3140",
+          "321",
+          "HAZELTEAM",
+          "Lina HOENIG, Marc MOULIN"
+        ],
+        [
+          "3141",
+          "353",
+          "EST CE QUE L'ON PEUT UTILISER LES PALMES",
+          "Pierre COUTURIER, Valentine CAILLEAUX"
+        ],
+        [
+          "3142",
+          "395",
+          "RINAUBRO",
+          "Clément RINAUDO, Clément RINAUDO"
+        ],
+        [
+          "3143",
+          "291",
+          "MIAOU",
+          "Paul DEFILLION, Margaux TOURON"
+        ],
+        [
+          "3145",
+          "293",
+          "CDM",
+          "Alexis RANNOU, David GONZALEZ DE CABO"
+        ],
+        [
+          "3146",
+          "179",
+          "SIS & BRO",
+          "Benjamin AUDON, Céline AUDON"
+        ],
+        [
+          "3147",
+          "255",
+          "LES TIN-RIC",
+          "Tina ANDRÉ, Éric ANDRÉ"
+        ],
+        [
+          "3148",
+          "316",
+          "ALEX & CO",
+          "Coline DUPRAS, Alexandre COURTIAU"
+        ],
+        [
+          "3149",
+          "264",
+          "NARPON",
+          "Christophe NARPON, Nathan NARPON"
+        ],
+        [
+          "3150",
+          "183",
+          "COCKS EN PROVENCE",
+          "Pierre PILETTE, Robin CHAMBON"
+        ]
+      ]
+    },
+    "#5_SPRINT RELAIS": {
+      "#5_Départ 8h30": [
+        [
+          "101",
+          "405",
+          "LES CH'TARS DE MOUT",
+          "Naig BLANDIN, Elouan BLANDIN, Meven BLANDIN"
+        ],
+        [
+          "102",
+          "407",
+          "G 2 O",
+          "Ollivier LABBE, Olivier CATALA FRASQUET, Geoffroy GUICHARD"
+        ],
+        [
+          "103",
+          "412",
+          "LES COMPLICES DE LA SWIM ACADEMY NÎMOISE",
+          "Violaine UYUNI REYES, Martine BERNARD, Jacques CARVENNEC"
+        ],
+        [
+          "104",
+          "410",
+          "PETITS PAS SEIN-PAS 2",
+          "Lucille LAURENT, Hélène LAURENT, Nathalie LAO"
+        ],
+        [
+          "105",
+          "406",
+          "PETITS PAS SEIN-PAS 1",
+          "Aurelie LEMETAIS, Pauline LE GUILLOUS, Caroline COUAILLIER"
+        ],
+        [
+          "106",
+          "411",
+          "LES ABBOULELABESTE",
+          "Marie ABBOUD, Tarciso NORDESTE, Cedric LE LABOUSSE"
+        ],
+        [
+          "109",
+          "409",
+          "QU'EST-CE QU'ON FOUT LÀ?",
+          "Anthony BOURDIER, Claire BRIENT, Eliette MARCHAND"
+        ]
+      ]
+    }
+  },
+  "DataFields": [
+    "BIB",
+    "ID",
+    "ucase([NomEquipe])",
+    "AfficherEquipiers"
+  ],
+  "mid": 415218,
+  "groupFilters": [
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": [
+        "ULTRA",
+        "HALF",
+        "CLASSIC DUO",
+        "SPRINT DUO",
+        "SPRINT RELAIS"
+      ]
+    },
+    {
+      "Type": 2,
+      "Value": "",
+      "Values": [
+        "Féminin",
+        "Masculin",
+        "Mixte"
+      ]
+    },
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": null
+    }
+  ],
+  "comments": {
+    "6": 1,
+    "13": 1,
+    "17": 5,
+    "18": 1,
+    "22": 1,
+    "28": 1,
+    "45": 1,
+    "66": 1,
+    "67": 2,
+    "74": 6,
+    "77": 2,
+    "86": 1,
+    "94": 1,
+    "97": 1,
+    "99": 18,
+    "101": 1,
+    "112": 1,
+    "123": 3,
+    "127": 1,
+    "129": 1,
+    "161": 1,
+    "173": 1,
+    "194": 2,
+    "202": 6,
+    "205": 1,
+    "212": 2,
+    "213": 4,
+    "214": 3,
+    "215": 5,
+    "221": 4,
+    "231": 1,
+    "232": 2,
+    "236": 10,
+    "245": 5,
+    "254": 1,
+    "262": 2,
+    "267": 3,
+    "278": 2,
+    "280": 2,
+    "284": 1,
+    "285": 3,
+    "297": 1,
+    "299": 12,
+    "300": 1,
+    "313": 10,
+    "342": 1,
+    "362": 1,
+    "376": 6,
+    "381": 3,
+    "410": 1
+  },
+  "LiveUpdateInterval": 10,
+  "Favorites": null
+}

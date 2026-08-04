@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "pid": "266",
+  "splitConfig": "01000000000",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": false,
+    "genderRank": false,
+    "ageGroupRank": false,
+    "tod": false,
+    "gun": false,
+    "chip": false,
+    "sector": false,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": [
+      {
+        "name": "Partis",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Hameau du Pont - 4km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Marzols - 8km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "La Cadeno - 10km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Parking de l'Etoile - 13km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Route de la Palud - 15km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Plein Voir - 20km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Colle de l'Olivier - 25km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Galetas - 28km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Aiguines - 33km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Les Bastides - 38km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bauduen - 44km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Sulagran - 48km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Club de Voile de Bauduen - 50km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bauduen - 51km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Clos de Rouvier - 57km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Pré-arrivée",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Arrivée",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

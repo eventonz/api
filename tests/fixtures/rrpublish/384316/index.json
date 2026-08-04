@@ -1,0 +1,31 @@
+{
+  "rrId": "384316",
+  "recordedAt": "2026-08-04T18:28:43.871Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "01 - AFFICHAGE|LIVE EXTRA",
+      "contest": "0"
+    },
+    {
+      "file": "list-1.json",
+      "listname": "01 - AFFICHAGE|Final",
+      "contest": "0"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "1",
+      "detailsPath": "details0",
+      "legacyPath": "RRPublish/data",
+      "splitsPath": "RRPublish/data"
+    },
+    {
+      "pid": "1785",
+      "detailsPath": "details0",
+      "legacyPath": "RRPublish/data",
+      "splitsPath": "RRPublish/data"
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

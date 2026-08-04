@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "pid": "2808",
+  "splitConfig": "01000000000",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": false,
+    "genderRank": false,
+    "ageGroupRank": false,
+    "tod": false,
+    "gun": false,
+    "chip": false,
+    "sector": false,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": [
+      {
+        "name": "Start",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Swim - Finish Lap 1 - 750 m",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Swim Finish",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike Start",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike - Côte d'Or - 10,3 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike - Ponton de baignade - 18 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike - Côte d'Or - 29,3 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike - Ponton de baignade - 37 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Bike Finish",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run Start",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Rampe de Cologny - 0,7 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Jardins - 2,7 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Feed - 3,7 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Finish Lap 1 - 4,9 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Rampe de Cologny - 5,9 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Jardins - 7,9 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Run - Feed - 8,9 km",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Home Stretch",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      },
+      {
+        "name": "Finish",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

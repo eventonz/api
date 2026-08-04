@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "rrId": "376606",
+  "lang": "en",
+  "event": {
+    "name": "Swimrunman - Gorges du Verdon",
+    "eventOver": true,
+    "accentColor": "#3000fc"
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": true,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "1",
+      "name": "ULTRA"
+    },
+    {
+      "id": "2",
+      "name": "HALF"
+    },
+    {
+      "id": "3",
+      "name": "CLASSIC DUO"
+    },
+    {
+      "id": "4",
+      "name": "CLASSIC SOLO"
+    },
+    {
+      "id": "5",
+      "name": "SPRINT DUO"
+    },
+    {
+      "id": "6",
+      "name": "SPRINT RELAIS"
+    },
+    {
+      "id": "7",
+      "name": "SPRINT SOLO"
+    }
+  ],
+  "lists": [
+    {
+      "id": "AB625B",
+      "name": "01-Chronométrage|01-Classement général DUO",
+      "displayName": "Classement Général",
+      "contest": "1",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "19246D",
+      "name": "01-Chronométrage|01-Classement général DUO",
+      "displayName": "Classement Général",
+      "contest": "2",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "CB9ED5",
+      "name": "01-Chronométrage|01-Classement général DUO",
+      "displayName": "Classement Général",
+      "contest": "3",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "38CC0C",
+      "name": "01-Chronométrage|02-Classement général SOLO",
+      "displayName": "Classement Général",
+      "contest": "4",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "CD13DB",
+      "name": "01-Chronométrage|01-Classement général DUO",
+      "displayName": "Classement Général",
+      "contest": "5",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "BBAAD7",
+      "name": "01-Chronométrage|01-Classement général DUO",
+      "displayName": "Classement Général",
+      "contest": "6",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "9B5431",
+      "name": "01-Chronométrage|02-Classement général SOLO",
+      "displayName": "Classement Général",
+      "contest": "7",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "rrId": "405141",
+  "recordedAt": "2026-08-04T18:28:42.306Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "01-Chronométrage|Final",
+      "contest": "0"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "2171",
+      "detailsPath": "resultatpart",
+      "legacyPath": "results",
+      "splitsPath": null
+    },
+    {
+      "pid": "2776",
+      "detailsPath": "resultatpart",
+      "legacyPath": "results",
+      "splitsPath": null
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

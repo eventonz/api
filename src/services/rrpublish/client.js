@@ -160,7 +160,7 @@ function applyOverrides(rrId, config, overrides) {
  * Proxy one GET. `rawPathAndQuery` is everything after /v1/rrpublish/{rrId}/.
  * Returns { status, contentType, body, cache: 'HIT'|'MISS', stale?: true }.
  */
-async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}) {
+async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}, opts = {}) {
   const qIdx  = rawPathAndQuery.indexOf('?');
   const path  = qIdx === -1 ? rawPathAndQuery : rawPathAndQuery.slice(0, qIdx);
   const query = qIdx === -1 ? '' : rawPathAndQuery.slice(qIdx + 1);
@@ -172,7 +172,9 @@ async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}) {
   const conditional = !!(requestHeaders['if-none-match'] || requestHeaders['if-modified-since']);
 
   const rspKey = keyRsp(rrId, rawPathAndQuery);
-  if (!conditional) {
+  // opts.bypassCache skips the cache READ (the fresh result is still written)
+  // — used by the normalizers to re-mint a lagging RR session key.
+  if (!conditional && !opts.bypassCache) {
     const cached = await redis.get(rspKey).catch(() => null);
     if (cached) {
       observe(rrId, 'cache_hits');

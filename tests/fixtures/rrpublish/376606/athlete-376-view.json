@@ -1,0 +1,403 @@
+{
+  "Elements": [
+    {
+      "ID": "WvOb6S_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "WvOb6S",
+          "Type": "legs",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": false,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false,
+            "ShowPace": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel1",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "kUBwb5_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "kUBwb5",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": false,
+            "ShowSectorTime": true,
+            "ShowPace": false,
+            "ShowOverallRank": true,
+            "ShowGenderRank": false,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "eJEu8c_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "eJEu8c",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "CertificateSets": [
+              {
+                "Mode": "",
+                "Contest": "1",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "2",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "4",
+                "Picture": "",
+                "Name": "DiplomeSolo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "3",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "5",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "6",
+                "Picture": "",
+                "Name": "DiplomeSolo",
+                "ShowAs": ""
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "xZ76nP_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "xZ76nP",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [
+      {
+        "GUID": "8bbe1674-ecc2-4c27-80ca-49b6f421240d",
+        "TimeStamp": "2026-05-10T11:56:33Z",
+        "Sender": {
+          "DisplayName": "Maman",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "Bravo mon poulet, Maman fière de toi ❤️❤️❤️",
+        "Likes": 0,
+        "Liked": false
+      },
+      {
+        "GUID": "01be705e-d563-4125-b2ec-250e3a73c309",
+        "TimeStamp": "2026-05-10T11:47:09Z",
+        "Sender": {
+          "DisplayName": "Ju",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "Alors c’est bon winners??",
+        "Likes": 0,
+        "Liked": false
+      },
+      {
+        "GUID": "e0d80d92-1567-4ba1-860d-e54cc93e32be",
+        "TimeStamp": "2026-05-10T11:38:02Z",
+        "Sender": {
+          "DisplayName": "Jadou",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "C'est bon ils sont laaaaaaa 💪🏽🏆",
+        "Likes": 0,
+        "Liked": false
+      },
+      {
+        "GUID": "4e5289cd-bb8c-432f-8fa2-d57547d56b5c",
+        "TimeStamp": "2026-05-10T11:26:36Z",
+        "Sender": {
+          "DisplayName": "Ju",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "Mais il vous arrive quoi !?",
+        "Likes": 0,
+        "Liked": false
+      },
+      {
+        "GUID": "9d83acc5-a607-45fb-acd1-0e6cef499027",
+        "TimeStamp": "2026-05-10T07:40:06Z",
+        "Sender": {
+          "DisplayName": "Adam",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "Quand je serai grand je veux être aussi fort que vous 🥹😍",
+        "Likes": 0,
+        "Liked": false
+      },
+      {
+        "GUID": "353ce783-83c8-4d8f-8163-d3c696772004",
+        "TimeStamp": "2026-05-10T06:30:12Z",
+        "Sender": {
+          "DisplayName": "Jadou",
+          "PPV": 0
+        },
+        "Subject": "-",
+        "Comment": "Gooooo les meilleurs ❤️💪🏽",
+        "Likes": 0,
+        "Liked": false
+      }
+    ],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Partis",
+          "Exists": true,
+          "TOD": "06:00:07",
+          "Gun": "00:02",
+          "RO": 3
+        },
+        {
+          "Name": "Hameau du Pont - 4km",
+          "Exists": true,
+          "TOD": "06:39:54",
+          "Gun": "39:49",
+          "Sector": "39:48",
+          "RO": 2
+        },
+        {
+          "Name": "Marzols - 8km",
+          "Exists": true,
+          "TOD": "07:04:49",
+          "Gun": "1:04:44",
+          "Sector": "24:55",
+          "RO": 1
+        },
+        {
+          "Name": "La Cadeno - 10km",
+          "Exists": true,
+          "TOD": "07:21:44",
+          "Gun": "1:21:39",
+          "Sector": "16:55",
+          "RO": 3
+        },
+        {
+          "Name": "Parking de l'Etoile - 13km",
+          "Exists": true,
+          "TOD": "07:45:13",
+          "Gun": "1:45:08",
+          "Sector": "23:29",
+          "RO": 3
+        },
+        {
+          "Name": "Route de la Palud - 15km",
+          "Exists": true,
+          "TOD": "07:56:43",
+          "Gun": "1:56:38",
+          "Sector": "11:30",
+          "RO": 3
+        },
+        {
+          "Name": "Plein Voir - 20km",
+          "Exists": true,
+          "TOD": "08:40:49",
+          "Gun": "2:40:44",
+          "Sector": "44:06",
+          "RO": 1
+        },
+        {
+          "Name": "Colle de l'Olivier - 25km",
+          "Exists": true,
+          "TOD": "09:10:13",
+          "Gun": "3:10:08",
+          "Sector": "29:24",
+          "RO": 1
+        },
+        {
+          "Name": "Galetas - 28km",
+          "Exists": true,
+          "TOD": "09:48:14",
+          "Gun": "3:48:09",
+          "Sector": "38:01",
+          "RO": 1
+        },
+        {
+          "Name": "Aiguines - 33km",
+          "Exists": true,
+          "TOD": "10:16:40",
+          "Gun": "4:16:35",
+          "Sector": "28:26",
+          "RO": 1
+        },
+        {
+          "Name": "Les Bastides - 38km",
+          "Exists": true,
+          "TOD": "10:41:26",
+          "Gun": "4:41:21",
+          "Sector": "24:46",
+          "RO": 1
+        },
+        {
+          "Name": "Bauduen - 44km",
+          "Exists": true,
+          "TOD": "11:34:11",
+          "Gun": "5:34:06",
+          "Sector": "52:45",
+          "RO": 1
+        },
+        {
+          "Name": "Sulagran - 48km",
+          "Exists": true,
+          "TOD": "12:01:53",
+          "Gun": "6:01:48",
+          "Sector": "27:42",
+          "RO": 1
+        },
+        {
+          "Name": "Club de Voile de Bauduen - 50km",
+          "Exists": true,
+          "TOD": "12:40:50",
+          "Gun": "6:40:45",
+          "Sector": "38:57",
+          "RO": 2
+        },
+        {
+          "Name": "Bauduen - 51km",
+          "Exists": false,
+          "TOD": "12:48:47",
+          "Gun": "6:48:41",
+          "Sector": "07:56",
+          "RO": -1
+        },
+        {
+          "Name": "Clos de Rouvier - 57km",
+          "Exists": true,
+          "TOD": "13:26:25",
+          "Gun": "7:26:20",
+          "Sector": "37:39",
+          "RO": 1
+        },
+        {
+          "Name": "Pré-arrivée",
+          "Exists": true,
+          "TOD": "13:50:47",
+          "Gun": "7:50:42",
+          "Sector": "24:22",
+          "RO": 1
+        },
+        {
+          "Name": "Arrivée",
+          "Exists": true,
+          "TOD": "13:55:38",
+          "Gun": "7:55:33",
+          "Sector": "04:50",
+          "RO": 1
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": [
+      {
+        "label": "Diplome Duo",
+        "cs": "Diplome Duo",
+        "pic": ""
+      }
+    ],
+    "IsFavorite": false
+  },
+  "key": "f177a7cb65798d76db2ea945083182f3",
+  "LiveUpdateInterval": 10,
+  "MID": 415218,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73726,
+  "PID": 376,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "#3000fc",
+  "User": null
+}

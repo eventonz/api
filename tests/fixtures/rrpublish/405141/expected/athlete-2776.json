@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "pid": "2776",
+  "splitConfig": "01011111100",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": true,
+    "ageGroupRank": true,
+    "tod": true,
+    "gun": true,
+    "chip": true,
+    "sector": false,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "Chip",
+          "label": "Race time"
+        },
+        {
+          "key": "TOD",
+          "label": "TOD"
+        },
+        {
+          "key": "Gun",
+          "label": "Gun"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        },
+        {
+          "key": "RA",
+          "label": "Category"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Partis",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Chip": "",
+          "TOD": "07:04:59",
+          "Gun": "00:00",
+          "RO": "",
+          "RG": "",
+          "RA": ""
+        }
+      },
+      {
+        "name": "Ravitaillement Méaudre - Place Lacmaria - 10 km",
+        "time": "1:04:00",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Chip": "1:04:00",
+          "TOD": "08:08:59",
+          "Gun": "1:04:00",
+          "RO": "",
+          "RG": "",
+          "RA": ""
+        }
+      },
+      {
+        "name": "Ravitaillement Autrans - Place Julien Bertrand - 18 km",
+        "time": "1:54:09",
+        "segment": "50:09",
+        "delta": null,
+        "values": {
+          "Chip": "1:54:09",
+          "TOD": "08:59:08",
+          "Gun": "1:54:09",
+          "RO": "",
+          "RG": "",
+          "RA": ""
+        }
+      },
+      {
+        "name": "Auberge Croix Perrin - 29 km",
+        "time": "3:11:59",
+        "segment": "1:17:50",
+        "delta": null,
+        "values": {
+          "Chip": "3:11:59",
+          "TOD": "10:16:58",
+          "Gun": "3:11:59",
+          "RO": "294",
+          "RG": "241",
+          "RA": "91"
+        }
+      },
+      {
+        "name": "Scierie Mazet Toiture - 37 km",
+        "time": "3:59:28",
+        "segment": "47:29",
+        "delta": 10,
+        "values": {
+          "Chip": "3:59:28",
+          "TOD": "11:04:27",
+          "Gun": "3:59:28",
+          "RO": "284",
+          "RG": "232",
+          "RA": "87"
+        }
+      },
+      {
+        "name": "Dernière ligne droite",
+        "time": "4:37:58",
+        "segment": "38:30",
+        "delta": 6,
+        "values": {
+          "Chip": "4:37:58",
+          "TOD": "11:42:57",
+          "Gun": "4:37:58",
+          "RO": "278",
+          "RG": "229",
+          "RA": "87"
+        }
+      },
+      {
+        "name": "Arrivée - 42 km",
+        "time": "4:38:34",
+        "segment": "0:36",
+        "delta": -3,
+        "values": {
+          "Chip": "4:38:34",
+          "TOD": "11:43:33",
+          "Gun": "4:38:34",
+          "RO": "281",
+          "RG": "233",
+          "RA": "89"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

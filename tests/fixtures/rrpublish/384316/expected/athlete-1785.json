@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "pid": "1785",
+  "splitConfig": "01000000000",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": false,
+    "genderRank": false,
+    "ageGroupRank": false,
+    "tod": false,
+    "gun": false,
+    "chip": false,
+    "sector": false,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": [
+      {
+        "name": "Arrivée - km 12,7",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {}
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

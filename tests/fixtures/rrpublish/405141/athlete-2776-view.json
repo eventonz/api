@@ -1,0 +1,209 @@
+{
+  "Elements": [
+    {
+      "ID": "4LQ70G",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "lcj8jf",
+          "Type": "field",
+          "Styles": "font-weight:bold;font-size:35px;;color:var(--brandColorDark);",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "Field": "DNS",
+            "DisplayMode": "",
+            "Title": "",
+            "TitleStyles": [],
+            "TitleDynamicFormat": "",
+            "Alignment": 2
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "",
+        "TitleStyles": null,
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "x6EOzJ",
+      "Type": "columns",
+      "Styles": "margin:0;border-left:10px solid var(--brandColorDark);",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "sWRZAN",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": true,
+            "ShowSectorTime": false,
+            "ShowPace": false,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": true
+          }
+        }
+      ],
+      "Config": {}
+    },
+    {
+      "ID": "Sy5U1R",
+      "Type": "text",
+      "Styles": "font-weight:bold;",
+      "ClassName": "",
+      "Children": null,
+      "Config": {
+        "Text": "",
+        "Alignment": 1
+      }
+    },
+    {
+      "ID": "AtnnJ1_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "AtnnJ1",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Partis",
+          "Exists": false,
+          "TOD": "07:04:59",
+          "Gun": "00:00",
+          "RO": -1,
+          "RG": -1,
+          "RA": -1,
+          "ROM": -1,
+          "RGM": -1,
+          "RAM": -1
+        },
+        {
+          "Name": "Ravitaillement Méaudre - Place Lacmaria - 10 km",
+          "Exists": false,
+          "TOD": "08:08:59",
+          "Gun": "1:04:00",
+          "Chip": "1:04:00",
+          "RO": -1,
+          "RG": -1,
+          "RA": -1,
+          "ROM": -1,
+          "RGM": -1,
+          "RAM": -1
+        },
+        {
+          "Name": "Ravitaillement Autrans - Place Julien Bertrand - 18 km",
+          "Exists": false,
+          "TOD": "08:59:08",
+          "Gun": "1:54:09",
+          "Chip": "1:54:09",
+          "RO": -1,
+          "RG": -1,
+          "RA": -1,
+          "ROM": -1,
+          "RGM": -1,
+          "RAM": -1
+        },
+        {
+          "Name": "Auberge Croix Perrin - 29 km",
+          "Exists": true,
+          "TOD": "10:16:58",
+          "Gun": "3:11:59",
+          "Chip": "3:11:59",
+          "RO": 294,
+          "RG": 241,
+          "RA": 91,
+          "ROM": 487,
+          "RGM": 373,
+          "RAM": 136
+        },
+        {
+          "Name": "Scierie Mazet Toiture - 37 km",
+          "Exists": true,
+          "TOD": "11:04:27",
+          "Gun": "3:59:28",
+          "Chip": "3:59:28",
+          "RO": 284,
+          "RG": 232,
+          "RA": 87,
+          "ROM": 482,
+          "RGM": 368,
+          "RAM": 133
+        },
+        {
+          "Name": "Dernière ligne droite",
+          "Exists": true,
+          "TOD": "11:42:57",
+          "Gun": "4:37:58",
+          "Chip": "4:37:58",
+          "RO": 278,
+          "RG": 229,
+          "RA": 87,
+          "ROM": 482,
+          "RGM": 367,
+          "RAM": 134
+        },
+        {
+          "Name": "Arrivée - 42 km",
+          "Exists": true,
+          "TOD": "11:43:33",
+          "Gun": "4:38:34",
+          "Chip": "4:38:34",
+          "RO": 281,
+          "RG": 233,
+          "RA": 89,
+          "ROM": 488,
+          "RGM": 373,
+          "RAM": 136
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "5edc776cfb219447cdb766bcf7bb4415",
+  "LiveUpdateInterval": 10,
+  "MID": 242121,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73723,
+  "PID": 2776,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "#439670",
+  "User": null
+}

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "pid": "376",
+  "splitConfig": "01010011010",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": false,
+    "ageGroupRank": false,
+    "tod": true,
+    "gun": true,
+    "chip": false,
+    "sector": true,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "TOD",
+          "label": "TOD"
+        },
+        {
+          "key": "Gun",
+          "label": "Gun"
+        },
+        {
+          "key": "Sector",
+          "label": "Sector"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Partis",
+        "time": "00:02",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "TOD": "06:00:07",
+          "Gun": "00:02",
+          "Sector": "",
+          "RO": "3"
+        }
+      },
+      {
+        "name": "Hameau du Pont - 4km",
+        "time": "39:49",
+        "segment": "39:47",
+        "delta": 1,
+        "values": {
+          "TOD": "06:39:54",
+          "Gun": "39:49",
+          "Sector": "39:48",
+          "RO": "2"
+        }
+      },
+      {
+        "name": "Marzols - 8km",
+        "time": "1:04:44",
+        "segment": "24:55",
+        "delta": 1,
+        "values": {
+          "TOD": "07:04:49",
+          "Gun": "1:04:44",
+          "Sector": "24:55",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "La Cadeno - 10km",
+        "time": "1:21:39",
+        "segment": "16:55",
+        "delta": -2,
+        "values": {
+          "TOD": "07:21:44",
+          "Gun": "1:21:39",
+          "Sector": "16:55",
+          "RO": "3"
+        }
+      },
+      {
+        "name": "Parking de l'Etoile - 13km",
+        "time": "1:45:08",
+        "segment": "23:29",
+        "delta": 0,
+        "values": {
+          "TOD": "07:45:13",
+          "Gun": "1:45:08",
+          "Sector": "23:29",
+          "RO": "3"
+        }
+      },
+      {
+        "name": "Route de la Palud - 15km",
+        "time": "1:56:38",
+        "segment": "11:30",
+        "delta": 0,
+        "values": {
+          "TOD": "07:56:43",
+          "Gun": "1:56:38",
+          "Sector": "11:30",
+          "RO": "3"
+        }
+      },
+      {
+        "name": "Plein Voir - 20km",
+        "time": "2:40:44",
+        "segment": "44:06",
+        "delta": 2,
+        "values": {
+          "TOD": "08:40:49",
+          "Gun": "2:40:44",
+          "Sector": "44:06",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Colle de l'Olivier - 25km",
+        "time": "3:10:08",
+        "segment": "29:24",
+        "delta": 0,
+        "values": {
+          "TOD": "09:10:13",
+          "Gun": "3:10:08",
+          "Sector": "29:24",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Galetas - 28km",
+        "time": "3:48:09",
+        "segment": "38:01",
+        "delta": 0,
+        "values": {
+          "TOD": "09:48:14",
+          "Gun": "3:48:09",
+          "Sector": "38:01",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Aiguines - 33km",
+        "time": "4:16:35",
+        "segment": "28:26",
+        "delta": 0,
+        "values": {
+          "TOD": "10:16:40",
+          "Gun": "4:16:35",
+          "Sector": "28:26",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Les Bastides - 38km",
+        "time": "4:41:21",
+        "segment": "24:46",
+        "delta": 0,
+        "values": {
+          "TOD": "10:41:26",
+          "Gun": "4:41:21",
+          "Sector": "24:46",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Bauduen - 44km",
+        "time": "5:34:06",
+        "segment": "52:45",
+        "delta": 0,
+        "values": {
+          "TOD": "11:34:11",
+          "Gun": "5:34:06",
+          "Sector": "52:45",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Sulagran - 48km",
+        "time": "6:01:48",
+        "segment": "27:42",
+        "delta": 0,
+        "values": {
+          "TOD": "12:01:53",
+          "Gun": "6:01:48",
+          "Sector": "27:42",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Club de Voile de Bauduen - 50km",
+        "time": "6:40:45",
+        "segment": "38:57",
+        "delta": -1,
+        "values": {
+          "TOD": "12:40:50",
+          "Gun": "6:40:45",
+          "Sector": "38:57",
+          "RO": "2"
+        }
+      },
+      {
+        "name": "Bauduen - 51km",
+        "time": "6:48:41",
+        "segment": "7:56",
+        "delta": null,
+        "values": {
+          "TOD": "12:48:47",
+          "Gun": "6:48:41",
+          "Sector": "07:56",
+          "RO": ""
+        }
+      },
+      {
+        "name": "Clos de Rouvier - 57km",
+        "time": "7:26:20",
+        "segment": "37:39",
+        "delta": null,
+        "values": {
+          "TOD": "13:26:25",
+          "Gun": "7:26:20",
+          "Sector": "37:39",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Pré-arrivée",
+        "time": "7:50:42",
+        "segment": "24:22",
+        "delta": 0,
+        "values": {
+          "TOD": "13:50:47",
+          "Gun": "7:50:42",
+          "Sector": "24:22",
+          "RO": "1"
+        }
+      },
+      {
+        "name": "Arrivée",
+        "time": "7:55:33",
+        "segment": "4:51",
+        "delta": 0,
+        "values": {
+          "TOD": "13:55:38",
+          "Gun": "7:55:33",
+          "Sector": "04:50",
+          "RO": "1"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

@@ -1,0 +1,911 @@
+{
+  "schemaVersion": 1,
+  "tab": "results",
+  "list": {
+    "name": "01-Chronométrage|01-Classement général DUO",
+    "displayName": "Classement Général",
+    "contest": "1",
+    "leaderCount": 0
+  },
+  "resultLabel": "Tps Total",
+  "filters": [
+    {
+      "slot": 0,
+      "label": "",
+      "showAll": true,
+      "showIgnore": true,
+      "options": [
+        "ULTRA"
+      ],
+      "selected": ""
+    }
+  ],
+  "groups": [
+    {
+      "key": "#1_ULTRA",
+      "labels": [
+        "ULTRA"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "pid": "376",
+          "bib": "68",
+          "name": "TEAM MITJAFIGA",
+          "time": "7:55:33",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "1."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Jean-Baptiste MITJAVILLE, Cédric FIGAROLA"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (1.)"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "pid": "254",
+          "bib": "36",
+          "name": "LES FADAS DU VERDON",
+          "time": "8:01:32",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "2."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Robin BLANCHARD, Thierry ELLENA"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (2.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+05:59"
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "pid": "194",
+          "bib": "65",
+          "name": "LES KINÉS GIVRÉS",
+          "time": "8:17:30",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "3."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Mickael BARBÉ, Pierre MEYER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (3.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+21:57"
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "pid": "238",
+          "bib": "33",
+          "name": "TWO BOYZ ONE CUP",
+          "time": "8:32:18",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "4."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Louis KIELWASSER, Hugo KIELWASSER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (4.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+36:45"
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "pid": "299",
+          "bib": "48",
+          "name": "TIB&SQUAL",
+          "time": "8:47:09",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "5."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Thibault POCLET, Pascal DURNIAK"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (5.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+51:36"
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "pid": "313",
+          "bib": "22",
+          "name": "UN QUI NAGE UN QUI COURT",
+          "time": "8:56:08",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "6."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Matteo KOZLOWSKI, Jérémy GUÉRIN"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (6.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:00:35"
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "pid": "330",
+          "bib": "59",
+          "name": "BANANAS TEAM",
+          "time": "8:57:12",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "7."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Benjamin SOULIÉ, Agnès ROZENBERG"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Mixte (1.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:01:39"
+            }
+          ]
+        },
+        {
+          "position": 8,
+          "pid": "268",
+          "bib": "29",
+          "name": "ZUGSTON, WE HAVE A BEAUBLEM !",
+          "time": "9:02:31",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "8."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Emile BEAU, Alexandre ZUGER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (7.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:06:58"
+            }
+          ]
+        },
+        {
+          "position": 9,
+          "pid": "396",
+          "bib": "61",
+          "name": "LES MEUFS CHAUDES DE TA RÉGION",
+          "time": "9:14:10",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "9."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Henri LE BOZEC, Yanis SALAH"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (8.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:18:37"
+            }
+          ]
+        },
+        {
+          "position": 10,
+          "pid": "245",
+          "bib": "15",
+          "name": "MYSWIM",
+          "time": "9:16:43",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "10."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Guillaume CRESPEL, Jonathan HERCELIN"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (9.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:21:10"
+            }
+          ]
+        },
+        {
+          "position": 11,
+          "pid": "360",
+          "bib": "66",
+          "name": "TEAM 1990",
+          "time": "9:34:13",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "11."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Céline HUMBERT, Antoine BOISSIER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Mixte (2.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:38:40"
+            }
+          ]
+        },
+        {
+          "position": 12,
+          "pid": "224",
+          "bib": "19",
+          "name": "TEAM ENVOL MATH ET YANIS",
+          "time": "9:38:19",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "12."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Yanis LINGE, Matthieu ERNOUT"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (10.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:42:46"
+            }
+          ]
+        },
+        {
+          "position": 13,
+          "pid": "221",
+          "bib": "40",
+          "name": "FOREST ET FLIPPER",
+          "time": "9:48:34",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "13."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Aurélien JOUNIAUX, Maxence LEMOINE"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (11.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+1:53:01"
+            }
+          ]
+        },
+        {
+          "position": 14,
+          "pid": "212",
+          "bib": "35",
+          "name": "NEEDLES",
+          "time": "10:03:45",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "14."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Yves THOMASSIN, Nicolas BOCCHECIAMPE"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (12.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:08:12"
+            }
+          ]
+        },
+        {
+          "position": 15,
+          "pid": "198",
+          "bib": "52",
+          "name": "MORNINGSTAR BELGIUM",
+          "time": "10:08:55",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "15."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Nicolas BRUYÈRE, Quentin BULTEAU"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (13.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:13:22"
+            }
+          ]
+        },
+        {
+          "position": 16,
+          "pid": "342",
+          "bib": "34",
+          "name": "LES OLDS BAC",
+          "time": "10:18:38",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "16."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Vincent DESNOYERS, Samuel LECONTE"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (14.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:23:05"
+            }
+          ]
+        },
+        {
+          "position": 17,
+          "pid": "285",
+          "bib": "55",
+          "name": "SWIMRUN FOURAS #1",
+          "time": "10:21:53",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "17."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Julien BEGUEC, Jean-Baptiste VEQUE"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (15.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:26:20"
+            }
+          ]
+        },
+        {
+          "position": 18,
+          "pid": "193",
+          "bib": "56",
+          "name": "LA MINI ET LA BÊTE",
+          "time": "10:30:33",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "18."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Jessica SCHOHN, Corentin THOMAS"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Mixte (3.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:35:00"
+            }
+          ]
+        },
+        {
+          "position": 19,
+          "pid": "369",
+          "bib": "60",
+          "name": "LA SELEÇÃO",
+          "time": "10:37:17",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "19."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Thomas MESSIEUX, Joël WOLFENSBERGER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (16.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:41:44"
+            }
+          ]
+        },
+        {
+          "position": 20,
+          "pid": "235",
+          "bib": "47",
+          "name": "LÉLOOÖOORNIDAS",
+          "time": "10:51:31",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "20."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Pierre LE ROUX, Olivier BESCOND"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (17.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+2:55:58"
+            }
+          ]
+        },
+        {
+          "position": 21,
+          "pid": "223",
+          "bib": "26",
+          "name": "BEN & MATH",
+          "time": "11:00:47",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "21."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Benjamin CATERNET, Mathias HARMAND"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (18.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+3:05:14"
+            }
+          ]
+        },
+        {
+          "position": 22,
+          "pid": "329",
+          "bib": "18",
+          "name": "AGA & TOMEK - ENVOL/TRICLUB",
+          "time": "11:19:00",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "22."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Agnieszka BARTOSZEWICZ, Tomasz KOWALCZYK"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Mixte (4.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+3:23:27"
+            }
+          ]
+        },
+        {
+          "position": 23,
+          "pid": "292",
+          "bib": "43",
+          "name": "TEAM ORCA",
+          "time": "11:40:12",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "23."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Benno EMKEN, Mirja LANDSBERG"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Mixte (5.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+3:44:39"
+            }
+          ]
+        },
+        {
+          "position": 24,
+          "pid": "253",
+          "bib": "67",
+          "name": "1981, LE RETOUR",
+          "time": "11:50:48",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "24."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Joël LE DEROFF, Alexandre LUCAS"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (19.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+3:55:15"
+            }
+          ]
+        },
+        {
+          "position": 25,
+          "pid": "278",
+          "bib": "6",
+          "name": "ÖPERATION ÖVER-LOUTRES",
+          "time": "12:17:32",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "25."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Gael POUCHIN, Thomas HELLNER"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (20.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+4:21:59"
+            }
+          ]
+        },
+        {
+          "position": 26,
+          "pid": "334",
+          "bib": "28",
+          "name": "LES TÊTARDS DU VERDON",
+          "time": "13:09:49",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "26."
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Thomas PERRIGUEY, Hugo HERMET"
+            },
+            {
+              "type": "text",
+              "label": "Cat.",
+              "value": "Masculin (21.)"
+            },
+            {
+              "type": "text",
+              "label": "Ecart",
+              "value": "+5:14:16"
+            }
+          ]
+        },
+        {
+          "position": 27,
+          "pid": "214",
+          "bib": "17",
+          "name": "IMPERIAL BROTHERS",
+          "time": "",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "DNF"
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Loïc LEMPEREUR, Arnaud LEMPEREUR"
+            }
+          ]
+        },
+        {
+          "position": 28,
+          "pid": "290",
+          "bib": "30",
+          "name": "GUI & NICO",
+          "time": "",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "DNF"
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Nicolas ATIENZA, Guillaume VIRELAUDE"
+            }
+          ]
+        },
+        {
+          "position": 29,
+          "pid": "354",
+          "bib": "54",
+          "name": "LA TEAM ROCKET",
+          "time": "",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "DNF"
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Rémi MORENO, Ruben THIBOUT"
+            }
+          ]
+        },
+        {
+          "position": 30,
+          "pid": "347",
+          "bib": "13",
+          "name": "S&P TRAVELS & TOURS",
+          "time": "",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "DNS"
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Jean-Marie SAUVEE, Eric POTIER"
+            }
+          ]
+        },
+        {
+          "position": 31,
+          "pid": "266",
+          "bib": "49",
+          "name": "LIZYAN",
+          "time": "",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Rang",
+              "value": "DNS"
+            },
+            {
+              "type": "text",
+              "label": "Noms",
+              "value": "Yann SUDEIX, Liza PEUDEMIER"
+            }
+          ]
+        }
+      ],
+      "total": 31,
+      "shown": 31,
+      "hasMore": false
+    }
+  ]
+}

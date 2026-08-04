@@ -1,0 +1,885 @@
+{
+  "list": {
+    "ListName": "00-Participants|Start list",
+    "BottomPicture": "",
+    "BottomPictureShow": 0,
+    "ColumnHeadsFontName": "Roboto Medium",
+    "ColumnHeadsFontSize": 8,
+    "ColumnHeadsFontBold": true,
+    "ColumnHeadsFontItalic": false,
+    "ColumnHeadsFontUnderlined": false,
+    "ColumnHeadsColor": "",
+    "ColumnHeadsShow": 2,
+    "Columns": 1,
+    "ColumnSpacing": 5,
+    "CoverSheet": "",
+    "BackSheet": "",
+    "Design": "PDF Background",
+    "DesignShow": 2,
+    "EveryOtherLineGray": true,
+    "FontName": "Roboto Light",
+    "FontSize": 8,
+    "FooterFontName": "Roboto Light",
+    "FooterFontSize": 8,
+    "FooterFontBold": false,
+    "FooterFontItalic": false,
+    "FooterFontUnderlined": false,
+    "FooterColor": "",
+    "GrayLine": true,
+    "HeadLine1": "HYROX Kildare 5.0 - Fitness Journey Kilcock",
+    "HeadLine1FontName": "Roboto Black",
+    "HeadLine1FontSize": 12,
+    "HeadLine1FontBold": false,
+    "HeadLine1FontItalic": false,
+    "HeadLine1FontUnderlined": false,
+    "HeadLine2": "Start list",
+    "HeadLine1Color": "",
+    "HeadLine1Show": 2,
+    "HeadLine2FontName": "Roboto Medium",
+    "HeadLine2FontSize": 10,
+    "HeadLine2FontBold": true,
+    "HeadLine2FontItalic": false,
+    "HeadLine2FontUnderlined": false,
+    "HeadLine2Color": "",
+    "HeadLine2Show": 2,
+    "HeightBottomPicture": 40,
+    "LineColor": "",
+    "LineBackColor": "",
+    "LineDynamicFormat": "",
+    "LineSpacing": 1.2,
+    "MaxRecords": 0,
+    "MultiplierField": "",
+    "PageFormat": 0,
+    "PageMarginBottom": 8,
+    "PageMarginLeft": 10,
+    "PageMarginRight": 10,
+    "PageMarginTop": 35,
+    "PageSize": 3,
+    "PageHeight": 297,
+    "PageWidth": 210,
+    "SepLine": false,
+    "TopRightPicture": "",
+    "TopRightPictureShow": 0,
+    "ListHeaderText": "",
+    "ListFooterText": "",
+    "ListHeaderFooterFontName": "",
+    "ListHeaderFooterFontSize": 10,
+    "ListHeaderFooterFontBold": false,
+    "ListHeaderFooterFontItalic": false,
+    "ListHeaderFooterFontUnderlined": false,
+    "ListHeaderFooterAlignment": 1,
+    "Remarks": "",
+    "LastChange": "2025-10-04 10:01:07",
+    "FooterText1": "[DateTime]",
+    "FooterText2": "{EN:[text([OutputTimerFooter];\"en\")]|DE:[text([OutputTimerFooter];\"de\")]|FR:[text([OutputTimerFooter];\"fr\")]}",
+    "FooterText3": "[page]/[pages]",
+    "Orders": [
+      {
+        "Expression": "Start_ASSIGNED",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 0
+      }
+    ],
+    "Filters": [
+      {
+        "OrConjunction": false,
+        "Expression1": "CONTEST",
+        "Operator": ">",
+        "Expression2": "0"
+      }
+    ],
+    "Fields": [
+      {
+        "Expression": "BIB",
+        "Label": "Bib",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "DisplayName",
+        "Label": "Name",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "AGEGROUP.NAME",
+        "Label": "Category",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "Start_ASSIGNED",
+        "Label": "Start Time",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      }
+    ],
+    "SelectorResults": []
+  },
+  "data": [
+    [
+      "52",
+      "2",
+      "Sean FITZPATRICK",
+      "",
+      "07:00:00"
+    ],
+    [
+      "78",
+      "3",
+      "Laura Boylan KAYLEIGH LEDDY",
+      "",
+      "07:00:00"
+    ],
+    [
+      "82",
+      "1",
+      "Kim NAIDOO",
+      "",
+      "07:00:00"
+    ],
+    [
+      "83",
+      "4",
+      "Noel BOLGER",
+      "",
+      "07:10:00"
+    ],
+    [
+      "145",
+      "5",
+      "Sharon Murphy AUDREY BROGAN",
+      "",
+      "07:10:00"
+    ],
+    [
+      "109",
+      "6",
+      "Shea O'Sullivan RONAN FALLEN",
+      "",
+      "07:10:20"
+    ],
+    [
+      "16",
+      "10",
+      "Liam Doran EMA KIRSININKATIE",
+      "",
+      "07:20:00"
+    ],
+    [
+      "28",
+      "8",
+      "Eoin HANNIGAN",
+      "",
+      "07:20:00"
+    ],
+    [
+      "114",
+      "7",
+      "Sean DELAVARI",
+      "",
+      "07:20:00"
+    ],
+    [
+      "124",
+      "9",
+      "Joanne REID",
+      "",
+      "07:20:00"
+    ],
+    [
+      "53",
+      "11",
+      "Ruairi MCLOUGHLIN",
+      "",
+      "07:30:00"
+    ],
+    [
+      "86",
+      "13",
+      "Michelle Reegan SARAH BAXTER",
+      "",
+      "07:30:00"
+    ],
+    [
+      "95",
+      "12",
+      "Colin O'NEILL",
+      "",
+      "07:30:00"
+    ],
+    [
+      "23",
+      "15",
+      "David NELSON",
+      "",
+      "07:40:00"
+    ],
+    [
+      "26",
+      "14",
+      "David COLLINS",
+      "",
+      "07:40:00"
+    ],
+    [
+      "55",
+      "17",
+      "Sean O'HALLORAN",
+      "",
+      "07:40:00"
+    ],
+    [
+      "93",
+      "16",
+      "Rory DONNELLY",
+      "",
+      "07:40:00"
+    ],
+    [
+      "12",
+      "20",
+      "Rachel Fagan FIONA KING",
+      "",
+      "07:50:00"
+    ],
+    [
+      "42",
+      "21",
+      "Andreea Lucaci LYNSEY MURPHY",
+      "",
+      "07:50:00"
+    ],
+    [
+      "106",
+      "18",
+      "Stephen Ralph MARK NEYLON",
+      "",
+      "07:50:00"
+    ],
+    [
+      "149",
+      "19",
+      "Daryl Purcell MORGAN TIERNEY",
+      "",
+      "07:50:00"
+    ],
+    [
+      "22",
+      "22",
+      "Lisa Corcoran CAOIMHE LOFTUS",
+      "",
+      "08:00:00"
+    ],
+    [
+      "88",
+      "25",
+      "Denise Breen SINEAD BREEN",
+      "",
+      "08:00:00"
+    ],
+    [
+      "122",
+      "24",
+      "Gustavo Camello RUIMAR JUNIOR",
+      "",
+      "08:00:00"
+    ],
+    [
+      "130",
+      "23",
+      "Ann JOHNNY MCEVOY",
+      "",
+      "08:00:00"
+    ],
+    [
+      "33",
+      "28",
+      "Macdara Galvin EAMONN HIGGINS",
+      "",
+      "08:10:00"
+    ],
+    [
+      "58",
+      "27",
+      "Rebecca O'MAHONEY",
+      "",
+      "08:10:00"
+    ],
+    [
+      "75",
+      "26",
+      "Ciara Mahon, Emily Kelly NIALL QUINN CHRISTOPHER MCFARREN",
+      "",
+      "08:10:00"
+    ],
+    [
+      "97",
+      "29",
+      "Sean Mcconnell TAPIWA MAFANA",
+      "",
+      "08:10:00"
+    ],
+    [
+      "41",
+      "33",
+      "Scott Murray HANA JENDOUBI",
+      "",
+      "08:20:00"
+    ],
+    [
+      "96",
+      "32",
+      "Aoibhinn Raleigh CIARAN O'CONNOR",
+      "",
+      "08:20:00"
+    ],
+    [
+      "113",
+      "31",
+      "Mauricio AMARAL",
+      "",
+      "08:20:00"
+    ],
+    [
+      "137",
+      "30",
+      "Lynda MORIARITY",
+      "",
+      "08:20:00"
+    ],
+    [
+      "91",
+      "34",
+      "Emma GRENNAN",
+      "",
+      "08:30:00"
+    ],
+    [
+      "134",
+      "36",
+      "Gerry LEE",
+      "",
+      "08:30:00"
+    ],
+    [
+      "139",
+      "37",
+      "Charlie Mcateer ALEXANDER DELANEY",
+      "",
+      "08:30:00"
+    ],
+    [
+      "140",
+      "35",
+      "Nicola MCLAUGHLIN",
+      "",
+      "08:32:10"
+    ],
+    [
+      "38",
+      "40",
+      "Patrick Beirne JOHNNY BROWNE",
+      "",
+      "08:50:00"
+    ],
+    [
+      "84",
+      "41",
+      "Kyle Delavari SEAN WALSH",
+      "",
+      "08:50:00"
+    ],
+    [
+      "112",
+      "38",
+      "Catriona MCMANUS",
+      "",
+      "08:50:00"
+    ],
+    [
+      "135",
+      "39",
+      "Jamie O'Brien CLAYTON PASSMORE",
+      "",
+      "08:50:00"
+    ],
+    [
+      "5",
+      "42",
+      "David CAFFERTY",
+      "",
+      "09:00:00"
+    ],
+    [
+      "48",
+      "44",
+      "Devillia SMITH",
+      "",
+      "09:00:00"
+    ],
+    [
+      "65",
+      "43",
+      "Ciaran MURPHY",
+      "",
+      "09:00:00"
+    ],
+    [
+      "143",
+      "45",
+      "Eoin FLAHERTY",
+      "",
+      "09:00:00"
+    ],
+    [
+      "69",
+      "47",
+      "Loic Marpaux GABRIELLE DELMOTTE",
+      "",
+      "09:10:00"
+    ],
+    [
+      "136",
+      "46",
+      "Conor Whelan BRIAN WHELAN",
+      "",
+      "09:10:00"
+    ],
+    [
+      "15048",
+      "48",
+      "Cara Mc Givilray JOHN BROOKS",
+      "",
+      "09:10:00"
+    ],
+    [
+      "3",
+      "51",
+      "Brid Cloonan MICHELLE CORRIGAN",
+      "",
+      "09:20:00"
+    ],
+    [
+      "51",
+      "50",
+      "Kealan GRAINNE BOLTON",
+      "",
+      "09:20:00"
+    ],
+    [
+      "73",
+      "49",
+      "Tom Kelly DARAGH HEWSON",
+      "",
+      "09:20:00"
+    ],
+    [
+      "14",
+      "54",
+      "David CHAPMAN",
+      "",
+      "09:30:00"
+    ],
+    [
+      "68",
+      "55",
+      "Fiona Quinn PADDY QUINN",
+      "",
+      "09:30:00"
+    ],
+    [
+      "81",
+      "53",
+      "John CARLOS",
+      "",
+      "09:30:00"
+    ],
+    [
+      "125",
+      "52",
+      "Stephen O'CONNOR",
+      "",
+      "09:30:00"
+    ],
+    [
+      "50",
+      "56",
+      "Aaron Cannon KAYLEE CAHILL",
+      "",
+      "09:40:00"
+    ],
+    [
+      "8",
+      "57",
+      "Ciara Neary ROISIN",
+      "",
+      "09:42:40"
+    ],
+    [
+      "27",
+      "61",
+      "Laura Reilly STEVEN REILLY",
+      "",
+      "09:50:00"
+    ],
+    [
+      "94",
+      "60",
+      "Olivia Bermingham ANITA CURRAN",
+      "",
+      "09:50:00"
+    ],
+    [
+      "121",
+      "59",
+      "Lisa Coleman REBECCA DEVLIN",
+      "",
+      "09:50:00"
+    ],
+    [
+      "15058",
+      "58",
+      "Cian MCMAHON",
+      "",
+      "09:50:00"
+    ],
+    [
+      "19",
+      "65",
+      "Ruairi Jago SARAH GORMAN",
+      "",
+      "10:00:00"
+    ],
+    [
+      "31",
+      "63",
+      "Colm MCCORMACK",
+      "",
+      "10:00:00"
+    ],
+    [
+      "72",
+      "64",
+      "Anthony Hoare PAUL CONCANNON",
+      "",
+      "10:00:00"
+    ],
+    [
+      "63",
+      "62",
+      "Linda CLEARY",
+      "",
+      "10:01:05"
+    ],
+    [
+      "37",
+      "67",
+      "Kathy Morrissey GEMMA BRAZIL",
+      "",
+      "10:10:00"
+    ],
+    [
+      "80",
+      "66",
+      "Mustafa SAJJIA",
+      "",
+      "10:10:00"
+    ],
+    [
+      "89",
+      "68",
+      "Korey Fogarty JOHN MCKENNA",
+      "",
+      "10:10:00"
+    ],
+    [
+      "127",
+      "69",
+      "Brian Morrissey REBECCA MORRISSEY",
+      "",
+      "10:10:00"
+    ],
+    [
+      "61",
+      "70",
+      "Gary MULLEN",
+      "",
+      "10:20:00"
+    ],
+    [
+      "133",
+      "73",
+      "Ken CORCORAN",
+      "",
+      "10:20:00"
+    ],
+    [
+      "138",
+      "71",
+      "Marykate KENNEDY",
+      "",
+      "10:20:00"
+    ],
+    [
+      "15072",
+      "72",
+      "Carol MCLEARN",
+      "",
+      "10:20:00"
+    ],
+    [
+      "21",
+      "74",
+      "Jude MCGUINNESS",
+      "",
+      "10:30:00"
+    ],
+    [
+      "123",
+      "75",
+      "Ruth QUINN",
+      "",
+      "10:30:00"
+    ],
+    [
+      "126",
+      "77",
+      "Gavin George PUAL MEADE",
+      "",
+      "10:30:00"
+    ],
+    [
+      "15076",
+      "76",
+      "Katie Beirne ANNE MARIE GILLESPIE",
+      "",
+      "10:30:00"
+    ],
+    [
+      "74",
+      "81",
+      "Dylan Fogarty SINEAD COMERFORD",
+      "",
+      "10:40:00"
+    ],
+    [
+      "115",
+      "79",
+      "Fiona DUNNE",
+      "",
+      "10:40:00"
+    ],
+    [
+      "15080",
+      "80",
+      "Trish Delaney ANN",
+      "",
+      "10:40:00"
+    ],
+    [
+      "60",
+      "83",
+      "Albi Larkin HUSCO",
+      "",
+      "11:00:00"
+    ],
+    [
+      "71",
+      "84",
+      "Amy Savage LYNSEY CLEMENGER",
+      "",
+      "11:00:00"
+    ],
+    [
+      "105",
+      "82",
+      "Ciara O'Byrne EMMA MCGILL",
+      "",
+      "11:00:00"
+    ],
+    [
+      "148",
+      "78",
+      "Jules CONROY",
+      "",
+      "11:00:00"
+    ],
+    [
+      "25",
+      "87",
+      "Daniel PERVAIZ",
+      "",
+      "11:10:00"
+    ],
+    [
+      "92",
+      "88",
+      "Simon Craven DAN CRAVEN",
+      "",
+      "11:10:00"
+    ],
+    [
+      "103",
+      "85",
+      "Aaron Mccafferty RICHARD DALTON",
+      "",
+      "11:10:00"
+    ],
+    [
+      "15086",
+      "86",
+      "Alex Tighe JOHN GAUGHAN",
+      "",
+      "11:10:00"
+    ],
+    [
+      "59",
+      "89",
+      "Oscar Dowdall ALEX KEARNEY",
+      "",
+      "11:30:00"
+    ],
+    [
+      "70",
+      "90",
+      "Rachel Kelly EMILY FARRELL",
+      "",
+      "11:30:00"
+    ],
+    [
+      "142",
+      "91",
+      "Cathal Doyle ROSS TURNER",
+      "",
+      "11:30:00"
+    ],
+    [
+      "150",
+      "99",
+      "Michael Brady AILEEN BYRNE",
+      "",
+      "11:30:00"
+    ],
+    [
+      "15092",
+      "92",
+      "Алсу ХАЗИЕВА",
+      "",
+      "11:40:00"
+    ],
+    [
+      "15093",
+      "93",
+      "Steven MADDEN",
+      "",
+      "11:40:00"
+    ],
+    [
+      "2",
+      "97",
+      "Luke TAHENY",
+      "",
+      "12:00:00"
+    ],
+    [
+      "77",
+      "94",
+      "Richie NEVIN",
+      "",
+      "12:00:00"
+    ],
+    [
+      "90",
+      "98",
+      "Travis Fahy TOMMY MAGNER",
+      "",
+      "12:00:00"
+    ],
+    [
+      "15095",
+      "95",
+      "Monika DE ALMEDIA",
+      "",
+      "12:00:00"
+    ],
+    [
+      "15096",
+      "96",
+      "Matthew DARLING",
+      "",
+      "12:00:00"
+    ]
+  ],
+  "DataFields": [
+    "BIB",
+    "ID",
+    "DisplayName",
+    "AGEGROUP.NAME",
+    "Start_ASSIGNED"
+  ],
+  "mid": 189047,
+  "groupFilters": null,
+  "comments": {},
+  "LiveUpdateInterval": 10,
+  "Favorites": null
+}

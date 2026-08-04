@@ -1,0 +1,96 @@
+{
+  "Splits": [
+    {
+      "Name": "Partis",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Hameau du Pont - 4km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Marzols - 8km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "La Cadeno - 10km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Parking de l'Etoile - 13km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Route de la Palud - 15km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Plein Voir - 20km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Colle de l'Olivier - 25km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Galetas - 28km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Aiguines - 33km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Les Bastides - 38km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Bauduen - 44km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Sulagran - 48km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Club de Voile de Bauduen - 50km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Bauduen - 51km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Clos de Rouvier - 57km",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Pré-arrivée",
+      "Exists": false,
+      "RO": -1
+    },
+    {
+      "Name": "Arrivée",
+      "Exists": false,
+      "RO": -1
+    }
+  ],
+  "Legs": null,
+  "SplitConfig": "11010011010"
+}

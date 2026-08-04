@@ -1,0 +1,71 @@
+{
+  "key": "1bdd7a760e0cae2d4c5dce1959cada72",
+  "contests": {
+    "1": "L'Unique",
+    "2": "Le Binôme",
+    "3": "Le Crew",
+    "4": "Le Squad",
+    "5": "La Clique"
+  },
+  "splits": [],
+  "eventname": "Run24",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73721,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {},
+  "Tab": {
+    "Label": "",
+    "URLName": "participants",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "whenactive",
+    "ActiveFrom": "1900-01-01T00:00:00+00:19",
+    "ActiveUntil": "2026-06-14T00:00:00+02:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": false,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "00-Concurrents|Concurrents",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "7E31DB"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "00-Concurrents|Concurrents",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "7E31DB"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": false
+  },
+  "ContestColors": null
+}

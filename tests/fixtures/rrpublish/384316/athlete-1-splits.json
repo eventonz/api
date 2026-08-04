@@ -1,0 +1,83 @@
+{
+  "Splits": [
+    {
+      "Name": "Col de Malval - km 16,7",
+      "Exists": true,
+      "TOD": "06:22:55",
+      "Gun": "1:22:29",
+      "Sector": "1:22:29",
+      "Speed": "4:56 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Montromant- km 35,3",
+      "Exists": true,
+      "TOD": "08:02:52",
+      "Gun": "3:02:26",
+      "Sector": "1:39:57",
+      "Speed": "5:22 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Pomeys - Base de vie - km 52,1",
+      "Exists": true,
+      "TOD": "09:24:58",
+      "Gun": "4:24:32",
+      "Sector": "1:22:06",
+      "Speed": "4:53 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Saint-Christo-en-Jarez - km 69",
+      "Exists": true,
+      "TOD": "10:49:18",
+      "Gun": "5:48:52",
+      "Sector": "1:24:20",
+      "Speed": "4:59 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Saint-Didier-sous-Riverie - km 87,5",
+      "Exists": true,
+      "TOD": "12:24:20",
+      "Gun": "7:23:54",
+      "Sector": "1:35:02",
+      "Speed": "5:08 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Saint-André-la-Côte - km 94,9",
+      "Exists": true,
+      "TOD": "13:10:10",
+      "Gun": "8:09:44",
+      "Sector": "45:50",
+      "Speed": "6:11 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    },
+    {
+      "Name": "Arrivée - km 105.4",
+      "Exists": true,
+      "TOD": "14:03:36",
+      "Gun": "9:03:10",
+      "Sector": "53:26",
+      "Speed": "5:05 min/km",
+      "RO": 1,
+      "RG": 1,
+      "RA": 1
+    }
+  ],
+  "Legs": null,
+  "SplitConfig": "01011111011"
+}

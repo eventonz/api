@@ -1,0 +1,271 @@
+{
+  "Elements": [
+    {
+      "ID": "WvOb6S_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "WvOb6S",
+          "Type": "legs",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": false,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false,
+            "ShowPace": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel1",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "kUBwb5_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "kUBwb5",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": false,
+            "ShowSectorTime": true,
+            "ShowPace": false,
+            "ShowOverallRank": true,
+            "ShowGenderRank": false,
+            "ShowAgeGroupRank": false,
+            "ShowMaxRank": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "eJEu8c_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "eJEu8c",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "CertificateSets": [
+              {
+                "Mode": "",
+                "Contest": "1",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "2",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "4",
+                "Picture": "",
+                "Name": "DiplomeSolo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "3",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "5",
+                "Picture": "",
+                "Name": "Diplome Duo",
+                "ShowAs": ""
+              },
+              {
+                "Mode": "",
+                "Contest": "6",
+                "Picture": "",
+                "Name": "DiplomeSolo",
+                "ShowAs": ""
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "xZ76nP_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "xZ76nP",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Partis",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Hameau du Pont - 4km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Marzols - 8km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "La Cadeno - 10km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Parking de l'Etoile - 13km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Route de la Palud - 15km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Plein Voir - 20km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Colle de l'Olivier - 25km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Galetas - 28km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Aiguines - 33km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Les Bastides - 38km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Bauduen - 44km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Sulagran - 48km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Club de Voile de Bauduen - 50km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Bauduen - 51km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Clos de Rouvier - 57km",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Pré-arrivée",
+          "Exists": false,
+          "RO": -1
+        },
+        {
+          "Name": "Arrivée",
+          "Exists": false,
+          "RO": -1
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "f177a7cb65798d76db2ea945083182f3",
+  "LiveUpdateInterval": 10,
+  "MID": 415218,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73727,
+  "PID": 266,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "#3000fc",
+  "User": null
+}

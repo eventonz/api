@@ -1,0 +1,271 @@
+{
+  "key": "5edc776cfb219447cdb766bcf7bb4415",
+  "contests": {
+    "1": "Marathon",
+    "2": "20 km",
+    "3": "10 km",
+    "10": "Bénévoles"
+  },
+  "splits": [
+    {
+      "ID": 1,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 50,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 3,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 16,
+      "Name": "Start",
+      "Label": "Partis",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 11,
+      "Name": "Split1",
+      "Label": "Scierie Mazet Toiture - 6km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 17,
+      "Name": "Split1",
+      "Label": "Chemin de Villevieille - 5 km - 3,6 km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 5,
+      "Name": "Split1",
+      "Label": "Ravitaillement Méaudre - Place Lacmaria - 10 km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 51,
+      "Name": "Split1",
+      "Label": "Ravitaillement Méaudre - Place Lacmaria - 10 km",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 12,
+      "Name": "Split2",
+      "Label": "Lans-en-Vercors - 10 km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 52,
+      "Name": "Split2",
+      "Label": "Ravitaillement Autrans - Place Julien Bertrand - 18 km",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 13,
+      "Name": "Split3",
+      "Label": "Chemin de Villevieille - 15 km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 6,
+      "Name": "Split2",
+      "Label": "Ravitaillement Autrans - Place Julien Bertrand - 18 km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 53,
+      "Name": "Split3",
+      "Label": "Auberge Croix Perrin - 29 km",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 7,
+      "Name": "Split3",
+      "Label": "Auberge Croix Perrin - 29 km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 54,
+      "Name": "Split4",
+      "Label": "Scierie Mazet Toiture - 37 km",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 37,
+      "Name": "Spotter",
+      "Label": "Dernière ligne droite",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 38,
+      "Name": "Spotter",
+      "Label": "Dernière ligne droite",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 4,
+      "Name": "Finish",
+      "Label": "Arrivée - 20 km",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 22,
+      "Name": "Finish",
+      "Label": "Arrivée - 10 km",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 8,
+      "Name": "Split4",
+      "Label": "Scierie Mazet Toiture - 37 km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 55,
+      "Name": "Spotter",
+      "Label": "Dernière ligne droite",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 36,
+      "Name": "Spotter",
+      "Label": "Dernière ligne droite",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 56,
+      "Name": "Finish",
+      "Label": "Arrivée - 42 km",
+      "SplitType": 0,
+      "Contest": 10,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 2,
+      "Name": "Finish",
+      "Label": "Arrivée - 42 km",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    }
+  ],
+  "eventname": "Marathon du Vercors",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73722,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "#23c089",
+  "ListCommentsEnabled": {
+    "trail": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "live",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2026-06-27T06:00:00+02:00",
+    "ActiveUntil": "2026-06-27T22:00:00+02:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "trail",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": false,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "01-Chronométrage|LIVE EXTRA",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "DC5C84"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "trail",
+    "Lists": [
+      {
+        "Name": "01-Chronométrage|LIVE EXTRA",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "trail",
+        "ID": "DC5C84"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": false
+  },
+  "ContestColors": {
+    "1": "#439670",
+    "2": "#07A2E3",
+    "3": "#F8B133",
+    "10": ""
+  }
+}

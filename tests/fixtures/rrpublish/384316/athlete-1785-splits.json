@@ -1,0 +1,13 @@
+{
+  "Splits": [
+    {
+      "Name": "Arrivée - km 12,7",
+      "Exists": false,
+      "RO": -1,
+      "RG": -1,
+      "RA": -1
+    }
+  ],
+  "Legs": null,
+  "SplitConfig": "01011111011"
+}

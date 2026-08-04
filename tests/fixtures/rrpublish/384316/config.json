@@ -1,0 +1,298 @@
+{
+  "key": "c4eb9c133f7379f0435a15780334cf04",
+  "contests": {
+    "1": "Ultra trail des Coursières - 104 km - 4200d+",
+    "2": "Trail des Coursières - 50 km - 1900d+",
+    "3": "Le 24 km des Coursières - 820d+",
+    "4": "Le 12 km des Coursières - 410d+"
+  },
+  "splits": [
+    {
+      "ID": 2,
+      "Name": "Split1",
+      "Label": "Col de Malval - km 16,7",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 3,
+      "Name": "Split2",
+      "Label": "Montromant- km 35,3",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 4,
+      "Name": "Split3",
+      "Label": "Pomeys - Base de vie - km 52,1",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 5,
+      "Name": "Split4",
+      "Label": "Saint-Christo-en-Jarez - km 69",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 38,
+      "Name": "Split1",
+      "Label": "Saint-Christo-en-Jarez - km 15,3",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 6,
+      "Name": "Split5",
+      "Label": "Saint-Didier-sous-Riverie - km 87,5",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 39,
+      "Name": "Split2",
+      "Label": "Saint-Didier-sous-Riverie - km 33,9",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 7,
+      "Name": "Split6",
+      "Label": "Saint-André-la-Côte - km 94,9",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 40,
+      "Name": "Split3",
+      "Label": "Saint-André-la-Côte - km 41,3",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 11,
+      "Name": "Finish",
+      "Label": "Arrivée - km 105.4",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 37,
+      "Name": "Finish",
+      "Label": "Arrivée - km 12,7",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 41,
+      "Name": "Finish",
+      "Label": "Arrivée - km 51,9",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 35,
+      "Name": "Finish",
+      "Label": "Arrivée - km 24",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 100
+    }
+  ],
+  "eventname": "Ultra Trail des Coursières",
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "EventOver": true,
+  "Time": 73724,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {
+    "details0": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2026-05-09T04:00:00+02:00",
+    "ActiveUntil": "2100-12-31T23:59:59+01:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details0",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "03 - CLASSEMENTS|Classement général 104km",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "P",
+          "Live": 0,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "CDC15D"
+        },
+        {
+          "Name": "03 - CLASSEMENTS|Classement général 50km",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "P",
+          "Live": 0,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "E95A1C"
+        },
+        {
+          "Name": "03 - CLASSEMENTS|Classement général 24km",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "P",
+          "Live": 0,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "411680"
+        },
+        {
+          "Name": "03 - CLASSEMENTS|Classement général 12km",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "P",
+          "Live": 0,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "86F91F"
+        },
+        {
+          "Name": "01 - AFFICHAGE|LIVE EXTRA",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "SUIVI LIVE",
+          "Format": "V",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 5,
+          "Details": "",
+          "ID": "2423AD"
+        },
+        {
+          "Name": "01 - AFFICHAGE|Final",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 5,
+          "Details": "",
+          "ID": "6F296D"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "details0",
+    "Lists": [
+      {
+        "Name": "03 - CLASSEMENTS|Classement général 104km",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "P",
+        "Live": 0,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "CDC15D"
+      },
+      {
+        "Name": "03 - CLASSEMENTS|Classement général 50km",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "P",
+        "Live": 0,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "E95A1C"
+      },
+      {
+        "Name": "03 - CLASSEMENTS|Classement général 24km",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "P",
+        "Live": 0,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "411680"
+      },
+      {
+        "Name": "03 - CLASSEMENTS|Classement général 12km",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "P",
+        "Live": 0,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "86F91F"
+      },
+      {
+        "Name": "01 - AFFICHAGE|LIVE EXTRA",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "SUIVI LIVE",
+        "Format": "V",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "2423AD"
+      },
+      {
+        "Name": "01 - AFFICHAGE|Final",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 5,
+        "Details": "details0",
+        "ID": "6F296D"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

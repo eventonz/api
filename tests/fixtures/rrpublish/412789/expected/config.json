@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "rrId": "412789",
+  "lang": "en",
+  "event": {
+    "name": "HYROX Kildare 5.0 - Fitness Journey Kilcock",
+    "eventOver": true,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "1",
+      "name": "Male Singles"
+    },
+    {
+      "id": "2",
+      "name": "Female Singles"
+    },
+    {
+      "id": "3",
+      "name": "Male Doubles"
+    },
+    {
+      "id": "4",
+      "name": "Female Doubles"
+    },
+    {
+      "id": "5",
+      "name": "Mixed Doubles"
+    },
+    {
+      "id": "6",
+      "name": "Male Doubles PRO"
+    },
+    {
+      "id": "7",
+      "name": "Doubles 500"
+    },
+    {
+      "id": "8",
+      "name": "Singles 500"
+    },
+    {
+      "id": "9",
+      "name": "Relay"
+    },
+    {
+      "id": "10",
+      "name": "Male Singles PRO"
+    }
+  ],
+  "lists": [
+    {
+      "id": "EBAAE3",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "1",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "4FFAFF",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "2",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "F75DA8",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "3",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "003756",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "4",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "208271",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "5",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "098700",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "6",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "4124CE",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "7",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "8657AD",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "8",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "E9EC0C",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "9",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "739F3B",
+      "name": "Result Lists|Results.",
+      "displayName": "Results.",
+      "contest": "10",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ]
+}

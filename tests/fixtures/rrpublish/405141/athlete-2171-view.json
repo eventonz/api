@@ -1,0 +1,220 @@
+{
+  "Elements": [
+    {
+      "ID": "4LQ70G",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "lcj8jf",
+          "Type": "field",
+          "Styles": "font-weight:bold;font-size:35px;;color:var(--brandColorDark);",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "Field": "Finisher",
+            "DisplayMode": "",
+            "Title": "",
+            "TitleStyles": [],
+            "TitleDynamicFormat": "",
+            "Alignment": 2
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "",
+        "TitleStyles": null,
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "x6EOzJ",
+      "Type": "columns",
+      "Styles": "margin:0;border-left:10px solid var(--brandColorDark);",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "sWRZAN",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": false,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": true,
+            "ShowSectorTime": false,
+            "ShowPace": false,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": true
+          }
+        }
+      ],
+      "Config": {}
+    },
+    {
+      "ID": "Sy5U1R",
+      "Type": "text",
+      "Styles": "font-weight:bold;",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "Qyx4iR",
+          "Type": "html",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "Text": "<p>Cliquez sur l&#39;image pour télécharger le visuel à partager sur vos réseaux</p>\n\n<p><a href=\"https://api.raceresult.com/405141/1OEYFKYHT4S7D63WSG6940RBP6LSKLG5?bib=366\" rel=\"nofollow\"><img alt=\"\" src=\"https://api.raceresult.com/405141/1OEYFKYHT4S7D63WSG6940RBP6LSKLG5?bib=366\" width=\"100%\"/> </a></p>\n"
+          }
+        }
+      ],
+      "Config": {
+        "Text": "",
+        "Alignment": 1
+      }
+    },
+    {
+      "ID": "AtnnJ1_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "AtnnJ1",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Partis",
+          "Exists": true,
+          "TOD": "07:05:01",
+          "Gun": "00:02",
+          "RO": 13,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 496,
+          "RGM": 117,
+          "RAM": 12
+        },
+        {
+          "Name": "Ravitaillement Méaudre - Place Lacmaria - 10 km",
+          "Exists": true,
+          "TOD": "07:47:02",
+          "Gun": "42:03",
+          "Chip": "42:01",
+          "RO": 11,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 494,
+          "RGM": 117,
+          "RAM": 12
+        },
+        {
+          "Name": "Ravitaillement Autrans - Place Julien Bertrand - 18 km",
+          "Exists": true,
+          "TOD": "08:19:15",
+          "Gun": "1:14:16",
+          "Chip": "1:14:14",
+          "RO": 13,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 490,
+          "RGM": 117,
+          "RAM": 12
+        },
+        {
+          "Name": "Auberge Croix Perrin - 29 km",
+          "Exists": true,
+          "TOD": "09:15:30",
+          "Gun": "2:10:31",
+          "Chip": "2:10:30",
+          "RO": 12,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 487,
+          "RGM": 114,
+          "RAM": 11
+        },
+        {
+          "Name": "Scierie Mazet Toiture - 37 km",
+          "Exists": true,
+          "TOD": "09:46:02",
+          "Gun": "2:41:03",
+          "Chip": "2:41:02",
+          "RO": 11,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 482,
+          "RGM": 114,
+          "RAM": 11
+        },
+        {
+          "Name": "Dernière ligne droite",
+          "Exists": true,
+          "TOD": "10:09:52",
+          "Gun": "3:04:53",
+          "Chip": "3:04:51",
+          "RO": 11,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 482,
+          "RGM": 115,
+          "RAM": 11
+        },
+        {
+          "Name": "Arrivée - 42 km",
+          "Exists": true,
+          "TOD": "10:10:27",
+          "Gun": "3:05:28",
+          "Chip": "3:05:26",
+          "RO": 11,
+          "RG": 1,
+          "RA": 1,
+          "ROM": 488,
+          "RGM": 115,
+          "RAM": 11
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "5edc776cfb219447cdb766bcf7bb4415",
+  "LiveUpdateInterval": 10,
+  "MID": 242121,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 73723,
+  "PID": 2171,
+  "TimerLogo": "Logo-Chrono-Consult_BD.png",
+  "TimerURL": "www.chronoconsult.fr",
+  "Color": "#439670",
+  "User": null
+}

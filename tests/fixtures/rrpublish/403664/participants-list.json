@@ -1,0 +1,894 @@
+{
+  "list": {
+    "ListName": "00-Concurrents|Concurrents",
+    "BottomPicture": "",
+    "BottomPictureShow": 0,
+    "ColumnHeadsFontName": "",
+    "ColumnHeadsFontSize": 12,
+    "ColumnHeadsFontBold": true,
+    "ColumnHeadsFontItalic": false,
+    "ColumnHeadsFontUnderlined": false,
+    "ColumnHeadsColor": "",
+    "ColumnHeadsShow": 2,
+    "Columns": 1,
+    "ColumnSpacing": 5,
+    "CoverSheet": "",
+    "BackSheet": "",
+    "Design": "",
+    "DesignShow": 2,
+    "EveryOtherLineGray": false,
+    "FontName": "Arial",
+    "FontSize": 10,
+    "FooterFontName": "",
+    "FooterFontSize": 10,
+    "FooterFontBold": false,
+    "FooterFontItalic": false,
+    "FooterFontUnderlined": false,
+    "FooterColor": "",
+    "GrayLine": true,
+    "HeadLine1": "Run24",
+    "HeadLine1FontName": "",
+    "HeadLine1FontSize": 16,
+    "HeadLine1FontBold": false,
+    "HeadLine1FontItalic": false,
+    "HeadLine1FontUnderlined": true,
+    "HeadLine2": "Concurrents ",
+    "HeadLine1Color": "",
+    "HeadLine1Show": 2,
+    "HeadLine2FontName": "",
+    "HeadLine2FontSize": 16,
+    "HeadLine2FontBold": true,
+    "HeadLine2FontItalic": false,
+    "HeadLine2FontUnderlined": false,
+    "HeadLine2Color": "",
+    "HeadLine2Show": 2,
+    "HeightBottomPicture": 40,
+    "LineColor": "",
+    "LineBackColor": "",
+    "LineDynamicFormat": "",
+    "LineSpacing": 1,
+    "MaxRecords": 0,
+    "MultiplierField": "",
+    "PageFormat": 0,
+    "PageMarginBottom": 10,
+    "PageMarginLeft": 10,
+    "PageMarginRight": 10,
+    "PageMarginTop": 10,
+    "PageSize": 3,
+    "PageHeight": 297,
+    "PageWidth": 210,
+    "SepLine": true,
+    "TopRightPicture": "",
+    "TopRightPictureShow": 0,
+    "ListHeaderText": "",
+    "ListFooterText": "",
+    "ListHeaderFooterFontName": "",
+    "ListHeaderFooterFontSize": 10,
+    "ListHeaderFooterFontBold": false,
+    "ListHeaderFooterFontItalic": false,
+    "ListHeaderFooterFontUnderlined": false,
+    "ListHeaderFooterAlignment": 0,
+    "Remarks": "",
+    "LastChange": "2026-06-08 14:40:43",
+    "FooterText1": "",
+    "FooterText2": "",
+    "FooterText3": "[Page]",
+    "Orders": [
+      {
+        "Expression": "CONTEST",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "CONTEST.NAME",
+        "Descending": false,
+        "Grouping": 3,
+        "GroupFilterDefault": 2,
+        "GroupFilterLabel": "{EN:Contest|FR:Épreuve}",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "#ffffff",
+        "BackgroundColor": "#E2AEEE",
+        "Spacing": 2
+      },
+      {
+        "Expression": "AfficherNom",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      }
+    ],
+    "Filters": [
+      {
+        "OrConjunction": false,
+        "Expression1": "CONTEST",
+        "Operator": ">",
+        "Expression2": "0"
+      }
+    ],
+    "Fields": [
+      {
+        "Expression": "BIB",
+        "Label": "{EN:Bib|FR:Dossard}",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "AfficherNom",
+        "Label": "{EN:Name|FR:Nom}",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "CONTEST.NAME",
+        "Label": "{EN:Contest|FR:Épreuve}",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "\"BG(\" & [CONTEST.COLOR] & \")\"",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      }
+    ],
+    "SelectorResults": []
+  },
+  "data": [
+    [
+      "407",
+      "50",
+      "#rafaloupa",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "314",
+      "45",
+      "8'stitis",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "10",
+      "29",
+      "Andre Jimmy",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "21",
+      "19",
+      "Basset Romain",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "311",
+      "46",
+      "BCAS SQUAD",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "306",
+      "58",
+      "BORNTORUN",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "22",
+      "22",
+      "Bouquin David",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "104",
+      "31",
+      "BPLFKing Running",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "113",
+      "77",
+      "Cécile & Berac",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "12",
+      "13",
+      "Ceh Stefan",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "8",
+      "10",
+      "Changanaqui Yoann",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "30",
+      "97",
+      "Chassot Ilenia",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "13",
+      "17",
+      "chupin jean-pierre",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "16",
+      "15",
+      "DA SILVA Benjamin",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "203",
+      "81",
+      "Débit illimité",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "204",
+      "34",
+      "Dédé-Fonce",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "5",
+      "16",
+      "Epars Samuel",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "404",
+      "47",
+      "EQIP EPIQ",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "3",
+      "26",
+      "Favre Jerome",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "11",
+      "25",
+      "Fischer Thomas",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "27",
+      "20",
+      "Flag Eric",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "29",
+      "24",
+      "Freire Junior Clovis",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "100",
+      "88",
+      "Garmin girls",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "304",
+      "54",
+      "Gen X-pired",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "20",
+      "7",
+      "Genoud Chris",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "23",
+      "9",
+      "Gerardin Delrieu Vanessa",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "26",
+      "96",
+      "Gillioz Quentin",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "24",
+      "8",
+      "Giordano Jonathan",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "409",
+      "73",
+      "GVA Runners",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "403",
+      "48",
+      "GVA Team-T2",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "111",
+      "57",
+      "Helios Quetzal",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "25",
+      "3",
+      "Hoenicke Thomas",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "210",
+      "55",
+      "hybrid athletes",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "1",
+      "12",
+      "Jimenez Augustin",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "200",
+      "69",
+      "Jizz us",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "7",
+      "5",
+      "Kacel Florian",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "107",
+      "92",
+      "KeepRun",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "220",
+      "98",
+      "Kosov",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "319",
+      "79",
+      "La Fine Équipe",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "414",
+      "87",
+      "La team foulée d’Annemasse",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "206",
+      "33",
+      "La Team Rocket",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "213",
+      "76",
+      "Le Squadi Squad",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "312",
+      "56",
+      "Le Squadi Squad",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "208",
+      "90",
+      "Le trio infernal",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "2",
+      "27",
+      "Lefebvre Romain",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "413",
+      "49",
+      "Léman Running",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "212",
+      "74",
+      "Les 4 Flans Statiques",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "114",
+      "65",
+      "Les affamés",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "302",
+      "42",
+      "Les apprentis coureurs",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "105",
+      "32",
+      "Les Babs",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "209",
+      "91",
+      "Les boulangères",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "214",
+      "94",
+      "Les coureurs du lundi",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "106",
+      "66",
+      "Les Dooooces",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "305",
+      "43",
+      "Les flèches",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "417",
+      "80",
+      "Les Focs",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "416",
+      "64",
+      "Les Nocstambules",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "406",
+      "86",
+      "Les Racketjes",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "415",
+      "84",
+      "Les truands",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "408",
+      "52",
+      "Lions Team",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "400",
+      "68",
+      "Los Runningos",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "405",
+      "51",
+      "MAC-en rond",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "4",
+      "18",
+      "Marco Ottaviani",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "307",
+      "44",
+      "Mousstrainingclub",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "17",
+      "28",
+      "Niederhauser William",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "303",
+      "59",
+      "No Time To Run",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "28",
+      "23",
+      "NODA JOSÉ",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "103",
+      "30",
+      "NoSleep JustRun",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "309",
+      "39",
+      "Octo Sapiens",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "19",
+      "14",
+      "ohl sebastien",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "102",
+      "53",
+      "Oups",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "410",
+      "60",
+      "PAFA RUNNER",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "301",
+      "83",
+      "Panard Migros",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "318",
+      "75",
+      "Pas de panique à bord",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "211",
+      "85",
+      "PEACH",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "401",
+      "63",
+      "Primwest Team 1",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "412",
+      "62",
+      "PRIMWEST-2",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "18",
+      "4",
+      "Rieu Nicolas",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "6",
+      "11",
+      "Rovelli Gabriel",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "300",
+      "82",
+      "Run like Queens",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "101",
+      "67",
+      "Run MagAlex",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "202",
+      "37",
+      "Run now, Spritz later",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "411",
+      "71",
+      "Running out of excuses",
+      "La Clique",
+      "BG(#ffcc03)"
+    ],
+    [
+      "308",
+      "41",
+      "RunningTpg 1",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "310",
+      "61",
+      "RunningTpg 2",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "15",
+      "21",
+      "sangouard julien",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "316",
+      "78",
+      "Slow Motion",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "315",
+      "93",
+      "Sortie longue ce wk?",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "313",
+      "40",
+      "StayHard",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "205",
+      "35",
+      "Team Cernay",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "207",
+      "38",
+      "Team Erreur 404",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "317",
+      "72",
+      "The Running Men",
+      "Le Squad",
+      "BG(#eb5f3e)"
+    ],
+    [
+      "108",
+      "89",
+      "Tourne_Over",
+      "Le Binôme",
+      "BG(#44b27d)"
+    ],
+    [
+      "201",
+      "36",
+      "TOUS ENSEMBLE MAIS TOUT SEUL",
+      "Le Crew",
+      "BG(#E2AEEE)"
+    ],
+    [
+      "14",
+      "6",
+      "Unver Muhammed",
+      "L'Unique",
+      "BG(#fff2d2)"
+    ],
+    [
+      "402",
+      "70",
+      "Visium Sport",
+      "La Clique",
+      "BG(#ffcc03)"
+    ]
+  ],
+  "DataFields": [
+    "BIB",
+    "ID",
+    "AfficherNom",
+    "CONTEST.NAME",
+    "\"BG(\" & [CONTEST.COLOR] & \")\""
+  ],
+  "mid": 10040,
+  "groupFilters": [
+    {
+      "Type": 2,
+      "Value": "",
+      "Values": [
+        "L'Unique",
+        "Le Binôme",
+        "Le Crew",
+        "Le Squad",
+        "La Clique"
+      ]
+    }
+  ],
+  "comments": {
+    "4": 1,
+    "8": 1,
+    "13": 6,
+    "16": 1,
+    "20": 5,
+    "25": 5,
+    "35": 10,
+    "67": 5,
+    "69": 3,
+    "92": 5
+  },
+  "LiveUpdateInterval": 10,
+  "Favorites": null
+}
