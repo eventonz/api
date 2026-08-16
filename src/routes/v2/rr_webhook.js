@@ -68,7 +68,13 @@ async function rrWebhookV2Routes(app) {
              raceno = COALESCE(NULLIF($5, ''), raceno),
              athlete_id = COALESCE(NULLIF($6, ''), athlete_id),
              contest = COALESCE($7, contest),
-             info = COALESCE(NULLIF($8, ''), info),
+             -- info line 1 = contest name, line 2 = club: replace only line 1
+             -- so a participant webhook never wipes the club.
+             info = CASE
+               WHEN NULLIF($8, '') IS NULL THEN info
+               WHEN info LIKE E'%\n%' THEN $8 || substring(info FROM position(E'\n' IN info))
+               ELSE $8
+             END,
              updated_at = now()
          WHERE id = $1`,
         [existing[0].id, fullName, firstName || null, lastName || null, bib, athleteId, contest, contestNm]
