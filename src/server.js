@@ -93,8 +93,8 @@ app.register(require('./routes/stats'));
 // Click-tracking redirect — public, unversioned: eventoapi.com/link/:page_id
 app.register(require('./routes/link'), { prefix: '/link' });
 
-// Future versions added here:
-// app.register(require('./routes/v2'), { prefix: '/v2' });
+// V2 (block-based native app) endpoints — v2.* schema.
+app.register(require('./routes/v2'), { prefix: '/v2' });
 
 const start = async () => {
   try {
