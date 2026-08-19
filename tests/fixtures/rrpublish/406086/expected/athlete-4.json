@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "pid": "4",
+  "splitConfig": "",
+  "show": {
+    "legs": false,
+    "splits": false,
+    "overallRank": false,
+    "genderRank": false,
+    "ageGroupRank": false,
+    "tod": false,
+    "gun": false,
+    "chip": false,
+    "sector": false,
+    "pace": false
+  },
+  "splits": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

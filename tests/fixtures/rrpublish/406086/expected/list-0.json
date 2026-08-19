@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "tab": "results",
+  "list": {
+    "name": "Resultat|Live",
+    "displayName": "Resultat",
+    "contest": "2",
+    "leaderCount": 100
+  },
+  "resultLabel": "Best Time",
+  "filters": [],
+  "groups": [
+    {
+      "key": "#1_4B",
+      "labels": [
+        "4B"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "rank": "1",
+          "pid": "9",
+          "bib": "5",
+          "name": "Pi__t_p_Racin_",
+          "time": "00:01:18.121",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "BMW"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "168"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:22.014"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rank": "2",
+          "pid": "1",
+          "bib": "1",
+          "name": "T___ _pin",
+          "time": "00:01:19.713",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "VW Golf"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "166"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:25.672"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "-2 LAP(S)"
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "rank": "3",
+          "pid": "7",
+          "bib": "43",
+          "name": "Onsh_re __c_ng",
+          "time": "00:01:19.322",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "3"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "Mini Cooper"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "123"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:23.694"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "_45 LA_(S)"
+            }
+          ]
+        }
+      ],
+      "total": 3,
+      "shown": 3,
+      "hasMore": false
+    },
+    {
+      "key": "#2_6B",
+      "labels": [
+        "6B"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "rank": "1",
+          "pid": "5",
+          "bib": "26",
+          "name": "T_am Lidef_lt",
+          "time": "00:01:19.850",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "BMW"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "164"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:25.558"
+            }
+          ]
+        }
+      ],
+      "total": 1,
+      "shown": 1,
+      "hasMore": false
+    },
+    {
+      "key": "#3_Aygo Cup",
+      "labels": [
+        "Aygo Cup"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "rank": "1",
+          "pid": "3",
+          "bib": "3",
+          "name": "Pay & D__v_",
+          "time": "00:01:30.973",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "__yot_ Ayg_"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "193"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:53.282"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rank": "2",
+          "pid": "2",
+          "bib": "2",
+          "name": "Para_Rac_ng __E",
+          "time": "00:01:31.397",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "__yot_ Ayg_"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "174"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:36.271"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "-_9 LAP(_)"
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "rank": "3",
+          "pid": "10",
+          "bib": "6",
+          "name": "Brovall_n Des_gn",
+          "time": "00:01:29.429",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "3"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "__yot_ Ayg_"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "144"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:31.624"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "-49 LAP(S)"
+            }
+          ]
+        }
+      ],
+      "total": 3,
+      "shown": 3,
+      "hasMore": false
+    },
+    {
+      "key": "#4_Krutcupen",
+      "labels": [
+        "Krutcupen"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "rank": "1",
+          "pid": "8",
+          "bib": "4",
+          "name": "T_am TTW",
+          "time": "00:01:27.405",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "Volvo S8"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "113"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:39.300"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rank": "2",
+          "pid": "6",
+          "bib": "32",
+          "name": "B_rgkvis_ Ra_ly Team",
+          "time": "00:01:34.749",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "VW Polo"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "74"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:39.373"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "-3_ LAP_S_"
+            }
+          ]
+        }
+      ],
+      "total": 2,
+      "shown": 2,
+      "hasMore": false
+    },
+    {
+      "key": "#5_Time-Attack",
+      "labels": [
+        "Time-Attack"
+      ],
+      "rows": [
+        {
+          "position": 1,
+          "rank": "1",
+          "pid": "11",
+          "bib": "7",
+          "name": "Joel _a__in",
+          "time": "00:01:35.586",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "To_o_a __go"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "59"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:01:37.128"
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "rank": "2",
+          "pid": "4",
+          "bib": "48",
+          "name": "_ierp Ra__ng",
+          "time": "00:01:19.836",
+          "videoLink": null,
+          "info": [
+            {
+              "type": "text",
+              "label": "Position",
+              "value": "2"
+            },
+            {
+              "type": "text",
+              "label": "Car",
+              "value": "Peugeot 206"
+            },
+            {
+              "type": "text",
+              "label": "Laps",
+              "value": "36"
+            },
+            {
+              "type": "text",
+              "label": "Last Time",
+              "value": "00:03:25.545"
+            },
+            {
+              "type": "text",
+              "label": "Gap",
+              "value": "-23 LAP(S)"
+            }
+          ]
+        }
+      ],
+      "total": 2,
+      "shown": 2,
+      "hasMore": false
+    }
+  ]
+}

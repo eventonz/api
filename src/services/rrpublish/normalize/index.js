@@ -80,6 +80,32 @@ const detailBase = (rrId) => `https://${PROXY_SERVER}/${rrId}`;
 // GET .../app/v1/config
 // ---------------------------------------------------------------------------
 
+/**
+ * Whether RaceResult publishes a given tab for this event.
+ *
+ * The legacy showParticipants/showLive flags live only on the legacy
+ * RRPublish/data/config endpoint, which modern (v1.2.15x) events no longer
+ * serve — it 404s, so those flags are permanently absent and both tabs were
+ * silently never offered. Modern detection asks the tab's own config: an
+ * unpublished tab answers {"error":"tab not found: X"} or 404, a published
+ * one returns its own TabConfig.Lists.
+ */
+async function tabPublished(rrId, page, lang, legacyFlag) {
+  if (legacyFlag === true) return true;
+  const { config } = await fetchMergedConfig(rrId, page, lang);
+  if (!config) return false;
+  const t = config.Tab;
+  if (t && typeof t === 'object') {
+    if (t.Enabled === false || t.ShowInMenu === false) return false;
+    const from = Date.parse(str(t.ActiveFrom));
+    const until = Date.parse(str(t.ActiveUntil));
+    const now = Date.now();
+    if (!Number.isNaN(from) && now < from) return false;
+    if (!Number.isNaN(until) && now > until) return false;
+  }
+  return lists.allLists(config).length > 0;
+}
+
 async function normalizedConfig(rrId, { lang = 'en' } = {}) {
   const { config, legacy, stale } = await fetchMergedConfig(rrId, 'results', lang);
   if (!config) return { status: 404, stale: false, body: { error: 'No results published yet for this event.' } };
@@ -87,6 +113,10 @@ async function normalizedConfig(rrId, { lang = 'en' } = {}) {
   const brand = str(config.BrandColorDark ?? legacy?.BrandColorDark).trim();
   const eventOver = config.EventOver === true;
   const visible = lists.visibleLists(config);
+  const [hasParticipants, hasLive] = await Promise.all([
+    tabPublished(rrId, 'participants', lang, config.showParticipants),
+    eventOver ? Promise.resolve(false) : tabPublished(rrId, 'live', lang, config.showLive),
+  ]);
   return {
     status: 200,
     stale,
@@ -101,13 +131,15 @@ async function normalizedConfig(rrId, { lang = 'en' } = {}) {
       },
       tabs: {
         results: visible.length > 0,
-        participants: config.showParticipants === true,
-        live: config.showLive === true && !eventOver,
+        participants: hasParticipants,
+        live: hasLive && !eventOver,
         certificates: config.showCertificates === true,
         livePollSeconds: LIVE_POLL_SECONDS,
       },
       contests: lists.contestEntries(config, lang),
       lists: visible.map((l) => lists.listEntry(config, l, lang)),
+      // Print-only lists — PDF downloads, never result tables.
+      pdfLists: lists.pdfLists(config).map((l) => lists.listEntry(config, l, lang)),
     },
   };
 }
@@ -120,6 +152,21 @@ async function normalizedConfig(rrId, { lang = 'en' } = {}) {
  * params: { tab: 'results'|'participants'|'live', listname?, contest?, lang,
  *           search?, f? (-joined filter slots), group?, limit? }
  */
+/** First participant row-array anywhere in the (possibly grouped) data node. */
+function firstRow(node) {
+  if (Array.isArray(node)) {
+    for (const r of node) if (Array.isArray(r) && r.length >= 3) return r;
+    return null;
+  }
+  if (node && typeof node === 'object') {
+    for (const v of Object.values(node)) {
+      const r = firstRow(v);
+      if (r) return r;
+    }
+  }
+  return null;
+}
+
 async function normalizedList(rrId, params = {}) {
   const tab = ['results', 'participants', 'live'].includes(params.tab) ? params.tab : 'results';
   const lang = str(params.lang) || 'en';
@@ -135,7 +182,7 @@ async function normalizedList(rrId, params = {}) {
     : pool[0]) || pool[0];
   if (!list) return { status: 404, stale, body: { error: 'List not found.' } };
 
-  const contest = str(params.contest) !== '' ? str(params.contest) : str(list.Contest ?? '0') || '0';
+  let contest = str(params.contest) !== '' ? str(params.contest) : str(list.Contest ?? '0') || '0';
   const leaderCount = toInt(list.Leader, 0);
   const leadersMode = tab === 'results' && leaderCount > 0 && str(params.group) === '';
   const groupKey = str(params.group);
@@ -183,13 +230,28 @@ async function normalizedList(rrId, params = {}) {
   }
   if (!data) return { status: 502, stale, body: { error: 'Upstream RaceResult request failed' } };
 
+  // Contest fallback: a list is not guaranteed to exist for every contest —
+  // 406086 publishes "Resultat|Live" for contest 2 only, and answers
+  // {"error":"list not found"} for the 0/all default. Retry with the contest
+  // the list definition itself names, then with 0.
+  if (!data.list) {
+    for (const alt of [str(list.Contest ?? ''), '0']) {
+      if (alt === '' || alt === contest) continue;
+      contest = alt;
+      const { json: retry } = await getJson(rrId, `${pathFor(config)}/list?${queryFor(config)}`);
+      if (retry?.list) { data = retry; break; }
+    }
+  }
+
   const listFormat = (data.list && typeof data.list === 'object') ? data.list : {};
   const dataFields = Array.isArray(data.DataFields) ? data.DataFields : [];
-  const meta = extractFieldMetadata(listFormat, dataFields, lang);
+  // A sample row lets the fallback tell a time column from a gap/category one.
+  const meta = extractFieldMetadata(listFormat, dataFields, lang, firstRow(data.data));
   const rowCtx = {
     dataFields,
     nameIdx: meta.nameIdx,
     resultIdx: meta.resultIdx,
+    rankIdx: meta.hasRank ? meta.rankIdx : -1,
     lang,
     groupFilter,
     leadersMode,
@@ -199,6 +261,7 @@ async function normalizedList(rrId, params = {}) {
     ...g,
     rows: g.rows.map((p) => ({
       position: p.position,
+      rank: p.rank === '' ? null : p.rank,
       pid: p.pid,
       bib: p.bib,
       name: p.name,

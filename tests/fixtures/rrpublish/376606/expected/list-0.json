@@ -29,6 +29,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "376",
           "bib": "68",
           "name": "TEAM MITJAFIGA",
@@ -54,6 +55,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "254",
           "bib": "36",
           "name": "LES FADAS DU VERDON",
@@ -84,6 +86,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "194",
           "bib": "65",
           "name": "LES KINÉS GIVRÉS",
@@ -114,6 +117,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "238",
           "bib": "33",
           "name": "TWO BOYZ ONE CUP",
@@ -144,6 +148,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "299",
           "bib": "48",
           "name": "TIB&SQUAL",
@@ -174,6 +179,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "313",
           "bib": "22",
           "name": "UN QUI NAGE UN QUI COURT",
@@ -204,6 +210,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "330",
           "bib": "59",
           "name": "BANANAS TEAM",
@@ -234,6 +241,7 @@
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "268",
           "bib": "29",
           "name": "ZUGSTON, WE HAVE A BEAUBLEM !",
@@ -264,6 +272,7 @@
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "396",
           "bib": "61",
           "name": "LES MEUFS CHAUDES DE TA RÉGION",
@@ -294,6 +303,7 @@
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "245",
           "bib": "15",
           "name": "MYSWIM",
@@ -324,6 +334,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "360",
           "bib": "66",
           "name": "TEAM 1990",
@@ -354,6 +365,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "224",
           "bib": "19",
           "name": "TEAM ENVOL MATH ET YANIS",
@@ -384,6 +396,7 @@
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "221",
           "bib": "40",
           "name": "FOREST ET FLIPPER",
@@ -414,6 +427,7 @@
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "212",
           "bib": "35",
           "name": "NEEDLES",
@@ -444,6 +458,7 @@
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "198",
           "bib": "52",
           "name": "MORNINGSTAR BELGIUM",
@@ -474,6 +489,7 @@
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "342",
           "bib": "34",
           "name": "LES OLDS BAC",
@@ -504,6 +520,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "285",
           "bib": "55",
           "name": "SWIMRUN FOURAS #1",
@@ -534,6 +551,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "193",
           "bib": "56",
           "name": "LA MINI ET LA BÊTE",
@@ -564,6 +582,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "369",
           "bib": "60",
           "name": "LA SELEÇÃO",
@@ -594,6 +613,7 @@
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "235",
           "bib": "47",
           "name": "LÉLOOÖOORNIDAS",
@@ -624,6 +644,7 @@
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "223",
           "bib": "26",
           "name": "BEN & MATH",
@@ -654,6 +675,7 @@
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "329",
           "bib": "18",
           "name": "AGA & TOMEK - ENVOL/TRICLUB",
@@ -684,6 +706,7 @@
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "292",
           "bib": "43",
           "name": "TEAM ORCA",
@@ -714,6 +737,7 @@
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "253",
           "bib": "67",
           "name": "1981, LE RETOUR",
@@ -744,6 +768,7 @@
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "278",
           "bib": "6",
           "name": "ÖPERATION ÖVER-LOUTRES",
@@ -774,6 +799,7 @@
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "334",
           "bib": "28",
           "name": "LES TÊTARDS DU VERDON",
@@ -804,6 +830,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "214",
           "bib": "17",
           "name": "IMPERIAL BROTHERS",
@@ -824,6 +851,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "290",
           "bib": "30",
           "name": "GUI & NICO",
@@ -844,6 +872,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "354",
           "bib": "54",
           "name": "LA TEAM ROCKET",
@@ -864,6 +893,7 @@
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "347",
           "bib": "13",
           "name": "S&P TRAVELS & TOURS",
@@ -884,6 +914,7 @@
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "266",
           "bib": "49",
           "name": "LIZYAN",

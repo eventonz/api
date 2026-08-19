@@ -1,0 +1,96 @@
+{
+  "key": "ab1447fd533316bb861396355d812703",
+  "contests": {
+    "1": "Test & Kval",
+    "2": "RACE"
+  },
+  "splits": [],
+  "eventname": "STEC TIERP 2026",
+  "TimerLogo": "my\\STEC Timing System Logo.png",
+  "TimerURL": "stec.se",
+  "EventOver": true,
+  "Time": 647,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {
+    "details0": true,
+    "details1": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "live",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2026-06-13T08:30:00+02:00",
+    "ActiveUntil": "2026-06-13T17:00:00+02:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details0",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "<p>STEC TIERP 2026</p>\n",
+      "Lists": [
+        {
+          "Name": "Resultat|Live",
+          "Mode": "",
+          "Contest": "2",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 0,
+          "Leader": 100,
+          "Details": "details1",
+          "ID": "B8BAA1"
+        },
+        {
+          "Name": "Resultat|Live Drivers",
+          "Mode": "hidden",
+          "Contest": "2",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 0,
+          "Sortable": 0,
+          "Leader": 100,
+          "Details": "",
+          "ID": "D2825B"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "<p>STEC TIERP 2026</p>\n",
+    "Subtype": "dropdown",
+    "StandardDetails": "details0",
+    "Lists": [
+      {
+        "Name": "Resultat|Live",
+        "Mode": "",
+        "Contest": "2",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 0,
+        "Leader": 100,
+        "Details": "details1",
+        "ID": "B8BAA1"
+      },
+      {
+        "Name": "Resultat|Live Drivers",
+        "Mode": "hidden",
+        "Contest": "2",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 0,
+        "Sortable": 0,
+        "Leader": 100,
+        "Details": "details0",
+        "ID": "D2825B"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

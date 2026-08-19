@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "rrId": "406086",
+  "lang": "en",
+  "event": {
+    "name": "STEC TIERP 2026",
+    "eventOver": true,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "2",
+      "name": "RACE"
+    }
+  ],
+  "lists": [
+    {
+      "id": "B8BAA1",
+      "name": "Resultat|Live",
+      "displayName": "Resultat",
+      "contest": "2",
+      "leaderCount": 100,
+      "evento": null
+    }
+  ],
+  "pdfLists": [
+    {
+      "id": "D2825B",
+      "name": "Resultat|Live Drivers",
+      "displayName": "Varvtider (PDF)",
+      "contest": "2",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ]
+}

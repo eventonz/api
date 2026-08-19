@@ -1,0 +1,182 @@
+{
+  "Elements": [
+    {
+      "ID": "NprArq_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "NprArq",
+          "Type": "legs",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": false,
+            "ShowPace": true,
+            "HidePrediction": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel1",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "ZuAaOI_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "ZuAaOI",
+          "Type": "splits",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "ShowTOD": true,
+            "ShowGunTime": true,
+            "ShowChipTime": true,
+            "ShowSectorTime": true,
+            "ShowPace": true,
+            "ShowOverallRank": true,
+            "ShowGenderRank": true,
+            "ShowAgeGroupRank": true,
+            "ShowMaxRank": false,
+            "HidePrediction": false
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "SplitsLabel2",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "uH2S2A_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "uH2S2A",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "CertificateSets": [
+              {
+                "Mode": "",
+                "Name": "Certificate Web",
+                "ShowAs": "",
+                "Picture": "",
+                "Contest": "0"
+              },
+              {
+                "Mode": "hidden",
+                "Name": "Kiosk Receipt Cert",
+                "ShowAs": "",
+                "Picture": "",
+                "Contest": "0"
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "8KFqkz_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "8KFqkz",
+          "Type": "comments",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsComments",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": false,
+  "Data": {
+    "Comments": [],
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": [
+        {
+          "Name": "Start",
+          "Exists": true,
+          "TOD": "11:22:17",
+          "Gun": "08:44",
+          "RO": 1,
+          "RG": 1,
+          "RA": 1
+        },
+        {
+          "Name": "Finish",
+          "Exists": true,
+          "TOD": "13:09:41",
+          "Gun": "1:56:07",
+          "Chip": "1:47:24",
+          "Sector": "1:47:24",
+          "Speed": "71:35 min/mile",
+          "RO": 291,
+          "RG": 160,
+          "RA": 25
+        }
+      ],
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": [
+      {
+        "label": "Award Certificate",
+        "cs": "Certificate Web",
+        "pic": ""
+      }
+    ],
+    "IsFavorite": false
+  },
+  "key": "d52f391505a81e0cd939abee5362cfbb",
+  "LiveUpdateInterval": 10,
+  "MID": 9808,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 66060,
+  "PID": 182,
+  "TimerLogo": "second-wind-300x119.png",
+  "TimerURL": "secondwindresults.com",
+  "Color": "",
+  "User": null
+}

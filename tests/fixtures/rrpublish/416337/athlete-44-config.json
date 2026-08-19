@@ -1,0 +1,183 @@
+{
+  "key": "d52f391505a81e0cd939abee5362cfbb",
+  "contests": {
+    "1": "C.H.H.I.P.S. Trot N Brew"
+  },
+  "splits": [
+    {
+      "ID": 3,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 5,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 100
+    }
+  ],
+  "eventname": "C.H.H.I.P.S. Trot N Brew 2026",
+  "TimerLogo": "second-wind-300x119.png",
+  "TimerURL": "secondwindresults.com",
+  "EventOver": true,
+  "Time": 66060,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {
+    "details0": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "1900-01-01T00:00:00-05:00",
+    "ActiveUntil": "2100-12-31T23:59:59-05:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details0",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "Result Lists|Overall Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "3EF1B7"
+        },
+        {
+          "Name": "Result Lists|Gender Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "80CC55"
+        },
+        {
+          "Name": "Result Lists|Age Group Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "872E1E"
+        },
+        {
+          "Name": "Result Lists|Overall Results",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "3EF1B7"
+        },
+        {
+          "Name": "Result Lists|Age Group v1",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "D5CA42"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "details0",
+    "Lists": [
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Gender Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "80CC55"
+      },
+      {
+        "Name": "Result Lists|Age Group Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "872E1E"
+      },
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Age Group v1",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "D5CA42"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

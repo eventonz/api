@@ -12,11 +12,23 @@ function allLists(config) {
   return config?.TabConfig?.Lists || config?.lists || [];
 }
 
-/** RRPublish.js rule: visible lists have Format containing V or P AND empty Mode. */
+/**
+ * Viewable lists: Format contains V (on-screen) AND empty Mode (public).
+ *
+ * Format 'P' WITHOUT 'V' is a print/PDF-only list — RRPublish offers it as a
+ * PDF download, not a results table. Rendering one as a tab yields an empty
+ * list (e.g. 406086 "Varvtider (PDF)"), so it is excluded here and surfaced
+ * separately by pdfLists().
+ */
 function visibleLists(config) {
+  return allLists(config).filter((l) => str(l?.Format).includes('V') && str(l?.Mode) === '');
+}
+
+/** Public print-only lists — offered as PDF links, never as result tables. */
+function pdfLists(config) {
   return allLists(config).filter((l) => {
     const format = str(l?.Format);
-    return (format.includes('V') || format.includes('P')) && str(l?.Mode) === '';
+    return format.includes('P') && !format.includes('V') && str(l?.Mode) === '';
   });
 }
 
@@ -81,6 +93,6 @@ function listEntry(config, list, lang) {
 }
 
 module.exports = {
-  allLists, visibleLists, contestEntries, listDisplayName,
+  allLists, visibleLists, pdfLists, contestEntries, listDisplayName,
   isTabConfigList, detailsPath, listEntry,
 };

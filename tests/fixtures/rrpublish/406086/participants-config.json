@@ -1,0 +1,91 @@
+{
+  "key": "ab1447fd533316bb861396355d812703",
+  "contests": {
+    "1": "Test & Kval",
+    "2": "RACE"
+  },
+  "splits": [],
+  "eventname": "STEC TIERP 2026",
+  "TimerLogo": "my\\STEC Timing System Logo.png",
+  "TimerURL": "stec.se",
+  "EventOver": true,
+  "Time": 646,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {},
+  "Tab": {
+    "Label": "",
+    "URLName": "participants",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2025-09-27T00:00:00+02:00",
+    "ActiveUntil": "2025-09-27T23:00:00+02:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "boxes",
+      "StandardDetails": "",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": false,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "En ligne|Concurrents",
+          "Mode": "",
+          "Contest": "2",
+          "ShowAs": "",
+          "Format": "V",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "52412D"
+        },
+        {
+          "Name": "En ligne|Concurrents",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "Sunday",
+          "Format": "V",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 100,
+          "Details": "",
+          "ID": "EC79E1"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "En ligne|Concurrents",
+        "Mode": "",
+        "Contest": "2",
+        "ShowAs": "",
+        "Format": "V",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "52412D"
+      },
+      {
+        "Name": "En ligne|Concurrents",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "Sunday",
+        "Format": "V",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 100,
+        "ID": "EC79E1"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": false
+  },
+  "ContestColors": null
+}

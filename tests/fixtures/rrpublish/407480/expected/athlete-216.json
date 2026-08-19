@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "pid": "216",
+  "splitConfig": "01011111111",
+  "show": {
+    "legs": false,
+    "splits": true,
+    "overallRank": true,
+    "genderRank": true,
+    "ageGroupRank": true,
+    "tod": true,
+    "gun": true,
+    "chip": true,
+    "sector": true,
+    "pace": true
+  },
+  "splits": {
+    "columns": {
+      "time": [
+        {
+          "key": "Chip",
+          "label": "Race time"
+        },
+        {
+          "key": "TOD",
+          "label": "TOD"
+        },
+        {
+          "key": "Speed",
+          "label": "Speed"
+        },
+        {
+          "key": "Gun",
+          "label": "Gun"
+        },
+        {
+          "key": "Sector",
+          "label": "Sector"
+        }
+      ],
+      "rank": [
+        {
+          "key": "RO",
+          "label": "Overall"
+        },
+        {
+          "key": "RG",
+          "label": "Gender"
+        },
+        {
+          "key": "RA",
+          "label": "Category"
+        }
+      ]
+    },
+    "rows": [
+      {
+        "name": "Start",
+        "time": "",
+        "segment": null,
+        "delta": null,
+        "values": {
+          "Chip": "",
+          "TOD": "09:07:43",
+          "Speed": "",
+          "Gun": "00:23",
+          "Sector": "",
+          "RO": "44",
+          "RG": "27",
+          "RA": "4"
+        }
+      },
+      {
+        "name": "Finish",
+        "time": "47:12",
+        "segment": null,
+        "delta": -3,
+        "values": {
+          "Chip": "47:12",
+          "TOD": "09:54:55",
+          "Speed": "15:11 min/mile",
+          "Gun": "47:35",
+          "Sector": "47:12",
+          "RO": "47",
+          "RG": "30",
+          "RA": "4"
+        }
+      }
+    ]
+  },
+  "legs": {
+    "columns": {
+      "time": [],
+      "rank": []
+    },
+    "rows": []
+  },
+  "hyrox": null
+}

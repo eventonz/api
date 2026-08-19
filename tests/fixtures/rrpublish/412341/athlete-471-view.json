@@ -1,0 +1,116 @@
+{
+  "Elements": [
+    {
+      "ID": "i39QH5_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "i39QH5",
+          "Type": "list",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "List": "01-Online Results|Stage Details Live"
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsDetails",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "5gCcqA_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "5gCcqA",
+          "Type": "certificates",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "CertificateSets": [
+              {
+                "Mode": "hidden",
+                "Name": "Finisher Certificates|Certificate",
+                "ShowAs": "Certificate",
+                "Picture": "",
+                "Contest": "1"
+              },
+              {
+                "Mode": "hidden",
+                "Name": "Finisher Certificates|IF Certificate",
+                "ShowAs": "Individual Finisher Certificate",
+                "Picture": "",
+                "Contest": "1"
+              }
+            ]
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsCertificates",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    },
+    {
+      "ID": "iAhKTk_box",
+      "Type": "box",
+      "Styles": "",
+      "ClassName": "",
+      "Children": [
+        {
+          "ID": "iAhKTk",
+          "Type": "links",
+          "Styles": "",
+          "ClassName": "",
+          "Children": null,
+          "Config": {
+            "EmbedInBox": true,
+            "Links": []
+          }
+        }
+      ],
+      "Config": {
+        "Label": "",
+        "LabelPreset": "detailsLinks",
+        "TitleStyles": [],
+        "TitleDynamicFormat": ""
+      }
+    }
+  ],
+  "LiveUpdate": true,
+  "Data": {
+    "Comments": null,
+    "Photos": [],
+    "SplitsAndLegs": {
+      "Splits": null,
+      "Legs": null
+    },
+    "Fields": null,
+    "Certificates": null,
+    "IsFavorite": false
+  },
+  "key": "2197201526505fed0a2b42812b084b0a",
+  "LiveUpdateInterval": 10,
+  "MID": 83384,
+  "Server": "my-aus-1.raceresult.com",
+  "Time": 644,
+  "PID": 471,
+  "TimerLogo": "",
+  "TimerURL": "",
+  "Color": "",
+  "User": null
+}

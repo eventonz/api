@@ -1,0 +1,36 @@
+{
+  "rrId": "416337",
+  "recordedAt": "2026-08-19T22:20:57.110Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "Result Lists|Overall Results",
+      "contest": "0"
+    },
+    {
+      "file": "list-1.json",
+      "listname": "Result Lists|Gender Results",
+      "contest": "0"
+    },
+    {
+      "file": "list-2.json",
+      "listname": "Result Lists|Age Group Results",
+      "contest": "0"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "44",
+      "detailsPath": "details0",
+      "legacyPath": "results",
+      "splitsPath": null
+    },
+    {
+      "pid": "182",
+      "detailsPath": "details0",
+      "legacyPath": "results",
+      "splitsPath": null
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

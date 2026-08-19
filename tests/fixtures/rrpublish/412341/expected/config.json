@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "rrId": "412341",
+  "lang": "en",
+  "event": {
+    "name": "Swiss Epic 2026",
+    "eventOver": false,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": true,
+    "live": true,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "1",
+      "name": "Riders"
+    }
+  ],
+  "lists": [
+    {
+      "id": "E9C2A1",
+      "name": "01-Online Results|LIVE",
+      "displayName": "LIVE",
+      "contest": "1",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "B7863B",
+      "name": "01-Online Results|LIVE GC",
+      "displayName": "LIVE GC",
+      "contest": "1",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "F1B2AF",
+      "name": "01-Online Results|General Classification",
+      "displayName": "General Classification",
+      "contest": "1",
+      "leaderCount": 5,
+      "evento": null
+    },
+    {
+      "id": "E7E3F0",
+      "name": "01-Online Results|Stage Results",
+      "displayName": "Stage Results",
+      "contest": "1",
+      "leaderCount": 5,
+      "evento": null
+    }
+  ],
+  "pdfLists": []
+}

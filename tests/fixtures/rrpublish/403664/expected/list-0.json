@@ -7,7 +7,7 @@
     "contest": "0",
     "leaderCount": 0
   },
-  "resultLabel": "Time",
+  "resultLabel": "Temps",
   "filters": [],
   "groups": [
     {
@@ -18,10 +18,11 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "11",
           "bib": "6",
           "name": "Rovelli Gabriel",
-          "time": "-",
+          "time": "22:07:04",
           "videoLink": null,
           "info": [
             {
@@ -33,20 +34,16 @@
               "type": "text",
               "label": "Tours",
               "value": "21"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:07:04"
             }
           ]
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "8",
           "bib": "24",
           "name": "Giordano Jonathan",
-          "time": "-2 LAPS",
+          "time": "23:27:50",
           "videoLink": null,
           "info": [
             {
@@ -58,20 +55,16 @@
               "type": "text",
               "label": "Tours",
               "value": "19"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:27:50"
             }
           ]
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "4",
           "bib": "18",
           "name": "Rieu Nicolas",
-          "time": "-3 LAPS",
+          "time": "22:22:17",
           "videoLink": null,
           "info": [
             {
@@ -83,20 +76,16 @@
               "type": "text",
               "label": "Tours",
               "value": "18"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:22:17"
             }
           ]
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "24",
           "bib": "29",
           "name": "Freire Junior Clovis",
-          "time": "-4 LAPS",
+          "time": "23:11:04",
           "videoLink": null,
           "info": [
             {
@@ -108,20 +97,16 @@
               "type": "text",
               "label": "Tours",
               "value": "17"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:11:04"
             }
           ]
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "7",
           "bib": "20",
           "name": "Genoud Chris",
-          "time": "-5 LAPS",
+          "time": "24:38:41",
           "videoLink": null,
           "info": [
             {
@@ -133,20 +118,16 @@
               "type": "text",
               "label": "Tours",
               "value": "16"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:38:41"
             }
           ]
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "25",
           "bib": "11",
           "name": "Fischer Thomas",
-          "time": "-6 LAPS",
+          "time": "19:03:42",
           "videoLink": null,
           "info": [
             {
@@ -158,20 +139,16 @@
               "type": "text",
               "label": "Tours",
               "value": "15"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "19:03:42"
             }
           ]
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "14",
           "bib": "19",
           "name": "ohl sebastien",
-          "time": "-6 LAPS",
+          "time": "19:16:06",
           "videoLink": null,
           "info": [
             {
@@ -183,20 +160,16 @@
               "type": "text",
               "label": "Tours",
               "value": "15"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "19:16:06"
             }
           ]
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "22",
           "bib": "22",
           "name": "Bouquin David",
-          "time": "-6 LAPS",
+          "time": "23:52:19",
           "videoLink": null,
           "info": [
             {
@@ -208,20 +181,16 @@
               "type": "text",
               "label": "Tours",
               "value": "15"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:52:19"
             }
           ]
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "23",
           "bib": "28",
           "name": "NODA JOSÉ",
-          "time": "-6 LAPS",
+          "time": "24:38:33",
           "videoLink": null,
           "info": [
             {
@@ -233,20 +202,16 @@
               "type": "text",
               "label": "Tours",
               "value": "15"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:38:33"
             }
           ]
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "12",
           "bib": "1",
           "name": "Jimenez Augustin",
-          "time": "-7 LAPS",
+          "time": "14:23:25",
           "videoLink": null,
           "info": [
             {
@@ -258,20 +223,16 @@
               "type": "text",
               "label": "Tours",
               "value": "14"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "14:23:25"
             }
           ]
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "3",
           "bib": "25",
           "name": "Hoenicke Thomas",
-          "time": "-7 LAPS",
+          "time": "23:09:53",
           "videoLink": null,
           "info": [
             {
@@ -283,20 +244,16 @@
               "type": "text",
               "label": "Tours",
               "value": "14"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:09:53"
             }
           ]
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "17",
           "bib": "13",
           "name": "chupin jean-pierre",
-          "time": "-8 LAPS",
+          "time": "19:26:29",
           "videoLink": null,
           "info": [
             {
@@ -308,20 +265,16 @@
               "type": "text",
               "label": "Tours",
               "value": "13"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "19:26:29"
             }
           ]
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "6",
           "bib": "14",
           "name": "Unver Muhammed",
-          "time": "-8 LAPS",
+          "time": "22:11:40",
           "videoLink": null,
           "info": [
             {
@@ -333,20 +286,16 @@
               "type": "text",
               "label": "Tours",
               "value": "13"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:11:40"
             }
           ]
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "21",
           "bib": "15",
           "name": "sangouard julien",
-          "time": "-9 LAPS",
+          "time": "22:55:11",
           "videoLink": null,
           "info": [
             {
@@ -358,20 +307,16 @@
               "type": "text",
               "label": "Tours",
               "value": "12"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:55:11"
             }
           ]
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "10",
           "bib": "8",
           "name": "Changanaqui Yoann",
-          "time": "-9 LAPS",
+          "time": "23:50:48",
           "videoLink": null,
           "info": [
             {
@@ -383,20 +328,16 @@
               "type": "text",
               "label": "Tours",
               "value": "12"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:50:48"
             }
           ]
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "16",
           "bib": "5",
           "name": "Epars Samuel",
-          "time": "-10 LAPS",
+          "time": "9:58:40",
           "videoLink": null,
           "info": [
             {
@@ -408,20 +349,16 @@
               "type": "text",
               "label": "Tours",
               "value": "11"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "9:58:40"
             }
           ]
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "96",
           "bib": "26",
           "name": "Gillioz Quentin",
-          "time": "-10 LAPS",
+          "time": "20:28:42",
           "videoLink": null,
           "info": [
             {
@@ -433,20 +370,16 @@
               "type": "text",
               "label": "Tours",
               "value": "11"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "20:28:42"
             }
           ]
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "97",
           "bib": "30",
           "name": "Chassot Ilenia",
-          "time": "-10 LAPS",
+          "time": "20:28:42",
           "videoLink": null,
           "info": [
             {
@@ -458,20 +391,16 @@
               "type": "text",
               "label": "Tours",
               "value": "11"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "20:28:42"
             }
           ]
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "18",
           "bib": "4",
           "name": "Marco Ottaviani",
-          "time": "-11 LAPS",
+          "time": "8:01:58",
           "videoLink": null,
           "info": [
             {
@@ -483,20 +412,16 @@
               "type": "text",
               "label": "Tours",
               "value": "10"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "8:01:58"
             }
           ]
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "20",
           "bib": "27",
           "name": "Flag Eric",
-          "time": "-11 LAPS",
+          "time": "10:41:25",
           "videoLink": null,
           "info": [
             {
@@ -508,20 +433,16 @@
               "type": "text",
               "label": "Tours",
               "value": "10"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "10:41:25"
             }
           ]
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "27",
           "bib": "2",
           "name": "Lefebvre Romain",
-          "time": "-11 LAPS",
+          "time": "12:31:01",
           "videoLink": null,
           "info": [
             {
@@ -533,20 +454,16 @@
               "type": "text",
               "label": "Tours",
               "value": "10"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "12:31:01"
             }
           ]
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "13",
           "bib": "12",
           "name": "Ceh Stefan",
-          "time": "-12 LAPS",
+          "time": "10:13:35",
           "videoLink": null,
           "info": [
             {
@@ -558,20 +475,16 @@
               "type": "text",
               "label": "Tours",
               "value": "9"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "10:13:35"
             }
           ]
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "19",
           "bib": "21",
           "name": "Basset Romain",
-          "time": "-12 LAPS",
+          "time": "24:27:29",
           "videoLink": null,
           "info": [
             {
@@ -583,20 +496,16 @@
               "type": "text",
               "label": "Tours",
               "value": "9"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:27:29"
             }
           ]
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "26",
           "bib": "3",
           "name": "Favre Jerome",
-          "time": "-13 LAPS",
+          "time": "7:35:01",
           "videoLink": null,
           "info": [
             {
@@ -608,20 +517,16 @@
               "type": "text",
               "label": "Tours",
               "value": "8"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "7:35:01"
             }
           ]
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "9",
           "bib": "23",
           "name": "Gerardin Delrieu Vanessa",
-          "time": "-13 LAPS",
+          "time": "23:39:00",
           "videoLink": null,
           "info": [
             {
@@ -633,16 +538,12 @@
               "type": "text",
               "label": "Tours",
               "value": "8"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:39:00"
             }
           ]
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "5",
           "bib": "7",
           "name": "Kacel Florian",
@@ -658,6 +559,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "15",
           "bib": "16",
           "name": "DA SILVA Benjamin",
@@ -673,6 +575,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "28",
           "bib": "17",
           "name": "Niederhauser William",
@@ -688,6 +591,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "29",
           "bib": "10",
           "name": "Andre Jimmy",
@@ -714,10 +618,11 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "67",
           "bib": "101",
           "name": "Run MagAlex",
-          "time": "-",
+          "time": "23:26:15",
           "videoLink": null,
           "info": [
             {
@@ -729,20 +634,16 @@
               "type": "text",
               "label": "Tours",
               "value": "27"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:26:15"
             }
           ]
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "92",
           "bib": "107",
           "name": "KeepRun",
-          "time": "-1 LAP",
+          "time": "23:18:38",
           "videoLink": null,
           "info": [
             {
@@ -754,20 +655,16 @@
               "type": "text",
               "label": "Tours",
               "value": "26"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:18:38"
             }
           ]
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "53",
           "bib": "102",
           "name": "Oups",
-          "time": "-5 LAPS",
+          "time": "23:40:33",
           "videoLink": null,
           "info": [
             {
@@ -779,20 +676,16 @@
               "type": "text",
               "label": "Tours",
               "value": "22"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:40:33"
             }
           ]
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "30",
           "bib": "103",
           "name": "NoSleep JustRun",
-          "time": "-11 LAPS",
+          "time": "23:59:25",
           "videoLink": null,
           "info": [
             {
@@ -804,20 +697,16 @@
               "type": "text",
               "label": "Tours",
               "value": "16"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:59:25"
             }
           ]
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "32",
           "bib": "105",
           "name": "Les Babs",
-          "time": "-14 LAPS",
+          "time": "22:37:49",
           "videoLink": null,
           "info": [
             {
@@ -829,20 +718,16 @@
               "type": "text",
               "label": "Tours",
               "value": "13"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:37:49"
             }
           ]
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "88",
           "bib": "100",
           "name": "Garmin girls",
-          "time": "-15 LAPS",
+          "time": "15:37:20",
           "videoLink": null,
           "info": [
             {
@@ -854,20 +739,16 @@
               "type": "text",
               "label": "Tours",
               "value": "12"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "15:37:20"
             }
           ]
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "57",
           "bib": "111",
           "name": "Helios Quetzal",
-          "time": "-15 LAPS",
+          "time": "23:18:14",
           "videoLink": null,
           "info": [
             {
@@ -879,20 +760,16 @@
               "type": "text",
               "label": "Tours",
               "value": "12"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:18:14"
             }
           ]
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "31",
           "bib": "104",
           "name": "BPLFKing Running",
-          "time": "-17 LAPS",
+          "time": "7:28:34",
           "videoLink": null,
           "info": [
             {
@@ -904,20 +781,16 @@
               "type": "text",
               "label": "Tours",
               "value": "10"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "7:28:34"
             }
           ]
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "65",
           "bib": "114",
           "name": "Les affamés",
-          "time": "-21 LAPS",
+          "time": "24:12:22",
           "videoLink": null,
           "info": [
             {
@@ -929,16 +802,12 @@
               "type": "text",
               "label": "Tours",
               "value": "6"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:12:22"
             }
           ]
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "66",
           "bib": "106",
           "name": "Les Dooooces",
@@ -954,6 +823,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "77",
           "bib": "113",
           "name": "Cécile & Berac",
@@ -969,6 +839,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "89",
           "bib": "108",
           "name": "Tourne_Over",
@@ -995,10 +866,11 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "37",
           "bib": "202",
           "name": "Run now, Spritz later",
-          "time": "-",
+          "time": "23:53:34",
           "videoLink": null,
           "info": [
             {
@@ -1010,20 +882,16 @@
               "type": "text",
               "label": "Tours",
               "value": "37"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:53:34"
             }
           ]
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "74",
           "bib": "212",
           "name": "Les 4 Flans Statiques",
-          "time": "-2 LAPS",
+          "time": "24:16:50",
           "videoLink": null,
           "info": [
             {
@@ -1035,20 +903,16 @@
               "type": "text",
               "label": "Tours",
               "value": "35"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:16:50"
             }
           ]
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "34",
           "bib": "204",
           "name": "Dédé-Fonce",
-          "time": "-3 LAPS",
+          "time": "23:50:45",
           "videoLink": null,
           "info": [
             {
@@ -1060,20 +924,16 @@
               "type": "text",
               "label": "Tours",
               "value": "34"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:50:45"
             }
           ]
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "35",
           "bib": "205",
           "name": "Team Cernay",
-          "time": "-3 LAPS",
+          "time": "24:23:03",
           "videoLink": null,
           "info": [
             {
@@ -1085,20 +945,16 @@
               "type": "text",
               "label": "Tours",
               "value": "34"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:23:03"
             }
           ]
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "55",
           "bib": "210",
           "name": "hybrid athletes",
-          "time": "-5 LAPS",
+          "time": "23:51:07",
           "videoLink": null,
           "info": [
             {
@@ -1110,20 +966,16 @@
               "type": "text",
               "label": "Tours",
               "value": "32"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:51:07"
             }
           ]
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "69",
           "bib": "200",
           "name": "Jizz us",
-          "time": "-8 LAPS",
+          "time": "20:52:26",
           "videoLink": null,
           "info": [
             {
@@ -1135,20 +987,16 @@
               "type": "text",
               "label": "Tours",
               "value": "29"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "20:52:26"
             }
           ]
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "36",
           "bib": "201",
           "name": "TOUS ENSEMBLE MAIS TOUT SEUL",
-          "time": "-11 LAPS",
+          "time": "24:01:49",
           "videoLink": null,
           "info": [
             {
@@ -1160,20 +1008,16 @@
               "type": "text",
               "label": "Tours",
               "value": "26"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:01:49"
             }
           ]
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "56",
           "bib": "312",
           "name": "Le Squadi Squad",
-          "time": "-11 LAPS",
+          "time": "24:08:01",
           "videoLink": null,
           "info": [
             {
@@ -1185,20 +1029,16 @@
               "type": "text",
               "label": "Tours",
               "value": "26"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:08:01"
             }
           ]
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "81",
           "bib": "203",
           "name": "Débit illimité",
-          "time": "-12 LAPS",
+          "time": "24:29:15",
           "videoLink": null,
           "info": [
             {
@@ -1210,20 +1050,16 @@
               "type": "text",
               "label": "Tours",
               "value": "25"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:29:15"
             }
           ]
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "90",
           "bib": "208",
           "name": "Le trio infernal",
-          "time": "-13 LAPS",
+          "time": "23:47:48",
           "videoLink": null,
           "info": [
             {
@@ -1235,20 +1071,16 @@
               "type": "text",
               "label": "Tours",
               "value": "24"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:47:48"
             }
           ]
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "38",
           "bib": "207",
           "name": "Team Erreur 404",
-          "time": "-17 LAPS",
+          "time": "14:55:35",
           "videoLink": null,
           "info": [
             {
@@ -1260,20 +1092,16 @@
               "type": "text",
               "label": "Tours",
               "value": "20"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "14:55:35"
             }
           ]
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "33",
           "bib": "206",
           "name": "La Team Rocket",
-          "time": "-21 LAPS",
+          "time": "23:41:44",
           "videoLink": null,
           "info": [
             {
@@ -1285,20 +1113,16 @@
               "type": "text",
               "label": "Tours",
               "value": "16"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:41:44"
             }
           ]
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "94",
           "bib": "214",
           "name": "Les coureurs du lundi",
-          "time": "-32 LAPS",
+          "time": "4:57:01",
           "videoLink": null,
           "info": [
             {
@@ -1310,20 +1134,16 @@
               "type": "text",
               "label": "Tours",
               "value": "5"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "4:57:01"
             }
           ]
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "98",
           "bib": "220",
           "name": "Kosov",
-          "time": "-33 LAPS",
+          "time": "23:40:42",
           "videoLink": null,
           "info": [
             {
@@ -1335,20 +1155,16 @@
               "type": "text",
               "label": "Tours",
               "value": "4"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:40:42"
             }
           ]
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "85",
           "bib": "211",
           "name": "PEACH",
-          "time": "-34 LAPS",
+          "time": "23:34:29",
           "videoLink": null,
           "info": [
             {
@@ -1360,16 +1176,12 @@
               "type": "text",
               "label": "Tours",
               "value": "3"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:34:29"
             }
           ]
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "76",
           "bib": "213",
           "name": "Le Squadi Squad",
@@ -1385,6 +1197,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "91",
           "bib": "209",
           "name": "Les boulangères",
@@ -1411,10 +1224,11 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "46",
           "bib": "311",
           "name": "BCAS SQUAD",
-          "time": "-",
+          "time": "23:51:12",
           "videoLink": null,
           "info": [
             {
@@ -1426,20 +1240,16 @@
               "type": "text",
               "label": "Tours",
               "value": "41"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:51:12"
             }
           ]
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "61",
           "bib": "310",
           "name": "RunningTpg 2",
-          "time": "+13:31",
+          "time": "24:04:43",
           "videoLink": null,
           "info": [
             {
@@ -1451,20 +1261,16 @@
               "type": "text",
               "label": "Tours",
               "value": "41"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:04:43"
             }
           ]
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "93",
           "bib": "315",
           "name": "Sortie longue ce wk?",
-          "time": "+38:01",
+          "time": "24:29:13",
           "videoLink": null,
           "info": [
             {
@@ -1476,20 +1282,16 @@
               "type": "text",
               "label": "Tours",
               "value": "41"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:29:13"
             }
           ]
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "40",
           "bib": "313",
           "name": "StayHard",
-          "time": "-2 LAPS",
+          "time": "24:21:48",
           "videoLink": null,
           "info": [
             {
@@ -1501,20 +1303,16 @@
               "type": "text",
               "label": "Tours",
               "value": "39"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:21:48"
             }
           ]
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "42",
           "bib": "302",
           "name": "Les apprentis coureurs",
-          "time": "-2 LAPS",
+          "time": "24:35:58",
           "videoLink": null,
           "info": [
             {
@@ -1526,20 +1324,16 @@
               "type": "text",
               "label": "Tours",
               "value": "39"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:35:58"
             }
           ]
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "41",
           "bib": "308",
           "name": "RunningTpg 1",
-          "time": "-3 LAPS",
+          "time": "24:44:30",
           "videoLink": null,
           "info": [
             {
@@ -1551,20 +1345,16 @@
               "type": "text",
               "label": "Tours",
               "value": "38"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:44:30"
             }
           ]
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "39",
           "bib": "309",
           "name": "Octo Sapiens",
-          "time": "-4 LAPS",
+          "time": "23:59:16",
           "videoLink": null,
           "info": [
             {
@@ -1576,20 +1366,16 @@
               "type": "text",
               "label": "Tours",
               "value": "37"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:59:16"
             }
           ]
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "58",
           "bib": "306",
           "name": "BORNTORUN",
-          "time": "-5 LAPS",
+          "time": "24:38:57",
           "videoLink": null,
           "info": [
             {
@@ -1601,20 +1387,16 @@
               "type": "text",
               "label": "Tours",
               "value": "36"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:38:57"
             }
           ]
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "79",
           "bib": "319",
           "name": "La Fine Équipe",
-          "time": "-6 LAPS",
+          "time": "23:06:19",
           "videoLink": null,
           "info": [
             {
@@ -1626,20 +1408,16 @@
               "type": "text",
               "label": "Tours",
               "value": "35"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:06:19"
             }
           ]
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "44",
           "bib": "307",
           "name": "Mousstrainingclub",
-          "time": "-7 LAPS",
+          "time": "23:26:53",
           "videoLink": null,
           "info": [
             {
@@ -1651,20 +1429,16 @@
               "type": "text",
               "label": "Tours",
               "value": "34"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:26:53"
             }
           ]
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "59",
           "bib": "303",
           "name": "No Time To Run",
-          "time": "-7 LAPS",
+          "time": "23:37:06",
           "videoLink": null,
           "info": [
             {
@@ -1676,20 +1450,16 @@
               "type": "text",
               "label": "Tours",
               "value": "34"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:37:06"
             }
           ]
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "82",
           "bib": "300",
           "name": "Run like Queens",
-          "time": "-8 LAPS",
+          "time": "23:41:42",
           "videoLink": null,
           "info": [
             {
@@ -1701,20 +1471,16 @@
               "type": "text",
               "label": "Tours",
               "value": "33"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:41:42"
             }
           ]
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "54",
           "bib": "304",
           "name": "Gen X-pired",
-          "time": "-8 LAPS",
+          "time": "23:42:15",
           "videoLink": null,
           "info": [
             {
@@ -1726,20 +1492,16 @@
               "type": "text",
               "label": "Tours",
               "value": "33"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:42:15"
             }
           ]
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "43",
           "bib": "305",
           "name": "Les flèches",
-          "time": "-10 LAPS",
+          "time": "23:42:21",
           "videoLink": null,
           "info": [
             {
@@ -1751,20 +1513,16 @@
               "type": "text",
               "label": "Tours",
               "value": "31"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:42:21"
             }
           ]
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "45",
           "bib": "314",
           "name": "8'stitis",
-          "time": "-13 LAPS",
+          "time": "23:49:40",
           "videoLink": null,
           "info": [
             {
@@ -1776,20 +1534,16 @@
               "type": "text",
               "label": "Tours",
               "value": "28"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:49:40"
             }
           ]
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "78",
           "bib": "316",
           "name": "Slow Motion",
-          "time": "-28 LAPS",
+          "time": "10:41:53",
           "videoLink": null,
           "info": [
             {
@@ -1801,20 +1555,16 @@
               "type": "text",
               "label": "Tours",
               "value": "13"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "10:41:53"
             }
           ]
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "75",
           "bib": "318",
           "name": "Pas de panique à bord",
-          "time": "-36 LAPS",
+          "time": "4:15:49",
           "videoLink": null,
           "info": [
             {
@@ -1826,16 +1576,12 @@
               "type": "text",
               "label": "Tours",
               "value": "5"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "4:15:49"
             }
           ]
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "72",
           "bib": "317",
           "name": "The Running Men",
@@ -1851,6 +1597,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "83",
           "bib": "301",
           "name": "Panard Migros",
@@ -1877,10 +1624,11 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "73",
           "bib": "409",
           "name": "GVA Runners",
-          "time": "-",
+          "time": "24:33:03",
           "videoLink": null,
           "info": [
             {
@@ -1892,20 +1640,16 @@
               "type": "text",
               "label": "Tours",
               "value": "42"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:33:03"
             }
           ]
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "48",
           "bib": "403",
           "name": "GVA Team-T2",
-          "time": "-2 LAPS",
+          "time": "24:08:48",
           "videoLink": null,
           "info": [
             {
@@ -1917,20 +1661,16 @@
               "type": "text",
               "label": "Tours",
               "value": "40"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:08:48"
             }
           ]
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "51",
           "bib": "405",
           "name": "MAC-en rond",
-          "time": "-3 LAPS",
+          "time": "24:14:10",
           "videoLink": null,
           "info": [
             {
@@ -1942,20 +1682,16 @@
               "type": "text",
               "label": "Tours",
               "value": "39"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:14:10"
             }
           ]
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "71",
           "bib": "411",
           "name": "Running out of excuses",
-          "time": "-6 LAPS",
+          "time": "23:46:46",
           "videoLink": null,
           "info": [
             {
@@ -1967,20 +1703,16 @@
               "type": "text",
               "label": "Tours",
               "value": "36"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:46:46"
             }
           ]
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "70",
           "bib": "402",
           "name": "Visium Sport",
-          "time": "-7 LAPS",
+          "time": "23:17:09",
           "videoLink": null,
           "info": [
             {
@@ -1992,20 +1724,16 @@
               "type": "text",
               "label": "Tours",
               "value": "35"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:17:09"
             }
           ]
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "68",
           "bib": "400",
           "name": "Los Runningos",
-          "time": "-7 LAPS",
+          "time": "23:51:51",
           "videoLink": null,
           "info": [
             {
@@ -2017,20 +1745,16 @@
               "type": "text",
               "label": "Tours",
               "value": "35"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:51:51"
             }
           ]
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "47",
           "bib": "404",
           "name": "EQIP EPIQ",
-          "time": "-7 LAPS",
+          "time": "24:13:35",
           "videoLink": null,
           "info": [
             {
@@ -2042,20 +1766,16 @@
               "type": "text",
               "label": "Tours",
               "value": "35"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:13:35"
             }
           ]
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "49",
           "bib": "413",
           "name": "Léman Running",
-          "time": "-9 LAPS",
+          "time": "23:47:00",
           "videoLink": null,
           "info": [
             {
@@ -2067,20 +1787,16 @@
               "type": "text",
               "label": "Tours",
               "value": "33"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:47:00"
             }
           ]
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "62",
           "bib": "412",
           "name": "PRIMWEST-2",
-          "time": "-10 LAPS",
+          "time": "24:00:45",
           "videoLink": null,
           "info": [
             {
@@ -2092,20 +1808,16 @@
               "type": "text",
               "label": "Tours",
               "value": "32"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:00:45"
             }
           ]
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "50",
           "bib": "407",
           "name": "#rafaloupa",
-          "time": "-12 LAPS",
+          "time": "23:52:14",
           "videoLink": null,
           "info": [
             {
@@ -2117,20 +1829,16 @@
               "type": "text",
               "label": "Tours",
               "value": "30"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:52:14"
             }
           ]
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "63",
           "bib": "401",
           "name": "Primwest Team 1",
-          "time": "-12 LAPS",
+          "time": "24:20:22",
           "videoLink": null,
           "info": [
             {
@@ -2142,20 +1850,16 @@
               "type": "text",
               "label": "Tours",
               "value": "30"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:20:22"
             }
           ]
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "60",
           "bib": "410",
           "name": "PAFA RUNNER",
-          "time": "-14 LAPS",
+          "time": "23:56:57",
           "videoLink": null,
           "info": [
             {
@@ -2167,20 +1871,16 @@
               "type": "text",
               "label": "Tours",
               "value": "28"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "23:56:57"
             }
           ]
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "52",
           "bib": "408",
           "name": "Lions Team",
-          "time": "-19 LAPS",
+          "time": "24:09:48",
           "videoLink": null,
           "info": [
             {
@@ -2192,20 +1892,16 @@
               "type": "text",
               "label": "Tours",
               "value": "23"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "24:09:48"
             }
           ]
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "80",
           "bib": "417",
           "name": "Les Focs",
-          "time": "-21 LAPS",
+          "time": "22:38:36",
           "videoLink": null,
           "info": [
             {
@@ -2217,20 +1913,16 @@
               "type": "text",
               "label": "Tours",
               "value": "21"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:38:36"
             }
           ]
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "64",
           "bib": "416",
           "name": "Les Nocstambules",
-          "time": "-22 LAPS",
+          "time": "22:18:42",
           "videoLink": null,
           "info": [
             {
@@ -2242,20 +1934,16 @@
               "type": "text",
               "label": "Tours",
               "value": "20"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "22:18:42"
             }
           ]
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "84",
           "bib": "415",
           "name": "Les truands",
-          "time": "-28 LAPS",
+          "time": "21:42:43",
           "videoLink": null,
           "info": [
             {
@@ -2267,16 +1955,12 @@
               "type": "text",
               "label": "Tours",
               "value": "14"
-            },
-            {
-              "type": "text",
-              "label": "Temps",
-              "value": "21:42:43"
             }
           ]
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "86",
           "bib": "406",
           "name": "Les Racketjes",
@@ -2292,6 +1976,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "87",
           "bib": "414",
           "name": "La team foulée d’Annemasse",

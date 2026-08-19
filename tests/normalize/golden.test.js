@@ -11,7 +11,12 @@ const fs = require('fs');
 const path = require('path');
 
 const FIXTURE_ROOT = path.join(__dirname, '..', 'fixtures', 'rrpublish');
-const EVENTS = ['403664', '405141', '384316', '376606', '405215', '412789'];
+// 412341 (Swiss Epic: stage race, unlabelled ResponsiveHide anchors) and
+// 406086 (STEC: labelled columns, no responsive hiding, PDF-only list,
+// list published for one contest only) are the two shapes the compact
+// layout has to straddle — keep both in the suite.
+const EVENTS = ['403664', '405141', '384316', '376606', '405215', '412789',
+  '412341', '406086', '407480', '416337'];
 
 // ---------------------------------------------------------------------------
 // proxyGet mock: serve the recorded fixture matching each upstream path.

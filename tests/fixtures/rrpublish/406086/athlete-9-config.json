@@ -1,0 +1,91 @@
+{
+  "key": "ab1447fd533316bb861396355d812703",
+  "contests": {
+    "1": "Test & Kval",
+    "2": "RACE"
+  },
+  "splits": [],
+  "eventname": "STEC TIERP 2026",
+  "TimerLogo": "my\\STEC Timing System Logo.png",
+  "TimerURL": "stec.se",
+  "EventOver": true,
+  "Time": 649,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {},
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2026-06-13T17:00:00+02:00",
+    "ActiveUntil": "2100-01-01T00:00:00+01:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "boxes",
+      "StandardDetails": "",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "Resultat|Live",
+          "Mode": "",
+          "Contest": "2",
+          "ShowAs": "Resultat",
+          "Format": "VP",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 100,
+          "Details": "",
+          "ID": "B8BAA1"
+        },
+        {
+          "Name": "Resultat|Live Drivers",
+          "Mode": "",
+          "Contest": "2",
+          "ShowAs": "Varvtider (PDF)",
+          "Format": "P",
+          "Live": 0,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "D2825B"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "Resultat|Live",
+        "Mode": "",
+        "Contest": "2",
+        "ShowAs": "Resultat",
+        "Format": "VP",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 100,
+        "ID": "B8BAA1"
+      },
+      {
+        "Name": "Resultat|Live Drivers",
+        "Mode": "",
+        "Contest": "2",
+        "ShowAs": "Varvtider (PDF)",
+        "Format": "P",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "D2825B"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

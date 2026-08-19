@@ -1,0 +1,277 @@
+{
+  "key": "2248663ee81588ad16b953960f121fee",
+  "contests": {
+    "1": "USMS-Sanctioned 1-mile Swim",
+    "2": "Competitive 1-mile swim",
+    "3": "Recreational 1-mile Swim",
+    "4": "Recreational ½ mile swim",
+    "5": "USATF-Certified 10K Run",
+    "6": "USATF-Certified 5K Run",
+    "7": "3-mile fitness walk"
+  },
+  "splits": [
+    {
+      "ID": 10,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 12,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 14,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 16,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 18,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 21,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 11,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 13,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 15,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 17,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 4
+    },
+    {
+      "ID": 19,
+      "Name": "Lap1",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 22,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 6,
+      "TypeOfSport": 100
+    },
+    {
+      "ID": 20,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 5,
+      "TypeOfSport": 100
+    }
+  ],
+  "eventname": "Against the Tide - Hopkinton",
+  "TimerLogo": "second-wind-300x119.png",
+  "TimerURL": "secondwindresults.com",
+  "EventOver": true,
+  "Time": 66056,
+  "server": "my-aus-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {
+    "details0": true
+  },
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "1900-01-01T00:00:00-05:00",
+    "ActiveUntil": "2100-12-31T23:59:59-05:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "dropdown",
+      "StandardDetails": "details0",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "Result Lists|Overall Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "3EF1B7"
+        },
+        {
+          "Name": "Result Lists|Gender Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "80CC55"
+        },
+        {
+          "Name": "Result Lists|Age Group Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "872E1E"
+        },
+        {
+          "Name": "Result Lists|Overall Results",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "3EF1B7"
+        },
+        {
+          "Name": "Result Lists|Age Group v1",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "D5CA42"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "dropdown",
+    "StandardDetails": "details0",
+    "Lists": [
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Gender Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "80CC55"
+      },
+      {
+        "Name": "Result Lists|Age Group Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "872E1E"
+      },
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Age Group v1",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "details0",
+        "ID": "D5CA42"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  },
+  "ContestColors": null
+}

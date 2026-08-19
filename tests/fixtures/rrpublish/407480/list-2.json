@@ -1,0 +1,2945 @@
+{
+  "list": {
+    "ListName": "Result Lists|Age Group Results",
+    "BottomPicture": "",
+    "BottomPictureShow": 0,
+    "ColumnHeadsFontName": "",
+    "ColumnHeadsFontSize": 12,
+    "ColumnHeadsFontBold": true,
+    "ColumnHeadsFontItalic": false,
+    "ColumnHeadsFontUnderlined": false,
+    "ColumnHeadsColor": "",
+    "ColumnHeadsShow": 2,
+    "Columns": 2,
+    "ColumnSpacing": 5,
+    "CoverSheet": "",
+    "BackSheet": "",
+    "Design": "",
+    "DesignShow": 2,
+    "EveryOtherLineGray": true,
+    "FontName": "Arial",
+    "FontSize": 10,
+    "FooterFontName": "",
+    "FooterFontSize": 10,
+    "FooterFontBold": false,
+    "FooterFontItalic": false,
+    "FooterFontUnderlined": false,
+    "FooterColor": "",
+    "GrayLine": true,
+    "HeadLine1": "Against the Tide - Hopkinton - 06/20/2026",
+    "HeadLine1FontName": "",
+    "HeadLine1FontSize": 16,
+    "HeadLine1FontBold": true,
+    "HeadLine1FontItalic": false,
+    "HeadLine1FontUnderlined": true,
+    "HeadLine2": "Age Group Results ",
+    "HeadLine1Color": "",
+    "HeadLine1Show": 2,
+    "HeadLine2FontName": "",
+    "HeadLine2FontSize": 16,
+    "HeadLine2FontBold": true,
+    "HeadLine2FontItalic": false,
+    "HeadLine2FontUnderlined": false,
+    "HeadLine2Color": "",
+    "HeadLine2Show": 2,
+    "HeightBottomPicture": 10,
+    "LineColor": "",
+    "LineBackColor": "",
+    "LineDynamicFormat": "",
+    "LineSpacing": 1,
+    "MaxRecords": 0,
+    "MultiplierField": "",
+    "PageFormat": 1,
+    "PageMarginBottom": 5,
+    "PageMarginLeft": 10,
+    "PageMarginRight": 10,
+    "PageMarginTop": 5,
+    "PageSize": 5,
+    "PageHeight": 279,
+    "PageWidth": 216,
+    "SepLine": false,
+    "TopRightPicture": "second-wind-300x119.png",
+    "TopRightPictureShow": 2,
+    "ListHeaderText": "",
+    "ListFooterText": "",
+    "ListHeaderFooterFontName": "",
+    "ListHeaderFooterFontSize": 10,
+    "ListHeaderFooterFontBold": false,
+    "ListHeaderFooterFontItalic": false,
+    "ListHeaderFooterFontUnderlined": false,
+    "ListHeaderFooterAlignment": 1,
+    "Remarks": "",
+    "LastChange": "2025-09-14 11:56:09",
+    "FooterText1": "",
+    "FooterText2": "www.SecondWindTiming.com",
+    "FooterText3": "[page]",
+    "Orders": [
+      {
+        "Expression": "CONTEST",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 0
+      },
+      {
+        "Expression": "CONTEST.NAME",
+        "Descending": false,
+        "Grouping": 2,
+        "GroupFilterDefault": 0,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "#5cd3ff",
+        "Spacing": 0
+      },
+      {
+        "Expression": "AGEGROUP1.OrderPos",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "AGEGROUP1.NAME",
+        "Descending": false,
+        "Grouping": 2,
+        "GroupFilterDefault": 0,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": true,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "#bef965",
+        "Spacing": 2
+      },
+      {
+        "Expression": "STATUS",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "Finish.CHIP",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 0
+      },
+      {
+        "Expression": "AgeGroupRank",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      }
+    ],
+    "Filters": [
+      {
+        "OrConjunction": false,
+        "Expression1": "AgeGroupRank",
+        "Operator": "<>",
+        "Expression2": "\"Missing Age\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "AGE",
+        "Operator": ">=",
+        "Expression2": "1"
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "category",
+        "Operator": "=",
+        "Expression2": "\"\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "SEX",
+        "Operator": "<>",
+        "Expression2": "\"P\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "FINISHED",
+        "Operator": "=",
+        "Expression2": "1"
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "OutOfAwards",
+        "Operator": "=",
+        "Expression2": "0"
+      }
+    ],
+    "Fields": [
+      {
+        "Expression": "WithStatus(if([AgeGroupRankp]>0; [AgeGroupRankp]; [AgeGroupPostRace] & \" \" & [MaleFemale]))",
+        "Label": "Place",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "BIB",
+        "Label": "Bib",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 1
+      },
+      {
+        "Expression": "DisplayName_Public",
+        "Label": "Name",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "AGE",
+        "Label": "Age",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "GenderMF",
+        "Label": "Gender",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "Finish.CHIP.SPEEDORPACE",
+        "Label": "Chip Pace",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "if([AgeGroup_ChipOrGun]=\"chip\"; [Finish.CHIP]; [Finish.GUN])",
+        "Label": "Time",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": -1
+      }
+    ],
+    "SelectorResults": []
+  },
+  "data": {
+    "#1_USMS-Sanctioned 1-mile Swim": {
+      "#1_Female 20-29": [
+        [
+          "115",
+          "293",
+          "1.",
+          "Nicole Miller",
+          "23",
+          "F",
+          "1:43 min/100m",
+          "27:50"
+        ],
+        [
+          "98",
+          "276",
+          "2.",
+          "Madeline Rospierski",
+          "24",
+          "F",
+          "1:52 min/100m",
+          "30:12"
+        ],
+        [
+          "107",
+          "285",
+          "3.",
+          "Jennifer Streeter",
+          "27",
+          "F",
+          "3:16 min/100m",
+          "52:50"
+        ]
+      ],
+      "#2_Female 30-39": [
+        [
+          "99",
+          "277",
+          "1.",
+          "Wylie Sanguigni",
+          "32",
+          "F",
+          "1:45 min/100m",
+          "28:25"
+        ],
+        [
+          "90",
+          "268",
+          "2.",
+          "Bethany Roberts",
+          "37",
+          "F",
+          "2:21 min/100m",
+          "38:00"
+        ]
+      ],
+      "#3_Male 30-39": [
+        [
+          "94",
+          "272",
+          "1.",
+          "Matteo Caputo",
+          "36",
+          "M",
+          "1:36 min/100m",
+          "26:01"
+        ]
+      ],
+      "#4_Nonbinary 30-39": [
+        [
+          "97",
+          "275",
+          "1st Overall Nonbinary",
+          "Kinsey Kolega",
+          "33",
+          "A",
+          "2:04 min/100m",
+          "33:16"
+        ]
+      ],
+      "#5_Female 40-49": [
+        [
+          "108",
+          "286",
+          "1st Overall Female",
+          "Ildiko Szekely",
+          "47",
+          "F",
+          "1:36 min/100m",
+          "25:53"
+        ],
+        [
+          "109",
+          "287",
+          "1.",
+          "Wendy Bradfish",
+          "49",
+          "F",
+          "1:53 min/100m",
+          "30:26"
+        ],
+        [
+          "112",
+          "290",
+          "2.",
+          "Christina Ansell",
+          "48",
+          "F",
+          "1:54 min/100m",
+          "30:41"
+        ],
+        [
+          "93",
+          "271",
+          "3.",
+          "Loren Winters",
+          "48",
+          "F",
+          "2:16 min/100m",
+          "36:29"
+        ]
+      ],
+      "#6_Male 40-49": [
+        [
+          "114",
+          "292",
+          "1st Overall Male",
+          "Jordan Swenton",
+          "40",
+          "M",
+          "1:35 min/100m",
+          "25:42"
+        ],
+        [
+          "96",
+          "274",
+          "1.",
+          "Timothy Fargen",
+          "43",
+          "M",
+          "2:13 min/100m",
+          "35:41"
+        ]
+      ],
+      "#7_Female 50-59": [
+        [
+          "105",
+          "283",
+          "1.",
+          "Kysa Crusco",
+          "50",
+          "F",
+          "1:42 min/100m",
+          "27:33"
+        ],
+        [
+          "106",
+          "284",
+          "2.",
+          "Kathleen Bailer",
+          "59",
+          "F",
+          "1:51 min/100m",
+          "30:01"
+        ],
+        [
+          "101",
+          "279",
+          "3.",
+          "Susan Glueck",
+          "56",
+          "F",
+          "1:52 min/100m",
+          "30:11"
+        ],
+        [
+          "88",
+          "266",
+          "4.",
+          "Catherine Mcniff",
+          "55",
+          "F",
+          "1:52 min/100m",
+          "30:15"
+        ],
+        [
+          "89",
+          "267",
+          "5.",
+          "Mary Fitzgerald",
+          "58",
+          "F",
+          "1:54 min/100m",
+          "30:42"
+        ],
+        [
+          "87",
+          "265",
+          "6.",
+          "Cathy Arrell",
+          "52",
+          "F",
+          "2:34 min/100m",
+          "41:27"
+        ],
+        [
+          "102",
+          "280",
+          "7.",
+          "Colleen Coupal",
+          "52",
+          "F",
+          "3:30 min/100m",
+          "56:21"
+        ]
+      ],
+      "#8_Female 60-69": [
+        [
+          "104",
+          "282",
+          "1.",
+          "Lisa Zraket",
+          "61",
+          "F",
+          "2:17 min/100m",
+          "36:47"
+        ]
+      ],
+      "#9_Male 70+": [
+        [
+          "111",
+          "289",
+          "1.",
+          "Scott Cochrane",
+          "73",
+          "M",
+          "2:14 min/100m",
+          "36:07"
+        ],
+        [
+          "95",
+          "273",
+          "2.",
+          "Raymond Aubin",
+          "75",
+          "M",
+          "2:48 min/100m",
+          "45:06"
+        ],
+        [
+          "113",
+          "291",
+          "3.",
+          "Gary Girolimon",
+          "72",
+          "M",
+          "3:19 min/100m",
+          "53:29"
+        ]
+      ]
+    },
+    "#2_Competitive 1-mile swim": {
+      "#10_Female 15 & Under": [
+        [
+          "25",
+          "49",
+          "1st Overall Female",
+          "Grace Perron",
+          "15",
+          "F",
+          "1:31 min/100m",
+          "24:31"
+        ]
+      ],
+      "#11_Male 15 & Under": [
+        [
+          "18",
+          "42",
+          "1.",
+          "William Boland",
+          "15",
+          "M",
+          "1:42 min/100m",
+          "27:23"
+        ],
+        [
+          "7",
+          "31",
+          "2.",
+          "Elliot Felt",
+          "15",
+          "M",
+          "1:49 min/100m",
+          "29:23"
+        ],
+        [
+          "32",
+          "56",
+          "3.",
+          "Aaron Sullivan",
+          "13",
+          "M",
+          "2:23 min/100m",
+          "38:32"
+        ]
+      ],
+      "#12_Male 16-19": [
+        [
+          "12",
+          "36",
+          "1.",
+          "Wielz Jehuven Arquillano",
+          "16",
+          "M",
+          "1:33 min/100m",
+          "25:04"
+        ],
+        [
+          "17",
+          "41",
+          "2.",
+          "Evan Winters",
+          "16",
+          "M",
+          "1:42 min/100m",
+          "27:23"
+        ],
+        [
+          "35",
+          "59",
+          "3.",
+          "William Paxson",
+          "16",
+          "M",
+          "3:21 min/100m",
+          "54:03"
+        ]
+      ],
+      "#13_Female 20-29": [
+        [
+          "20",
+          "44",
+          "1.",
+          "Katie Oppenheimer",
+          "25",
+          "F",
+          "1:48 min/100m",
+          "29:06"
+        ]
+      ],
+      "#14_Male 20-29": [
+        [
+          "19",
+          "43",
+          "1.",
+          "Samuel Bier",
+          "21",
+          "M",
+          "1:39 min/100m",
+          "26:37"
+        ],
+        [
+          "29",
+          "53",
+          "2.",
+          "Will Demers",
+          "22",
+          "M",
+          "2:05 min/100m",
+          "33:34"
+        ],
+        [
+          "26",
+          "50",
+          "3.",
+          "Simon Li",
+          "29",
+          "M",
+          "2:12 min/100m",
+          "35:36"
+        ]
+      ],
+      "#15_Female 30-39": [
+        [
+          "11",
+          "35",
+          "1.",
+          "Ellen Gage",
+          "34",
+          "F",
+          "1:46 min/100m",
+          "28:39"
+        ],
+        [
+          "34",
+          "58",
+          "2.",
+          "Soolmaz Khoshkalam",
+          "31",
+          "F",
+          "1:53 min/100m",
+          "30:28"
+        ],
+        [
+          "2",
+          "26",
+          "3.",
+          "Leanna Toney",
+          "37",
+          "F",
+          "2:15 min/100m",
+          "36:18"
+        ],
+        [
+          "38",
+          "62",
+          "4.",
+          "Allison Poh",
+          "30",
+          "F",
+          "2:40 min/100m",
+          "43:02"
+        ],
+        [
+          "13",
+          "37",
+          "5.",
+          "Samantha Gorman",
+          "36",
+          "F",
+          "3:20 min/100m",
+          "53:54"
+        ]
+      ],
+      "#16_Male 30-39": [
+        [
+          "21",
+          "45",
+          "1st Overall Male",
+          "Jessie Johnson",
+          "32",
+          "M",
+          "1:30 min/100m",
+          "24:16"
+        ],
+        [
+          "4",
+          "28",
+          "1.",
+          "Duncan Kearns",
+          "32",
+          "M",
+          "1:32 min/100m",
+          "24:43"
+        ],
+        [
+          "15",
+          "39",
+          "2.",
+          "William Stucker",
+          "38",
+          "M",
+          "2:06 min/100m",
+          "33:51"
+        ],
+        [
+          "119",
+          "296",
+          "3.",
+          "Bao Ho",
+          "34",
+          "M",
+          "3:05 min/100m",
+          "49:41"
+        ]
+      ],
+      "#17_Female 40-49": [
+        [
+          "14",
+          "38",
+          "1.",
+          "Kerri Florest",
+          "40",
+          "F",
+          "1:52 min/100m",
+          "30:19"
+        ],
+        [
+          "120",
+          "297",
+          "2.",
+          "Emily Mayer",
+          "46",
+          "F",
+          "2:48 min/100m",
+          "45:17"
+        ]
+      ],
+      "#18_Male 40-49": [
+        [
+          "39",
+          "63",
+          "1.",
+          "Mark Piersma",
+          "46",
+          "M",
+          "1:36 min/100m",
+          "25:59"
+        ],
+        [
+          "30",
+          "54",
+          "2.",
+          "Benjamin Deschatre",
+          "42",
+          "M",
+          "2:10 min/100m",
+          "35:00"
+        ],
+        [
+          "27",
+          "51",
+          "3.",
+          "Josh Vernon",
+          "48",
+          "M",
+          "2:11 min/100m",
+          "35:14"
+        ],
+        [
+          "37",
+          "61",
+          "4.",
+          "Noah Lebaron",
+          "43",
+          "M",
+          "2:25 min/100m",
+          "39:04"
+        ],
+        [
+          "16",
+          "40",
+          "5.",
+          "Joseph D'errico",
+          "42",
+          "M",
+          "2:53 min/100m",
+          "46:39"
+        ]
+      ],
+      "#19_Nonbinary 40-49": [
+        [
+          "23",
+          "47",
+          "1st Overall Nonbinary",
+          "Alex Deschamps",
+          "43",
+          "A",
+          "2:42 min/100m",
+          "43:35"
+        ]
+      ],
+      "#20_Female 50-59": [
+        [
+          "33",
+          "57",
+          "1.",
+          "Tonya Spagnuolo",
+          "55",
+          "F",
+          "2:04 min/100m",
+          "33:31"
+        ],
+        [
+          "118",
+          "299",
+          "2.",
+          "Peggy Recinos",
+          "54",
+          "F",
+          "2:24 min/100m",
+          "38:45"
+        ],
+        [
+          "10",
+          "34",
+          "3.",
+          "Linda Shipton",
+          "53",
+          "F",
+          "3:18 min/100m",
+          "53:20"
+        ]
+      ],
+      "#21_Male 50-59": [
+        [
+          "24",
+          "48",
+          "1.",
+          "Zsolt Kalmar",
+          "55",
+          "M",
+          "1:53 min/100m",
+          "30:25"
+        ],
+        [
+          "8",
+          "32",
+          "2.",
+          "Nathan Felt",
+          "56",
+          "M",
+          "2:16 min/100m",
+          "36:33"
+        ],
+        [
+          "28",
+          "52",
+          "3.",
+          "Matt White",
+          "56",
+          "M",
+          "2:17 min/100m",
+          "36:50"
+        ],
+        [
+          "6",
+          "30",
+          "4.",
+          "Edward Raymond",
+          "53",
+          "M",
+          "2:21 min/100m",
+          "37:59"
+        ]
+      ],
+      "#22_Female 60-69": [
+        [
+          "3",
+          "27",
+          "1.",
+          "Nancy Mahoney",
+          "62",
+          "F",
+          "2:18 min/100m",
+          "37:11"
+        ],
+        [
+          "117",
+          "298",
+          "2.",
+          "Connie Ohare",
+          "64",
+          "F",
+          "2:24 min/100m",
+          "38:53"
+        ]
+      ],
+      "#23_Male 60-69": [
+        [
+          "5",
+          "29",
+          "1.",
+          "Kevin Sullivan",
+          "65",
+          "M",
+          "1:40 min/100m",
+          "26:51"
+        ],
+        [
+          "22",
+          "46",
+          "2.",
+          "Robert Betten",
+          "67",
+          "M",
+          "2:17 min/100m",
+          "36:50"
+        ]
+      ],
+      "#24_Male 70+": [
+        [
+          "31",
+          "55",
+          "1.",
+          "Dean Paxson",
+          "85",
+          "M",
+          "1:44 min/100m",
+          "28:06"
+        ]
+      ]
+    },
+    "#3_Recreational 1-mile Swim": {
+      "#25_Female 15 & Under": [
+        [
+          "77",
+          "101",
+          "1.",
+          "Isabella Goldberg",
+          "15",
+          "F",
+          "2:40 min/100m",
+          "43:03"
+        ],
+        [
+          "64",
+          "88",
+          "2.",
+          "Jasmine Gillespie",
+          "13",
+          "F",
+          "3:01 min/100m",
+          "48:47"
+        ]
+      ],
+      "#26_Female 16-19": [
+        [
+          "79",
+          "103",
+          "1.",
+          "Sofie Deblonk",
+          "17",
+          "F",
+          "3:01 min/100m",
+          "48:46"
+        ],
+        [
+          "81",
+          "105",
+          "2.",
+          "Amira Merrill",
+          "16",
+          "F",
+          "3:05 min/100m",
+          "49:43"
+        ],
+        [
+          "62",
+          "86",
+          "3.",
+          "Chloe Smagula",
+          "16",
+          "F",
+          "3:44 min/100m",
+          "1:00:12"
+        ]
+      ],
+      "#27_Female 20-29": [
+        [
+          "116",
+          "295",
+          "1.",
+          "Kelly Moton",
+          "25",
+          "F",
+          "3:05 min/100m",
+          "49:42"
+        ]
+      ],
+      "#28_Male 20-29": [
+        [
+          "76",
+          "100",
+          "1.",
+          "Noah Cail",
+          "29",
+          "M",
+          "3:12 min/100m",
+          "51:37"
+        ]
+      ],
+      "#29_Female 30-39": [
+        [
+          "61",
+          "85",
+          "1st Overall Female",
+          "Casey Brownell",
+          "39",
+          "F",
+          "2:06 min/100m",
+          "34:02"
+        ],
+        [
+          "69",
+          "93",
+          "1.",
+          "Melissa Gately",
+          "34",
+          "F",
+          "3:04 min/100m",
+          "49:30"
+        ],
+        [
+          "72",
+          "96",
+          "2.",
+          "Megan Foran",
+          "32",
+          "F",
+          "3:44 min/100m",
+          "1:00:15"
+        ]
+      ],
+      "#30_Male 30-39": [
+        [
+          "70",
+          "94",
+          "1st Overall Male",
+          "Stevie Lucey",
+          "33",
+          "M",
+          "2:19 min/100m",
+          "37:21"
+        ],
+        [
+          "83",
+          "107",
+          "1.",
+          "Peter Vonschmidt",
+          "39",
+          "M",
+          "3:52 min/100m",
+          "1:02:18"
+        ]
+      ],
+      "#31_Female 40-49": [
+        [
+          "80",
+          "104",
+          "1.",
+          "Laura Hickman",
+          "40",
+          "F",
+          "2:48 min/100m",
+          "45:06"
+        ],
+        [
+          "85",
+          "109",
+          "2.",
+          "Yuliya Sullivan",
+          "45",
+          "F",
+          "3:21 min/100m",
+          "53:56"
+        ]
+      ],
+      "#32_Male 40-49": [
+        [
+          "86",
+          "110",
+          "1.",
+          "Chris Sullivan",
+          "46",
+          "M",
+          "2:46 min/100m",
+          "44:36"
+        ],
+        [
+          "65",
+          "89",
+          "2.",
+          "Ian Cheng",
+          "43",
+          "M",
+          "3:09 min/100m",
+          "50:58"
+        ]
+      ],
+      "#33_Female 50-59": [
+        [
+          "68",
+          "92",
+          "1.",
+          "Katherine Burrill",
+          "54",
+          "F",
+          "2:21 min/100m",
+          "37:55"
+        ],
+        [
+          "67",
+          "91",
+          "2.",
+          "Jen Burrill",
+          "54",
+          "F",
+          "2:31 min/100m",
+          "40:45"
+        ],
+        [
+          "66",
+          "90",
+          "3.",
+          "Jennifer Packard",
+          "54",
+          "F",
+          "3:19 min/100m",
+          "53:39"
+        ]
+      ],
+      "#34_Male 50-59": [
+        [
+          "73",
+          "97",
+          "1.",
+          "Matthew Goldberg",
+          "54",
+          "M",
+          "2:40 min/100m",
+          "43:03"
+        ]
+      ],
+      "#35_Female 60-69": [
+        [
+          "71",
+          "95",
+          "1.",
+          "Sherie Gage",
+          "61",
+          "F",
+          "2:46 min/100m",
+          "44:48"
+        ]
+      ],
+      "#36_Male 60-69": [
+        [
+          "84",
+          "108",
+          "1.",
+          "Mark Benjamin",
+          "62",
+          "M",
+          "3:43 min/100m",
+          "1:00:00"
+        ]
+      ]
+    },
+    "#4_Recreational ½ mile swim": {
+      "#37_": [
+        [
+          "55",
+          "79",
+          "See Timers u",
+          "Leigh Burton",
+          "14",
+          "u",
+          "1:59 min/100m",
+          "16:00"
+        ]
+      ],
+      "#38_Female 15 & Under": [
+        [
+          "41",
+          "65",
+          "1.",
+          "Libby Mcdonald",
+          "13",
+          "F",
+          "2:35 min/100m",
+          "20:51"
+        ],
+        [
+          "46",
+          "70",
+          "2.",
+          "Allie Lanieri",
+          "12",
+          "F",
+          "2:53 min/100m",
+          "23:16"
+        ]
+      ],
+      "#39_Male 15 & Under": [
+        [
+          "43",
+          "67",
+          "1.",
+          "Nolan Gadey",
+          "10",
+          "M",
+          "2:11 min/100m",
+          "17:43"
+        ],
+        [
+          "42",
+          "66",
+          "2.",
+          "Elias Furton",
+          "11",
+          "M",
+          "3:13 min/100m",
+          "25:57"
+        ]
+      ],
+      "#40_Female 16-19": [
+        [
+          "53",
+          "77",
+          "1st Overall Female",
+          "Fernanda Urcid",
+          "16",
+          "F",
+          "1:44 min/100m",
+          "14:01"
+        ],
+        [
+          "52",
+          "76",
+          "1.",
+          "Cara Mcdonald",
+          "16",
+          "F",
+          "2:35 min/100m",
+          "20:52"
+        ],
+        [
+          "56",
+          "80",
+          "2.",
+          "Rowan Kean",
+          "17",
+          "F",
+          "2:53 min/100m",
+          "23:16"
+        ]
+      ],
+      "#41_Female 20-29": [
+        [
+          "57",
+          "81",
+          "1.",
+          "Kateryna Semenova",
+          "27",
+          "F",
+          "2:34 min/100m",
+          "20:43"
+        ],
+        [
+          "58",
+          "82",
+          "2.",
+          "Jacqueline Hannan",
+          "26",
+          "F",
+          "2:34 min/100m",
+          "20:44"
+        ]
+      ],
+      "#42_Nonbinary 20-29": [
+        [
+          "59",
+          "83",
+          "1st Overall Nonbinary",
+          "Anna Kathryn Hodges",
+          "25",
+          "A",
+          "3:03 min/100m",
+          "24:41"
+        ]
+      ],
+      "#43_Female 30-39": [
+        [
+          "45",
+          "69",
+          "1.",
+          "Mary Holland",
+          "38",
+          "F",
+          "2:13 min/100m",
+          "17:52"
+        ]
+      ],
+      "#44_Male 30-39": [
+        [
+          "60",
+          "84",
+          "1.",
+          "Donald Caouette",
+          "33",
+          "M",
+          "2:53 min/100m",
+          "23:20"
+        ]
+      ],
+      "#45_Male 40-49": [
+        [
+          "54",
+          "78",
+          "1.",
+          "Josh Burton",
+          "45",
+          "M",
+          "2:34 min/100m",
+          "20:47"
+        ]
+      ],
+      "#46_Female 50-59": [
+        [
+          "82",
+          "106",
+          "1.",
+          "Tanya Marshall",
+          "52",
+          "F",
+          "4:54 min/100m",
+          "39:32"
+        ]
+      ],
+      "#47_Female 60-69": [
+        [
+          "40",
+          "64",
+          "1.",
+          "Laura Diamond",
+          "69",
+          "F",
+          "2:53 min/100m",
+          "23:15"
+        ],
+        [
+          "50",
+          "74",
+          "2.",
+          "Maureen Cownie",
+          "61",
+          "F",
+          "3:13 min/100m",
+          "25:56"
+        ]
+      ],
+      "#48_Male 60-69": [
+        [
+          "48",
+          "72",
+          "1st Overall Male",
+          "Bill Tharion",
+          "69",
+          "M",
+          "2:07 min/100m",
+          "17:06"
+        ]
+      ]
+    },
+    "#5_USATF-Certified 10K Run": {
+      "#49_Male 15 & Under": [
+        [
+          "284",
+          "195",
+          "1.",
+          "Ryan Maloney",
+          "14",
+          "M",
+          "6:31 min/mile",
+          "40:35"
+        ],
+        [
+          "226",
+          "137",
+          "2.",
+          "Elliot Felt",
+          "15",
+          "M",
+          "9:25 min/mile",
+          "58:37"
+        ]
+      ],
+      "#50_Female 16-19": [
+        [
+          "254",
+          "165",
+          "1.",
+          "Dahlia Bohnert",
+          "17",
+          "F",
+          "7:38 min/mile",
+          "47:27"
+        ],
+        [
+          "271",
+          "182",
+          "2.",
+          "Arlene Johnson",
+          "19",
+          "F",
+          "11:47 min/mile",
+          "1:13:19"
+        ]
+      ],
+      "#51_Male 16-19": [
+        [
+          "262",
+          "173",
+          "1st Overall Male",
+          "Myles Hoffman",
+          "18",
+          "M",
+          "6:19 min/mile",
+          "39:21"
+        ],
+        [
+          "261",
+          "172",
+          "1.",
+          "Aadhavan Sivakumar",
+          "18",
+          "M",
+          "7:01 min/mile",
+          "43:42"
+        ],
+        [
+          "283",
+          "194",
+          "2.",
+          "Harshanth Sekar Balamurugan",
+          "17",
+          "M",
+          "7:30 min/mile",
+          "46:42"
+        ],
+        [
+          "260",
+          "171",
+          "3.",
+          "Charlie Lamonica",
+          "17",
+          "M",
+          "7:47 min/mile",
+          "48:24"
+        ],
+        [
+          "293",
+          "204",
+          "4.",
+          "Soren Brockman",
+          "18",
+          "M",
+          "8:40 min/mile",
+          "53:57"
+        ]
+      ],
+      "#52_Female 20-29": [
+        [
+          "245",
+          "156",
+          "1.",
+          "Erin Duncan",
+          "23",
+          "F",
+          "8:11 min/mile",
+          "50:57"
+        ],
+        [
+          "243",
+          "154",
+          "2.",
+          "Yetzi Villegas",
+          "26",
+          "F",
+          "10:00 min/mile",
+          "1:02:14"
+        ],
+        [
+          "272",
+          "183",
+          "3.",
+          "Ava Lozeau",
+          "20",
+          "F",
+          "10:18 min/mile",
+          "1:04:03"
+        ],
+        [
+          "238",
+          "149",
+          "4.",
+          "Jean Azar-Tanguay",
+          "25",
+          "F",
+          "10:24 min/mile",
+          "1:04:40"
+        ],
+        [
+          "269",
+          "180",
+          "5.",
+          "Anvita Patel",
+          "25",
+          "F",
+          "10:29 min/mile",
+          "1:05:10"
+        ],
+        [
+          "265",
+          "176",
+          "6.",
+          "Ellie Stutsman",
+          "24",
+          "F",
+          "10:47 min/mile",
+          "1:07:03"
+        ],
+        [
+          "257",
+          "168",
+          "7.",
+          "Maggie Andrulis",
+          "29",
+          "F",
+          "12:09 min/mile",
+          "1:15:34"
+        ],
+        [
+          "256",
+          "167",
+          "8.",
+          "Mary Bartley",
+          "29",
+          "F",
+          "12:12 min/mile",
+          "1:15:53"
+        ],
+        [
+          "204",
+          "115",
+          "9.",
+          "Riley Robinson",
+          "23",
+          "F",
+          "12:24 min/mile",
+          "1:17:09"
+        ],
+        [
+          "247",
+          "158",
+          "10.",
+          "Hallie Brown",
+          "27",
+          "F",
+          "13:13 min/mile",
+          "1:22:09"
+        ]
+      ],
+      "#53_Male 20-29": [
+        [
+          "301",
+          "212",
+          "1.",
+          "Ryan Warner",
+          "25",
+          "M",
+          "6:31 min/mile",
+          "40:34"
+        ],
+        [
+          "240",
+          "151",
+          "2.",
+          "Justin Cruickshank",
+          "25",
+          "M",
+          "8:24 min/mile",
+          "52:16"
+        ],
+        [
+          "239",
+          "150",
+          "3.",
+          "Colin Flaherty",
+          "26",
+          "M",
+          "9:30 min/mile",
+          "59:04"
+        ],
+        [
+          "249",
+          "160",
+          "4.",
+          "Trevor Kelly",
+          "28",
+          "M",
+          "10:15 min/mile",
+          "1:03:47"
+        ],
+        [
+          "264",
+          "175",
+          "5.",
+          "Frank Blondiet",
+          "26",
+          "M",
+          "10:47 min/mile",
+          "1:07:03"
+        ],
+        [
+          "275",
+          "186",
+          "6.",
+          "Joseph Yi",
+          "20",
+          "M",
+          "11:19 min/mile",
+          "1:10:20"
+        ]
+      ],
+      "#54_Female 30-39": [
+        [
+          "277",
+          "188",
+          "1.",
+          "Kinn Badger",
+          "32",
+          "F",
+          "8:23 min/mile",
+          "52:11"
+        ],
+        [
+          "233",
+          "144",
+          "2.",
+          "Renee Tremblay",
+          "37",
+          "F",
+          "9:51 min/mile",
+          "1:01:19"
+        ],
+        [
+          "210",
+          "121",
+          "3.",
+          "Casey Brownell",
+          "39",
+          "F",
+          "10:02 min/mile",
+          "1:02:22"
+        ],
+        [
+          "248",
+          "159",
+          "4.",
+          "Janelle Bradley",
+          "38",
+          "F",
+          "10:16 min/mile",
+          "1:03:53"
+        ],
+        [
+          "287",
+          "198",
+          "5.",
+          "Karina Ovalles",
+          "37",
+          "F",
+          "10:18 min/mile",
+          "1:04:01"
+        ],
+        [
+          "222",
+          "133",
+          "6.",
+          "Alexandra Capozzo",
+          "35",
+          "F",
+          "10:21 min/mile",
+          "1:04:24"
+        ],
+        [
+          "205",
+          "116",
+          "7.",
+          "Daneiris Heredia-Perez",
+          "36",
+          "F",
+          "10:34 min/mile",
+          "1:05:45"
+        ],
+        [
+          "214",
+          "125",
+          "8.",
+          "Erin Mccarthy",
+          "31",
+          "F",
+          "10:43 min/mile",
+          "1:06:42"
+        ],
+        [
+          "237",
+          "148",
+          "9.",
+          "Kelly Wolosz",
+          "38",
+          "F",
+          "10:58 min/mile",
+          "1:08:15"
+        ],
+        [
+          "209",
+          "120",
+          "10.",
+          "Brittany Phillips",
+          "36",
+          "F",
+          "11:19 min/mile",
+          "1:10:26"
+        ],
+        [
+          "213",
+          "124",
+          "11.",
+          "Ashley Borghetti",
+          "34",
+          "F",
+          "11:24 min/mile",
+          "1:10:56"
+        ],
+        [
+          "215",
+          "126",
+          "12.",
+          "Danielle Gordon",
+          "33",
+          "F",
+          "11:42 min/mile",
+          "1:12:46"
+        ],
+        [
+          "229",
+          "140",
+          "13.",
+          "Geri Dimas",
+          "32",
+          "F",
+          "11:42 min/mile",
+          "1:12:47"
+        ],
+        [
+          "207",
+          "118",
+          "14.",
+          "Derlyn Moronta Obei",
+          "39",
+          "F",
+          "12:30 min/mile",
+          "1:17:44"
+        ],
+        [
+          "295",
+          "206",
+          "15.",
+          "Danbi Lee",
+          "35",
+          "F",
+          "12:46 min/mile",
+          "1:19:21"
+        ],
+        [
+          "208",
+          "119",
+          "16.",
+          "Alexis Watts",
+          "39",
+          "F",
+          "12:48 min/mile",
+          "1:19:36"
+        ],
+        [
+          "218",
+          "129",
+          "17.",
+          "Seowon Baek",
+          "34",
+          "F",
+          "12:50 min/mile",
+          "1:19:48"
+        ]
+      ],
+      "#55_Male 30-39": [
+        [
+          "223",
+          "134",
+          "1.",
+          "Joseph Mccann",
+          "38",
+          "M",
+          "7:28 min/mile",
+          "46:29"
+        ],
+        [
+          "258",
+          "169",
+          "2.",
+          "Sam Johnson",
+          "35",
+          "M",
+          "8:10 min/mile",
+          "50:46"
+        ],
+        [
+          "211",
+          "122",
+          "3.",
+          "Brian Kaufman",
+          "37",
+          "M",
+          "9:03 min/mile",
+          "56:17"
+        ],
+        [
+          "464",
+          "192",
+          "4.",
+          "Jeffrey Churchill",
+          "37",
+          "M",
+          "9:15 min/mile",
+          "57:29"
+        ],
+        [
+          "276",
+          "187",
+          "5.",
+          "Michael Sparta",
+          "34",
+          "M",
+          "9:15 min/mile",
+          "57:33"
+        ],
+        [
+          "217",
+          "128",
+          "6.",
+          "Han Kyeol Kim",
+          "35",
+          "M",
+          "9:41 min/mile",
+          "1:00:11"
+        ],
+        [
+          "292",
+          "203",
+          "7.",
+          "Maxime Berube",
+          "31",
+          "M",
+          "10:03 min/mile",
+          "1:02:32"
+        ],
+        [
+          "231",
+          "142",
+          "8.",
+          "Luther Ayuninjam",
+          "31",
+          "M",
+          "10:11 min/mile",
+          "1:03:22"
+        ],
+        [
+          "268",
+          "179",
+          "9.",
+          "Jesse Cerrotti",
+          "34",
+          "M",
+          "10:49 min/mile",
+          "1:07:18"
+        ],
+        [
+          "234",
+          "145",
+          "10.",
+          "Ryan Tremblay",
+          "37",
+          "M",
+          "11:40 min/mile",
+          "1:12:36"
+        ]
+      ],
+      "#56_Female 40-49": [
+        [
+          "279",
+          "190",
+          "1.",
+          "Joelle Pedersen",
+          "40",
+          "F",
+          "7:35 min/mile",
+          "47:12"
+        ],
+        [
+          "296",
+          "207",
+          "2.",
+          "Angela Murgia",
+          "43",
+          "F",
+          "9:13 min/mile",
+          "57:19"
+        ],
+        [
+          "216",
+          "127",
+          "3.",
+          "Ssuan Garrison",
+          "43",
+          "F",
+          "10:08 min/mile",
+          "1:02:59"
+        ],
+        [
+          "273",
+          "184",
+          "4.",
+          "Tricia Cahill",
+          "40",
+          "F",
+          "10:41 min/mile",
+          "1:06:29"
+        ],
+        [
+          "297",
+          "208",
+          "5.",
+          "Madhura Gosavi",
+          "45",
+          "F",
+          "11:02 min/mile",
+          "1:08:36"
+        ],
+        [
+          "291",
+          "202",
+          "6.",
+          "Abigail Vogler",
+          "41",
+          "F",
+          "11:17 min/mile",
+          "1:10:12"
+        ],
+        [
+          "219",
+          "130",
+          "7.",
+          "Jennifer Britton-Colonnese",
+          "43",
+          "F",
+          "12:44 min/mile",
+          "1:19:08"
+        ],
+        [
+          "267",
+          "178",
+          "8.",
+          "Fabiana Lucio Soeiro",
+          "41",
+          "F",
+          "13:12 min/mile",
+          "1:22:07"
+        ]
+      ],
+      "#57_Male 40-49": [
+        [
+          "224",
+          "135",
+          "1.",
+          "Nicholas Tham",
+          "42",
+          "M",
+          "6:26 min/mile",
+          "40:05"
+        ],
+        [
+          "290",
+          "201",
+          "2.",
+          "David Hruska",
+          "40",
+          "M",
+          "7:42 min/mile",
+          "47:56"
+        ],
+        [
+          "253",
+          "164",
+          "3.",
+          "Jeongsu Lee",
+          "45",
+          "M",
+          "8:02 min/mile",
+          "50:01"
+        ],
+        [
+          "294",
+          "205",
+          "4.",
+          "Dan O’malley",
+          "42",
+          "M",
+          "9:03 min/mile",
+          "56:18"
+        ],
+        [
+          "250",
+          "161",
+          "5.",
+          "Daniel Auguste",
+          "47",
+          "M",
+          "9:58 min/mile",
+          "1:01:57"
+        ],
+        [
+          "288",
+          "199",
+          "6.",
+          "Balamurugan Krishnaswamy Gnanasekaran",
+          "45",
+          "M",
+          "10:10 min/mile",
+          "1:03:15"
+        ],
+        [
+          "298",
+          "209",
+          "7.",
+          "Shailesh Bhagwat",
+          "48",
+          "M",
+          "10:13 min/mile",
+          "1:03:32"
+        ],
+        [
+          "289",
+          "200",
+          "8.",
+          "Prakash Sundararaman",
+          "44",
+          "M",
+          "12:48 min/mile",
+          "1:19:33"
+        ]
+      ],
+      "#58_Female 50-59": [
+        [
+          "299",
+          "210",
+          "1.",
+          "Tonya Spagnuolo",
+          "55",
+          "F",
+          "7:44 min/mile",
+          "48:10"
+        ],
+        [
+          "302",
+          "213",
+          "2.",
+          "Penelope Hauck",
+          "53",
+          "F",
+          "8:55 min/mile",
+          "55:29"
+        ],
+        [
+          "228",
+          "139",
+          "3.",
+          "Linda Shipton",
+          "53",
+          "F",
+          "11:35 min/mile",
+          "1:12:04"
+        ],
+        [
+          "232",
+          "143",
+          "4.",
+          "Tracey Paskanik",
+          "50",
+          "F",
+          "11:40 min/mile",
+          "1:12:33"
+        ],
+        [
+          "255",
+          "166",
+          "5.",
+          "Brenda Morris",
+          "59",
+          "F",
+          "12:03 min/mile",
+          "1:14:55"
+        ]
+      ],
+      "#59_Male 50-59": [
+        [
+          "300",
+          "211",
+          "1.",
+          "Matt White",
+          "56",
+          "M",
+          "7:05 min/mile",
+          "44:06"
+        ],
+        [
+          "227",
+          "138",
+          "2.",
+          "Nathan Felt",
+          "56",
+          "M",
+          "7:06 min/mile",
+          "44:10"
+        ],
+        [
+          "266",
+          "177",
+          "3.",
+          "Nathaniel Uttaro",
+          "51",
+          "M",
+          "8:01 min/mile",
+          "49:51"
+        ],
+        [
+          "278",
+          "189",
+          "4.",
+          "Srinivas Chakravarthy",
+          "50",
+          "M",
+          "8:27 min/mile",
+          "52:31"
+        ],
+        [
+          "246",
+          "157",
+          "5.",
+          "David Clemons",
+          "53",
+          "M",
+          "8:34 min/mile",
+          "53:15"
+        ],
+        [
+          "282",
+          "193",
+          "6.",
+          "Mike Fiore",
+          "56",
+          "M",
+          "9:24 min/mile",
+          "58:27"
+        ],
+        [
+          "263",
+          "174",
+          "7.",
+          "Rob Major",
+          "58",
+          "M",
+          "9:52 min/mile",
+          "1:01:21"
+        ],
+        [
+          "274",
+          "185",
+          "8.",
+          "David Yi",
+          "55",
+          "M",
+          "11:57 min/mile",
+          "1:14:18"
+        ]
+      ],
+      "#60_Female 60-69": [
+        [
+          "244",
+          "155",
+          "1.",
+          "Caroline Duncan",
+          "64",
+          "F",
+          "9:19 min/mile",
+          "57:55"
+        ],
+        [
+          "241",
+          "152",
+          "2.",
+          "Leslie Blake-Davis",
+          "65",
+          "F",
+          "12:59 min/mile",
+          "1:20:46"
+        ]
+      ],
+      "#61_Male 60-69": [
+        [
+          "251",
+          "162",
+          "1.",
+          "Peter Azar",
+          "66",
+          "M",
+          "9:38 min/mile",
+          "59:58"
+        ],
+        [
+          "280",
+          "191",
+          "2.",
+          "Rick Cleary",
+          "69",
+          "M",
+          "9:52 min/mile",
+          "1:01:22"
+        ],
+        [
+          "252",
+          "163",
+          "3.",
+          "Normand Tanguay",
+          "65",
+          "M",
+          "10:24 min/mile",
+          "1:04:39"
+        ]
+      ]
+    },
+    "#6_USATF-Certified 5K Run": {
+      "#62_Female 15 & Under": [
+        [
+          "121",
+          "308",
+          "1.",
+          "Isabella Sullivan",
+          "15",
+          "F",
+          "9:20 min/mile",
+          "29:01"
+        ],
+        [
+          "389",
+          "253",
+          "2.",
+          "Susannah Klein",
+          "12",
+          "F",
+          "11:37 min/mile",
+          "36:08"
+        ],
+        [
+          "365",
+          "229",
+          "3.",
+          "Hayden Pung",
+          "6",
+          "F",
+          "14:54 min/mile",
+          "46:21"
+        ]
+      ],
+      "#63_Male 15 & Under": [
+        [
+          "396",
+          "260",
+          "1.",
+          "Will Collett",
+          "15",
+          "M",
+          "9:34 min/mile",
+          "29:45"
+        ],
+        [
+          "391",
+          "255",
+          "2.",
+          "Emmett Newman",
+          "13",
+          "M",
+          "13:35 min/mile",
+          "42:13"
+        ]
+      ],
+      "#64_Female 16-19": [
+        [
+          "395",
+          "259",
+          "1.",
+          "Katie Collett",
+          "17",
+          "F",
+          "10:12 min/mile",
+          "31:43"
+        ],
+        [
+          "356",
+          "220",
+          "2.",
+          "Riley Nealon",
+          "19",
+          "F",
+          "14:51 min/mile",
+          "46:10"
+        ]
+      ],
+      "#65_Male 16-19": [
+        [
+          "381",
+          "245",
+          "1.",
+          "Bryan Saguay",
+          "16",
+          "M",
+          "7:46 min/mile",
+          "24:09"
+        ],
+        [
+          "370",
+          "234",
+          "2.",
+          "Evan Winters",
+          "16",
+          "M",
+          "7:50 min/mile",
+          "24:21"
+        ],
+        [
+          "376",
+          "240",
+          "3.",
+          "Nicholas Klein",
+          "19",
+          "M",
+          "7:56 min/mile",
+          "24:42"
+        ],
+        [
+          "473",
+          "294",
+          "4.",
+          "Wielz Jehuven Arquillano",
+          "16",
+          "M",
+          "9:22 min/mile",
+          "29:07"
+        ]
+      ],
+      "#66_Female 20-29": [
+        [
+          "387",
+          "251",
+          "1.",
+          "Rebecca Panwala",
+          "28",
+          "F",
+          "6:48 min/mile",
+          "21:09"
+        ],
+        [
+          "385",
+          "249",
+          "2.",
+          "Mikaela Ortiz",
+          "29",
+          "F",
+          "9:35 min/mile",
+          "29:50"
+        ],
+        [
+          "382",
+          "246",
+          "3.",
+          "Rachel Mcdonald",
+          "29",
+          "F",
+          "9:41 min/mile",
+          "30:07"
+        ],
+        [
+          "358",
+          "222",
+          "4.",
+          "Hannah Connors",
+          "29",
+          "F",
+          "10:41 min/mile",
+          "33:12"
+        ],
+        [
+          "378",
+          "242",
+          "5.",
+          "Gabriella Lindhurst",
+          "25",
+          "F",
+          "11:26 min/mile",
+          "35:33"
+        ],
+        [
+          "377",
+          "241",
+          "6.",
+          "Kylie Ness",
+          "26",
+          "F",
+          "12:37 min/mile",
+          "39:14"
+        ],
+        [
+          "355",
+          "219",
+          "7.",
+          "Jeanna Meloni",
+          "28",
+          "F",
+          "14:51 min/mile",
+          "46:10"
+        ]
+      ],
+      "#67_Male 20-29": [
+        [
+          "369",
+          "233",
+          "1.",
+          "Alex Klein",
+          "21",
+          "M",
+          "8:49 min/mile",
+          "27:26"
+        ],
+        [
+          "397",
+          "261",
+          "2.",
+          "Nicholas Walker",
+          "28",
+          "M",
+          "9:06 min/mile",
+          "28:19"
+        ],
+        [
+          "383",
+          "247",
+          "3.",
+          "Dillon Mcdonald",
+          "29",
+          "M",
+          "9:41 min/mile",
+          "30:06"
+        ]
+      ],
+      "#68_Female 30-39": [
+        [
+          "361",
+          "225",
+          "1.",
+          "Silvia Colpani",
+          "35",
+          "F",
+          "9:31 min/mile",
+          "29:35"
+        ],
+        [
+          "384",
+          "248",
+          "2.",
+          "Alexa Diantonio",
+          "33",
+          "F",
+          "9:36 min/mile",
+          "29:51"
+        ],
+        [
+          "359",
+          "223",
+          "3.",
+          "Shelby Abrams",
+          "33",
+          "F",
+          "9:48 min/mile",
+          "30:30"
+        ],
+        [
+          "360",
+          "224",
+          "4.",
+          "Kelsey Castle",
+          "33",
+          "F",
+          "9:50 min/mile",
+          "30:36"
+        ],
+        [
+          "200",
+          "111",
+          "5.",
+          "Julia Dutcher",
+          "37",
+          "F",
+          "11:12 min/mile",
+          "34:51"
+        ],
+        [
+          "386",
+          "250",
+          "6.",
+          "Cristina Ovalles",
+          "37",
+          "F",
+          "11:31 min/mile",
+          "35:50"
+        ]
+      ],
+      "#69_Male 30-39": [
+        [
+          "362",
+          "226",
+          "1st Overall Male",
+          "Mike Napolitano",
+          "33",
+          "M",
+          "6:04 min/mile",
+          "18:54"
+        ],
+        [
+          "372",
+          "236",
+          "1.",
+          "David Ketchen",
+          "35",
+          "M",
+          "6:08 min/mile",
+          "19:04"
+        ],
+        [
+          "364",
+          "228",
+          "2.",
+          "Brandon Pung",
+          "38",
+          "M",
+          "14:54 min/mile",
+          "46:20"
+        ]
+      ],
+      "#70_Female 40-49": [
+        [
+          "399",
+          "263",
+          "1st Overall Female",
+          "Lauren Perkins",
+          "44",
+          "F",
+          "6:33 min/mile",
+          "20:22"
+        ],
+        [
+          "220",
+          "131",
+          "1.",
+          "Loren Winters",
+          "48",
+          "F",
+          "7:33 min/mile",
+          "23:28"
+        ],
+        [
+          "367",
+          "231",
+          "2.",
+          "Shannon Detore",
+          "45",
+          "F",
+          "10:31 min/mile",
+          "32:43"
+        ],
+        [
+          "374",
+          "238",
+          "3.",
+          "Archana Joshi",
+          "49",
+          "F",
+          "12:08 min/mile",
+          "37:43"
+        ],
+        [
+          "390",
+          "254",
+          "4.",
+          "Meaghan Cavallaro",
+          "43",
+          "F",
+          "13:35 min/mile",
+          "42:13"
+        ]
+      ],
+      "#71_Male 40-49": [
+        [
+          "392",
+          "256",
+          "1.",
+          "David Osborn",
+          "43",
+          "M",
+          "9:07 min/mile",
+          "28:21"
+        ],
+        [
+          "400",
+          "264",
+          "2.",
+          "Josemaria Dolores",
+          "44",
+          "M",
+          "9:36 min/mile",
+          "29:51"
+        ]
+      ],
+      "#72_Female 50-59": [
+        [
+          "379",
+          "243",
+          "1.",
+          "Fabiana Falugi",
+          "56",
+          "F",
+          "9:10 min/mile",
+          "28:30"
+        ],
+        [
+          "394",
+          "258",
+          "2.",
+          "Debbie Butler",
+          "53",
+          "F",
+          "9:39 min/mile",
+          "30:02"
+        ],
+        [
+          "380",
+          "244",
+          "3.",
+          "Mimi Wood Magee",
+          "58",
+          "F",
+          "10:46 min/mile",
+          "33:29"
+        ]
+      ],
+      "#73_Male 50-59": [
+        [
+          "373",
+          "237",
+          "1.",
+          "Jim Brockman",
+          "59",
+          "M",
+          "8:55 min/mile",
+          "27:45"
+        ],
+        [
+          "368",
+          "232",
+          "2.",
+          "David Klein",
+          "54",
+          "M",
+          "9:15 min/mile",
+          "28:47"
+        ]
+      ],
+      "#74_Female 60-69": [
+        [
+          "393",
+          "257",
+          "1.",
+          "Karen Wilson",
+          "61",
+          "F",
+          "10:12 min/mile",
+          "31:44"
+        ],
+        [
+          "398",
+          "262",
+          "2.",
+          "Ann Trenk",
+          "62",
+          "F",
+          "10:17 min/mile",
+          "32:00"
+        ],
+        [
+          "366",
+          "230",
+          "3.",
+          "Janet Pung",
+          "67",
+          "F",
+          "14:54 min/mile",
+          "46:21"
+        ],
+        [
+          "352",
+          "216",
+          "4.",
+          "Fatima Ali-Salaam",
+          "60",
+          "F",
+          "15:11 min/mile",
+          "47:12"
+        ]
+      ],
+      "#75_Male 60-69": [
+        [
+          "363",
+          "227",
+          "1.",
+          "Daniel Gage",
+          "63",
+          "M",
+          "7:51 min/mile",
+          "24:24"
+        ]
+      ]
+    }
+  },
+  "DataFields": [
+    "BIB",
+    "ID",
+    "WithStatus(if([AgeGroupRankp]>0; [AgeGroupRankp]; [AgeGroupPostRace] & \" \" & [MaleFemale]))",
+    "DisplayName_Public",
+    "AGE",
+    "GenderMF",
+    "Finish.CHIP.SPEEDORPACE",
+    "if([AgeGroup_ChipOrGun]=\"chip\"; [Finish.CHIP]; [Finish.GUN])"
+  ],
+  "mid": 9306,
+  "groupFilters": [
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": [
+        "USMS-Sanctioned 1-mile Swim",
+        "Competitive 1-mile swim",
+        "Recreational 1-mile Swim",
+        "Recreational ½ mile swim",
+        "USATF-Certified 10K Run",
+        "USATF-Certified 5K Run"
+      ]
+    },
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": [
+        "",
+        "Female 15 & Under",
+        "Male 15 & Under",
+        "Female 16-19",
+        "Male 16-19",
+        "Female 20-29",
+        "Male 20-29",
+        "Nonbinary 20-29",
+        "Female 30-39",
+        "Male 30-39",
+        "Nonbinary 30-39",
+        "Female 40-49",
+        "Male 40-49",
+        "Nonbinary 40-49",
+        "Female 50-59",
+        "Male 50-59",
+        "Female 60-69",
+        "Male 60-69",
+        "Male 70+"
+      ]
+    }
+  ],
+  "comments": {},
+  "LiveUpdateInterval": 10,
+  "Favorites": null
+}

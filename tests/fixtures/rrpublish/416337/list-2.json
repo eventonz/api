@@ -1,0 +1,3349 @@
+{
+  "list": {
+    "ListName": "Result Lists|Age Group Results",
+    "BottomPicture": "",
+    "BottomPictureShow": 0,
+    "ColumnHeadsFontName": "",
+    "ColumnHeadsFontSize": 12,
+    "ColumnHeadsFontBold": true,
+    "ColumnHeadsFontItalic": false,
+    "ColumnHeadsFontUnderlined": false,
+    "ColumnHeadsColor": "",
+    "ColumnHeadsShow": 2,
+    "Columns": 2,
+    "ColumnSpacing": 5,
+    "CoverSheet": "",
+    "BackSheet": "",
+    "Design": "",
+    "DesignShow": 2,
+    "EveryOtherLineGray": true,
+    "FontName": "Arial",
+    "FontSize": 10,
+    "FooterFontName": "",
+    "FooterFontSize": 10,
+    "FooterFontBold": false,
+    "FooterFontItalic": false,
+    "FooterFontUnderlined": false,
+    "FooterColor": "",
+    "GrayLine": true,
+    "HeadLine1": "C.H.H.I.P.S. Trot N Brew 2026 - 08/15/2026",
+    "HeadLine1FontName": "",
+    "HeadLine1FontSize": 16,
+    "HeadLine1FontBold": true,
+    "HeadLine1FontItalic": false,
+    "HeadLine1FontUnderlined": true,
+    "HeadLine2": "Age Group Results ",
+    "HeadLine1Color": "",
+    "HeadLine1Show": 2,
+    "HeadLine2FontName": "",
+    "HeadLine2FontSize": 16,
+    "HeadLine2FontBold": true,
+    "HeadLine2FontItalic": false,
+    "HeadLine2FontUnderlined": false,
+    "HeadLine2Color": "",
+    "HeadLine2Show": 2,
+    "HeightBottomPicture": 10,
+    "LineColor": "",
+    "LineBackColor": "",
+    "LineDynamicFormat": "",
+    "LineSpacing": 1,
+    "MaxRecords": 0,
+    "MultiplierField": "",
+    "PageFormat": 1,
+    "PageMarginBottom": 5,
+    "PageMarginLeft": 10,
+    "PageMarginRight": 10,
+    "PageMarginTop": 5,
+    "PageSize": 5,
+    "PageHeight": 279,
+    "PageWidth": 216,
+    "SepLine": false,
+    "TopRightPicture": "second-wind-300x119.png",
+    "TopRightPictureShow": 2,
+    "ListHeaderText": "",
+    "ListFooterText": "",
+    "ListHeaderFooterFontName": "",
+    "ListHeaderFooterFontSize": 10,
+    "ListHeaderFooterFontBold": false,
+    "ListHeaderFooterFontItalic": false,
+    "ListHeaderFooterFontUnderlined": false,
+    "ListHeaderFooterAlignment": 1,
+    "Remarks": "",
+    "LastChange": "2025-09-14 11:56:09",
+    "FooterText1": "",
+    "FooterText2": "www.SecondWindTiming.com",
+    "FooterText3": "[page]",
+    "Orders": [
+      {
+        "Expression": "CONTEST",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 0
+      },
+      {
+        "Expression": "CONTEST.NAME",
+        "Descending": false,
+        "Grouping": 2,
+        "GroupFilterDefault": 0,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "#5cd3ff",
+        "Spacing": 0
+      },
+      {
+        "Expression": "AGEGROUP1.OrderPos",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "AGEGROUP1.NAME",
+        "Descending": false,
+        "Grouping": 2,
+        "GroupFilterDefault": 0,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": true,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "#bef965",
+        "Spacing": 2
+      },
+      {
+        "Expression": "STATUS",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      },
+      {
+        "Expression": "Finish.CHIP",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 0
+      },
+      {
+        "Expression": "AgeGroupRank",
+        "Descending": false,
+        "Grouping": 0,
+        "GroupFilterDefault": 1,
+        "GroupFilterLabel": "",
+        "PageBreak": 0,
+        "FontName": "",
+        "FontSize": 12,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Color": "",
+        "BackgroundColor": "",
+        "Spacing": 2
+      }
+    ],
+    "Filters": [
+      {
+        "OrConjunction": false,
+        "Expression1": "AgeGroupRank",
+        "Operator": "<>",
+        "Expression2": "\"Missing Age\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "AGE",
+        "Operator": ">=",
+        "Expression2": "1"
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "category",
+        "Operator": "=",
+        "Expression2": "\"\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "SEX",
+        "Operator": "<>",
+        "Expression2": "\"P\""
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "FINISHED",
+        "Operator": "=",
+        "Expression2": "1"
+      },
+      {
+        "OrConjunction": false,
+        "Expression1": "OutOfAwards",
+        "Operator": "=",
+        "Expression2": "0"
+      }
+    ],
+    "Fields": [
+      {
+        "Expression": "WithStatus(if([AgeGroupRankp]>0; [AgeGroupRankp]; [AgeGroupPostRace] & \" \" & [MaleFemale]))",
+        "Label": "Place",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "BIB",
+        "Label": "Bib",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 1
+      },
+      {
+        "Expression": "DisplayName_Public",
+        "Label": "Name",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "AGE",
+        "Label": "Age",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "GenderMF",
+        "Label": "Gender",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "Finish.CHIP.SPEEDORPACE",
+        "Label": "Chip Pace",
+        "Label2": "",
+        "Alignment": 2,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": 0
+      },
+      {
+        "Expression": "if([AgeGroup_ChipOrGun]=\"chip\"; [Finish.CHIP]; [Finish.GUN])",
+        "Label": "Time",
+        "Label2": "",
+        "Alignment": 1,
+        "FontBold": false,
+        "FontItalic": false,
+        "FontUnderlined": false,
+        "Line": 1,
+        "Color": "",
+        "Link": "",
+        "ColSpan": 0,
+        "ColOffset": 0,
+        "Position": 0,
+        "DynamicFormat": "",
+        "PreviewOnly": false,
+        "ResponsiveHide": -1
+      }
+    ],
+    "SelectorResults": []
+  },
+  "data": {
+    "#1_C.H.H.I.P.S. Trot N Brew": {
+      "#1_Female 21-28": [
+        [
+          "251",
+          "239",
+          "1.",
+          "Samantha Meyer",
+          "21",
+          "F",
+          "13:51 min/mile",
+          "20:47"
+        ],
+        [
+          "236",
+          "220",
+          "2.",
+          "Madelyn Labuda",
+          "25",
+          "F",
+          "13:54 min/mile",
+          "20:52"
+        ],
+        [
+          "273",
+          "272",
+          "3.",
+          "Mia Marnell",
+          "22",
+          "F",
+          "21:32 min/mile",
+          "32:19"
+        ],
+        [
+          "20",
+          "28",
+          "4.",
+          "Paige Kuehn",
+          "22",
+          "F",
+          "21:33 min/mile",
+          "32:20"
+        ],
+        [
+          "22",
+          "26",
+          "5.",
+          "Gabriela Terraccino",
+          "22",
+          "F",
+          "21:34 min/mile",
+          "32:23"
+        ],
+        [
+          "129",
+          "123",
+          "6.",
+          "Brooke Kuehn",
+          "24",
+          "F",
+          "21:35 min/mile",
+          "32:24"
+        ],
+        [
+          "318",
+          "317",
+          "7.",
+          "Elizabeth Bove",
+          "21",
+          "F",
+          "24:44 min/mile",
+          "37:07"
+        ],
+        [
+          "281",
+          "283",
+          "8.",
+          "Rich Tihansky",
+          "24",
+          "F",
+          "25:45 min/mile",
+          "38:39"
+        ],
+        [
+          "39",
+          "17",
+          "9.",
+          "Jordan Basista",
+          "26",
+          "F",
+          "29:40 min/mile",
+          "44:31"
+        ],
+        [
+          "140",
+          "143",
+          "10.",
+          "Delainy Ogurkis",
+          "22",
+          "F",
+          "31:39 min/mile",
+          "47:30"
+        ],
+        [
+          "285",
+          "271",
+          "11.",
+          "Jenna Kubitz",
+          "22",
+          "F",
+          "32:39 min/mile",
+          "49:00"
+        ],
+        [
+          "257",
+          "255",
+          "12.",
+          "Mary Ann Chipeleski",
+          "25",
+          "F",
+          "33:56 min/mile",
+          "50:56"
+        ],
+        [
+          "295",
+          "290",
+          "13.",
+          "Julia Tihansky",
+          "26",
+          "F",
+          "35:54 min/mile",
+          "53:53"
+        ],
+        [
+          "306",
+          "306",
+          "14.",
+          "Angelina Joseph",
+          "25",
+          "F",
+          "36:25 min/mile",
+          "54:39"
+        ],
+        [
+          "304",
+          "310",
+          "15.",
+          "Kayleigh Tobin",
+          "26",
+          "F",
+          "36:33 min/mile",
+          "54:51"
+        ],
+        [
+          "305",
+          "309",
+          "16.",
+          "Delaney Mulloy",
+          "24",
+          "F",
+          "36:34 min/mile",
+          "54:52"
+        ],
+        [
+          "307",
+          "311",
+          "17.",
+          "Lauren Grabell",
+          "25",
+          "F",
+          "36:34 min/mile",
+          "54:53"
+        ],
+        [
+          "110",
+          "151",
+          "18.",
+          "Patricia Walser",
+          "27",
+          "F",
+          "40:05 min/mile",
+          "1:00:08"
+        ],
+        [
+          "265",
+          "256",
+          "19.",
+          "Mikaela Tobash",
+          "25",
+          "F",
+          "40:13 min/mile",
+          "1:00:21"
+        ],
+        [
+          "119",
+          "91",
+          "20.",
+          "Brooke Wesolowski",
+          "21",
+          "F",
+          "43:53 min/mile",
+          "1:05:51"
+        ],
+        [
+          "259",
+          "253",
+          "21.",
+          "Mckenna Diana",
+          "27",
+          "F",
+          "46:26 min/mile",
+          "1:09:40"
+        ],
+        [
+          "204",
+          "211",
+          "22.",
+          "Audrey Fuller",
+          "22",
+          "F",
+          "51:06 min/mile",
+          "1:16:40"
+        ],
+        [
+          "289",
+          "291",
+          "23.",
+          "Kathleen Scatton",
+          "26",
+          "F",
+          "56:15 min/mile",
+          "1:24:23"
+        ],
+        [
+          "29",
+          "48",
+          "24.",
+          "Sara Siegfried",
+          "26",
+          "F",
+          "56:15 min/mile",
+          "1:24:23"
+        ]
+      ],
+      "#2_Male 21-28": [
+        [
+          "248",
+          "251",
+          "1.",
+          "Jack Marnell",
+          "25",
+          "M",
+          "13:24 min/mile",
+          "20:07"
+        ],
+        [
+          "250",
+          "237",
+          "2.",
+          "Brady Weyble",
+          "23",
+          "M",
+          "13:51 min/mile",
+          "20:47"
+        ],
+        [
+          "143",
+          "147",
+          "3.",
+          "Andrew Vayda",
+          "24",
+          "M",
+          "16:11 min/mile",
+          "24:18"
+        ],
+        [
+          "168",
+          "157",
+          "4.",
+          "Nolan Genasevich",
+          "27",
+          "M",
+          "16:23 min/mile",
+          "24:36"
+        ],
+        [
+          "181",
+          "164",
+          "5.",
+          "Aiden Boner",
+          "23",
+          "M",
+          "18:53 min/mile",
+          "28:21"
+        ],
+        [
+          "308",
+          "297",
+          "6.",
+          "Anthony Ryba",
+          "26",
+          "M",
+          "20:12 min/mile",
+          "30:19"
+        ],
+        [
+          "180",
+          "165",
+          "7.",
+          "Logan Stone",
+          "21",
+          "M",
+          "21:10 min/mile",
+          "31:46"
+        ],
+        [
+          "21",
+          "27",
+          "8.",
+          "Bryce Molinaro",
+          "22",
+          "M",
+          "21:34 min/mile",
+          "32:22"
+        ],
+        [
+          "310",
+          "308",
+          "9.",
+          "John Dennen",
+          "24",
+          "M",
+          "31:23 min/mile",
+          "47:06"
+        ],
+        [
+          "139",
+          "141",
+          "10.",
+          "John Joseph",
+          "22",
+          "M",
+          "31:44 min/mile",
+          "47:38"
+        ],
+        [
+          "189",
+          "175",
+          "11.",
+          "Zachary Haas",
+          "28",
+          "M",
+          "32:21 min/mile",
+          "48:33"
+        ],
+        [
+          "199",
+          "198",
+          "12.",
+          "Michael Latoff",
+          "28",
+          "M",
+          "34:14 min/mile",
+          "51:23"
+        ],
+        [
+          "254",
+          "258",
+          "13.",
+          "Christopher Latoff",
+          "25",
+          "M",
+          "34:15 min/mile",
+          "51:23"
+        ],
+        [
+          "52",
+          "42",
+          "14.",
+          "Jacob Conforti",
+          "22",
+          "M",
+          "34:28 min/mile",
+          "51:43"
+        ],
+        [
+          "255",
+          "259",
+          "15.",
+          "Nick Molino",
+          "25",
+          "M",
+          "37:04 min/mile",
+          "55:37"
+        ],
+        [
+          "64",
+          "68",
+          "16.",
+          "Jacob Mummey",
+          "22",
+          "M",
+          "37:31 min/mile",
+          "56:18"
+        ],
+        [
+          "72",
+          "70",
+          "17.",
+          "Eric Somerdak",
+          "22",
+          "M",
+          "37:33 min/mile",
+          "56:21"
+        ],
+        [
+          "170",
+          "156",
+          "18.",
+          "Tommy Zapotocky",
+          "22",
+          "M",
+          "37:34 min/mile",
+          "56:22"
+        ],
+        [
+          "316",
+          "319",
+          "19.",
+          "Jeffrey Yatsuhashi",
+          "26",
+          "M",
+          "37:52 min/mile",
+          "56:50"
+        ],
+        [
+          "167",
+          "199",
+          "20.",
+          "Jacob Palermo",
+          "22",
+          "M",
+          "41:05 min/mile",
+          "1:01:39"
+        ],
+        [
+          "117",
+          "94",
+          "21.",
+          "Joshua Wesolowski",
+          "24",
+          "M",
+          "43:59 min/mile",
+          "1:06:00"
+        ],
+        [
+          "203",
+          "214",
+          "22.",
+          "Peter Walko",
+          "23",
+          "M",
+          "51:08 min/mile",
+          "1:16:44"
+        ],
+        [
+          "252",
+          "234",
+          "23.",
+          "Collin Eisenhower",
+          "25",
+          "M",
+          "67:28 min/mile",
+          "1:41:13"
+        ]
+      ],
+      "#3_Female 29-36": [
+        [
+          "230",
+          "245",
+          "1.",
+          "Maria Mattioli",
+          "34",
+          "F",
+          "14:22 min/mile",
+          "21:34"
+        ],
+        [
+          "104",
+          "122",
+          "2.",
+          "Cassandra Klocek",
+          "34",
+          "F",
+          "15:52 min/mile",
+          "23:50"
+        ],
+        [
+          "268",
+          "275",
+          "3.",
+          "Miranda Wenner",
+          "35",
+          "F",
+          "19:32 min/mile",
+          "29:20"
+        ],
+        [
+          "267",
+          "269",
+          "4.",
+          "Christina Strenchock",
+          "31",
+          "F",
+          "19:35 min/mile",
+          "29:24"
+        ],
+        [
+          "241",
+          "240",
+          "5.",
+          "Jessica Brasavage",
+          "30",
+          "F",
+          "20:45 min/mile",
+          "31:08"
+        ],
+        [
+          "19",
+          "22",
+          "6.",
+          "Jamie Homan",
+          "30",
+          "F",
+          "21:05 min/mile",
+          "31:38"
+        ],
+        [
+          "18",
+          "25",
+          "7.",
+          "Rachael Dependahl",
+          "29",
+          "F",
+          "21:12 min/mile",
+          "31:49"
+        ],
+        [
+          "303",
+          "302",
+          "8.",
+          "Angela Hoffman",
+          "32",
+          "F",
+          "24:28 min/mile",
+          "36:43"
+        ],
+        [
+          "314",
+          "315",
+          "9.",
+          "Rebecca Porpiglia",
+          "29",
+          "F",
+          "25:10 min/mile",
+          "37:46"
+        ],
+        [
+          "38",
+          "19",
+          "10.",
+          "Tory Coxe",
+          "31",
+          "F",
+          "29:38 min/mile",
+          "44:28"
+        ],
+        [
+          "176",
+          "183",
+          "11.",
+          "Erin Edwards",
+          "29",
+          "F",
+          "32:22 min/mile",
+          "48:35"
+        ],
+        [
+          "283",
+          "280",
+          "12.",
+          "Danielle Horwath",
+          "35",
+          "F",
+          "40:42 min/mile",
+          "1:01:05"
+        ],
+        [
+          "66",
+          "79",
+          "13.",
+          "Alycia Al-Saigh",
+          "33",
+          "F",
+          "44:01 min/mile",
+          "1:06:03"
+        ],
+        [
+          "157",
+          "174",
+          "14.",
+          "Chandel Farley",
+          "35",
+          "F",
+          "51:11 min/mile",
+          "1:16:48"
+        ]
+      ],
+      "#4_Male 29-36": [
+        [
+          "275",
+          "287",
+          "1.",
+          "Blake Hansen",
+          "29",
+          "M",
+          "10:22 min/mile",
+          "15:34"
+        ],
+        [
+          "17",
+          "24",
+          "2.",
+          "Joseph Homan",
+          "29",
+          "M",
+          "10:58 min/mile",
+          "16:28"
+        ],
+        [
+          "51",
+          "45",
+          "3.",
+          "Bob Madigan",
+          "36",
+          "M",
+          "13:45 min/mile",
+          "20:38"
+        ],
+        [
+          "150",
+          "137",
+          "4.",
+          "Jarod Genasevich",
+          "34",
+          "M",
+          "15:06 min/mile",
+          "22:41"
+        ],
+        [
+          "40",
+          "23",
+          "5.",
+          "Nicholas Dependahl",
+          "31",
+          "M",
+          "17:03 min/mile",
+          "25:36"
+        ],
+        [
+          "243",
+          "249",
+          "6.",
+          "Michael Pollock",
+          "29",
+          "M",
+          "18:06 min/mile",
+          "27:11"
+        ],
+        [
+          "242",
+          "238",
+          "7.",
+          "Paul Brasavage",
+          "32",
+          "M",
+          "20:45 min/mile",
+          "31:08"
+        ],
+        [
+          "315",
+          "318",
+          "8.",
+          "Seth Porpiglia",
+          "29",
+          "M",
+          "24:28 min/mile",
+          "36:43"
+        ],
+        [
+          "62",
+          "53",
+          "9.",
+          "Amy Schattie",
+          "35",
+          "M",
+          "33:31 min/mile",
+          "50:18"
+        ],
+        [
+          "63",
+          "52",
+          "10.",
+          "Jordan Longenbeger",
+          "35",
+          "M",
+          "33:32 min/mile",
+          "50:19"
+        ],
+        [
+          "298",
+          "301",
+          "11.",
+          "Zachary Zukoski",
+          "29",
+          "M",
+          "33:37 min/mile",
+          "50:27"
+        ],
+        [
+          "263",
+          "260",
+          "12.",
+          "Marcus Chapin",
+          "30",
+          "M",
+          "33:56 min/mile",
+          "50:56"
+        ],
+        [
+          "201",
+          "207",
+          "13.",
+          "Chris Kimmel",
+          "36",
+          "M",
+          "35:24 min/mile",
+          "53:08"
+        ],
+        [
+          "264",
+          "262",
+          "14.",
+          "Nico Makuta",
+          "29",
+          "M",
+          "39:59 min/mile",
+          "59:59"
+        ]
+      ],
+      "#5_Female 37-44": [
+        [
+          "43",
+          "32",
+          "1.",
+          "Christine Trout",
+          "40",
+          "F",
+          "13:42 min/mile",
+          "20:34"
+        ],
+        [
+          "213",
+          "209",
+          "2.",
+          "Laura Fitzpatrick",
+          "41",
+          "F",
+          "13:54 min/mile",
+          "20:52"
+        ],
+        [
+          "214",
+          "201",
+          "3.",
+          "Rebecca Lesher",
+          "44",
+          "F",
+          "13:54 min/mile",
+          "20:53"
+        ],
+        [
+          "202",
+          "205",
+          "4.",
+          "Addie Sterner",
+          "40",
+          "F",
+          "14:45 min/mile",
+          "22:08"
+        ],
+        [
+          "233",
+          "243",
+          "5.",
+          "Dianna Barna",
+          "43",
+          "F",
+          "15:41 min/mile",
+          "23:33"
+        ],
+        [
+          "28",
+          "49",
+          "6.",
+          "Ronnie Baker",
+          "43",
+          "F",
+          "16:47 min/mile",
+          "25:12"
+        ],
+        [
+          "128",
+          "118",
+          "7.",
+          "Bridget Lombardo-Bott",
+          "39",
+          "F",
+          "27:18 min/mile",
+          "40:59"
+        ],
+        [
+          "131",
+          "127",
+          "8.",
+          "April Kuchar",
+          "44",
+          "F",
+          "34:35 min/mile",
+          "51:54"
+        ],
+        [
+          "54",
+          "55",
+          "9.",
+          "Christle Couchenour",
+          "44",
+          "F",
+          "34:42 min/mile",
+          "52:04"
+        ],
+        [
+          "94",
+          "84",
+          "10.",
+          "Kristen Laskosky",
+          "41",
+          "F",
+          "37:55 min/mile",
+          "56:54"
+        ],
+        [
+          "175",
+          "176",
+          "11.",
+          "Cassie Dunnigan",
+          "37",
+          "F",
+          "40:04 min/mile",
+          "1:00:08"
+        ],
+        [
+          "102",
+          "112",
+          "12.",
+          "Angela Petrylak",
+          "44",
+          "F",
+          "40:16 min/mile",
+          "1:00:26"
+        ],
+        [
+          "200",
+          "215",
+          "13.",
+          "Hannah Bobrowski",
+          "44",
+          "F",
+          "40:17 min/mile",
+          "1:00:26"
+        ],
+        [
+          "284",
+          "277",
+          "14.",
+          "Lindsey Horlacher",
+          "37",
+          "F",
+          "40:42 min/mile",
+          "1:01:04"
+        ],
+        [
+          "74",
+          "76",
+          "15.",
+          "Nichole Malinovitch",
+          "44",
+          "F",
+          "43:58 min/mile",
+          "1:05:58"
+        ],
+        [
+          "75",
+          "71",
+          "16.",
+          "Chelsea Macdougall",
+          "39",
+          "F",
+          "44:00 min/mile",
+          "1:06:01"
+        ],
+        [
+          "116",
+          "90",
+          "17.",
+          "Marci Kolanda",
+          "37",
+          "F",
+          "44:02 min/mile",
+          "1:06:04"
+        ],
+        [
+          "269",
+          "267",
+          "18.",
+          "Kelly Marchetti",
+          "41",
+          "F",
+          "45:48 min/mile",
+          "1:08:43"
+        ],
+        [
+          "14",
+          "10",
+          "19.",
+          "Katie Frumkin",
+          "44",
+          "F",
+          "50:01 min/mile",
+          "1:15:03"
+        ],
+        [
+          "132",
+          "128",
+          "20.",
+          "Danielle Logan",
+          "38",
+          "F",
+          "51:20 min/mile",
+          "1:17:02"
+        ],
+        [
+          "166",
+          "177",
+          "21.",
+          "Brittany Christiansen",
+          "38",
+          "F",
+          "52:08 min/mile",
+          "1:18:13"
+        ],
+        [
+          "238",
+          "221",
+          "22.",
+          "Erin Nicholson",
+          "39",
+          "F",
+          "55:01 min/mile",
+          "1:22:33"
+        ],
+        [
+          "190",
+          "180",
+          "23.",
+          "Shannon Stower",
+          "44",
+          "F",
+          "71:08 min/mile",
+          "1:46:43"
+        ],
+        [
+          "179",
+          "172",
+          "24.",
+          "Malori Champion",
+          "40",
+          "F",
+          "71:08 min/mile",
+          "1:46:44"
+        ],
+        [
+          "177",
+          "182",
+          "25.",
+          "Kelly Fagula",
+          "41",
+          "F",
+          "71:35 min/mile",
+          "1:47:24"
+        ]
+      ],
+      "#6_Male 37-44": [
+        [
+          "154",
+          "152",
+          "1.",
+          "Charles Wolfe",
+          "44",
+          "M",
+          "13:31 min/mile",
+          "20:18"
+        ],
+        [
+          "216",
+          "212",
+          "2.",
+          "Tj Fitzpatrick",
+          "39",
+          "M",
+          "14:44 min/mile",
+          "22:07"
+        ],
+        [
+          "48",
+          "41",
+          "3.",
+          "Dan Steimer",
+          "38",
+          "M",
+          "16:42 min/mile",
+          "25:04"
+        ],
+        [
+          "256",
+          "252",
+          "4.",
+          "Brandon Horlacher",
+          "39",
+          "M",
+          "19:33 min/mile",
+          "29:20"
+        ],
+        [
+          "113",
+          "87",
+          "5.",
+          "Scott Spangenburg",
+          "37",
+          "M",
+          "26:52 min/mile",
+          "40:19"
+        ],
+        [
+          "127",
+          "111",
+          "6.",
+          "Ryan Bott",
+          "40",
+          "M",
+          "27:18 min/mile",
+          "40:59"
+        ],
+        [
+          "174",
+          "170",
+          "7.",
+          "Patrick Dunnigan",
+          "37",
+          "M",
+          "40:20 min/mile",
+          "1:00:31"
+        ],
+        [
+          "271",
+          "265",
+          "8.",
+          "Justin Horwath",
+          "39",
+          "M",
+          "40:24 min/mile",
+          "1:00:38"
+        ],
+        [
+          "197",
+          "190",
+          "9.",
+          "Anthony Rodriguez",
+          "41",
+          "M",
+          "51:09 min/mile",
+          "1:16:45"
+        ],
+        [
+          "193",
+          "171",
+          "10.",
+          "Jason Farley",
+          "41",
+          "M",
+          "51:10 min/mile",
+          "1:16:46"
+        ],
+        [
+          "237",
+          "219",
+          "11.",
+          "Jason Minnick",
+          "44",
+          "M",
+          "55:02 min/mile",
+          "1:22:34"
+        ],
+        [
+          "130",
+          "131",
+          "12.",
+          "Gregory Kuchar",
+          "44",
+          "M",
+          "56:02 min/mile",
+          "1:24:05"
+        ],
+        [
+          "192",
+          "184",
+          "13.",
+          "Robert Macneal",
+          "37",
+          "M",
+          "71:21 min/mile",
+          "1:47:03"
+        ]
+      ],
+      "#7_Female 45-52": [
+        [
+          "227",
+          "224",
+          "1.",
+          "Laura James",
+          "48",
+          "F",
+          "18:29 min/mile",
+          "27:45"
+        ],
+        [
+          "115",
+          "101",
+          "2.",
+          "Robin Banja",
+          "51",
+          "F",
+          "20:28 min/mile",
+          "30:43"
+        ],
+        [
+          "30",
+          "51",
+          "3.",
+          "Terry Ann Plaza",
+          "52",
+          "F",
+          "34:43 min/mile",
+          "52:05"
+        ],
+        [
+          "221",
+          "222",
+          "4.",
+          "Amy Kohler",
+          "52",
+          "F",
+          "35:34 min/mile",
+          "53:22"
+        ],
+        [
+          "123",
+          "107",
+          "5.",
+          "Michelle Augustine",
+          "51",
+          "F",
+          "36:07 min/mile",
+          "54:11"
+        ],
+        [
+          "15",
+          "20",
+          "6.",
+          "Melissa Pavlick",
+          "46",
+          "F",
+          "36:28 min/mile",
+          "54:44"
+        ],
+        [
+          "163",
+          "186",
+          "7.",
+          "Nicole Latoff",
+          "51",
+          "F",
+          "37:06 min/mile",
+          "55:40"
+        ],
+        [
+          "76",
+          "82",
+          "8.",
+          "Amber Newton",
+          "46",
+          "F",
+          "40:07 min/mile",
+          "1:00:12"
+        ],
+        [
+          "319",
+          "314",
+          "9.",
+          "Megan Krasnay",
+          "47",
+          "F",
+          "43:36 min/mile",
+          "1:05:25"
+        ],
+        [
+          "118",
+          "89",
+          "10.",
+          "Patty Wesolowski",
+          "50",
+          "F",
+          "43:56 min/mile",
+          "1:05:55"
+        ],
+        [
+          "49",
+          "40",
+          "11.",
+          "Tara Kozel",
+          "46",
+          "F",
+          "44:07 min/mile",
+          "1:06:12"
+        ],
+        [
+          "25",
+          "36",
+          "12.",
+          "Michelle Chyko",
+          "51",
+          "F",
+          "44:23 min/mile",
+          "1:06:36"
+        ],
+        [
+          "106",
+          "132",
+          "13.",
+          "Amanda Salko",
+          "46",
+          "F",
+          "44:58 min/mile",
+          "1:07:28"
+        ],
+        [
+          "108",
+          "145",
+          "14.",
+          "Kim Kundrat",
+          "51",
+          "F",
+          "44:59 min/mile",
+          "1:07:30"
+        ],
+        [
+          "138",
+          "139",
+          "15.",
+          "Angela Lombardo",
+          "48",
+          "F",
+          "45:00 min/mile",
+          "1:07:31"
+        ],
+        [
+          "4",
+          "4",
+          "16.",
+          "Lori Wolfe",
+          "48",
+          "F",
+          "48:04 min/mile",
+          "1:12:08"
+        ],
+        [
+          "86",
+          "85",
+          "17.",
+          "Nancy Weston",
+          "52",
+          "F",
+          "49:35 min/mile",
+          "1:14:24"
+        ],
+        [
+          "78",
+          "69",
+          "18.",
+          "Ann-Marie Neikum",
+          "47",
+          "F",
+          "49:58 min/mile",
+          "1:14:59"
+        ],
+        [
+          "133",
+          "126",
+          "19.",
+          "Angela Paisley",
+          "45",
+          "F",
+          "51:47 min/mile",
+          "1:17:41"
+        ],
+        [
+          "165",
+          "168",
+          "20.",
+          "Jennifer Cassarella",
+          "52",
+          "F",
+          "52:06 min/mile",
+          "1:18:11"
+        ],
+        [
+          "79",
+          "72",
+          "21.",
+          "Amy Keiser",
+          "50",
+          "F",
+          "55:03 min/mile",
+          "1:22:36"
+        ],
+        [
+          "58",
+          "60",
+          "22.",
+          "Sarah Brogan",
+          "47",
+          "F",
+          "55:07 min/mile",
+          "1:22:42"
+        ],
+        [
+          "60",
+          "64",
+          "23.",
+          "Alicia Dewey",
+          "50",
+          "F",
+          "55:07 min/mile",
+          "1:22:42"
+        ],
+        [
+          "26",
+          "43",
+          "24.",
+          "Wendy Storaska",
+          "51",
+          "F",
+          "55:45 min/mile",
+          "1:23:39"
+        ],
+        [
+          "141",
+          "148",
+          "25.",
+          "Renee Paulukonis",
+          "50",
+          "F",
+          "55:45 min/mile",
+          "1:23:39"
+        ],
+        [
+          "68",
+          "54",
+          "26.",
+          "Lesley Puenkowski",
+          "48",
+          "F",
+          "57:44 min/mile",
+          "1:26:37"
+        ],
+        [
+          "32",
+          "66",
+          "27.",
+          "Sarah Evancho",
+          "47",
+          "F",
+          "58:15 min/mile",
+          "1:27:24"
+        ],
+        [
+          "245",
+          "241",
+          "28.",
+          "Michelle Schadder",
+          "48",
+          "F",
+          "67:43 min/mile",
+          "1:41:36"
+        ],
+        [
+          "239",
+          "236",
+          "29.",
+          "Amanda Paranac",
+          "48",
+          "F",
+          "69:44 min/mile",
+          "1:44:38"
+        ],
+        [
+          "178",
+          "169",
+          "30.",
+          "Angelique Bulka",
+          "50",
+          "F",
+          "71:26 min/mile",
+          "1:47:10"
+        ]
+      ],
+      "#8_Male 45-52": [
+        [
+          "211",
+          "200",
+          "1.",
+          "Kenny Knittle",
+          "47",
+          "M",
+          "13:53 min/mile",
+          "20:50"
+        ],
+        [
+          "220",
+          "226",
+          "2.",
+          "Chad Lubas",
+          "52",
+          "M",
+          "14:58 min/mile",
+          "22:29"
+        ],
+        [
+          "77",
+          "78",
+          "3.",
+          "Joe Zelenack",
+          "45",
+          "M",
+          "15:51 min/mile",
+          "23:47"
+        ],
+        [
+          "231",
+          "242",
+          "4.",
+          "Lou Mattioli",
+          "49",
+          "M",
+          "16:15 min/mile",
+          "24:23"
+        ],
+        [
+          "228",
+          "233",
+          "5.",
+          "Chris James",
+          "52",
+          "M",
+          "18:30 min/mile",
+          "27:46"
+        ],
+        [
+          "1",
+          "1",
+          "6.",
+          "Matthew Schur",
+          "51",
+          "M",
+          "19:42 min/mile",
+          "29:35"
+        ],
+        [
+          "301",
+          "298",
+          "7.",
+          "Earl Miller",
+          "51",
+          "M",
+          "34:22 min/mile",
+          "51:34"
+        ],
+        [
+          "37",
+          "18",
+          "8.",
+          "Jonathan Pavlick",
+          "49",
+          "M",
+          "37:37 min/mile",
+          "56:26"
+        ],
+        [
+          "103",
+          "110",
+          "9.",
+          "Lance Petrylak",
+          "46",
+          "M",
+          "40:17 min/mile",
+          "1:00:27"
+        ],
+        [
+          "212",
+          "204",
+          "10.",
+          "Pete Bobrowski",
+          "46",
+          "M",
+          "40:18 min/mile",
+          "1:00:28"
+        ],
+        [
+          "320",
+          "313",
+          "11.",
+          "Ryan Krasnay",
+          "48",
+          "M",
+          "43:37 min/mile",
+          "1:05:26"
+        ],
+        [
+          "82",
+          "75",
+          "12.",
+          "Jason Weston",
+          "47",
+          "M",
+          "49:34 min/mile",
+          "1:14:22"
+        ],
+        [
+          "83",
+          "83",
+          "13.",
+          "Brian Neikum",
+          "50",
+          "M",
+          "49:56 min/mile",
+          "1:14:56"
+        ],
+        [
+          "134",
+          "121",
+          "14.",
+          "Keith Mhley",
+          "49",
+          "M",
+          "51:20 min/mile",
+          "1:17:02"
+        ],
+        [
+          "229",
+          "321",
+          "15.",
+          "Ryan Keefer",
+          "45",
+          "M",
+          "54:38 min/mile",
+          "1:21:59"
+        ],
+        [
+          "80",
+          "77",
+          "16.",
+          "Courtney Crawford",
+          "45",
+          "M",
+          "55:01 min/mile",
+          "1:22:33"
+        ],
+        [
+          "61",
+          "61",
+          "17.",
+          "Robert Harris",
+          "50",
+          "M",
+          "55:07 min/mile",
+          "1:22:42"
+        ],
+        [
+          "59",
+          "59",
+          "18.",
+          "Ryan Pienkowaki",
+          "47",
+          "M",
+          "57:43 min/mile",
+          "1:26:36"
+        ],
+        [
+          "2",
+          "216",
+          "19.",
+          "Ryan Keefer",
+          "45",
+          "M",
+          "61:34 min/mile",
+          "1:32:22"
+        ],
+        [
+          "246",
+          "248",
+          "20.",
+          "Jason Eisenhower",
+          "50",
+          "M",
+          "67:43 min/mile",
+          "1:41:35"
+        ]
+      ],
+      "#9_Female 53-60": [
+        [
+          "44",
+          "33",
+          "1st Overall Female",
+          "Helen Capparell",
+          "59",
+          "F",
+          "13:09 min/mile",
+          "19:45"
+        ],
+        [
+          "210",
+          "193",
+          "1.",
+          "Rebecca Barnett",
+          "54",
+          "F",
+          "15:00 min/mile",
+          "22:31"
+        ],
+        [
+          "45",
+          "37",
+          "2.",
+          "Traci Strungis",
+          "57",
+          "F",
+          "15:03 min/mile",
+          "22:36"
+        ],
+        [
+          "55",
+          "47",
+          "3.",
+          "Debbie Baker",
+          "57",
+          "F",
+          "16:50 min/mile",
+          "25:16"
+        ],
+        [
+          "111",
+          "98",
+          "4.",
+          "Kristyn Sturken",
+          "57",
+          "F",
+          "17:37 min/mile",
+          "26:26"
+        ],
+        [
+          "195",
+          "185",
+          "5.",
+          "Jill Schoepflin",
+          "58",
+          "F",
+          "26:42 min/mile",
+          "40:04"
+        ],
+        [
+          "135",
+          "129",
+          "6.",
+          "Randi Chapin",
+          "55",
+          "F",
+          "27:20 min/mile",
+          "41:01"
+        ],
+        [
+          "136",
+          "125",
+          "7.",
+          "Deb Dougherty",
+          "60",
+          "F",
+          "27:20 min/mile",
+          "41:01"
+        ],
+        [
+          "282",
+          "284",
+          "8.",
+          "Natalie Tihansky",
+          "55",
+          "F",
+          "31:24 min/mile",
+          "47:07"
+        ],
+        [
+          "302",
+          "300",
+          "9.",
+          "Jennifer Bove",
+          "55",
+          "F",
+          "31:25 min/mile",
+          "47:09"
+        ],
+        [
+          "300",
+          "304",
+          "10.",
+          "Tammi Williams",
+          "54",
+          "F",
+          "35:05 min/mile",
+          "52:38"
+        ],
+        [
+          "50",
+          "35",
+          "11.",
+          "Tammy Plaza",
+          "59",
+          "F",
+          "35:22 min/mile",
+          "53:05"
+        ],
+        [
+          "145",
+          "136",
+          "12.",
+          "Jennifer Bryant",
+          "54",
+          "F",
+          "36:44 min/mile",
+          "55:07"
+        ],
+        [
+          "151",
+          "133",
+          "13.",
+          "Rebecca White",
+          "56",
+          "F",
+          "36:44 min/mile",
+          "55:08"
+        ],
+        [
+          "88",
+          "92",
+          "14.",
+          "Amy Bergstrom",
+          "55",
+          "F",
+          "36:48 min/mile",
+          "55:14"
+        ],
+        [
+          "146",
+          "150",
+          "15.",
+          "Karen Gibbons",
+          "53",
+          "F",
+          "36:52 min/mile",
+          "55:20"
+        ],
+        [
+          "89",
+          "93",
+          "16.",
+          "Denise Corcoran",
+          "60",
+          "F",
+          "37:27 min/mile",
+          "56:12"
+        ],
+        [
+          "293",
+          "294",
+          "17.",
+          "Gina Mooney",
+          "55",
+          "F",
+          "37:48 min/mile",
+          "56:44"
+        ],
+        [
+          "280",
+          "293",
+          "18.",
+          "Ann Tihansky",
+          "56",
+          "F",
+          "37:48 min/mile",
+          "56:44"
+        ],
+        [
+          "144",
+          "149",
+          "19.",
+          "Staci Vayda",
+          "56",
+          "F",
+          "39:47 min/mile",
+          "59:42"
+        ],
+        [
+          "182",
+          "163",
+          "20.",
+          "Mary Pavlik",
+          "58",
+          "F",
+          "39:48 min/mile",
+          "59:44"
+        ],
+        [
+          "109",
+          "134",
+          "21.",
+          "Elizabeth Caltabiano",
+          "59",
+          "F",
+          "40:04 min/mile",
+          "1:00:07"
+        ],
+        [
+          "98",
+          "117",
+          "22.",
+          "Lori Ward",
+          "53",
+          "F",
+          "40:11 min/mile",
+          "1:00:18"
+        ],
+        [
+          "262",
+          "279",
+          "23.",
+          "Karla Kubitz",
+          "58",
+          "F",
+          "40:42 min/mile",
+          "1:01:04"
+        ],
+        [
+          "194",
+          "194",
+          "24.",
+          "Christine Maccollum",
+          "54",
+          "F",
+          "41:34 min/mile",
+          "1:02:22"
+        ],
+        [
+          "217",
+          "208",
+          "25.",
+          "Sue Sernak Martinelli",
+          "56",
+          "F",
+          "41:34 min/mile",
+          "1:02:22"
+        ],
+        [
+          "172",
+          "159",
+          "26.",
+          "Ann Marie Zapotocky",
+          "57",
+          "F",
+          "41:35 min/mile",
+          "1:02:24"
+        ],
+        [
+          "152",
+          "135",
+          "27.",
+          "Tracy Kress",
+          "58",
+          "F",
+          "41:51 min/mile",
+          "1:02:47"
+        ],
+        [
+          "95",
+          "103",
+          "28.",
+          "Christine Cabell",
+          "54",
+          "F",
+          "43:55 min/mile",
+          "1:05:54"
+        ],
+        [
+          "85",
+          "104",
+          "29.",
+          "Maryann Ator",
+          "57",
+          "F",
+          "43:57 min/mile",
+          "1:05:56"
+        ],
+        [
+          "105",
+          "124",
+          "30.",
+          "Rachel Ferry",
+          "54",
+          "F",
+          "44:16 min/mile",
+          "1:06:26"
+        ],
+        [
+          "137",
+          "130",
+          "31.",
+          "Lynn Shamany",
+          "55",
+          "F",
+          "44:23 min/mile",
+          "1:06:36"
+        ],
+        [
+          "160",
+          "195",
+          "32.",
+          "Joleen Verbonitz",
+          "56",
+          "F",
+          "45:02 min/mile",
+          "1:07:34"
+        ],
+        [
+          "272",
+          "270",
+          "33.",
+          "Tricia Marnell",
+          "54",
+          "F",
+          "49:38 min/mile",
+          "1:14:28"
+        ],
+        [
+          "158",
+          "196",
+          "34.",
+          "Dixie Szumilo",
+          "56",
+          "F",
+          "56:18 min/mile",
+          "1:24:28"
+        ],
+        [
+          "3",
+          "3",
+          "35.",
+          "Melissa Orsulak",
+          "53",
+          "F",
+          "61:35 min/mile",
+          "1:32:23"
+        ]
+      ],
+      "#10_Male 53-60": [
+        [
+          "53",
+          "44",
+          "1st Overall Male",
+          "Bill Urbanski",
+          "59",
+          "M",
+          "9:59 min/mile",
+          "14:59"
+        ],
+        [
+          "16",
+          "21",
+          "1.",
+          "Andrew Blasko",
+          "59",
+          "M",
+          "11:50 min/mile",
+          "17:46"
+        ],
+        [
+          "198",
+          "189",
+          "2.",
+          "Scott Barnett",
+          "53",
+          "M",
+          "13:54 min/mile",
+          "20:52"
+        ],
+        [
+          "164",
+          "188",
+          "3.",
+          "Michael A Latoff",
+          "56",
+          "M",
+          "16:16 min/mile",
+          "24:25"
+        ],
+        [
+          "142",
+          "142",
+          "4.",
+          "Brian Vayda",
+          "56",
+          "M",
+          "18:03 min/mile",
+          "27:05"
+        ],
+        [
+          "92",
+          "95",
+          "5.",
+          "Gary Roth",
+          "55",
+          "M",
+          "20:28 min/mile",
+          "30:44"
+        ],
+        [
+          "313",
+          "316",
+          "6.",
+          "Joe Sklarosky",
+          "57",
+          "M",
+          "33:39 min/mile",
+          "50:30"
+        ],
+        [
+          "297",
+          "289",
+          "7.",
+          "Frank Bove",
+          "57",
+          "M",
+          "33:39 min/mile",
+          "50:30"
+        ],
+        [
+          "46",
+          "39",
+          "8.",
+          "Ryan Plaza",
+          "56",
+          "M",
+          "34:28 min/mile",
+          "51:43"
+        ],
+        [
+          "299",
+          "312",
+          "9.",
+          "Robert Krizansky",
+          "56",
+          "M",
+          "35:03 min/mile",
+          "52:36"
+        ],
+        [
+          "222",
+          "232",
+          "10.",
+          "Alan Kohler",
+          "56",
+          "M",
+          "35:29 min/mile",
+          "53:15"
+        ],
+        [
+          "67",
+          "62",
+          "11.",
+          "Mike Joseph",
+          "58",
+          "M",
+          "36:33 min/mile",
+          "54:51"
+        ],
+        [
+          "91",
+          "99",
+          "12.",
+          "Jeff Koch",
+          "59",
+          "M",
+          "36:49 min/mile",
+          "55:15"
+        ],
+        [
+          "93",
+          "97",
+          "13.",
+          "Erik Laskosky",
+          "53",
+          "M",
+          "38:08 min/mile",
+          "57:13"
+        ],
+        [
+          "124",
+          "106",
+          "14.",
+          "Jeff Kovalick",
+          "60",
+          "M",
+          "39:22 min/mile",
+          "59:04"
+        ],
+        [
+          "97",
+          "109",
+          "15.",
+          "Shawn Ward",
+          "56",
+          "M",
+          "40:11 min/mile",
+          "1:00:18"
+        ],
+        [
+          "260",
+          "274",
+          "16.",
+          "Dave Miorelli",
+          "59",
+          "M",
+          "40:24 min/mile",
+          "1:00:38"
+        ],
+        [
+          "161",
+          "191",
+          "17.",
+          "Tom Maccollum",
+          "53",
+          "M",
+          "40:53 min/mile",
+          "1:01:21"
+        ],
+        [
+          "73",
+          "80",
+          "18.",
+          "Allen Sandrock",
+          "54",
+          "M",
+          "40:54 min/mile",
+          "1:01:22"
+        ],
+        [
+          "171",
+          "153",
+          "19.",
+          "Larry Zapotocky",
+          "57",
+          "M",
+          "41:35 min/mile",
+          "1:02:24"
+        ],
+        [
+          "153",
+          "138",
+          "20.",
+          "Thomas Mcmenamin",
+          "57",
+          "M",
+          "42:05 min/mile",
+          "1:03:08"
+        ],
+        [
+          "184",
+          "162",
+          "21.",
+          "Pat Brogan",
+          "59",
+          "M",
+          "42:36 min/mile",
+          "1:03:55"
+        ],
+        [
+          "120",
+          "115",
+          "22.",
+          "Brian Wesolowski",
+          "55",
+          "M",
+          "43:56 min/mile",
+          "1:05:55"
+        ],
+        [
+          "207",
+          "203",
+          "23.",
+          "Christopher Puza",
+          "56",
+          "M",
+          "43:58 min/mile",
+          "1:05:58"
+        ],
+        [
+          "270",
+          "276",
+          "24.",
+          "Randy Marchetti",
+          "53",
+          "M",
+          "45:46 min/mile",
+          "1:08:40"
+        ],
+        [
+          "7",
+          "7",
+          "25.",
+          "Tony Getz",
+          "57",
+          "M",
+          "48:25 min/mile",
+          "1:12:38"
+        ],
+        [
+          "5",
+          "2",
+          "26.",
+          "Darren Wolfe",
+          "55",
+          "M",
+          "48:25 min/mile",
+          "1:12:39"
+        ],
+        [
+          "159",
+          "187",
+          "27.",
+          "Matt Szumilo",
+          "54",
+          "M",
+          "48:39 min/mile",
+          "1:12:59"
+        ],
+        [
+          "191",
+          "181",
+          "28.",
+          "Jim Cassarella",
+          "59",
+          "M",
+          "52:12 min/mile",
+          "1:18:20"
+        ],
+        [
+          "31",
+          "58",
+          "29.",
+          "John Brogan",
+          "54",
+          "M",
+          "55:04 min/mile",
+          "1:22:37"
+        ],
+        [
+          "244",
+          "235",
+          "30.",
+          "Michael Storaska",
+          "55",
+          "M",
+          "67:25 min/mile",
+          "1:41:09"
+        ]
+      ],
+      "#11_Female 61-68": [
+        [
+          "249",
+          "257",
+          "1.",
+          "Lisa Yurek",
+          "62",
+          "F",
+          "18:50 min/mile",
+          "28:17"
+        ],
+        [
+          "41",
+          "29",
+          "2.",
+          "Fran Metz",
+          "61",
+          "F",
+          "21:28 min/mile",
+          "32:14"
+        ],
+        [
+          "162",
+          "197",
+          "3.",
+          "Andrea Tloczynski",
+          "63",
+          "F",
+          "26:41 min/mile",
+          "40:03"
+        ],
+        [
+          "205",
+          "202",
+          "4.",
+          "Michele Kimmel",
+          "66",
+          "F",
+          "26:51 min/mile",
+          "40:17"
+        ],
+        [
+          "65",
+          "73",
+          "5.",
+          "Cathy Biever",
+          "62",
+          "F",
+          "27:21 min/mile",
+          "41:03"
+        ],
+        [
+          "47",
+          "38",
+          "6.",
+          "Lisa Logan",
+          "64",
+          "F",
+          "32:47 min/mile",
+          "49:12"
+        ],
+        [
+          "169",
+          "160",
+          "7.",
+          "Debbie Dinsmore",
+          "63",
+          "F",
+          "36:28 min/mile",
+          "54:43"
+        ],
+        [
+          "114",
+          "86",
+          "8.",
+          "Sharon Spangenburg",
+          "66",
+          "F",
+          "36:55 min/mile",
+          "55:24"
+        ],
+        [
+          "90",
+          "88",
+          "9.",
+          "Lisa Schugardt",
+          "66",
+          "F",
+          "37:37 min/mile",
+          "56:27"
+        ],
+        [
+          "70",
+          "57",
+          "10.",
+          "Renae Dobbs",
+          "66",
+          "F",
+          "37:56 min/mile",
+          "56:55"
+        ],
+        [
+          "69",
+          "67",
+          "11.",
+          "Kim Palfey",
+          "64",
+          "F",
+          "38:08 min/mile",
+          "57:14"
+        ],
+        [
+          "126",
+          "113",
+          "12.",
+          "Tami Kovalick",
+          "64",
+          "F",
+          "39:21 min/mile",
+          "59:03"
+        ],
+        [
+          "101",
+          "119",
+          "13.",
+          "Jean Fanelli",
+          "66",
+          "F",
+          "39:25 min/mile",
+          "59:09"
+        ],
+        [
+          "149",
+          "155",
+          "14.",
+          "Maura Dryfoos",
+          "61",
+          "F",
+          "40:07 min/mile",
+          "1:00:11"
+        ],
+        [
+          "247",
+          "261",
+          "15.",
+          "Debbie Shemansky",
+          "64",
+          "F",
+          "40:43 min/mile",
+          "1:01:05"
+        ],
+        [
+          "147",
+          "146",
+          "16.",
+          "de Ann Miller",
+          "62",
+          "F",
+          "41:52 min/mile",
+          "1:02:49"
+        ],
+        [
+          "183",
+          "161",
+          "17.",
+          "Cathy Brogan",
+          "63",
+          "F",
+          "42:04 min/mile",
+          "1:03:07"
+        ],
+        [
+          "219",
+          "227",
+          "18.",
+          "Angela Puza",
+          "61",
+          "F",
+          "43:52 min/mile",
+          "1:05:49"
+        ],
+        [
+          "96",
+          "102",
+          "19.",
+          "Cindy Conahan",
+          "67",
+          "F",
+          "51:11 min/mile",
+          "1:16:48"
+        ],
+        [
+          "56",
+          "50",
+          "20.",
+          "Karen Siegfried",
+          "63",
+          "F",
+          "56:29 min/mile",
+          "1:24:44"
+        ],
+        [
+          "294",
+          "295",
+          "21.",
+          "Lisa Stetz",
+          "63",
+          "F",
+          "62:12 min/mile",
+          "1:33:20"
+        ],
+        [
+          "287",
+          "268",
+          "22.",
+          "Lisa Fadule",
+          "62",
+          "F",
+          "67:54 min/mile",
+          "1:41:53"
+        ],
+        [
+          "290",
+          "296",
+          "23.",
+          "Theresa Scatton",
+          "65",
+          "F",
+          "71:12 min/mile",
+          "1:46:49"
+        ]
+      ],
+      "#12_Male 61-68": [
+        [
+          "232",
+          "247",
+          "1.",
+          "Andy Mhley",
+          "61",
+          "M",
+          "14:18 min/mile",
+          "21:28"
+        ],
+        [
+          "57",
+          "56",
+          "2.",
+          "Kenneth Musser",
+          "63",
+          "M",
+          "15:57 min/mile",
+          "23:56"
+        ],
+        [
+          "286",
+          "273",
+          "3.",
+          "Rock Warnagiris",
+          "67",
+          "M",
+          "16:00 min/mile",
+          "24:02"
+        ],
+        [
+          "215",
+          "206",
+          "4.",
+          "John Robinson",
+          "67",
+          "M",
+          "20:55 min/mile",
+          "31:24"
+        ],
+        [
+          "196",
+          "192",
+          "5.",
+          "Thomas Schoepflin",
+          "65",
+          "M",
+          "26:41 min/mile",
+          "40:03"
+        ],
+        [
+          "8",
+          "6",
+          "6.",
+          "Thomas Fisher",
+          "64",
+          "M",
+          "29:59 min/mile",
+          "45:00"
+        ],
+        [
+          "24",
+          "34",
+          "7.",
+          "Carl Logan",
+          "65",
+          "M",
+          "34:33 min/mile",
+          "51:50"
+        ],
+        [
+          "309",
+          "299",
+          "8.",
+          "Sean Mooney",
+          "62",
+          "M",
+          "35:45 min/mile",
+          "53:39"
+        ],
+        [
+          "42",
+          "30",
+          "9.",
+          "Fran Paladino",
+          "65",
+          "M",
+          "36:22 min/mile",
+          "54:35"
+        ],
+        [
+          "122",
+          "108",
+          "10.",
+          "Al Augustine",
+          "62",
+          "M",
+          "36:23 min/mile",
+          "54:36"
+        ],
+        [
+          "33",
+          "65",
+          "11.",
+          "Jimmy Joseph",
+          "63",
+          "M",
+          "36:32 min/mile",
+          "54:50"
+        ],
+        [
+          "100",
+          "105",
+          "12.",
+          "John Kovalick",
+          "65",
+          "M",
+          "39:22 min/mile",
+          "59:04"
+        ],
+        [
+          "125",
+          "116",
+          "13.",
+          "Bill Kovalick",
+          "67",
+          "M",
+          "39:24 min/mile",
+          "59:08"
+        ],
+        [
+          "155",
+          "167",
+          "14.",
+          "Lew Dryfoos",
+          "62",
+          "M",
+          "40:05 min/mile",
+          "1:00:09"
+        ],
+        [
+          "148",
+          "140",
+          "15.",
+          "Robert Mcmenamin",
+          "61",
+          "M",
+          "40:16 min/mile",
+          "1:00:26"
+        ],
+        [
+          "81",
+          "74",
+          "16.",
+          "Frank Ator",
+          "61",
+          "M",
+          "43:57 min/mile",
+          "1:05:56"
+        ],
+        [
+          "223",
+          "230",
+          "17.",
+          "John Tunnessen",
+          "62",
+          "M",
+          "44:19 min/mile",
+          "1:06:30"
+        ],
+        [
+          "27",
+          "46",
+          "18.",
+          "William Tunnessen",
+          "62",
+          "M",
+          "50:00 min/mile",
+          "1:15:01"
+        ],
+        [
+          "224",
+          "231",
+          "19.",
+          "Eddie Shemansky",
+          "66",
+          "M",
+          "58:04 min/mile",
+          "1:27:08"
+        ],
+        [
+          "6",
+          "5",
+          "20.",
+          "Ed O’connell",
+          "65",
+          "M",
+          "61:34 min/mile",
+          "1:32:23"
+        ],
+        [
+          "296",
+          "303",
+          "21.",
+          "James Bertuola",
+          "64",
+          "M",
+          "62:09 min/mile",
+          "1:33:15"
+        ],
+        [
+          "253",
+          "244",
+          "22.",
+          "Kevin Mccann",
+          "62",
+          "M",
+          "64:14 min/mile",
+          "1:36:23"
+        ],
+        [
+          "288",
+          "278",
+          "23.",
+          "George Fadule",
+          "62",
+          "M",
+          "68:31 min/mile",
+          "1:42:48"
+        ]
+      ],
+      "#13_Female 69-75": [
+        [
+          "173",
+          "154",
+          "1.",
+          "*janis Palubinsky",
+          "74",
+          "F",
+          "22:42 min/mile",
+          "34:04"
+        ],
+        [
+          "87",
+          "96",
+          "2.",
+          "Marie Shulenski",
+          "71",
+          "F",
+          "32:04 min/mile",
+          "48:07"
+        ],
+        [
+          "185",
+          "158",
+          "3.",
+          "Kathy Koch",
+          "69",
+          "F",
+          "38:40 min/mile",
+          "58:01"
+        ],
+        [
+          "240",
+          "246",
+          "4.",
+          "Jean Ann Wienches",
+          "74",
+          "F",
+          "40:44 min/mile",
+          "1:01:07"
+        ],
+        [
+          "107",
+          "144",
+          "5.",
+          "Celeste Samec",
+          "69",
+          "F",
+          "44:24 min/mile",
+          "1:06:37"
+        ],
+        [
+          "156",
+          "173",
+          "6.",
+          "Linda Farley",
+          "69",
+          "F",
+          "51:08 min/mile",
+          "1:16:44"
+        ]
+      ],
+      "#14_Male 69-75": [
+        [
+          "71",
+          "63",
+          "1.",
+          "Daniel Martin",
+          "74",
+          "M",
+          "22:22 min/mile",
+          "33:34"
+        ],
+        [
+          "206",
+          "210",
+          "2.",
+          "Martin Kimmel",
+          "71",
+          "M",
+          "24:16 min/mile",
+          "36:26"
+        ],
+        [
+          "99",
+          "114",
+          "3.",
+          "Joseph Kovalick",
+          "69",
+          "M",
+          "35:13 min/mile",
+          "52:51"
+        ],
+        [
+          "121",
+          "120",
+          "4.",
+          "Michael Zieminski",
+          "73",
+          "M",
+          "36:23 min/mile",
+          "54:36"
+        ],
+        [
+          "186",
+          "166",
+          "5.",
+          "Henry Koch",
+          "70",
+          "M",
+          "38:41 min/mile",
+          "58:02"
+        ]
+      ],
+      "#15_Female 76+": [
+        [
+          "112",
+          "100",
+          "1.",
+          "Theresa Steinman",
+          "77",
+          "F",
+          "32:04 min/mile",
+          "48:07"
+        ],
+        [
+          "36",
+          "9",
+          "2.",
+          "Mary Schriebmaier",
+          "80",
+          "F",
+          "56:24 min/mile",
+          "1:24:37"
+        ]
+      ],
+      "#16_Male 76+": [
+        [
+          "218",
+          "213",
+          "1.",
+          "Edwin Miller",
+          "88",
+          "M",
+          "37:56 min/mile",
+          "56:55"
+        ],
+        [
+          "23",
+          "31",
+          "2.",
+          "Stanley Komosinsky",
+          "76",
+          "M",
+          "50:01 min/mile",
+          "1:15:02"
+        ]
+      ]
+    }
+  },
+  "DataFields": [
+    "BIB",
+    "ID",
+    "WithStatus(if([AgeGroupRankp]>0; [AgeGroupRankp]; [AgeGroupPostRace] & \" \" & [MaleFemale]))",
+    "DisplayName_Public",
+    "AGE",
+    "GenderMF",
+    "Finish.CHIP.SPEEDORPACE",
+    "if([AgeGroup_ChipOrGun]=\"chip\"; [Finish.CHIP]; [Finish.GUN])"
+  ],
+  "mid": 9808,
+  "groupFilters": [
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": [
+        "C.H.H.I.P.S. Trot N Brew"
+      ]
+    },
+    {
+      "Type": 0,
+      "Value": "",
+      "Values": [
+        "Female 21-28",
+        "Male 21-28",
+        "Female 29-36",
+        "Male 29-36",
+        "Female 37-44",
+        "Male 37-44",
+        "Female 45-52",
+        "Male 45-52",
+        "Female 53-60",
+        "Male 53-60",
+        "Female 61-68",
+        "Male 61-68",
+        "Female 69-75",
+        "Male 69-75",
+        "Female 76+",
+        "Male 76+"
+      ]
+    }
+  ],
+  "comments": {},
+  "LiveUpdateInterval": 10,
+  "Favorites": null
+}

@@ -1,0 +1,31 @@
+{
+  "rrId": "406086",
+  "recordedAt": "2026-08-19T22:10:46.394Z",
+  "lists": [
+    {
+      "file": "list-0.json",
+      "listname": "Resultat|Live",
+      "contest": "2"
+    },
+    {
+      "file": "list-1.json",
+      "listname": "Resultat|Live Drivers",
+      "contest": "2"
+    }
+  ],
+  "athletes": [
+    {
+      "pid": "9",
+      "detailsPath": "results",
+      "legacyPath": "results",
+      "splitsPath": null
+    },
+    {
+      "pid": "4",
+      "detailsPath": "results",
+      "legacyPath": "results",
+      "splitsPath": null
+    }
+  ],
+  "server": "my-aus-1.raceresult.com"
+}

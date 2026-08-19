@@ -9,7 +9,7 @@
   },
   "tabs": {
     "results": true,
-    "participants": false,
+    "participants": true,
     "live": false,
     "certificates": false,
     "livePollSeconds": 20
@@ -137,5 +137,6 @@
       "leaderCount": 0,
       "evento": null
     }
-  ]
+  ],
+  "pdfLists": []
 }

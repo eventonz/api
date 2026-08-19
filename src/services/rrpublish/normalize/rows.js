@@ -9,18 +9,28 @@
  * group in row order (RRPublish.js renders them, the API rank is not used).
  */
 
-const { str, toInt } = require('./util');
+const { str, toInt, isDirectiveValue } = require('./util');
 const { i18n, groupLabel } = require('./i18n');
 const { IGNORE } = require('./filters');
 
 const TIME_SHAPED = /^\d{0,2}:?\d{1,2}:\d{2}/;
 
 /**
+ * RaceResult renders ranks as "1." / "12." — and renders non-finishers in the
+ * same column as DNS/DNF/DSQ or nothing at all. Only a plain number is a
+ * usable rank; everything else is left to render-time positioning.
+ */
+function rankValue(raw) {
+  const v = str(raw).trim().replace(/\.$/, '');
+  return /^\d+$/.test(v) ? v : '';
+}
+
+/**
  * One participant row-array → normalized row.
  * ctx: { dataFields, nameIdx, resultIdx, lang }
  */
 function parseRow(row, ctx) {
-  const { dataFields, nameIdx, resultIdx, lang } = ctx;
+  const { dataFields, nameIdx, resultIdx, rankIdx, lang } = ctx;
   const s = (i) => (i >= 0 && i < row.length ? str(row[i]) : '');
   // BIB / ID are RaceResult API constants in DataFields (not organiser
   // labels) — resolve by exact name, fall back to the 0/1 convention.
@@ -30,17 +40,23 @@ function parseRow(row, ctx) {
     bib: s(bibIdx !== -1 ? bibIdx : 0),
     pid: s(pidIdx !== -1 ? pidIdx : 1),
     name: i18n(s(nameIdx), lang),
-    time: s(resultIdx),
+    // RaceResult's OWN rank for this row, trailing '.' stripped ("1." → "1").
+    // Continuous across groups where the list ranks overall, which render-time
+    // numbering cannot reproduce.
+    rank: rankValue(s(rankIdx)),
+    time: isDirectiveValue(s(resultIdx)) ? '' : s(resultIdx),
     videoLink: '',
     fields: [],
   };
   if (p.time === '') {
     // regex-scan from the end for a time-shaped value
     for (let i = row.length - 1; i >= 2; i--) {
+      if (isDirectiveValue(s(i))) continue;
       if (TIME_SHAPED.test(s(i))) { p.time = s(i); break; }
     }
   }
   for (let i = 2; i < dataFields.length; i++) {
+    if (isDirectiveValue(s(i))) continue;      // row styling, not a data field
     const v = i18n(s(i), lang);
     if (v !== '') p.fields.push({ expr: dataFields[i], value: v });
     // Video column: a DataField named like "[...Video...]".

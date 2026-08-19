@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "rrId": "407480",
+  "lang": "en",
+  "event": {
+    "name": "Against the Tide - Hopkinton",
+    "eventOver": true,
+    "accentColor": null
+  },
+  "tabs": {
+    "results": true,
+    "participants": false,
+    "live": false,
+    "certificates": false,
+    "livePollSeconds": 20
+  },
+  "contests": [
+    {
+      "id": "0",
+      "name": "General"
+    }
+  ],
+  "lists": [
+    {
+      "id": "3EF1B7",
+      "name": "Result Lists|Overall Results",
+      "displayName": "Overall Results",
+      "contest": "0",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "80CC55",
+      "name": "Result Lists|Gender Results",
+      "displayName": "Gender Results",
+      "contest": "0",
+      "leaderCount": 0,
+      "evento": null
+    },
+    {
+      "id": "872E1E",
+      "name": "Result Lists|Age Group Results",
+      "displayName": "Age Group Results",
+      "contest": "0",
+      "leaderCount": 0,
+      "evento": null
+    }
+  ],
+  "pdfLists": []
+}

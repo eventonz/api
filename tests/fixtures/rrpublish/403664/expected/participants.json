@@ -7,7 +7,7 @@
     "contest": "0",
     "leaderCount": 0
   },
-  "resultLabel": "Category",
+  "resultLabel": "Contest",
   "filters": [
     {
       "slot": 0,
@@ -31,1428 +31,953 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "50",
           "bib": "407",
           "name": "#rafaloupa",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "45",
           "bib": "314",
           "name": "8'stitis",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "29",
           "bib": "10",
           "name": "Andre Jimmy",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "19",
           "bib": "21",
           "name": "Basset Romain",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "46",
           "bib": "311",
           "name": "BCAS SQUAD",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "58",
           "bib": "306",
           "name": "BORNTORUN",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "22",
           "bib": "22",
           "name": "Bouquin David",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "31",
           "bib": "104",
           "name": "BPLFKing Running",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "77",
           "bib": "113",
           "name": "Cécile & Berac",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "13",
           "bib": "12",
           "name": "Ceh Stefan",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "10",
           "bib": "8",
           "name": "Changanaqui Yoann",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "97",
           "bib": "30",
           "name": "Chassot Ilenia",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "17",
           "bib": "13",
           "name": "chupin jean-pierre",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "15",
           "bib": "16",
           "name": "DA SILVA Benjamin",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "81",
           "bib": "203",
           "name": "Débit illimité",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "34",
           "bib": "204",
           "name": "Dédé-Fonce",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "16",
           "bib": "5",
           "name": "Epars Samuel",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "47",
           "bib": "404",
           "name": "EQIP EPIQ",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "26",
           "bib": "3",
           "name": "Favre Jerome",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "25",
           "bib": "11",
           "name": "Fischer Thomas",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "20",
           "bib": "27",
           "name": "Flag Eric",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "24",
           "bib": "29",
           "name": "Freire Junior Clovis",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "88",
           "bib": "100",
           "name": "Garmin girls",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "54",
           "bib": "304",
           "name": "Gen X-pired",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "7",
           "bib": "20",
           "name": "Genoud Chris",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "9",
           "bib": "23",
           "name": "Gerardin Delrieu Vanessa",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "96",
           "bib": "26",
           "name": "Gillioz Quentin",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "8",
           "bib": "24",
           "name": "Giordano Jonathan",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "73",
           "bib": "409",
           "name": "GVA Runners",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "48",
           "bib": "403",
           "name": "GVA Team-T2",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "57",
           "bib": "111",
           "name": "Helios Quetzal",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 32,
+          "rank": null,
           "pid": "3",
           "bib": "25",
           "name": "Hoenicke Thomas",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 33,
+          "rank": null,
           "pid": "55",
           "bib": "210",
           "name": "hybrid athletes",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 34,
+          "rank": null,
           "pid": "12",
           "bib": "1",
           "name": "Jimenez Augustin",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 35,
+          "rank": null,
           "pid": "69",
           "bib": "200",
           "name": "Jizz us",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 36,
+          "rank": null,
           "pid": "5",
           "bib": "7",
           "name": "Kacel Florian",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 37,
+          "rank": null,
           "pid": "92",
           "bib": "107",
           "name": "KeepRun",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 38,
+          "rank": null,
           "pid": "98",
           "bib": "220",
           "name": "Kosov",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 39,
+          "rank": null,
           "pid": "79",
           "bib": "319",
           "name": "La Fine Équipe",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 40,
+          "rank": null,
           "pid": "87",
           "bib": "414",
           "name": "La team foulée d’Annemasse",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 41,
+          "rank": null,
           "pid": "33",
           "bib": "206",
           "name": "La Team Rocket",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 42,
+          "rank": null,
           "pid": "76",
           "bib": "213",
           "name": "Le Squadi Squad",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 43,
+          "rank": null,
           "pid": "56",
           "bib": "312",
           "name": "Le Squadi Squad",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 44,
+          "rank": null,
           "pid": "90",
           "bib": "208",
           "name": "Le trio infernal",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 45,
+          "rank": null,
           "pid": "27",
           "bib": "2",
           "name": "Lefebvre Romain",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 46,
+          "rank": null,
           "pid": "49",
           "bib": "413",
           "name": "Léman Running",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 47,
+          "rank": null,
           "pid": "74",
           "bib": "212",
           "name": "Les 4 Flans Statiques",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 48,
+          "rank": null,
           "pid": "65",
           "bib": "114",
           "name": "Les affamés",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 49,
+          "rank": null,
           "pid": "42",
           "bib": "302",
           "name": "Les apprentis coureurs",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 50,
+          "rank": null,
           "pid": "32",
           "bib": "105",
           "name": "Les Babs",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 51,
+          "rank": null,
           "pid": "91",
           "bib": "209",
           "name": "Les boulangères",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 52,
+          "rank": null,
           "pid": "94",
           "bib": "214",
           "name": "Les coureurs du lundi",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 53,
+          "rank": null,
           "pid": "66",
           "bib": "106",
           "name": "Les Dooooces",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 54,
+          "rank": null,
           "pid": "43",
           "bib": "305",
           "name": "Les flèches",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 55,
+          "rank": null,
           "pid": "80",
           "bib": "417",
           "name": "Les Focs",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 56,
+          "rank": null,
           "pid": "64",
           "bib": "416",
           "name": "Les Nocstambules",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 57,
+          "rank": null,
           "pid": "86",
           "bib": "406",
           "name": "Les Racketjes",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 58,
+          "rank": null,
           "pid": "84",
           "bib": "415",
           "name": "Les truands",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 59,
+          "rank": null,
           "pid": "52",
           "bib": "408",
           "name": "Lions Team",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 60,
+          "rank": null,
           "pid": "68",
           "bib": "400",
           "name": "Los Runningos",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 61,
+          "rank": null,
           "pid": "51",
           "bib": "405",
           "name": "MAC-en rond",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 62,
+          "rank": null,
           "pid": "18",
           "bib": "4",
           "name": "Marco Ottaviani",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 63,
+          "rank": null,
           "pid": "44",
           "bib": "307",
           "name": "Mousstrainingclub",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 64,
+          "rank": null,
           "pid": "28",
           "bib": "17",
           "name": "Niederhauser William",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 65,
+          "rank": null,
           "pid": "59",
           "bib": "303",
           "name": "No Time To Run",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 66,
+          "rank": null,
           "pid": "23",
           "bib": "28",
           "name": "NODA JOSÉ",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 67,
+          "rank": null,
           "pid": "30",
           "bib": "103",
           "name": "NoSleep JustRun",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 68,
+          "rank": null,
           "pid": "39",
           "bib": "309",
           "name": "Octo Sapiens",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 69,
+          "rank": null,
           "pid": "14",
           "bib": "19",
           "name": "ohl sebastien",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 70,
+          "rank": null,
           "pid": "53",
           "bib": "102",
           "name": "Oups",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 71,
+          "rank": null,
           "pid": "60",
           "bib": "410",
           "name": "PAFA RUNNER",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 72,
+          "rank": null,
           "pid": "83",
           "bib": "301",
           "name": "Panard Migros",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 73,
+          "rank": null,
           "pid": "75",
           "bib": "318",
           "name": "Pas de panique à bord",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 74,
+          "rank": null,
           "pid": "85",
           "bib": "211",
           "name": "PEACH",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 75,
+          "rank": null,
           "pid": "63",
           "bib": "401",
           "name": "Primwest Team 1",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 76,
+          "rank": null,
           "pid": "62",
           "bib": "412",
           "name": "PRIMWEST-2",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 77,
+          "rank": null,
           "pid": "4",
           "bib": "18",
           "name": "Rieu Nicolas",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 78,
+          "rank": null,
           "pid": "11",
           "bib": "6",
           "name": "Rovelli Gabriel",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 79,
+          "rank": null,
           "pid": "82",
           "bib": "300",
           "name": "Run like Queens",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 80,
+          "rank": null,
           "pid": "67",
           "bib": "101",
           "name": "Run MagAlex",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 81,
+          "rank": null,
           "pid": "37",
           "bib": "202",
           "name": "Run now, Spritz later",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 82,
+          "rank": null,
           "pid": "71",
           "bib": "411",
           "name": "Running out of excuses",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 83,
+          "rank": null,
           "pid": "41",
           "bib": "308",
           "name": "RunningTpg 1",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 84,
+          "rank": null,
           "pid": "61",
           "bib": "310",
           "name": "RunningTpg 2",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 85,
+          "rank": null,
           "pid": "21",
           "bib": "15",
           "name": "sangouard julien",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 86,
+          "rank": null,
           "pid": "78",
           "bib": "316",
           "name": "Slow Motion",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 87,
+          "rank": null,
           "pid": "93",
           "bib": "315",
           "name": "Sortie longue ce wk?",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 88,
+          "rank": null,
           "pid": "40",
           "bib": "313",
           "name": "StayHard",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 89,
+          "rank": null,
           "pid": "35",
           "bib": "205",
           "name": "Team Cernay",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 90,
+          "rank": null,
           "pid": "38",
           "bib": "207",
           "name": "Team Erreur 404",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 91,
+          "rank": null,
           "pid": "72",
           "bib": "317",
           "name": "The Running Men",
-          "time": "BG(#eb5f3e)",
+          "time": "Le Squad",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Squad"
-            }
-          ]
+          "info": []
         },
         {
           "position": 92,
+          "rank": null,
           "pid": "89",
           "bib": "108",
           "name": "Tourne_Over",
-          "time": "BG(#44b27d)",
+          "time": "Le Binôme",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Binôme"
-            }
-          ]
+          "info": []
         },
         {
           "position": 93,
+          "rank": null,
           "pid": "36",
           "bib": "201",
           "name": "TOUS ENSEMBLE MAIS TOUT SEUL",
-          "time": "BG(#E2AEEE)",
+          "time": "Le Crew",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "Le Crew"
-            }
-          ]
+          "info": []
         },
         {
           "position": 94,
+          "rank": null,
           "pid": "6",
           "bib": "14",
           "name": "Unver Muhammed",
-          "time": "BG(#fff2d2)",
+          "time": "L'Unique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "L'Unique"
-            }
-          ]
+          "info": []
         },
         {
           "position": 95,
+          "rank": null,
           "pid": "70",
           "bib": "402",
           "name": "Visium Sport",
-          "time": "BG(#ffcc03)",
+          "time": "La Clique",
           "videoLink": null,
-          "info": [
-            {
-              "type": "text",
-              "label": "Contest",
-              "value": "La Clique"
-            }
-          ]
+          "info": []
         }
       ],
       "total": 95,

@@ -46,6 +46,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "278",
           "bib": "6",
           "name": "ÖPERATION ÖVER-LOUTRES",
@@ -61,6 +62,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "347",
           "bib": "13",
           "name": "S&P TRAVELS & TOURS",
@@ -76,6 +78,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "245",
           "bib": "15",
           "name": "MYSWIM",
@@ -91,6 +94,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "214",
           "bib": "17",
           "name": "IMPERIAL BROTHERS",
@@ -106,6 +110,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "329",
           "bib": "18",
           "name": "AGA & TOMEK - ENVOL/TRICLUB",
@@ -121,6 +126,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "224",
           "bib": "19",
           "name": "TEAM ENVOL MATH ET YANIS",
@@ -136,6 +142,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "313",
           "bib": "22",
           "name": "UN QUI NAGE UN QUI COURT",
@@ -151,6 +158,7 @@
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "223",
           "bib": "26",
           "name": "BEN & MATH",
@@ -166,6 +174,7 @@
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "334",
           "bib": "28",
           "name": "LES TÊTARDS DU VERDON",
@@ -181,6 +190,7 @@
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "268",
           "bib": "29",
           "name": "ZUGSTON, WE HAVE A BEAUBLEM !",
@@ -196,6 +206,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "290",
           "bib": "30",
           "name": "GUI & NICO",
@@ -211,6 +222,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "238",
           "bib": "33",
           "name": "TWO BOYZ ONE CUP",
@@ -226,6 +238,7 @@
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "342",
           "bib": "34",
           "name": "LES OLDS BAC",
@@ -241,6 +254,7 @@
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "212",
           "bib": "35",
           "name": "NEEDLES",
@@ -256,6 +270,7 @@
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "254",
           "bib": "36",
           "name": "LES FADAS DU VERDON",
@@ -271,6 +286,7 @@
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "221",
           "bib": "40",
           "name": "FOREST ET FLIPPER",
@@ -286,6 +302,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "292",
           "bib": "43",
           "name": "TEAM ORCA",
@@ -301,6 +318,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "235",
           "bib": "47",
           "name": "LÉLOOÖOORNIDAS",
@@ -316,6 +334,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "299",
           "bib": "48",
           "name": "TIB&SQUAL",
@@ -331,6 +350,7 @@
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "266",
           "bib": "49",
           "name": "LIZYAN",
@@ -346,6 +366,7 @@
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "198",
           "bib": "52",
           "name": "MORNINGSTAR BELGIUM",
@@ -361,6 +382,7 @@
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "354",
           "bib": "54",
           "name": "LA TEAM ROCKET",
@@ -376,6 +398,7 @@
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "285",
           "bib": "55",
           "name": "SWIMRUN FOURAS #1",
@@ -391,6 +414,7 @@
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "193",
           "bib": "56",
           "name": "LA MINI ET LA BÊTE",
@@ -406,6 +430,7 @@
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "330",
           "bib": "59",
           "name": "BANANAS TEAM",
@@ -421,6 +446,7 @@
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "369",
           "bib": "60",
           "name": "LA SELEÇÃO",
@@ -436,6 +462,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "396",
           "bib": "61",
           "name": "LES MEUFS CHAUDES DE TA RÉGION",
@@ -451,6 +478,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "194",
           "bib": "65",
           "name": "LES KINÉS GIVRÉS",
@@ -466,6 +494,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "360",
           "bib": "66",
           "name": "TEAM 1990",
@@ -481,6 +510,7 @@
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "253",
           "bib": "67",
           "name": "1981, LE RETOUR",
@@ -496,6 +526,7 @@
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "376",
           "bib": "68",
           "name": "TEAM MITJAFIGA",
@@ -523,6 +554,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "203",
           "bib": "3002",
           "name": "LES FRANGINS INDOMPTABLES 1",
@@ -538,6 +570,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "323",
           "bib": "3003",
           "name": "MAMA TIA VU L'ÉQUIPE",
@@ -553,6 +586,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "302",
           "bib": "3006",
           "name": "LES MOJITOS",
@@ -568,6 +602,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "232",
           "bib": "3011",
           "name": "LES GRANDES PERCHES",
@@ -583,6 +618,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "392",
           "bib": "3012",
           "name": "SEB&LOLO",
@@ -598,6 +634,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "305",
           "bib": "3015",
           "name": "SWIN & CNO LES ROIS DE LA PLAQUE",
@@ -613,6 +650,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "229",
           "bib": "3017",
           "name": "UN BOUT DE PAIN",
@@ -628,6 +666,7 @@
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "197",
           "bib": "3024",
           "name": "ÖTILLÖVE",
@@ -643,6 +682,7 @@
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "286",
           "bib": "3026",
           "name": "AVANTI NISSA",
@@ -658,6 +698,7 @@
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "180",
           "bib": "3028",
           "name": "GAINERZ",
@@ -673,6 +714,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "382",
           "bib": "3029",
           "name": "GAINER’Z",
@@ -688,6 +730,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "403",
           "bib": "3030",
           "name": "LEARTISTES",
@@ -703,6 +746,7 @@
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "370",
           "bib": "3031",
           "name": "A FOND DANS LA GORGE",
@@ -718,6 +762,7 @@
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "246",
           "bib": "3032",
           "name": "UNKNOWN PARTNERS",
@@ -733,6 +778,7 @@
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "200",
           "bib": "3034",
           "name": "LEMMMONS",
@@ -748,6 +794,7 @@
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "314",
           "bib": "3035",
           "name": "VCT",
@@ -763,6 +810,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "304",
           "bib": "3036",
           "name": "LES ZÉPARPILLÉS",
@@ -778,6 +826,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "262",
           "bib": "3037",
           "name": "2CAP",
@@ -793,6 +842,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "287",
           "bib": "3041",
           "name": "LES PACHOLES",
@@ -808,6 +858,7 @@
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "309",
           "bib": "3043",
           "name": "RASCASSE",
@@ -823,6 +874,7 @@
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "236",
           "bib": "3044",
           "name": "MAFIA CASSOULET - TOULOUSE TRIATHLON",
@@ -838,6 +890,7 @@
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "282",
           "bib": "3047",
           "name": "EQUIPE CONVERGENCE CARCASSONNE",
@@ -853,6 +906,7 @@
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "375",
           "bib": "3048",
           "name": "LES SPORTIFS HYBRIDES",
@@ -868,6 +922,7 @@
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "258",
           "bib": "3052",
           "name": "LES GORGES PROFONDES",
@@ -883,6 +938,7 @@
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "233",
           "bib": "3056",
           "name": "LES GLANDS ISLANDAIS",
@@ -898,6 +954,7 @@
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "371",
           "bib": "3057",
           "name": "LES TENDONS FRAGILES",
@@ -913,6 +970,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "240",
           "bib": "3058",
           "name": "TOUTENKOMBI",
@@ -928,6 +986,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "249",
           "bib": "3060",
           "name": "LES TUILES",
@@ -943,6 +1002,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "242",
           "bib": "3061",
           "name": "LES MICLO",
@@ -958,6 +1018,7 @@
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "260",
           "bib": "3062",
           "name": "LA MELONNADE",
@@ -973,6 +1034,7 @@
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "259",
           "bib": "3063",
           "name": "LV",
@@ -988,6 +1050,7 @@
         },
         {
           "position": 32,
+          "rank": null,
           "pid": "170",
           "bib": "3066",
           "name": "RAID UP CHAVILLE",
@@ -1003,6 +1066,7 @@
         },
         {
           "position": 33,
+          "rank": null,
           "pid": "165",
           "bib": "3067",
           "name": "MOUSTACHUS BOUFFEUR DE Q",
@@ -1018,6 +1082,7 @@
         },
         {
           "position": 34,
+          "rank": null,
           "pid": "213",
           "bib": "3068",
           "name": "TEAM US CENON",
@@ -1033,6 +1098,7 @@
         },
         {
           "position": 35,
+          "rank": null,
           "pid": "215",
           "bib": "3076",
           "name": "LA PAIRE MYSTÈRE !",
@@ -1048,6 +1114,7 @@
         },
         {
           "position": 36,
+          "rank": null,
           "pid": "166",
           "bib": "3077",
           "name": "TEAM 68",
@@ -1063,6 +1130,7 @@
         },
         {
           "position": 37,
+          "rank": null,
           "pid": "241",
           "bib": "3078",
           "name": "CARO ET BRRRR UNO",
@@ -1078,6 +1146,7 @@
         },
         {
           "position": 38,
+          "rank": null,
           "pid": "217",
           "bib": "3079",
           "name": "LES DUB",
@@ -1093,6 +1162,7 @@
         },
         {
           "position": 39,
+          "rank": null,
           "pid": "300",
           "bib": "3080",
           "name": "LES DAHUS",
@@ -1108,6 +1178,7 @@
         },
         {
           "position": 40,
+          "rank": null,
           "pid": "207",
           "bib": "3081",
           "name": "LES FARTAS",
@@ -1123,6 +1194,7 @@
         },
         {
           "position": 41,
+          "rank": null,
           "pid": "310",
           "bib": "3082",
           "name": "GOOD VIBES TEAM",
@@ -1138,6 +1210,7 @@
         },
         {
           "position": 42,
+          "rank": null,
           "pid": "225",
           "bib": "3083",
           "name": "CHILL CHILL",
@@ -1165,6 +1238,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "188",
           "bib": "1003",
           "name": "LES ZINCROYABLES",
@@ -1180,6 +1254,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "366",
           "bib": "1004",
           "name": "LES DARONS",
@@ -1195,6 +1270,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "348",
           "bib": "1006",
           "name": "LES NINJAS",
@@ -1210,6 +1286,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "374",
           "bib": "1007",
           "name": "LES BRETONS EN CAVALES",
@@ -1225,6 +1302,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "281",
           "bib": "1011",
           "name": "LES NORDISTES",
@@ -1240,6 +1318,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "204",
           "bib": "1013",
           "name": "LES SPÉS",
@@ -1255,6 +1334,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "271",
           "bib": "1014",
           "name": "BIBICHE",
@@ -1270,6 +1350,7 @@
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "294",
           "bib": "1015",
           "name": "LES POULPES MOUILLÉS",
@@ -1285,6 +1366,7 @@
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "239",
           "bib": "1016",
           "name": "CADRE DYNAMIQUE",
@@ -1300,6 +1382,7 @@
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "311",
           "bib": "1017",
           "name": "VILGAY",
@@ -1315,6 +1398,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "234",
           "bib": "1018",
           "name": "REUZE PAPA",
@@ -1330,6 +1414,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "284",
           "bib": "1019",
           "name": "ROVINCE",
@@ -1345,6 +1430,7 @@
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "401",
           "bib": "1020",
           "name": "SWIMSPRITZ",
@@ -1360,6 +1446,7 @@
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "367",
           "bib": "1023",
           "name": "LES TORTUES",
@@ -1375,6 +1462,7 @@
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "303",
           "bib": "1026",
           "name": "RESTONSGROUPÉS",
@@ -1390,6 +1478,7 @@
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "175",
           "bib": "1028",
           "name": "ANNE ET BEN JAMAIS À LA TRAINE",
@@ -1405,6 +1494,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "379",
           "bib": "1032",
           "name": "LES POISSONS PANÉS",
@@ -1420,6 +1510,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "378",
           "bib": "1034",
           "name": "A DÉFAUT D'ÊTRE BON SOYONS ÉLÉGANT",
@@ -1435,6 +1526,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "326",
           "bib": "1036",
           "name": "MOUSS LA BELLE LN",
@@ -1450,6 +1542,7 @@
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "288",
           "bib": "1037",
           "name": "TORUK MAKTO",
@@ -1465,6 +1558,7 @@
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "312",
           "bib": "1039",
           "name": "ELLE NAGE LUI COURT",
@@ -1480,6 +1574,7 @@
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "173",
           "bib": "1041",
           "name": "POULPES FICTION",
@@ -1495,6 +1590,7 @@
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "383",
           "bib": "1043",
           "name": "BINAL",
@@ -1510,6 +1606,7 @@
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "337",
           "bib": "1044",
           "name": "TEAM SWIMRUNITÖ - COKE",
@@ -1525,6 +1622,7 @@
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "398",
           "bib": "1045",
           "name": "MELAUGER",
@@ -1540,6 +1638,7 @@
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "279",
           "bib": "1046",
           "name": "TEENY ET PENNY",
@@ -1555,6 +1654,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "397",
           "bib": "1048",
           "name": "LES HÉROS DE MAIZAL",
@@ -1570,6 +1670,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "327",
           "bib": "1049",
           "name": "LES GRANDS BLEUS",
@@ -1585,6 +1686,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "167",
           "bib": "1050",
           "name": "BELLATORES AMPHIBII",
@@ -1600,6 +1702,7 @@
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "391",
           "bib": "1053",
           "name": "LES YÉTIS 16",
@@ -1615,6 +1718,7 @@
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "340",
           "bib": "1054",
           "name": "LES INCONNUS",
@@ -1630,6 +1734,7 @@
         },
         {
           "position": 32,
+          "rank": null,
           "pid": "256",
           "bib": "1055",
           "name": "S&N",
@@ -1645,6 +1750,7 @@
         },
         {
           "position": 33,
+          "rank": null,
           "pid": "211",
           "bib": "1056",
           "name": "LES MACRO GONZ",
@@ -1660,6 +1766,7 @@
         },
         {
           "position": 34,
+          "rank": null,
           "pid": "269",
           "bib": "1058",
           "name": "ON AVAIT DIT DEUX HEURES",
@@ -1675,6 +1782,7 @@
         },
         {
           "position": 35,
+          "rank": null,
           "pid": "206",
           "bib": "1067",
           "name": "PAS CERTAINS D'Y ARRIVER",
@@ -1690,6 +1798,7 @@
         },
         {
           "position": 36,
+          "rank": null,
           "pid": "333",
           "bib": "1068",
           "name": "LES BEBERT",
@@ -1705,6 +1814,7 @@
         },
         {
           "position": 37,
+          "rank": null,
           "pid": "335",
           "bib": "1071",
           "name": "TEAM AU DÉFI PAPA ET MAMAN",
@@ -1720,6 +1830,7 @@
         },
         {
           "position": 38,
+          "rank": null,
           "pid": "389",
           "bib": "1072",
           "name": "LES SALES NAGEUSES",
@@ -1735,6 +1846,7 @@
         },
         {
           "position": 39,
+          "rank": null,
           "pid": "368",
           "bib": "1073",
           "name": "LES HYDRO-TITANS",
@@ -1750,6 +1862,7 @@
         },
         {
           "position": 40,
+          "rank": null,
           "pid": "362",
           "bib": "1074",
           "name": "MATASIKO",
@@ -1765,6 +1878,7 @@
         },
         {
           "position": 41,
+          "rank": null,
           "pid": "394",
           "bib": "1075",
           "name": "LESDIABS",
@@ -1780,6 +1894,7 @@
         },
         {
           "position": 42,
+          "rank": null,
           "pid": "339",
           "bib": "1077",
           "name": "LES MAMOURS",
@@ -1795,6 +1910,7 @@
         },
         {
           "position": 43,
+          "rank": null,
           "pid": "331",
           "bib": "1081",
           "name": "LES PATATES",
@@ -1810,6 +1926,7 @@
         },
         {
           "position": 44,
+          "rank": null,
           "pid": "244",
           "bib": "1084",
           "name": "JEANNINE VA AU LAC",
@@ -1825,6 +1942,7 @@
         },
         {
           "position": 45,
+          "rank": null,
           "pid": "168",
           "bib": "1086",
           "name": "DOUBLE S",
@@ -1840,6 +1958,7 @@
         },
         {
           "position": 46,
+          "rank": null,
           "pid": "169",
           "bib": "1088",
           "name": "POKER FACES",
@@ -1855,6 +1974,7 @@
         },
         {
           "position": 47,
+          "rank": null,
           "pid": "388",
           "bib": "1091",
           "name": "LES FAUX FRÈRES",
@@ -1870,6 +1990,7 @@
         },
         {
           "position": 48,
+          "rank": null,
           "pid": "275",
           "bib": "1092",
           "name": "EN BALADE",
@@ -1885,6 +2006,7 @@
         },
         {
           "position": 49,
+          "rank": null,
           "pid": "308",
           "bib": "1093",
           "name": "PADDLES PATROUILLE - SWIMRUN MONACO",
@@ -1900,6 +2022,7 @@
         },
         {
           "position": 50,
+          "rank": null,
           "pid": "301",
           "bib": "1094",
           "name": "LE YO & FÉLIX",
@@ -1915,6 +2038,7 @@
         },
         {
           "position": 51,
+          "rank": null,
           "pid": "355",
           "bib": "1097",
           "name": "FEEL & GOOD",
@@ -1930,6 +2054,7 @@
         },
         {
           "position": 52,
+          "rank": null,
           "pid": "385",
           "bib": "1098",
           "name": "LES TÊTARDS EN BASKET",
@@ -1945,6 +2070,7 @@
         },
         {
           "position": 53,
+          "rank": null,
           "pid": "267",
           "bib": "1100",
           "name": "LES BEAUX FRÈRES",
@@ -1960,6 +2086,7 @@
         },
         {
           "position": 54,
+          "rank": null,
           "pid": "176",
           "bib": "1102",
           "name": "ROSCELLA",
@@ -1975,6 +2102,7 @@
         },
         {
           "position": 55,
+          "rank": null,
           "pid": "274",
           "bib": "1103",
           "name": "MEILLEURS À L'APÉRO",
@@ -1990,6 +2118,7 @@
         },
         {
           "position": 56,
+          "rank": null,
           "pid": "343",
           "bib": "1105",
           "name": "LES MAXOLOTLS",
@@ -2005,6 +2134,7 @@
         },
         {
           "position": 57,
+          "rank": null,
           "pid": "280",
           "bib": "1106",
           "name": "SKINSWIMRUN",
@@ -2020,6 +2150,7 @@
         },
         {
           "position": 58,
+          "rank": null,
           "pid": "243",
           "bib": "1107",
           "name": "LES ROU À LO",
@@ -2035,6 +2166,7 @@
         },
         {
           "position": 59,
+          "rank": null,
           "pid": "216",
           "bib": "1108",
           "name": "LES 2 LA-BAS",
@@ -2050,6 +2182,7 @@
         },
         {
           "position": 60,
+          "rank": null,
           "pid": "261",
           "bib": "1109",
           "name": "TWO BE FREE",
@@ -2065,6 +2198,7 @@
         },
         {
           "position": 61,
+          "rank": null,
           "pid": "219",
           "bib": "1111",
           "name": "LES MOTIVÉS DE LA DERNIÈRE MINUTE",
@@ -2080,6 +2214,7 @@
         },
         {
           "position": 62,
+          "rank": null,
           "pid": "319",
           "bib": "1112",
           "name": "FLAMINGO RIDERS",
@@ -2095,6 +2230,7 @@
         },
         {
           "position": 63,
+          "rank": null,
           "pid": "358",
           "bib": "1114",
           "name": "NICONU",
@@ -2110,6 +2246,7 @@
         },
         {
           "position": 64,
+          "rank": null,
           "pid": "283",
           "bib": "1115",
           "name": "DUMB ET DUMBER",
@@ -2125,6 +2262,7 @@
         },
         {
           "position": 65,
+          "rank": null,
           "pid": "208",
           "bib": "1116",
           "name": "ALBAMAX",
@@ -2140,6 +2278,7 @@
         },
         {
           "position": 66,
+          "rank": null,
           "pid": "289",
           "bib": "1119",
           "name": "LES PIEDCASSO",
@@ -2155,6 +2294,7 @@
         },
         {
           "position": 67,
+          "rank": null,
           "pid": "189",
           "bib": "1120",
           "name": "TENEL",
@@ -2170,6 +2310,7 @@
         },
         {
           "position": 68,
+          "rank": null,
           "pid": "228",
           "bib": "1122",
           "name": "SAINT-JACQUES LA NOIX",
@@ -2185,6 +2326,7 @@
         },
         {
           "position": 69,
+          "rank": null,
           "pid": "399",
           "bib": "1123",
           "name": "FAMILLE CHOKBAR",
@@ -2200,6 +2342,7 @@
         },
         {
           "position": 70,
+          "rank": null,
           "pid": "205",
           "bib": "1125",
           "name": "QUAND TE REVERRAI JE, VERDON MERVEILLEUX",
@@ -2215,6 +2358,7 @@
         },
         {
           "position": 71,
+          "rank": null,
           "pid": "307",
           "bib": "1127",
           "name": "LES AÉROGLISSEURS",
@@ -2230,6 +2374,7 @@
         },
         {
           "position": 72,
+          "rank": null,
           "pid": "400",
           "bib": "1128",
           "name": "G&A",
@@ -2245,6 +2390,7 @@
         },
         {
           "position": 73,
+          "rank": null,
           "pid": "380",
           "bib": "1130",
           "name": "DAMBRIFRERES",
@@ -2260,6 +2406,7 @@
         },
         {
           "position": 74,
+          "rank": null,
           "pid": "332",
           "bib": "1132",
           "name": "WAFAACOLAS",
@@ -2275,6 +2422,7 @@
         },
         {
           "position": 75,
+          "rank": null,
           "pid": "393",
           "bib": "1133",
           "name": "LES SMISKIS MALICIEUX",
@@ -2290,6 +2438,7 @@
         },
         {
           "position": 76,
+          "rank": null,
           "pid": "172",
           "bib": "1134",
           "name": "ALTUS TEAM",
@@ -2305,6 +2454,7 @@
         },
         {
           "position": 77,
+          "rank": null,
           "pid": "257",
           "bib": "1135",
           "name": "LOIRE TO SWIM, BORN TO RUN",
@@ -2320,6 +2470,7 @@
         },
         {
           "position": 78,
+          "rank": null,
           "pid": "199",
           "bib": "1136",
           "name": "LES PETITS CŒURS DE L'US CAGNES",
@@ -2335,6 +2486,7 @@
         },
         {
           "position": 79,
+          "rank": null,
           "pid": "187",
           "bib": "1137",
           "name": "TAGA",
@@ -2350,6 +2502,7 @@
         },
         {
           "position": 80,
+          "rank": null,
           "pid": "248",
           "bib": "1141",
           "name": "PÈREFILLE",
@@ -2365,6 +2518,7 @@
         },
         {
           "position": 81,
+          "rank": null,
           "pid": "296",
           "bib": "1143",
           "name": "SLOW & FURIOUS",
@@ -2380,6 +2534,7 @@
         },
         {
           "position": 82,
+          "rank": null,
           "pid": "210",
           "bib": "1144",
           "name": "CIGALERUS TEAM",
@@ -2395,6 +2550,7 @@
         },
         {
           "position": 83,
+          "rank": null,
           "pid": "352",
           "bib": "1145",
           "name": "ESVL TRIATHLON",
@@ -2410,6 +2566,7 @@
         },
         {
           "position": 84,
+          "rank": null,
           "pid": "270",
           "bib": "1146",
           "name": "LA BICHE ET LE DAUPHIN",
@@ -2425,6 +2582,7 @@
         },
         {
           "position": 85,
+          "rank": null,
           "pid": "171",
           "bib": "1147",
           "name": "NO PRESSURE",
@@ -2440,6 +2598,7 @@
         },
         {
           "position": 86,
+          "rank": null,
           "pid": "174",
           "bib": "1148",
           "name": "LAIT KANARS BOITEUX",
@@ -2455,6 +2614,7 @@
         },
         {
           "position": 87,
+          "rank": null,
           "pid": "195",
           "bib": "1149",
           "name": "PAEA BOYZ",
@@ -2470,6 +2630,7 @@
         },
         {
           "position": 88,
+          "rank": null,
           "pid": "251",
           "bib": "1150",
           "name": "FRAISE BASILIC",
@@ -2485,6 +2646,7 @@
         },
         {
           "position": 89,
+          "rank": null,
           "pid": "191",
           "bib": "1151",
           "name": "JEFFING",
@@ -2500,6 +2662,7 @@
         },
         {
           "position": 90,
+          "rank": null,
           "pid": "341",
           "bib": "1152",
           "name": "MELONS",
@@ -2515,6 +2678,7 @@
         },
         {
           "position": 91,
+          "rank": null,
           "pid": "357",
           "bib": "1153",
           "name": "DUO AUDACIEUX",
@@ -2530,6 +2694,7 @@
         },
         {
           "position": 92,
+          "rank": null,
           "pid": "297",
           "bib": "1154",
           "name": "AQUABORNIX",
@@ -2545,6 +2710,7 @@
         },
         {
           "position": 93,
+          "rank": null,
           "pid": "377",
           "bib": "1156",
           "name": "LES CLIMATOSPORTIFS",
@@ -2560,6 +2726,7 @@
         },
         {
           "position": 94,
+          "rank": null,
           "pid": "387",
           "bib": "1157",
           "name": "LULIE",
@@ -2575,6 +2742,7 @@
         },
         {
           "position": 95,
+          "rank": null,
           "pid": "298",
           "bib": "1159",
           "name": "CLAIRE ET SYLVAIN",
@@ -2590,6 +2758,7 @@
         },
         {
           "position": 96,
+          "rank": null,
           "pid": "231",
           "bib": "1161",
           "name": "LES COUZES",
@@ -2605,6 +2774,7 @@
         },
         {
           "position": 97,
+          "rank": null,
           "pid": "381",
           "bib": "1162",
           "name": "LES SISTERS",
@@ -2620,6 +2790,7 @@
         },
         {
           "position": 98,
+          "rank": null,
           "pid": "184",
           "bib": "1163",
           "name": "LES PETITS CANARDS",
@@ -2635,6 +2806,7 @@
         },
         {
           "position": 99,
+          "rank": null,
           "pid": "131",
           "bib": "1164",
           "name": "POMPIERS BON OEIL",
@@ -2650,6 +2822,7 @@
         },
         {
           "position": 100,
+          "rank": null,
           "pid": "14",
           "bib": "1165",
           "name": "LES KIFFEUR.EUSES",
@@ -2665,6 +2838,7 @@
         },
         {
           "position": 101,
+          "rank": null,
           "pid": "356",
           "bib": "1166",
           "name": "LA TORPILLE ET LA CHÈVRE",
@@ -2680,6 +2854,7 @@
         },
         {
           "position": 102,
+          "rank": null,
           "pid": "150",
           "bib": "1167",
           "name": "ERWAN & VINCENT",
@@ -2695,6 +2870,7 @@
         },
         {
           "position": 103,
+          "rank": null,
           "pid": "86",
           "bib": "1168",
           "name": "L'INSTANT SWIMRUN",
@@ -2710,6 +2886,7 @@
         },
         {
           "position": 104,
+          "rank": null,
           "pid": "372",
           "bib": "1169",
           "name": "LA REVANCHE DES PENTAPOTES",
@@ -2725,6 +2902,7 @@
         },
         {
           "position": 105,
+          "rank": null,
           "pid": "23",
           "bib": "1171",
           "name": "LES COPAINS",
@@ -2752,6 +2930,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "408",
           "bib": "108",
           "name": "40 SPLASH AND RUN",
@@ -2767,6 +2946,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "361",
           "bib": "111",
           "name": "LES SHAYS",
@@ -2782,6 +2962,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "209",
           "bib": "120",
           "name": "MENTHALUB",
@@ -2797,6 +2978,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "182",
           "bib": "121",
           "name": "LES DORYPHORES DU 13",
@@ -2812,6 +2994,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "295",
           "bib": "122",
           "name": "LES TRUITES EN BASKETS",
@@ -2827,6 +3010,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "325",
           "bib": "123",
           "name": "OM2FOREVER",
@@ -2842,6 +3026,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "365",
           "bib": "124",
           "name": "SWIM RUN & RHUM",
@@ -2857,6 +3042,7 @@
         },
         {
           "position": 8,
+          "rank": null,
           "pid": "315",
           "bib": "125",
           "name": "MARSEILLE BB",
@@ -2872,6 +3058,7 @@
         },
         {
           "position": 9,
+          "rank": null,
           "pid": "252",
           "bib": "126",
           "name": "EMMA & LIO",
@@ -2887,6 +3074,7 @@
         },
         {
           "position": 10,
+          "rank": null,
           "pid": "185",
           "bib": "127",
           "name": "LES BELLES(CON)SŒURS",
@@ -2902,6 +3090,7 @@
         },
         {
           "position": 11,
+          "rank": null,
           "pid": "349",
           "bib": "129",
           "name": "LOS TIGRES 🐯",
@@ -2917,6 +3106,7 @@
         },
         {
           "position": 12,
+          "rank": null,
           "pid": "318",
           "bib": "130",
           "name": "LES P’TITS LOUPS",
@@ -2932,6 +3122,7 @@
         },
         {
           "position": 13,
+          "rank": null,
           "pid": "373",
           "bib": "131",
           "name": "LA MACAGNA",
@@ -2947,6 +3138,7 @@
         },
         {
           "position": 14,
+          "rank": null,
           "pid": "192",
           "bib": "133",
           "name": "LES DÉRAPÉS",
@@ -2962,6 +3154,7 @@
         },
         {
           "position": 15,
+          "rank": null,
           "pid": "277",
           "bib": "134",
           "name": "BEN&TONY'S",
@@ -2977,6 +3170,7 @@
         },
         {
           "position": 16,
+          "rank": null,
           "pid": "317",
           "bib": "135",
           "name": "VINS & CECE",
@@ -2992,6 +3186,7 @@
         },
         {
           "position": 17,
+          "rank": null,
           "pid": "336",
           "bib": "3084",
           "name": "LES SUPER BRASSEUSES",
@@ -3007,6 +3202,7 @@
         },
         {
           "position": 18,
+          "rank": null,
           "pid": "404",
           "bib": "3086",
           "name": "MIDNIGHT",
@@ -3022,6 +3218,7 @@
         },
         {
           "position": 19,
+          "rank": null,
           "pid": "363",
           "bib": "3087",
           "name": "LES VINTAGES",
@@ -3037,6 +3234,7 @@
         },
         {
           "position": 20,
+          "rank": null,
           "pid": "328",
           "bib": "3088",
           "name": "SQUIRREL POWER",
@@ -3052,6 +3250,7 @@
         },
         {
           "position": 21,
+          "rank": null,
           "pid": "306",
           "bib": "3090",
           "name": "TEAM CROQUETTE",
@@ -3067,6 +3266,7 @@
         },
         {
           "position": 22,
+          "rank": null,
           "pid": "345",
           "bib": "3091",
           "name": "LES SIRÈNES DE VITROLLES",
@@ -3082,6 +3282,7 @@
         },
         {
           "position": 23,
+          "rank": null,
           "pid": "190",
           "bib": "3092",
           "name": "LESLOULOUTESSAONOISES",
@@ -3097,6 +3298,7 @@
         },
         {
           "position": 24,
+          "rank": null,
           "pid": "338",
           "bib": "3094",
           "name": "NUS COMME UN VERDON",
@@ -3112,6 +3314,7 @@
         },
         {
           "position": 25,
+          "rank": null,
           "pid": "351",
           "bib": "3097",
           "name": "TEAM PHACOCHÈRES",
@@ -3127,6 +3330,7 @@
         },
         {
           "position": 26,
+          "rank": null,
           "pid": "390",
           "bib": "3099",
           "name": "LES RODRI SISTERS",
@@ -3142,6 +3346,7 @@
         },
         {
           "position": 27,
+          "rank": null,
           "pid": "222",
           "bib": "3100",
           "name": "TEAM KO",
@@ -3157,6 +3362,7 @@
         },
         {
           "position": 28,
+          "rank": null,
           "pid": "272",
           "bib": "3103",
           "name": "LES MEDUSES",
@@ -3172,6 +3378,7 @@
         },
         {
           "position": 29,
+          "rank": null,
           "pid": "350",
           "bib": "3104",
           "name": "AMPHIBIENS VERTICAUX",
@@ -3187,6 +3394,7 @@
         },
         {
           "position": 30,
+          "rank": null,
           "pid": "384",
           "bib": "3106",
           "name": "LES POTOS",
@@ -3202,6 +3410,7 @@
         },
         {
           "position": 31,
+          "rank": null,
           "pid": "202",
           "bib": "3109",
           "name": "DANCING QUEEEN",
@@ -3217,6 +3426,7 @@
         },
         {
           "position": 32,
+          "rank": null,
           "pid": "230",
           "bib": "3112",
           "name": "LLAPAPUECH",
@@ -3232,6 +3442,7 @@
         },
         {
           "position": 33,
+          "rank": null,
           "pid": "237",
           "bib": "3114",
           "name": "LA CRAMPE ET L’ENCLUME",
@@ -3247,6 +3458,7 @@
         },
         {
           "position": 34,
+          "rank": null,
           "pid": "322",
           "bib": "3115",
           "name": "JURI'SPLASH",
@@ -3262,6 +3474,7 @@
         },
         {
           "position": 35,
+          "rank": null,
           "pid": "178",
           "bib": "3118",
           "name": "YOANN ET PAULINE",
@@ -3277,6 +3490,7 @@
         },
         {
           "position": 36,
+          "rank": null,
           "pid": "196",
           "bib": "3122",
           "name": "TONTON LAPINE",
@@ -3292,6 +3506,7 @@
         },
         {
           "position": 37,
+          "rank": null,
           "pid": "218",
           "bib": "3123",
           "name": "SOTO BABY",
@@ -3307,6 +3522,7 @@
         },
         {
           "position": 38,
+          "rank": null,
           "pid": "263",
           "bib": "3124",
           "name": "CHAMBORDLIFE",
@@ -3322,6 +3538,7 @@
         },
         {
           "position": 39,
+          "rank": null,
           "pid": "186",
           "bib": "3125",
           "name": "LES HOMARDS PEINARDS",
@@ -3337,6 +3554,7 @@
         },
         {
           "position": 40,
+          "rank": null,
           "pid": "250",
           "bib": "3126",
           "name": "CARMAT",
@@ -3352,6 +3570,7 @@
         },
         {
           "position": 41,
+          "rank": null,
           "pid": "276",
           "bib": "3127",
           "name": "SARDINES EN COURSE",
@@ -3367,6 +3586,7 @@
         },
         {
           "position": 42,
+          "rank": null,
           "pid": "386",
           "bib": "3129",
           "name": "LES ORNITHORYNQUES",
@@ -3382,6 +3602,7 @@
         },
         {
           "position": 43,
+          "rank": null,
           "pid": "181",
           "bib": "3131",
           "name": "ET MON CUL C'EST DU POULET?",
@@ -3397,6 +3618,7 @@
         },
         {
           "position": 44,
+          "rank": null,
           "pid": "201",
           "bib": "3132",
           "name": "SELLES & POIVRE",
@@ -3412,6 +3634,7 @@
         },
         {
           "position": 45,
+          "rank": null,
           "pid": "265",
           "bib": "3133",
           "name": "LES TARENTULES",
@@ -3427,6 +3650,7 @@
         },
         {
           "position": 46,
+          "rank": null,
           "pid": "346",
           "bib": "3134",
           "name": "JEUNE ET COOL",
@@ -3442,6 +3666,7 @@
         },
         {
           "position": 47,
+          "rank": null,
           "pid": "324",
           "bib": "3135",
           "name": "FLIP FLOP FAMILY",
@@ -3457,6 +3682,7 @@
         },
         {
           "position": 48,
+          "rank": null,
           "pid": "247",
           "bib": "3136",
           "name": "BB BP PA",
@@ -3472,6 +3698,7 @@
         },
         {
           "position": 49,
+          "rank": null,
           "pid": "359",
           "bib": "3137",
           "name": "ARECHE DE TRAÎNER !",
@@ -3487,6 +3714,7 @@
         },
         {
           "position": 50,
+          "rank": null,
           "pid": "364",
           "bib": "3139",
           "name": "MANDARINS MIXTE",
@@ -3502,6 +3730,7 @@
         },
         {
           "position": 51,
+          "rank": null,
           "pid": "321",
           "bib": "3140",
           "name": "HAZELTEAM",
@@ -3517,6 +3746,7 @@
         },
         {
           "position": 52,
+          "rank": null,
           "pid": "353",
           "bib": "3141",
           "name": "EST CE QUE L'ON PEUT UTILISER LES PALMES",
@@ -3532,6 +3762,7 @@
         },
         {
           "position": 53,
+          "rank": null,
           "pid": "395",
           "bib": "3142",
           "name": "RINAUBRO",
@@ -3547,6 +3778,7 @@
         },
         {
           "position": 54,
+          "rank": null,
           "pid": "291",
           "bib": "3143",
           "name": "MIAOU",
@@ -3562,6 +3794,7 @@
         },
         {
           "position": 55,
+          "rank": null,
           "pid": "293",
           "bib": "3145",
           "name": "CDM",
@@ -3577,6 +3810,7 @@
         },
         {
           "position": 56,
+          "rank": null,
           "pid": "179",
           "bib": "3146",
           "name": "SIS & BRO",
@@ -3592,6 +3826,7 @@
         },
         {
           "position": 57,
+          "rank": null,
           "pid": "255",
           "bib": "3147",
           "name": "LES TIN-RIC",
@@ -3607,6 +3842,7 @@
         },
         {
           "position": 58,
+          "rank": null,
           "pid": "316",
           "bib": "3148",
           "name": "ALEX & CO",
@@ -3622,6 +3858,7 @@
         },
         {
           "position": 59,
+          "rank": null,
           "pid": "264",
           "bib": "3149",
           "name": "NARPON",
@@ -3637,6 +3874,7 @@
         },
         {
           "position": 60,
+          "rank": null,
           "pid": "183",
           "bib": "3150",
           "name": "COCKS EN PROVENCE",
@@ -3664,6 +3902,7 @@
       "rows": [
         {
           "position": 1,
+          "rank": null,
           "pid": "405",
           "bib": "101",
           "name": "LES CH'TARS DE MOUT",
@@ -3679,6 +3918,7 @@
         },
         {
           "position": 2,
+          "rank": null,
           "pid": "407",
           "bib": "102",
           "name": "G 2 O",
@@ -3694,6 +3934,7 @@
         },
         {
           "position": 3,
+          "rank": null,
           "pid": "412",
           "bib": "103",
           "name": "LES COMPLICES DE LA SWIM ACADEMY NÎMOISE",
@@ -3709,6 +3950,7 @@
         },
         {
           "position": 4,
+          "rank": null,
           "pid": "410",
           "bib": "104",
           "name": "PETITS PAS SEIN-PAS 2",
@@ -3724,6 +3966,7 @@
         },
         {
           "position": 5,
+          "rank": null,
           "pid": "406",
           "bib": "105",
           "name": "PETITS PAS SEIN-PAS 1",
@@ -3739,6 +3982,7 @@
         },
         {
           "position": 6,
+          "rank": null,
           "pid": "411",
           "bib": "106",
           "name": "LES ABBOULELABESTE",
@@ -3754,6 +3998,7 @@
         },
         {
           "position": 7,
+          "rank": null,
           "pid": "409",
           "bib": "109",
           "name": "QU'EST-CE QU'ON FOUT LÀ?",

@@ -33,4 +33,31 @@ function formatSeconds(total) {
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
 }
 
-module.exports = { str, toInt, parseSeconds, formatSeconds };
+/**
+ * RaceResult row-format directives. RRPublish.js consumes these as row
+ * styling and renders NO text for them; they must never be mistaken for a
+ * result value.
+ *
+ * As a VALUE they arrive rendered — "BG(#FCE62D)". As a DataFields EXPRESSION
+ * they arrive as the formula that produces one, so the marker is a quoted
+ * "BG(" anywhere in the expression, e.g.
+ *   if([Position1]=1;"BG(#FFDD00)";"")
+ *   if(StageStatus([EVENT.LiveStageID])="";"BG(" & [CategoryColorHex] & ")")
+ * plus the bare GreyBackground()/Highlight() helpers.
+ */
+const DIRECTIVE_VALUE = /^\s*(?:BG|GreyBackground|Highlight)\s*\([^)]*\)\s*$/i;
+const DIRECTIVE_EXPR = /"\s*(?:BG|GreyBackground|Highlight)\s*\(|^\s*(?:GreyBackground|Highlight)\s*\(/i;
+
+/** True when a rendered cell value is a format directive, not data. */
+const isDirectiveValue = (v) => DIRECTIVE_VALUE.test(str(v));
+
+/** True when a DataFields expression only ever produces a format directive. */
+const isDirectiveExpr = (e) => DIRECTIVE_EXPR.test(str(e));
+
+/** Placeholder columns ('""') carry no data — only a DynamicFormat. */
+const isEmptyExpr = (e) => /^\s*""\s*$/.test(str(e));
+
+module.exports = {
+  str, toInt, parseSeconds, formatSeconds,
+  isDirectiveValue, isDirectiveExpr, isEmptyExpr,
+};
