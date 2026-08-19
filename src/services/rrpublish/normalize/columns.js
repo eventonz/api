@@ -73,7 +73,7 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   let rankIdx; let nameIdx; let resultIdx;
   if (visible.length >= 3) {
     rankIdx = visible[0].idx; nameIdx = visible[1].idx; resultIdx = visible[visible.length - 1].idx;
-  } else if (visible.length === 2) {  // eslint-disable-line no-dupe-else-if
+  } else if (visible.length === 2) {
     rankIdx = 2; nameIdx = visible[0].idx; resultIdx = visible[1].idx;
   } else if (visible.length === 1) {
     rankIdx = 2; nameIdx = -1; resultIdx = visible[0].idx;
@@ -107,12 +107,9 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
     ? visible[visible.length - 1].label
     : str(fieldLabels[dataFields[resultIdx]]);
   const resultFieldLabel = resultLabel === '' ? 'Time' : resultLabel;
-  // rankIdx is only a REAL rank column when it came from the anchor set;
-  // the other branches fall back to the positional guess of 2, which lands on
-  // whatever DataField happens to sit there (a flag image, a status, a
-  // category). Callers must not present that as a rank.
-  // The positional fallback (rankIdx = 2) is only a rank when the DataField
-  // sitting there says so — 'RANK4' on STEC TIERP, a flag image elsewhere.
+  // rankIdx from the anchor set is a real rank column; the positional
+  // fallback of 2 is only a rank when the DataField sitting there says so —
+  // 'RANK4' on STEC TIERP, a flag image or status on other lists.
   const hasRank = visible.length >= 3 || RANK_PATTERN.test(str(dataFields[rankIdx]));
   return { rankIdx, nameIdx, resultIdx, hasRank, fieldLabels, resultFieldLabel };
 }
