@@ -31,6 +31,7 @@ async function v1Routes(app) {
     authed.register(require('./follow'),        { prefix: '/follow' });
     authed.register(require('./rr_follow'),     { prefix: '/rr_follow' });
     authed.register(require('./app_install'),   { prefix: '/app_install' });
+    authed.register(require('./analytics'),     { prefix: '/analytics' });
     authed.register(require('./app_version'),   { prefix: '/app_version' });
     authed.register(require('./timer_events'),  { prefix: '/timer/events' });
     authed.register(require('./schedule'),      { prefix: '/schedule' });

@@ -35,6 +35,28 @@ module.exports = {
       error_file: '/var/log/evento-api/error.log',
     },
     {
+      name: 'evento-analytics-worker',
+      script: './src/workers/analyticsWorker.js',
+
+      // Single instance: the 15-min rollup must not run concurrently, and one
+      // process drains the queue far faster than events arrive.
+      instances: 1,
+      exec_mode: 'fork',
+
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '256M',
+      kill_timeout: 5000,
+
+      env: { NODE_ENV: 'production' },
+      env_development: { NODE_ENV: 'development' },
+
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      merge_logs: true,
+      out_file: '/var/log/evento-api/analytics-out.log',
+      error_file: '/var/log/evento-api/analytics-error.log',
+    },
+    {
       name: 'evento-track-worker',
       script: './src/workers/trackWorker.js',
 
