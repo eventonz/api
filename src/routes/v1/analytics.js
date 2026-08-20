@@ -143,7 +143,35 @@ async function analyticsRoutes(app) {
        GROUP BY day ORDER BY day`,
       params
     );
-    return { app_id: appId, event_id: eventId || null, days, totals: rows, by_day: byDay };
+
+    // Which events carry the app — rollup-only, app scope.
+    const { rows: byEvent } = eventId
+      ? { rows: [] }
+      : await pool.query(
+          `SELECT event_id,
+                  SUM(count) FILTER (WHERE name = 'event_open')::bigint AS opens,
+                  SUM(count) FILTER (WHERE name = 'page_view')::bigint  AS page_views,
+                  MAX(devices)::bigint AS peak_day_devices
+           FROM analytics_daily WHERE ${where} AND event_id <> ''
+           GROUP BY event_id ORDER BY page_views DESC NULLS LAST LIMIT 50`,
+          params
+        );
+
+    // True period uniques come from the raw log — daily uniques don't sum.
+    // One indexed scan over the window; fine at current volume.
+    const rawParams = [appId, `${days} days`];
+    let rawWhere = 'app_id = $1 AND ts > now() - $2::interval';
+    if (eventId) { rawParams.push(eventId); rawWhere += ` AND event_id = $${rawParams.length}`; }
+    const { rows: uniq } = await pool.query(
+      `SELECT COUNT(DISTINCT device_id)::bigint AS devices FROM analytics_events WHERE ${rawWhere}`,
+      rawParams
+    );
+
+    return {
+      app_id: appId, event_id: eventId || null, days,
+      unique_devices: Number(uniq[0]?.devices ?? 0),
+      totals: rows, by_day: byDay, by_event: byEvent,
+    };
   });
 }
 
