@@ -167,9 +167,20 @@ async function analyticsRoutes(app) {
       rawParams
     );
 
+    // Sessions are derived, not tracked: a device's burst of events with no
+    // 30-minute gap is one session (the industry-standard rule).
+    const { rows: sess } = await pool.query(
+      `SELECT COUNT(*)::bigint AS sessions FROM (
+         SELECT ts - LAG(ts) OVER (PARTITION BY device_id ORDER BY ts) AS gap
+         FROM analytics_events WHERE ${rawWhere}
+       ) g WHERE gap IS NULL OR gap > interval '30 minutes'`,
+      rawParams
+    );
+
     return {
       app_id: appId, event_id: eventId || null, days,
       unique_devices: Number(uniq[0]?.devices ?? 0),
+      sessions: Number(sess[0]?.sessions ?? 0),
       totals: rows, by_day: byDay, by_event: byEvent,
     };
   });
