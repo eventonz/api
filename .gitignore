@@ -29,3 +29,6 @@ pids/
 
 # Claude
 .claude/
+
+# Firebase service account (push) — never commit
+config/firebase-service-account.json

@@ -17,6 +17,13 @@ async function v1Routes(app) {
   app.register(require('./rr_webhook'),    { prefix: '/rr_webhook' });
   app.register(require('./rr_follow_push'),{ prefix: '/rr_follow_push' });
   app.register(require('./adverts'),       { prefix: '/adverts' });
+  // Push scheduler runner for EasyCron: POST/GET /v1/push_cron?key=<PUSH_CRON_SECRET>
+  app.route({ method: ['GET', 'POST'], url: '/push_cron', handler: async (request, reply) => {
+    const secret = process.env.PUSH_CRON_SECRET;
+    if (!secret || request.query.key !== secret) return reply.code(401).send({ error: 'bad key' });
+    const res = await app.inject({ method: 'POST', url: '/v1/push/run', headers: { authorization: `Bearer ${process.env.PUSH_CRON_BEARER || ''}` } });
+    return reply.code(res.statusCode).send(res.json());
+  } });
 
   // ---------------------------------------------------------------------------
   // Authenticated — bearer required
@@ -45,6 +52,7 @@ async function v1Routes(app) {
     authed.register(require('./raceresult'),    { prefix: '/raceresult' });
     authed.register(require('./racemap'),       { prefix: '/racemap' });
     authed.register(require('./rrpublish'),     { prefix: '/rrpublish' });
+    authed.register(require('./push'),          { prefix: '/push' });
   });
 }
 
