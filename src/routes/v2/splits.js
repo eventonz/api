@@ -1,5 +1,6 @@
 const pool = require('../../config/database');
 const { buildSplits } = require('../../services/splits');
+const { platformRacesForEvent } = require('../../services/v2bridge');
 
 /**
  * GET /v2/splits/:event_id?id=&contest=&bib=
@@ -30,12 +31,7 @@ async function v2SplitsRoutes(app) {
     const bib = (q.bib || q.id || '').trim();
     const contestParam = (q.contest || '').trim();
 
-    const { rows: races } = await pool.query(
-      `SELECT r.id, r.v1_race_id, r.rr_raceid,
-              COALESCE(r.v1_race_id, (SELECT p.id FROM public.races p WHERE p.rr_raceid = r.rr_raceid ORDER BY p.id DESC LIMIT 1)) AS platform_race_id
-       FROM v2.races r WHERE r.event_id = $1 ORDER BY r.id`,
-      [event_id]
-    );
+    const races = await platformRacesForEvent(event_id);
     if (!races.length) return reply.code(404).send({ error: 'Event not found' });
 
     // `contest` naming a v2 race narrows to it; otherwise it's already an RR contest.

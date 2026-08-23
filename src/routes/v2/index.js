@@ -14,6 +14,7 @@ async function v2Routes(app) {
     authed.addHook('onRequest', authHook);
     authed.register(require('./athletes'), { prefix: '/athletes' });
     authed.register(require('./splits'), { prefix: '/splits' });
+    authed.register(require('./config'), { prefix: '/config' });
   });
   // Public — the v2.races id in the URL is the gate (same policy as /v1).
   app.register(require('./rr_webhook'), { prefix: '/rr_webhook' });
