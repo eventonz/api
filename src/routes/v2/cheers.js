@@ -25,6 +25,7 @@ function shape(row) {
     id: String(row.id), kind: row.kind, emoji: row.emoji, text: row.text, name: row.name,
     at_label: row.at_label, at_pct: row.at_pct == null ? null : Number(row.at_pct),
     x: row.x == null ? null : Number(row.x), y: row.y == null ? null : Number(row.y),
+    rot: row.rot == null ? null : Number(row.rot),
     created_at: row.created_at,
   };
 }
@@ -50,7 +51,7 @@ async function cheersRoutes(app) {
         reactions[r.emoji] = (reactions[r.emoji] || 0) + 1;
         if (device && r.device_id === device) mine.push(r.emoji);
       } else {
-        cheers.push(shape(r));
+        cheers.push({ ...shape(r), mine: !!device && r.device_id === device });
       }
     }
     const total = rows.length;
@@ -64,7 +65,7 @@ async function cheersRoutes(app) {
         device: { type: 'string' }, kind: { type: 'string', enum: ['reaction', 'sticker'] },
         emoji: { type: 'string' }, text: { type: 'string' }, name: { type: 'string' },
         at_label: { type: 'string' }, at_pct: { type: 'number' },
-        x: { type: 'number' }, y: { type: 'number' },
+        x: { type: 'number' }, y: { type: 'number' }, rot: { type: 'number' },
       }, required: ['device', 'kind'] },
     },
   }, async (request, reply) => {
@@ -76,6 +77,7 @@ async function cheersRoutes(app) {
     const atPct = Number.isFinite(b.at_pct) ? Math.max(0, Math.min(100, b.at_pct)) : null;
     const unit = (v) => (Number.isFinite(v) ? Math.max(0, Math.min(1, Math.round(v * 1000) / 1000)) : null);
     const x = unit(b.x), y = unit(b.y);
+    const rot = Number.isFinite(b.rot) ? Math.max(-15, Math.min(15, Math.round(b.rot * 10) / 10)) : null;
 
     if (b.kind === 'reaction') {
       const emoji = clean(b.emoji, 8);
@@ -100,15 +102,36 @@ async function cheersRoutes(app) {
     if (name && (!NAME_RE.test(name) || BLOCK.test(name))) return reply.code(422).send({ error: 'First name only — letters, up to 12.' });
     try {
       const { rows } = await pool.query(
-        `INSERT INTO v2.cheers (event_id, athlete_id, device_id, kind, text, name, at_label, at_pct, x, y)
-         VALUES ($1, $2, $3, 'sticker', $4, $5, $6, $7, $8, $9) RETURNING *`,
-        [event_id, athlete_id, device, text, name || null, atLabel, atPct, x, y]
+        `INSERT INTO v2.cheers (event_id, athlete_id, device_id, kind, text, name, at_label, at_pct, x, y, rot)
+         VALUES ($1, $2, $3, 'sticker', $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+        [event_id, athlete_id, device, text, name || null, atLabel, atPct, x, y, rot]
       );
       return { ok: true, action: 'added', cheer: shape(rows[0]) };
     } catch (err) {
       if (err.code === '23505') return reply.code(429).send({ error: 'One sticker per athlete per day — you\'ve signed this card today.' });
       throw err;
     }
+  });
+
+  // PATCH own sticker — rotate (±15°) or move it. Only the device that placed it.
+  app.patch('/:event_id/:athlete_id/:id', {
+    schema: {
+      params: { type: 'object', properties: { event_id: { type: 'string' }, athlete_id: { type: 'string' }, id: { type: 'string' } }, required: ['event_id', 'athlete_id', 'id'] },
+      body: { type: 'object', properties: { device: { type: 'string' }, rot: { type: 'number' }, x: { type: 'number' }, y: { type: 'number' } }, required: ['device'] },
+    },
+  }, async (request, reply) => {
+    const { event_id, athlete_id, id } = request.params;
+    const b = request.body;
+    const device = clean(b.device, 80);
+    const unit = (v) => (Number.isFinite(v) ? Math.max(0, Math.min(1, Math.round(v * 1000) / 1000)) : null);
+    const rot = Number.isFinite(b.rot) ? Math.max(-15, Math.min(15, Math.round(b.rot * 10) / 10)) : null;
+    const { rows } = await pool.query(
+      `UPDATE v2.cheers SET rot = COALESCE($5, rot), x = COALESCE($6, x), y = COALESCE($7, y)
+       WHERE id = $1 AND event_id = $2 AND athlete_id = $3 AND device_id = $4 RETURNING *`,
+      [Number(id), event_id, athlete_id, device, rot, unit(b.x), unit(b.y)]
+    );
+    if (!rows.length) return reply.code(404).send({ error: 'Not your sticker' });
+    return { ok: true, cheer: shape(rows[0]) };
   });
 
   app.post('/:event_id/:athlete_id/:id/report', {
