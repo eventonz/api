@@ -24,6 +24,7 @@ function shape(row) {
   return {
     id: String(row.id), kind: row.kind, emoji: row.emoji, text: row.text, name: row.name,
     at_label: row.at_label, at_pct: row.at_pct == null ? null : Number(row.at_pct),
+    x: row.x == null ? null : Number(row.x), y: row.y == null ? null : Number(row.y),
     created_at: row.created_at,
   };
 }
@@ -63,6 +64,7 @@ async function cheersRoutes(app) {
         device: { type: 'string' }, kind: { type: 'string', enum: ['reaction', 'sticker'] },
         emoji: { type: 'string' }, text: { type: 'string' }, name: { type: 'string' },
         at_label: { type: 'string' }, at_pct: { type: 'number' },
+        x: { type: 'number' }, y: { type: 'number' },
       }, required: ['device', 'kind'] },
     },
   }, async (request, reply) => {
@@ -72,6 +74,8 @@ async function cheersRoutes(app) {
     if (!device) return reply.code(422).send({ error: 'device required' });
     const atLabel = clean(b.at_label, 40) || null;
     const atPct = Number.isFinite(b.at_pct) ? Math.max(0, Math.min(100, b.at_pct)) : null;
+    const unit = (v) => (Number.isFinite(v) ? Math.max(0, Math.min(1, Math.round(v * 1000) / 1000)) : null);
+    const x = unit(b.x), y = unit(b.y);
 
     if (b.kind === 'reaction') {
       const emoji = clean(b.emoji, 8);
@@ -96,9 +100,9 @@ async function cheersRoutes(app) {
     if (name && (!NAME_RE.test(name) || BLOCK.test(name))) return reply.code(422).send({ error: 'First name only — letters, up to 12.' });
     try {
       const { rows } = await pool.query(
-        `INSERT INTO v2.cheers (event_id, athlete_id, device_id, kind, text, name, at_label, at_pct)
-         VALUES ($1, $2, $3, 'sticker', $4, $5, $6, $7) RETURNING *`,
-        [event_id, athlete_id, device, text, name || null, atLabel, atPct]
+        `INSERT INTO v2.cheers (event_id, athlete_id, device_id, kind, text, name, at_label, at_pct, x, y)
+         VALUES ($1, $2, $3, 'sticker', $4, $5, $6, $7, $8, $9) RETURNING *`,
+        [event_id, athlete_id, device, text, name || null, atLabel, atPct, x, y]
       );
       return { ok: true, action: 'added', cheer: shape(rows[0]) };
     } catch (err) {
