@@ -44,6 +44,8 @@ async function v2AthleteRoutes(app) {
       const info = (x.info || '').trim() || (members.length ? members.map((m) => m.name).filter(Boolean).join(' · ') : '');
       return {
         raceno: x.raceno, name: x.name, info, athlete_id: x.athlete_id, contest: String(x.race_id), race_name: x.race_name,
+        // Timing-platform contest id (RR contest) — athlete-page cards target on this.
+        contest_id: x.contest == null ? '' : String(x.contest),
         profile_image: x.profile_image, entry_type: x.entry_type, country: x.country, category: x.category,
         gender: x.gender, members, total_count: Number(x.total_count),
       };
@@ -67,7 +69,7 @@ async function v2AthleteRoutes(app) {
     const ids = request.body.athletes.map(String).filter(Boolean);
     if (!ids.length) return { patchedathletes: [] };
     const { rows } = await pool.query(
-      `SELECT a.athlete_id, a.raceno, a.name, a.info, a.category, a.profile_image, a.athlete_details
+      `SELECT a.athlete_id, a.raceno, a.name, a.info, a.category, a.profile_image, a.athlete_details, a.contest
        FROM v2.athletes a JOIN v2.races r ON r.id = a.race_id
        WHERE r.event_id = $1 AND a.athlete_id = ANY($2::text[])`,
       [event_id, ids]
@@ -76,7 +78,7 @@ async function v2AthleteRoutes(app) {
       patchedathletes: rows.map((x) => {
         const members = Array.isArray(x.athlete_details) ? x.athlete_details.map((m) => m.name).filter(Boolean) : [];
         const info = (x.info || '').trim() || (x.category || '').trim() || members.join(' · ');
-        const out = { id: x.athlete_id, name: x.name, number: x.raceno, info };
+        const out = { id: x.athlete_id, name: x.name, number: x.raceno, info, contest_id: x.contest == null ? '' : String(x.contest) };
         if (x.profile_image) out.profile_image = x.profile_image;
         return out;
       }),
