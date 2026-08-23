@@ -5,8 +5,15 @@
  * Timer endpoints authenticate with the same evt_ tokens as /v1/timer/*
  * (timer-auth is applied inside each module).
  */
+const authHook = require('../../plugins/auth');
+
 async function v2Routes(app) {
   app.register(require('./timer_events'), { prefix: '/timer/events' });
+  // App endpoints — Bearer API key (same keys as /v1).
+  app.register(async (authed) => {
+    authed.addHook('onRequest', authHook);
+    authed.register(require('./athletes'), { prefix: '/athletes' });
+  });
   // Public — the v2.races id in the URL is the gate (same policy as /v1).
   app.register(require('./rr_webhook'), { prefix: '/rr_webhook' });
 }
