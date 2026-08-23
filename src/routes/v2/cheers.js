@@ -15,7 +15,7 @@ const pool = require('../../config/database');
  */
 const REACTIONS = ['🔥', '💪', '👏', '❤️', '🚀', '🎉'];
 const NAME_RE = /^[\p{L}][\p{L}'’\- ]{0,11}$/u;
-const BLOCK = /\b(fuck|shit|cunt|bitch|dick|cock|wank|slut|whore|nigg|fag|twat|arse|ass|prick|bastard|tits?|boob|penis|vagina|sex|porn|nazi|hitler|scheiss|fick|arsch|merde|putain|salope|con|cazzo|stronz|puta|mierda)/i;
+const BLOCK = /\b(fuck|shit|cunt|bitch|dick|cock|wank|slut|whore|nigg|fag|twat|arse|ass|prick|bastard|tits?|boobs?|balls?|penis|vagina|sex|porn|nazi|hitler|willy|knob|bollock|poo|wee|bum|fart|scheiss|fick|arsch|merde|putain|salope|con|cazzo|stronz|puta|mierda)/i;
 const STICKER_RE = /^[\p{L}\p{N}\p{P}\p{Emoji}\p{Emoji_Presentation}‍️ !]{2,40}$/u;
 
 const clean = (s, max) => String(s ?? '').replace(/\s+/g, ' ').trim().slice(0, max);
