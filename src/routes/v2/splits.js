@@ -1,6 +1,9 @@
 const pool = require('../../config/database');
 const { buildSplits } = require('../../services/splits');
 const { platformRacesForEvent } = require('../../services/v2bridge');
+const { v2RaceObj } = require('../../services/v2RaceConfig');
+const { buildHeader } = require('../../services/splits/buildHeader');
+const athleteDetailV2 = require('../../services/splits/athleteDetailV2');
 
 /**
  * GET /v2/splits/:event_id?id=&contest=&bib=
@@ -53,8 +56,76 @@ async function v2SplitsRoutes(app) {
       });
       if (status === 200) return reply.code(200).send(body);
     }
+    // No platform race behind this event — render from the V2 config itself,
+    // so the contest and every configured timing point still come back (with
+    // whatever times the athlete has). Same document, same builders.
+    const built = await buildFromV2Config({ event_id, athleteId, bib, contest: contestParam });
+    if (built) return reply.code(200).send(built);
     return reply.code(404).send({ error: 'No timing data for this event' });
   });
+}
+
+/** Build the athlete-detail document from v2.contests / v2.splits / v2.results. */
+async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
+  const raceobj = await v2RaceObj(event_id);
+  if (!raceobj || !raceobj.events.length) return null;
+
+  // Which contest? The app sends its v2.races id or an RR contest; fall back to
+  // the athlete's own contest, then to the only one.
+  let contestId = String(contest || '').trim();
+  if (!raceobj.events.some((e) => String(e.contest_id) === contestId)) contestId = '';
+  if (!contestId && athleteId) {
+    const { rows } = await pool.query(
+      `SELECT a.contest::text FROM v2.athletes a JOIN v2.races r ON r.id = a.race_id
+        WHERE r.event_id = $1 AND a.athlete_id = $2 LIMIT 1`,
+      [event_id, athleteId]
+    );
+    contestId = String(rows[0]?.contest || '').trim();
+  }
+  if (!contestId) contestId = String(raceobj.events[0].contest_id);
+  const evt = raceobj.events.find((e) => String(e.contest_id) === contestId) || raceobj.events[0];
+
+  // The athlete's times, when the results table has them yet.
+  let row = null;
+  if (athleteId || bib) {
+    const { rows } = await pool.query(
+      `SELECT res.* FROM v2.results res JOIN v2.races r ON r.id = res.race_id
+        WHERE r.event_id = $1 AND (res.athlete_id::text = $2 OR res.bib_number = $3) LIMIT 1`,
+      [event_id, String(athleteId || ''), String(bib || '')]
+    );
+    row = rows[0] || null;
+  }
+
+  const byId = new Map();
+  const raw = row && Array.isArray(row.splits) ? row.splits : [];
+  for (const s of raw) {
+    const key = String(s.split_id ?? s.id ?? '');
+    if (key) byId.set(key, s);
+  }
+
+  const livetiming = {
+    contest_id: evt.contest_id,
+    contest_name: evt.event_descr,
+    contest_distance: evt.distance,
+    finish_status: row?.finish_time ? 4 : (byId.size ? 3 : 2),
+    result: row?.finish_time ? String(row.finish_time) : '',
+    overall_place: row?.rank_overall ?? '',
+    overall_gen_place: row?.rank_gender ?? '',
+    overall_cat_place: row?.rank_category ?? '',
+    avg_pace: row?.pace ?? '',
+    showPace: evt.showPace,
+    showRank: evt.showRank,
+    // Config is merged in by buildHeader; these carry whatever times exist.
+    splits: evt.splits.map((cfg) => {
+      const t = byId.get(String(cfg.id)) || {};
+      return { id: cfg.id, RaceTime: t.race_time ?? t.RaceTime ?? '', tod: t.tod ?? t.split_tod ?? '',
+               split_pace: t.pace ?? '', overall_place: t.overall_rank ?? '' };
+    }),
+    legs: [],
+  };
+
+  const header = buildHeader(livetiming, raceobj, { bib, athleteId, contest: contestId });
+  return athleteDetailV2.build(livetiming, raceobj, evt.display_settings, header);
 }
 
 module.exports = v2SplitsRoutes;
