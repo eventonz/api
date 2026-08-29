@@ -146,6 +146,66 @@ async function insertRedis(race_id, trackdata, context, live_camera_url) {
 }
 
 // ---------------------------------------------------------------------------
+// upsertRedisSplits
+//
+// Merges one pushed split into the athlete's redis_splits key — the same
+// key the scheduled pull (raceresultPull.js) writes and the live splits
+// transformers read. Keeps push and pull data in one place so the splits
+// page shows a mat crossing immediately instead of waiting for the next
+// pull. Records are stored in the RR feed shape (PascalCase fields).
+//
+// Concurrency note: the pull SETs the whole key from the full feed, so a
+// push merged in the window between a pull's fetch and its set can be
+// overwritten — the next push or pull heals it, so no locking needed.
+// ---------------------------------------------------------------------------
+const SPLITS_KEY_TTL_SECS = 72 * 3600; // matches raceresultPull.js
+async function upsertRedisSplits(race_id, trackdata) {
+  const athleteId = String(trackdata.athlete_id ?? '');
+  if (!athleteId) return;
+
+  const rrSplitId = Number(trackdata.rr_splitid) || 0;
+  const splitId   = rrSplitId > 0 ? rrSplitId : (Number(trackdata.split_id) || 0);
+  if (!splitId) return;
+
+  const record = {
+    Bib:                    Number(trackdata.race_no) || 0,
+    ID:                     athleteId,
+    SplitID:                splitId,
+    RR_SplitID:             rrSplitId,
+    SplitToD:               String(trackdata.tod ?? ''),
+    SplitRaceTime:          String(trackdata.race_time ?? ''),
+    SplitChipTime:          String(trackdata.split_chip ?? ''),
+    SplitOverallRank:       String(trackdata.overall_rank ?? ''),
+    SplitGenderRank:        String(trackdata.gender_rank ?? ''),
+    SplitAgeGroupRank:      String(trackdata.agegroup_rank ?? ''),
+    SplitPace:              String(trackdata.split_pace ?? ''),
+    SplitSpeed:             trackdata.speed ? String(trackdata.speed) : '',
+    SplitPredictedToD:      String(trackdata.predicted_tod ?? ''),
+    SplitPredictedRaceTime: String(trackdata.predicted_race_time ?? ''),
+  };
+
+  const key = `redis_splits:${race_id}:athlete:${athleteId}`;
+  const raw = await redis.get(key);
+  let records = [];
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) records = parsed;
+    } catch { /* corrupt value — rebuild from this record */ }
+  }
+
+  const matchId = (rec) => {
+    const rr = Number(rec?.RR_SplitID ?? rec?.rr_splitid) || 0;
+    return rr > 0 ? rr : (Number(rec?.SplitID ?? rec?.splitid) || 0);
+  };
+  const idx = records.findIndex((rec) => matchId(rec) === splitId);
+  if (idx >= 0) records[idx] = { ...records[idx], ...record };
+  else records.push(record);
+
+  await redis.set(key, JSON.stringify(records), 'EX', SPLITS_KEY_TTL_SECS);
+}
+
+// ---------------------------------------------------------------------------
 // logToProcessQueue
 //
 // Appends a timestamped entry to the Redis process_queue list.
@@ -181,5 +241,6 @@ async function logInsertError(race_id, resultsTable, trackdata, err) {
 module.exports = {
   insertResultsTable,
   insertRedis,
+  upsertRedisSplits,
   logToProcessQueue,
 };

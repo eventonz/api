@@ -25,6 +25,7 @@ const {
 const {
   insertResultsTable,
   insertRedis,
+  upsertRedisSplits,
   logToProcessQueue,
 } = require('../services/trackPersistence');
 const { sendPushToQueue } = require('../services/trackPush');
@@ -97,6 +98,14 @@ async function handleTracksJob(race_id, body, endpoint) {
       insertResultsTable(race_id, td, raceobj).catch((e) =>
         console.error('[worker] insertResultsTable:', e.message)
       );
+
+      // Keep the live splits cache current with pushed data too — the same
+      // redis_splits key the pull writes and the splits page reads while live.
+      if (raceobj.islive) {
+        upsertRedisSplits(race_id, td).catch((e) =>
+          console.error('[worker] upsertRedisSplits:', e.message)
+        );
+      }
 
       if (splitCheck.isNewSplit && context.is_tracking) {
         insertRedis(race_id, td, context, live_camera_url).catch((e) =>
