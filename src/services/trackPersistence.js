@@ -182,6 +182,10 @@ async function upsertRedisSplits(race_id, trackdata) {
     SplitSpeed:             trackdata.speed ? String(trackdata.speed) : '',
     SplitPredictedToD:      String(trackdata.predicted_tod ?? ''),
     SplitPredictedRaceTime: String(trackdata.predicted_race_time ?? ''),
+    // Provenance: records carrying this flag came from the push merge; the
+    // pull rewrites the whole array without it, so its absence = pull-authored.
+    push_inserted:          true,
+    pushed_at:              new Date().toISOString(),
   };
 
   const key = `redis_splits:${race_id}:athlete:${athleteId}`;
