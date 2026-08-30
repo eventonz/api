@@ -57,7 +57,9 @@ async function listRoutes(app) {
 
       if (item.mapid) {
         detail.type = 'eventomap';
-        detail.endpoint = `https://eventotracker.com/api/v3/api.cfm/maps/${item.mapid}`;
+        // Served by this API (same document the CF v3 endpoint returned) —
+        // /v1/config's map pages already point here.
+        detail.endpoint = `https://eventoapi.com/v1/maps/${item.mapid}`;
         listItem.detail = detail;
       } else if (item.link) {
         detail.type = 'embed';

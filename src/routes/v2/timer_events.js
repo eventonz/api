@@ -244,6 +244,107 @@ async function timerEventsV2Routes(app) {
     }
   });
 
+  // PATCH /v2/timer/events/:event_id — update card/event fields. Same field
+  // set as POST, all optional; only provided fields change. An explicit ""
+  // clears an optional card field (date/location/meta/badge/thumbnail/
+  // results_link). `name` cannot be cleared. Meta is NOT re-derived from
+  // location/date on update — send `meta` explicitly to change the card line.
+  app.patch('/:event_id', async (request, reply) => {
+    const { timerToken } = request;
+    const eventId = String(request.params.event_id || '').trim();
+    if (!eventId) return reply.code(422).send(err(422, 'Missing event_id.'));
+    const body = request.body || {};
+
+    const has = (k) => Object.prototype.hasOwnProperty.call(body, k);
+    const str = (k) => String(body[k] ?? '').trim();
+
+    if (has('name') && !str('name')) return reply.code(422).send(err(422, 'name cannot be empty.'));
+    if (has('date') && str('date') && !/^\d{4}-\d{2}-\d{2}$/.test(str('date'))) {
+      return reply.code(422).send(err(422, 'date must be YYYY-MM-DD.'));
+    }
+    if (has('results_link') && str('results_link') && !/^https?:\/\/.+/.test(str('results_link'))) {
+      return reply.code(422).send(err(422, 'results_link must be a full http(s):// URL.'));
+    }
+    let accent = has('accent') ? str('accent').toUpperCase() : null;
+    if (accent && !/^#[0-9A-F]{6}$/.test(accent)) {
+      return reply.code(422).send(err(422, 'accent must be a hex colour like #2ABA92.'));
+    }
+
+    try {
+      const orgRes = await pool.query('SELECT id FROM v2.organisations WHERE v1_org_id = $1', [timerToken.org_id]);
+      if (orgRes.rows.length === 0) return reply.code(404).send(err(404, 'No V2 workspace for this organisation.'));
+      const v2OrgId = orgRes.rows[0].id;
+
+      const evRes = await pool.query(
+        'SELECT id FROM v2.events WHERE id = $1 AND organisation_id = $2',
+        [eventId, v2OrgId]
+      );
+      if (evRes.rows.length === 0) return reply.code(404).send(err(404, `No V2 event '${eventId}' for this organisation.`));
+
+      // Provided-and-empty → null, which jsonb_strip_nulls removes (= clear).
+      const val = (k) => (str(k) === '' ? null : str(k));
+
+      // --- v2.events.event_json ---
+      const eventPatch = {};
+      if (has('name')) eventPatch.name = str('name');
+      if (has('date')) eventPatch.date = val('date');
+      if (has('location')) eventPatch.venue = val('location');
+      if (has('accent')) eventPatch.accent = accent || '#2ABA92';
+      if (has('published')) eventPatch.status = body.published !== false ? 'open' : 'hidden';
+      if (Object.keys(eventPatch).length > 0) {
+        await pool.query(
+          `UPDATE v2.events SET event_json = jsonb_strip_nulls(event_json || $2::jsonb) WHERE id = $1`,
+          [eventId, JSON.stringify(eventPatch)]
+        );
+      }
+
+      // --- v2.races (name/date feed the athlete loader and live pipeline) ---
+      if (has('name') || has('date')) {
+        await pool.query(
+          `UPDATE v2.races SET
+             name       = COALESCE($2, name),
+             event_date = CASE WHEN $3 THEN $4::date ELSE event_date END
+           WHERE event_id = $1`,
+          [eventId, has('name') ? str('name') : null, has('date'), val('date')]
+        );
+      }
+
+      // --- The app-index card entry ---
+      const cardPatch = {};
+      if (has('name')) cardPatch.name = str('name');
+      if (has('date')) cardPatch.date = val('date');
+      if (has('meta')) cardPatch.meta = val('meta');
+      if (has('badge')) cardPatch.badge = val('badge');
+      if (has('thumbnail') || has('image')) cardPatch.image = val('thumbnail') ?? val('image');
+      if (has('results_link')) cardPatch.link = val('results_link');
+      if (has('published')) cardPatch.published = body.published !== false;
+      if (Object.keys(cardPatch).length > 0) {
+        await pool.query(
+          `UPDATE v2.apps
+           SET events = (SELECT COALESCE(jsonb_agg(
+                           CASE WHEN e->>'id' = $1 THEN jsonb_strip_nulls(e || $2::jsonb) ELSE e END), '[]'::jsonb)
+                         FROM jsonb_array_elements(events) e),
+               updated_at = NOW()
+           WHERE organisation_id = $3
+             AND events @> jsonb_build_array(jsonb_build_object('id', $1::text))`,
+          [eventId, JSON.stringify(cardPatch), v2OrgId]
+        );
+      }
+
+      return reply.code(200).send({
+        status: 'success',
+        data: {
+          event_id: eventId,
+          updated: [...new Set([...Object.keys(eventPatch), ...Object.keys(cardPatch)])],
+          note: 'Changes go live in the app on the next CMS publish of this app.',
+        },
+      });
+    } catch (e) {
+      app.log.error({ err: e }, 'PATCH /v2/timer/events error');
+      return reply.code(500).send(err(500, e.message));
+    }
+  });
+
   // DELETE /v2/timer/events/:event_id — remove the event and its index entries.
   app.delete('/:event_id', async (request, reply) => {
     const { timerToken } = request;
@@ -420,8 +521,23 @@ async function rrBrandColor(rrEventId) {
   }
 }
 
-/** ColdFusion CFMX_COMPAT decrypt (same as /v1/timer/events). */
+/**
+ * Decrypt an organisation RaceResult API key.
+ *
+ * Org keys are stored by the CMS as ColdFusion Encrypt(value, seed,
+ * "cfmx_compat", "hex") — decrypt with the real cfmx algorithm first
+ * (services/raceresult/cfmx.js). The old triple-DES path (which this
+ * function previously was, and which never matched cfmx_compat values)
+ * is kept as a fallback for any key that happens to be stored that way.
+ */
 function decrypt(encryptedHex, key) {
+  try {
+    const { cfmxDecryptHex } = require('../../services/raceresult/cfmx');
+    const out = cfmxDecryptHex(encryptedHex, key);
+    // cfmx_compat "succeeds" on any hex input — accept only printable results.
+    if (out && /^[\x20-\x7e]+$/.test(out)) return out;
+  } catch { /* fall through to legacy DES */ }
+
   const keyHash = crypto.createHash('md5').update(key, 'utf8').digest();
   const keyBuffer = Buffer.concat([keyHash, keyHash.slice(0, 8)]);
   const encrypted = Buffer.from(encryptedHex, 'hex');

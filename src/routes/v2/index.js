@@ -17,6 +17,13 @@ async function v2Routes(app) {
     authed.register(require('./tracking'), { prefix: '/tracking' });
     authed.register(require('./config'), { prefix: '/config' });
     authed.register(require('./cheers'), { prefix: '/cheers' });
+    // App-level endpoints aliased from /v1 so the V2 app and CMS talk /v2
+    // only — same handlers, same contracts (push is app/event-scoped, not
+    // race-scoped, so no bridge is needed; rrpublish keys on the RR id).
+    authed.register(require('../v1/push'), { prefix: '/push' });
+    authed.register(require('../v1/analytics'), { prefix: '/analytics' });
+    authed.register(require('../v1/app_install'), { prefix: '/app_install' });
+    authed.register(require('../v1/rrpublish'), { prefix: '/rrpublish' });
   });
   // Public — the v2.races id in the URL is the gate (same policy as /v1).
   app.register(require('./rr_webhook'), { prefix: '/rr_webhook' });

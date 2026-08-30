@@ -295,7 +295,7 @@ npm start
 - `DELETE /v1/timer/events/:rr_event_id`
 
 **CMS pages**
-- `GET /v1/redirect/:page_id`
+- `GET /link/:page_id` — click-tracking redirect (unversioned, public; replaces CF `redirect.cfm`)
 - `GET /v1/schedule/:page_id`
 - `GET /v1/list/:page_id`
 - `GET /v1/carousel/:page_id`
@@ -312,11 +312,42 @@ npm start
   - RR feed URL is resolved server-side from race config (RR token never appears in the request URL).
   - Ported from `API/util/groupingtest.cfm`; a standalone CLI version lives at `node-api/scripts/pull-rr-splits.js` for one-off / cron-on-droplet use.
 
+**Live timing** *(implemented — shared services with /v2)*
+- `POST /v1/tracking`                       — body `{race_id, tracks:[athlete_id…]}` → `{tracks:[…]}`
+- `GET  /v1/splits/race/:race_id?bib=&id=&contest=` — per-athlete split detail (`version2.items[]`)
+- `GET|POST /v1/racemap/:race_id`           — refresh GPS positions from racemap_url (EasyCron-friendly GET)
+
+**Push (FCM)**
+- `POST /v1/push/register` · `POST /v1/push/sync` · `POST /v1/push/send` (supports `send_after` for scheduling)
+- `POST /v1/push/run` (minute runner; EasyCron hits `GET|POST /v1/push_cron?key=`) · `DELETE /v1/push/:id` (cancel scheduled)
+- `GET /v1/push/inbox` · `GET /v1/push/followers`
+
+### `/v2/*` — block-based native app (v2.* schema)
+
+**The new mobile app (MOBILE-V2) and new CMS (NEXTJS-CMS) must call /v2 paths only** —
+see `../docs/eventoapi_v2_contract.md` for the full contract. `/v1` remains for the old
+Flutter app and timing-platform ingest.
+
+Bearer API key (same keys as /v1):
+- `GET   /v2/config/:event_id`              — v1 config via the platform-race bridge, with default `/v1` URLs rewritten to `/v2`
+- `POST  /v2/athletes/:event_id`            — startlist search (body `{pageNumber, searchstring, race?}`)
+- `PATCH /v2/athletes/:event_id`            — follow-stub revalidation (body `{athletes:[ids]}`)
+- `GET   /v2/splits/:event_id?id=&bib=&contest=` — athlete-detail splits document
+- `POST  /v2/tracking/:event_id`            — body `{tracks:[…]}`; merges all bridged platform races
+- `GET|POST|PATCH /v2/cheers/:event_id/:athlete_id[...]` — cheer wall
+- `/v2/push/*`, `/v2/analytics`, `/v2/app_install`, `/v2/rrpublish/*` — aliases of the /v1 modules (same handlers/contracts) so v2 clients never write a /v1 path
+
+Timer auth (`evt_` tokens):
+- `POST|PATCH|DELETE /v2/timer/events[/:event_id]` — create/update/delete a V2 event + app-index card
+- `POST /v2/raceresult/provision/:race_id` · `GET .../status` · `POST /v2/raceresult/pull/:race_id`
+
+Public (v2.races id is the gate):
+- `POST /v2/rr_webhook/:race_id`            — RaceResult participant webhook (synchronous upsert)
+
 ### Not yet implemented
-- `POST /v1/tracking`                       — Read endpoint for live tracking page (body `{race_id, tracks:[athlete_id…]}`). Pending.
-- `/v1/splits`                              — Per-athlete split details. Pending.
 - `/v1/assistant_knowledge`, `/v1/assistant_map` — Admin/embed endpoints (CF-only).
-- Various legacy CF endpoints not yet ported (`racemap`, `solo`, `solosplits`).
+- Legacy CF endpoints not yet ported (`solo`, `solosplits`).
+- No scheduler yet drives `POST /v2/raceresult/pull/:race_id` (v1's equivalent has per-race EasyCron jobs).
 
 ### Worker queue
 - **Redis LIST `worker_queue`** — envelope `{race_id, datetime, endpoint, payload}`. Consumed by `src/workers/trackWorker.js` (BRPOP). Endpoints handled: `tracks/race`, `tracks/sportsplits`, `tracks/racetec`, `tracks/raceresult`, `rr_webhook`.

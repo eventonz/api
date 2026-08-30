@@ -167,6 +167,9 @@ async function pushRoutes(app) {
         body:  { anyOf: [{ type: 'string', maxLength: 1000 }, { type: 'object', additionalProperties: { type: 'string', maxLength: 1000 } }] },
         image: { type: 'string' }, url: { type: 'string' }, data: { type: 'object' },
         sender: { type: 'string' }, show_in_inbox: { type: 'boolean' },
+        // ISO 8601 instant; >30s in the future stores the row as 'scheduled'
+        // for the minute runner (/run) instead of dispatching now.
+        send_after: { type: 'string' },
       } } },
   }, async (request, reply) => {
     const b = request.body;
