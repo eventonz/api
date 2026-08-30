@@ -14,6 +14,7 @@ async function v2Routes(app) {
     authed.addHook('onRequest', authHook);
     authed.register(require('./athletes'), { prefix: '/athletes' });
     authed.register(require('./splits'), { prefix: '/splits' });
+    authed.register(require('./tracking'), { prefix: '/tracking' });
     authed.register(require('./config'), { prefix: '/config' });
     authed.register(require('./cheers'), { prefix: '/cheers' });
   });
