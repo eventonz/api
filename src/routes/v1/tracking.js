@@ -77,7 +77,7 @@ async function getLatestTracksRedis(tracks, raceId) {
 // ---------------------------------------------------------------------------
 // RR-live fallback: derive tracking payloads from the redis_splits cache
 // (written by services/raceresultPull.js). Used for athletes with no
-// tracking:race:* key when the race is live with use_redis enabled.
+// tracking:race:* key when the race is live (use_redis is obsolete).
 //
 // Leg records are stored alongside splits in redis_splits; they are excluded
 // here by an ALLOWLIST — only rr_splitids configured in event.splits count.
@@ -204,7 +204,7 @@ async function trackingRoutes(app) {
     // RR-live: fill gaps from the redis_splits cache. Webhook-pushed
     // tracking:race:* keys stay primary (fresher); the 2-3 min pull snapshot
     // covers athletes the webhook hasn't reported.
-    if (race.islive && race.use_redis) {
+    if (race.islive) {
       const have    = new Set(latest.map((t) => String(t.athlete_id)));
       const missing = tracks.filter((id) => !have.has(id));
       if (missing.length) {

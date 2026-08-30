@@ -8,7 +8,7 @@
  * not ported separately.
  *
  * Source of truth depends on whether the race is live:
- *   - LIVE (races.islive AND races.use_redis, RR events only): read the raw
+ *   - LIVE (races.islive — use_redis is obsolete): read the raw
  *     feed records from `redis_splits:{race_id}:athlete:{athlete_id}` (written
  *     by services/raceresultPull.js every few minutes) and map the PascalCase
  *     feed fields onto the results-table column names.
@@ -72,7 +72,7 @@ async function transform(raceobj, { athleteId, raceId, contest }) {
   // Postgres. A clean miss (key not set yet) means the athlete has no splits
   // yet — do NOT fall through to Postgres, which isn't being written while
   // live. Only a Redis *error* (Valkey down) falls back to the table.
-  if (raceobj.islive && raceobj.use_redis) {
+  if (raceobj.islive) {
     try {
       const raw = await redis.get(`redis_splits:${raceId}:athlete:${athleteId}`);
       const records = raw ? JSON.parse(raw) : [];
