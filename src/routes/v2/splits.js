@@ -112,7 +112,7 @@ async function buildFromV2Redis({ v2RaceId, event_id, athleteId, bib, contest })
   return athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header);
 }
 
-/** Build the athlete-detail document from v2.contests / v2.splits / v2.results. */
+/** Build the athlete-detail document from v2.contests / v2.splits / v2.rr_results. */
 async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
   const raceobj = await v2RaceObj(event_id);
   if (!raceobj || !raceobj.events.length) return null;
@@ -132,41 +132,45 @@ async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
   if (!contestId) contestId = String(raceobj.events[0].contest_id);
   const evt = raceobj.events.find((e) => String(e.contest_id) === contestId) || raceobj.events[0];
 
-  // The athlete's times, when the results table has them yet.
-  let row = null;
+  // The athlete's times from the finalised results table (v2.rr_results — one
+  // row per athlete per RR split, written by the worker at Stop live), keyed
+  // on rr_splitid so they line up with the configured timing points.
+  const byRr = new Map();
   if (athleteId || bib) {
     const { rows } = await pool.query(
-      `SELECT res.* FROM v2.results res JOIN v2.races r ON r.id = res.race_id
-        WHERE r.event_id = $1 AND (res.athlete_id::text = $2 OR res.bib_number = $3) LIMIT 1`,
+      `SELECT res.rr_splitid, res.split_tod, res.split_gun, res.split_chip, res.overall_rank,
+              res.gender_rank, res.agegroup_rank, res.splitpace, res.splitspeed
+         FROM v2.rr_results res JOIN v2.races r ON r.id = res.race_id
+        WHERE r.event_id = $1
+          AND (res.athlete_id = $2 OR ($3 <> '' AND res.race_no::text = $3))`,
       [event_id, String(athleteId || ''), String(bib || '')]
     );
-    row = rows[0] || null;
+    for (const row of rows) if (row.rr_splitid) byRr.set(String(row.rr_splitid), row);
   }
-
-  const byId = new Map();
-  const raw = row && Array.isArray(row.splits) ? row.splits : [];
-  for (const s of raw) {
-    const key = String(s.split_id ?? s.id ?? '');
-    if (key) byId.set(key, s);
-  }
+  const timeFor = (cfg) => byRr.get(String(cfg.rr_splitid || '')) || null;
+  const finishCfg = evt.splits.find((c) => String(c.split_type || c.type || '').toLowerCase() === 'finish')
+    || evt.splits[evt.splits.length - 1];
+  const finishRow = finishCfg ? timeFor(finishCfg) : null;
+  const timed = evt.splits.filter((c) => (timeFor(c)?.split_tod || '') !== '').length;
 
   const livetiming = {
     contest_id: evt.contest_id,
     contest_name: evt.event_descr,
     contest_distance: evt.distance,
-    finish_status: row?.finish_time ? 4 : (byId.size ? 3 : 2),
-    result: row?.finish_time ? String(row.finish_time) : '',
-    overall_place: row?.rank_overall ?? '',
-    overall_gen_place: row?.rank_gender ?? '',
-    overall_cat_place: row?.rank_category ?? '',
-    avg_pace: row?.pace ?? '',
+    finish_status: finishRow?.split_gun ? 4 : (timed ? 3 : 2),
+    result: finishRow?.split_gun || '',
+    overall_place: finishRow?.overall_rank ?? '',
+    overall_gen_place: finishRow?.gender_rank ?? '',
+    overall_cat_place: finishRow?.agegroup_rank ?? '',
+    avg_pace: finishRow?.splitpace ?? '',
     showPace: evt.showPace,
     showRank: evt.showRank,
     // Config is merged in by buildHeader; these carry whatever times exist.
     splits: evt.splits.map((cfg) => {
-      const t = byId.get(String(cfg.id)) || {};
-      return { id: cfg.id, RaceTime: t.race_time ?? t.RaceTime ?? '', tod: t.tod ?? t.split_tod ?? '',
-               split_pace: t.pace ?? '', overall_place: t.overall_rank ?? '' };
+      const t = timeFor(cfg) || {};
+      return { id: cfg.id, RaceTime: t.split_gun ?? '', tod: t.split_tod ?? '',
+               split_pace: t.splitpace ?? '', split_speed: t.splitspeed ?? '',
+               overall_place: t.overall_rank ?? '', gen_place: t.gender_rank ?? '', cat_place: t.agegroup_rank ?? '' };
     }),
     legs: [],
   };
