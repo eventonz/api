@@ -46,6 +46,15 @@ A **DigitalOcean load balancer is only required for horizontal scaling across mu
 droplets** (see "Switching to Load Balancer" below) — not for using multiple cores on this
 one. The app is stateless (state in managed Postgres + Valkey), so that path is open later.
 
+## evento-worker (separate droplet, separate repo)
+
+v2 ingest and athlete pushes are processed by **`../evento-worker`** on its own droplet
+(`evento-worker`, syd1) so start-line spikes never compete with app requests. This API
+only LPUSHes: `POST /v2/tracks/raceresult/{rr_eventid}` and `POST /v2/rr_webhook/{race_id}` → Redis list `ingest_queue`
+→ evento-worker merges into `redis_splits:{v2_race_id}:…` + `v2.rr_results` and sends
+FCM `ath-` topic pushes via `notify_queue`. The v1 pipeline (`worker_queue`,
+`evento-track-worker` on this box, OneSignal push-worker) is unchanged.
+
 ## Auto-Deploy Setup
 
 Every push to `main` branch automatically deploys to production via GitHub Actions.
@@ -61,7 +70,7 @@ Every push to `main` branch automatically deploys to production via GitHub Actio
 2. SSHs into droplet
 3. Pulls latest code (`git pull origin main`)
 4. Installs dependencies (`npm install --production`)
-5. Restarts PM2 (`pm2 restart evento-api`)
+5. Restarts PM2 (`pm2 startOrReload ecosystem.config.js`)
 
 **Manual Deploy** (if needed):
 ```bash
@@ -342,7 +351,8 @@ Timer auth (`evt_` tokens):
 - `POST /v2/raceresult/provision/:race_id` · `GET .../status` · `POST /v2/raceresult/pull/:race_id`
 
 Public (v2.races id is the gate):
-- `POST /v2/rr_webhook/:race_id`            — RaceResult participant webhook (synchronous upsert)
+- `POST /v2/rr_webhook/:race_id`            — RaceResult participant webhook; LPUSHes `ingest_queue`, 202 (evento-worker upserts v2.athletes)
+- `POST /v2/tracks/raceresult/:rr_eventid`  — timing pushes for v2 races; LPUSHes `ingest_queue` (drained by ../evento-worker), 202 (needs migrations 006 + 008)
 
 ### Not yet implemented
 - `/v1/assistant_knowledge`, `/v1/assistant_map` — Admin/embed endpoints (CF-only).
@@ -351,6 +361,7 @@ Public (v2.races id is the gate):
 
 ### Worker queue
 - **Redis LIST `worker_queue`** — envelope `{race_id, datetime, endpoint, payload}`. Consumed by `src/workers/trackWorker.js` (BRPOP). Endpoints handled: `tracks/race`, `tracks/sportsplits`, `tracks/racetec`, `tracks/raceresult`, `rr_webhook`.
+- **Redis LIST `ingest_queue`** / **`notify_queue`** — v2 ingest + athlete pushes, consumed by `../evento-worker` (own droplet).
 - **Redis LIST `athlete_push_queue`** — populated by track pipeline (`services/trackPush.js`). Consumed by the separate **push-worker** repo (OneSignal sender).
 
 ## Creating a New Droplet

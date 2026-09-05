@@ -9,6 +9,8 @@ const authHook = require('../../plugins/auth');
 
 async function v2Routes(app) {
   app.register(require('./timer_events'), { prefix: '/timer/events' });
+  // RaceResult feed provisioning — evt_ timer auth (applied inside the module).
+  app.register(require('./raceresult'), { prefix: '/raceresult' });
   // App endpoints — Bearer API key (same keys as /v1).
   app.register(async (authed) => {
     authed.addHook('onRequest', authHook);
@@ -27,6 +29,9 @@ async function v2Routes(app) {
   });
   // Public — the v2.races id in the URL is the gate (same policy as /v1).
   app.register(require('./rr_webhook'), { prefix: '/rr_webhook' });
+  // Public timing ingest — rr_eventid in the URL is the gate; LPUSHes
+  // worker_queue and returns 202 so start-line bursts never touch PG here.
+  app.register(require('./tracks'), { prefix: '/tracks' });
 }
 
 module.exports = v2Routes;

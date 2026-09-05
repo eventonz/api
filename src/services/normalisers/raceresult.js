@@ -52,6 +52,8 @@ function normaliseNativeRR(item, raceobj) {
   if (num(get('start', 0)) === 1 && td.race_time.trim() === '') {
     td.race_time = '00:00:00';
   }
+  td.is_start  = num(get('start', 0)) === 1 ? 1 : 0;
+  td.is_finish = num(get('finish', 0)) === 1 ? 1 : 0;
 
   const speed = num(get('splitspeed', 0));
   td.speed = speed > 0 ? speed : 0;
@@ -106,6 +108,8 @@ function normaliseEventoRR(item, raceobj) {
   if (num(get('start', 0)) === 1 && td.race_time.trim() === '') {
     td.race_time = '00:00:00';
   }
+  td.is_start  = num(get('start', 0)) === 1 ? 1 : 0;
+  td.is_finish = num(get('finish', 0)) === 1 ? 1 : 0;
 
   const speed = num(get('split_speed', 0));
   td.speed = speed > 0 ? speed : 0;
