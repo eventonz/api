@@ -19,6 +19,7 @@
  * guards this at arm time.
  */
 
+const rr = require('./orgApi');
 const pool  = require('../../config/database');
 const redis = require('../../config/redis');
 const { parseFeedBody } = require('./provision');
@@ -28,37 +29,57 @@ const PIPELINE_CHUNK  = 1000;
 
 async function pullV2Race(v2RaceId) {
   const { rows } = await pool.query(
-    'SELECT id, rr_splits_url FROM v2.races WHERE id = $1',
+    'SELECT id, rr_raceid, rr_list_name, rr_splits_url FROM v2.races WHERE id = $1',
     [v2RaceId]
   );
   if (!rows.length) throw new Error(`v2 race ${v2RaceId} not found`);
-  const feedUrl = (rows[0].rr_splits_url || '').trim();
-  if (!feedUrl) throw new Error(`v2 race ${v2RaceId} has no provisioned feed (rr_splits_url empty — run provision first)`);
+  const race = rows[0];
+  const listName = (race.rr_list_name || '').trim();
+  const feedUrl = (race.rr_splits_url || '').trim();
+  if (!listName && !feedUrl) throw new Error(`v2 race ${v2RaceId} has no provisioned feed — run provision first`);
 
   const t0 = Date.now();
-  const res = await fetch(feedUrl, { signal: AbortSignal.timeout(300000) });
-  if (!res.ok) throw new Error(`Feed HTTP ${res.status}`);
-  const body = await res.text();
-  const tFetch = Date.now() - t0;
+  let athletesN = 0, records = 0, bytes = 0, contests = 0;
 
-  const athletes = parseFeedBody(body);
-  const records = athletes.reduce((n, a) => n + a.splits.length, 0);
-
-  let pipeline = redis.pipeline();
-  let inChunk = 0;
-  for (const a of athletes) {
-    pipeline.set(
-      `redis_splits:${v2RaceId}:athlete:${a.id}`,
-      JSON.stringify({ bib: a.bib, splits: a.splits }),
-      'EX', SPLITS_TTL_SECS
-    );
-    if (++inChunk >= PIPELINE_CHUNK) {
-      await pipeline.exec();
-      pipeline = redis.pipeline();
-      inChunk = 0;
+  const writeChunk = async (athletes) => {
+    let pipeline = redis.pipeline();
+    let inChunk = 0;
+    for (const a of athletes) {
+      athletesN++; records += a.splits.length;
+      pipeline.set(
+        `redis_splits:${v2RaceId}:athlete:${a.id}`,
+        JSON.stringify({ bib: a.bib, splits: a.splits }),
+        'EX', SPLITS_TTL_SECS
+      );
+      if (++inChunk >= PIPELINE_CHUNK) {
+        await pipeline.exec();
+        pipeline = redis.pipeline();
+        inChunk = 0;
+      }
     }
+    if (inChunk > 0) await pipeline.exec();
+  };
+
+  if (listName && race.rr_raceid) {
+    // Per contest through the Org API: bounded memory, no Simple API rate limit.
+    const { resolveRace, tokenForRace } = require('./provision');
+    const token = await tokenForRace(await resolveRace(v2RaceId));
+    for (const c of await rr.getContests(token, race.rr_raceid)) {
+      const id = c.ID ?? c.id;
+      if (id == null) continue;
+      const body = await rr.renderList(token, race.rr_raceid, listName, id);
+      bytes += body.length; contests++;
+      await writeChunk(parseFeedBody(body));
+    }
+  } else {
+    // Legacy: whole-event Simple API feed.
+    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(300000) });
+    if (!res.ok) throw new Error(`Feed HTTP ${res.status}`);
+    const body = await res.text();
+    bytes = body.length; contests = 1;
+    await writeChunk(parseFeedBody(body));
   }
-  if (inChunk > 0) await pipeline.exec();
+  const tFetch = Date.now() - t0;
 
   await pool.query(
     `UPDATE v2.races SET last_pull_at = NOW()
@@ -69,9 +90,10 @@ async function pullV2Race(v2RaceId) {
 
   return {
     raceId: v2RaceId,
-    athletes: athletes.length,
+    athletes: athletesN,
     records,
-    bytes: body.length,
+    bytes,
+    contests,
     ms: { fetch: tFetch, total: Date.now() - t0 },
   };
 }

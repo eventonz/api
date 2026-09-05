@@ -201,6 +201,26 @@ function mintSimpleApiKey() {
 
 const simpleApiUrl = (rrEventId, key) => `https://api.raceresult.com/${rrEventId}/${key}`;
 
+/**
+ * Render a saved list as JSON through the Org API (bearer token), optionally
+ * for one contest. Same output as a Simple API key pointing at the list, but
+ * without the Simple API's one-call-per-second-per-IP limit and without
+ * writing a key into the customer's event file.
+ */
+function renderListUrl(rrEventId, listName, contestId) {
+  const q = `listname=${encodeURIComponent(listName)}&format=JSON`;
+  return `${eventBase(rrEventId)}/lists/create?${q}${contestId != null ? `&contest=${encodeURIComponent(contestId)}` : ''}`;
+}
+
+/** Raw body of a rendered list (large: a whole-event render can be 20 MB+). */
+async function renderList(token, rrEventId, listName, contestId) {
+  const res = await fetch(renderListUrl(rrEventId, listName, contestId), {
+    headers: auth(token), signal: AbortSignal.timeout(300000),
+  });
+  if (!res.ok) throw new Error(`RaceResult list render failed (HTTP ${res.status})`);
+  return res.text();
+}
+
 module.exports = {
   writesAllowed,
   apiKeyForOrg,
@@ -218,4 +238,6 @@ module.exports = {
   deleteSimpleApi,
   mintSimpleApiKey,
   simpleApiUrl,
+  renderListUrl,
+  renderList,
 };

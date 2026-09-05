@@ -5,9 +5,12 @@
  *   1. enumerate every split across every contest   (splits/get, per contest)
  *   2. generate a list body covering exactly those  (listTemplate.js)
  *   3. write it as a named list                     (lists/new + lists/save)
- *   4. attach a Simple API key we mint ourselves    (simpleapi/save)
- *   5. verify by fetching the resulting feed URL and parsing it
- *   6. store url + key + splits hash on v2.races
+ *   4. verify by rendering the list through the Org API and parsing it
+ *   5. store list name + render url + splits hash on v2.races
+ *
+ * No Simple API key any more: the worker renders the list per contest with the
+ * organisation's own token (Org API has no per-IP rate limit; the Simple API is
+ * capped at one call per second per IP).
  *
  * Idempotent: the list is matched by name, and re-running replaces its body.
  * That is also how a split change is applied — regenerate and save again.
@@ -221,38 +224,21 @@ async function provisionRace(v2RaceId, opts = {}) {
   const base = await rr.getList(token, rrEventId, LIST_NAME);
   await rr.saveList(token, rrEventId, listDefinition(base, fields));
 
-  // --- attach a Simple API key -------------------------------------------
-  // Reuse the key already stored for this race so the feed URL is stable across
-  // re-provisioning; mint one the first time.
-  const stored = await pool.query(
-    'SELECT rr_simpleapi_key FROM v2.races WHERE id = $1',
-    [race.id]
-  );
-  const key = stored.rows[0]?.rr_simpleapi_key || rr.mintSimpleApiKey();
-
-  await rr.saveSimpleApi(token, rrEventId, [
-    {
-      Disabled: false,
-      Key: key,
-      Label: SIMPLE_API_LABEL,
-      URL: simpleApiListUrl(LIST_NAME),
-    },
-  ]);
-
-  const url = rr.simpleApiUrl(rrEventId, key);
-
   // --- verify -------------------------------------------------------------
-  const verification = await verifyFeed(url);
+  // Render through the Org API with the same token. The stored URL is the
+  // whole-event render (bearer required); the worker pulls per contest from
+  // rr_list_name, rr_splits_url just marks the race as provisioned.
+  const url = rr.renderListUrl(rrEventId, LIST_NAME);
+  const verification = await verifyFeed(url, token);
 
   await pool.query(
     `UPDATE v2.races
         SET rr_splits_url    = $2,
-            rr_simpleapi_key = $3,
-            rr_list_name     = $4,
-            rr_splits_hash   = $5,
+            rr_list_name     = $3,
+            rr_splits_hash   = $4,
             provisioned_at   = now()
       WHERE id = $1`,
-    [race.id, url, key, LIST_NAME, hash]
+    [race.id, url, LIST_NAME, hash]
   );
 
   return { ...summary, written: true, url, verification };
@@ -293,9 +279,12 @@ function parseFeedBody(body) {
   return athletes;
 }
 
-async function verifyFeed(url) {
+async function verifyFeed(url, token) {
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(120000) });
+    const res = await fetch(url, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      signal: AbortSignal.timeout(300000),
+    });
     const body = await res.text();
     if (!res.ok) return { ok: false, status: res.status, error: body.slice(0, 200) };
     let athletes;
@@ -337,6 +326,7 @@ async function splitsChanged(v2RaceId) {
 module.exports = {
   provisionRace,
   apiKeyForRace,
+  tokenForRace,
   splitsChanged,
   resolveRace,
   verifyFeed,
