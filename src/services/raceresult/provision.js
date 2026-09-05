@@ -85,15 +85,26 @@ async function resolveRace(v2RaceId) {
  * decrypt; a value that is not hex is treated as already plain.
  */
 async function tokenForRace(race) {
+  if (race.v2_org_key) return loginWithKey(await apiKeyForRace(race));
+  if (race.v1_org_id) return rr.tokenForOrg(race.v1_org_id);
+  throw new Error(`No RaceResult API key for the organisation behind race ${race.id}`);
+}
+
+/**
+ * The plain RaceResult API key of the organisation behind a resolved race —
+ * v2.organisations first, then the v1 organisations row. This is the
+ * tenant's own credential, and it doubles as the CMS's proof of tenancy when
+ * it calls /v2/raceresult/* (see routes/v2/raceresult.js).
+ */
+async function apiKeyForRace(race) {
   if (race.v2_org_key) {
     const { cfmxDecryptHex } = require('./cfmx');
     const stored = String(race.v2_org_key).trim();
-    const apikey = /^[0-9a-fA-F]+$/.test(stored) && stored.length % 2 === 0
+    return /^[0-9a-fA-F]+$/.test(stored) && stored.length % 2 === 0
       ? cfmxDecryptHex(stored, process.env.RR_ENCRYPTION_KEY || 'evento_rr_2024')
       : stored;
-    return loginWithKey(apikey);
   }
-  if (race.v1_org_id) return rr.tokenForOrg(race.v1_org_id);
+  if (race.v1_org_id) return rr.apiKeyForOrg(race.v1_org_id);
   throw new Error(`No RaceResult API key for the organisation behind race ${race.id}`);
 }
 
@@ -325,6 +336,7 @@ async function splitsChanged(v2RaceId) {
 
 module.exports = {
   provisionRace,
+  apiKeyForRace,
   splitsChanged,
   resolveRace,
   verifyFeed,
