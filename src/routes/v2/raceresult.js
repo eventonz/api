@@ -119,7 +119,7 @@ async function v2RaceResultRoutes(app) {
   /** GET /v2/raceresult/log/:race_id?limit=100 — the race's activity log (newest first). */
   app.get('/log/:race_id', { schema: raceIdSchema }, async (request, reply) => {
     const raceId = Number(request.params.race_id);
-    const limit = Math.min(Math.max(Number(request.query?.limit) || 100, 1), 500);
+    const limit = Math.min(Math.max(Number(request.query?.limit) || 100, 1), 5000);
     const raw = await redis.lrange(`race:log:${raceId}`, 0, limit - 1);
     const entries = raw.map((x) => { try { return JSON.parse(x); } catch { return null; } }).filter(Boolean);
     return reply.code(200).send({ race_id: raceId, entries });

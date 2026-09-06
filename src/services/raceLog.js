@@ -10,7 +10,7 @@
 const os = require('os');
 const redis = require('../config/redis');
 
-const CAP = 500;
+const CAP = 50000;   // ~250 B each → ≤ ~12 MB per race, gone a week after the last entry
 const TTL = 7 * 24 * 3600;
 const ID = `${os.hostname()}:${process.pid}`;
 
