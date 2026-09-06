@@ -1,45 +1,70 @@
 const crypto = require('crypto');
 const pool   = require('../config/database');
 const redis  = require('../config/redis');
+const { looksLikeInstallToken, verifyInstallToken } = require('../services/installTokens');
 
-const CACHE_TTL    = 300;        // seconds — cache valid keys for 5 min
+const CACHE_TTL    = 300;        // seconds — cache API key lookups for 5 min
 const CACHE_PREFIX = 'apikey:';
 
+/**
+ * Bearer auth for the app-facing endpoints. Two credentials are accepted:
+ *
+ *   • an INSTALL TOKEN (signed JWT from POST /v2/auth/register) — the normal
+ *     credential for reads; request.auth = { type: 'install', app_id, install_id }
+ *   • an APP API KEY (api_keys table) — bootstrap credential; also still
+ *     accepted for reads until READS_REQUIRE_INSTALL_TOKEN=1 is set, so
+ *     existing app builds keep working during the rollout.
+ *
+ * request.apiKey keeps its old shape ({ id, name, app_id }) for handlers that
+ * read it; request.auth carries the identity used for rate limiting.
+ */
 async function authHook(request, reply) {
   const authHeader = request.headers['authorization'];
-
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return reply.code(401).send({ error: 'Missing or invalid Authorization header' });
   }
+  const bearer = authHeader.slice(7).trim();
 
-  const token    = authHeader.slice(7).trim();
-  const keyHash  = crypto.createHash('sha256').update(token).digest('hex');
+  // --- install token -------------------------------------------------------
+  if (looksLikeInstallToken(bearer)) {
+    try {
+      const p = await verifyInstallToken(bearer);
+      request.auth = { type: 'install', app_id: p.app_id, install_id: p.sub, key_id: p.key_id };
+      request.apiKey = { id: p.key_id, name: 'install-token', app_id: p.app_id };
+      return;
+    } catch (err) {
+      const expired = /expired/i.test(err.message);
+      return reply.code(401).send({ error: expired ? 'Install token expired' : 'Invalid install token', code: expired ? 'TOKEN_EXPIRED' : 'TOKEN_INVALID' });
+    }
+  }
+
+  // --- app API key -----------------------------------------------------------
+  const keyHash  = crypto.createHash('sha256').update(bearer).digest('hex');
   const cacheKey = CACHE_PREFIX + keyHash;
-
-  // 1. Check Redis cache
-  const cached = await redis.get(cacheKey);
-  if (cached === 'valid') return;
-  if (cached === 'invalid') {
-    return reply.code(401).send({ error: 'Invalid API key' });
+  let row = null;
+  const cached = await redis.get(cacheKey).catch(() => null);
+  if (cached === 'invalid') return reply.code(401).send({ error: 'Invalid API key' });
+  if (cached && cached !== 'valid') { try { row = JSON.parse(cached); } catch { row = null; } }
+  if (!row) {
+    const { rows } = await pool.query(
+      'SELECT id, name, app_id FROM api_keys WHERE key_hash = $1 AND active = TRUE',
+      [keyHash]
+    );
+    if (rows.length === 0) {
+      await redis.setex(cacheKey, CACHE_TTL, 'invalid').catch(() => {});
+      return reply.code(401).send({ error: 'Invalid API key' });
+    }
+    row = rows[0];
+    await redis.setex(cacheKey, CACHE_TTL, JSON.stringify(row)).catch(() => {});
+    pool.query('UPDATE api_keys SET last_used_at = NOW() WHERE id = $1', [row.id]).catch(() => {});
   }
+  request.apiKey = row;
+  request.auth = { type: 'key', app_id: row.app_id, key_id: row.id, key_hash: keyHash.slice(0, 16) };
 
-  // 2. Cache miss — check Postgres
-  const { rows } = await pool.query(
-    'SELECT id, name, app_id FROM api_keys WHERE key_hash = $1 AND active = TRUE',
-    [keyHash]
-  );
-
-  if (rows.length === 0) {
-    await redis.setex(cacheKey, CACHE_TTL, 'invalid');
-    return reply.code(401).send({ error: 'Invalid API key' });
+  // Rollout switch: once every build uses install tokens, raw keys only register.
+  if (process.env.READS_REQUIRE_INSTALL_TOKEN === '1' && !request.routeOptions?.config?.allowApiKey) {
+    return reply.code(401).send({ error: 'Use an install token (POST /v2/auth/register)', code: 'INSTALL_TOKEN_REQUIRED' });
   }
-
-  // 3. Valid — cache it and attach key context to request
-  await redis.setex(cacheKey, CACHE_TTL, 'valid');
-  request.apiKey = rows[0];
-
-  // Update last_used_at without blocking the request
-  pool.query('UPDATE api_keys SET last_used_at = NOW() WHERE id = $1', [rows[0].id]).catch(() => {});
 }
 
 module.exports = authHook;
