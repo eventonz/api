@@ -47,7 +47,7 @@ async function authHook(request, reply) {
   if (cached && cached !== 'valid') { try { row = JSON.parse(cached); } catch { row = null; } }
   if (!row) {
     const { rows } = await pool.query(
-      'SELECT id, name, app_id FROM api_keys WHERE key_hash = $1 AND active = TRUE',
+      'SELECT id, name, app_id, kind FROM api_keys WHERE key_hash = $1 AND active = TRUE',
       [keyHash]
     );
     if (rows.length === 0) {
@@ -59,12 +59,28 @@ async function authHook(request, reply) {
     pool.query('UPDATE api_keys SET last_used_at = NOW() WHERE id = $1', [row.id]).catch(() => {});
   }
   request.apiKey = row;
-  request.auth = { type: 'key', app_id: row.app_id, key_id: row.id, key_hash: keyHash.slice(0, 16) };
+  request.auth = { type: 'key', app_id: row.app_id, key_id: row.id, key_hash: keyHash.slice(0, 16), kind: row.kind || 'app' };
 
-  // Rollout switch: once every build uses install tokens, raw keys only register.
-  if (process.env.READS_REQUIRE_INSTALL_TOKEN === '1' && !request.routeOptions?.config?.allowApiKey) {
+  // Rollout switch: once every build uses install tokens, APP keys (baked into
+  // builds) may only register. SERVER keys (CMS, worker, integrations —
+  // api_keys.kind = 'server') are unaffected.
+  if (request.auth.kind !== 'server' && !request.routeOptions?.config?.allowApiKey && await readsRequireInstallToken()) {
     return reply.code(401).send({ error: 'Use an install token (POST /v2/auth/register)', code: 'INSTALL_TOKEN_REQUIRED' });
   }
+}
+
+// The switch lives in Redis (config:reads_require_install_token = "1") so it can
+// be flipped without a deploy or an env edit; env var is the fallback. Cached 30 s.
+let switchCache = { at: 0, on: false };
+async function readsRequireInstallToken() {
+  if (Date.now() - switchCache.at < 30000) return switchCache.on;
+  let on = process.env.READS_REQUIRE_INSTALL_TOKEN === '1';
+  try {
+    const v = await redis.get('config:reads_require_install_token');
+    if (v != null) on = v === '1';
+  } catch { /* keep env value */ }
+  switchCache = { at: Date.now(), on };
+  return on;
 }
 
 module.exports = authHook;
