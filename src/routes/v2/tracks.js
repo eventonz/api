@@ -66,9 +66,14 @@ async function v2TracksRoutes(app) {
   // must too. Scoped to this plugin: anything not application/json is read as
   // a string and parsed as JSON; unparseable bodies arrive as { __raw } so the
   // handler can log the rejection against the race instead of a bare 400.
+  // RaceResult renders an empty expression as nothing, so a start crossing
+  // arrives as ..."split_speed":,"evento_created":true — invalid JSON. Repair
+  // `"key":,` / `"key":}` to null before parsing (the old CF endpoint coped).
+  const repair = (text) => text.replace(/("\s*:\s*)(?=[,}\]])/g, '$1null');
   const parseLoose = (req, body, done) => {
-    const text = Buffer.isBuffer(body) ? body.toString('utf8') : String(body || '');
-    try { done(null, JSON.parse(text)); } catch { done(null, { __raw: text }); }
+    const text = (Buffer.isBuffer(body) ? body.toString('utf8') : String(body || '')).trim();
+    try { return done(null, JSON.parse(text)); } catch { /* try repaired */ }
+    try { return done(null, JSON.parse(repair(text))); } catch { done(null, { __raw: text }); }
   };
   app.addContentTypeParser('*', { parseAs: 'buffer' }, parseLoose);
   for (const ct of ['text/plain', 'text/html', 'application/x-www-form-urlencoded', 'application/octet-stream']) {
@@ -91,7 +96,7 @@ async function v2TracksRoutes(app) {
     if (!races.length) return reply.code(400).send({ msg: 'Race not found' });
 
     if (!isValidJsonBody(request.body) || request.body.__raw !== undefined) {
-      const raw = String(request.body?.__raw ?? '').slice(0, 200);
+      const raw = String(request.body?.__raw ?? '').slice(0, 400);
       for (const r of races) raceLog(r.id, 'error', `push received but body is not JSON (${request.headers['content-type'] || 'no content-type'}): ${raw || '<empty>'}`);
       return reply.code(400).send({ msg: 'Body must be valid JSON' });
     }
