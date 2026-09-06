@@ -299,7 +299,10 @@ function parseFeedBody(body) {
   const athletes = [];
   for (const row of rows) {
     if (!row || row.id == null || row.id === '') continue;
-    athletes.push({ bib: row.bib, id: row.id, splits: parseSplitsColumn(row.splits) });
+    const raw = String(row.splits || '');
+    const splits = parseSplitsColumn(raw);
+    // Non-activated participants come back masked with underscores → unreadable.
+    athletes.push({ bib: row.bib, id: row.id, splits, corrupt: splits.length === 0 && raw.length > 24 });
   }
   return athletes;
 }

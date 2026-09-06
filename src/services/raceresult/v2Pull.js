@@ -39,13 +39,15 @@ async function pullV2Race(v2RaceId) {
   if (!listName && !feedUrl) throw new Error(`v2 race ${v2RaceId} has no provisioned feed — run provision first`);
 
   const t0 = Date.now();
-  let athletesN = 0, records = 0, bytes = 0, contests = 0;
+  let athletesN = 0, records = 0, bytes = 0, contests = 0, corrupt = 0;
 
   const writeChunk = async (athletes) => {
     let pipeline = redis.pipeline();
     let inChunk = 0;
     for (const a of athletes) {
-      athletesN++; records += a.splits.length;
+      athletesN++;
+      if (a.corrupt) { corrupt++; continue; } // unreadable render → keep cached data
+      records += a.splits.length;
       pipeline.set(
         `redis_splits:${v2RaceId}:athlete:${a.id}`,
         JSON.stringify({ bib: a.bib, splits: a.splits }),
@@ -92,6 +94,7 @@ async function pullV2Race(v2RaceId) {
     raceId: v2RaceId,
     athletes: athletesN,
     records,
+    corrupt,
     bytes,
     contests,
     ms: { fetch: tFetch, total: Date.now() - t0 },
