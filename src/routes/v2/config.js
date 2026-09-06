@@ -1,4 +1,7 @@
 const { platformRacesForEvent } = require('../../services/v2bridge');
+const pool = require('../../config/database');
+
+const CDN = process.env.SPACES_CDN || 'https://evento-events.syd1.cdn.digitaloceanspaces.com';
 
 /**
  * GET /v2/config/:event_id — the platform config document (/v1/config) for a
@@ -19,7 +22,13 @@ async function v2ConfigRoutes(app) {
   }, async (request, reply) => {
     const races = await platformRacesForEvent(request.params.event_id);
     const race = races.find((r) => r.platform_race_id);
-    if (!race) return reply.code(404).send({ error: 'No platform race for this event' });
+    // V2-native event (worker-fed, no platform race): build the document from
+    // the v2 tables instead of bridging.
+    if (!race) {
+      const doc = await nativeConfig(request.params.event_id);
+      if (!doc) return reply.code(404).send({ error: 'Event not found' });
+      return reply.send(doc);
+    }
     const qs = request.query?.hash ? `?hash=${encodeURIComponent(request.query.hash)}` : '';
     const res = await app.inject({
       method: 'GET',
@@ -35,6 +44,53 @@ async function v2ConfigRoutes(app) {
     try { doc = JSON.parse(res.body); } catch { return reply.send(res.body); }
     return reply.send(rewriteV1Urls(doc, request.params.event_id, race.platform_race_id));
   });
+}
+
+/**
+ * Config for a V2-native event: the parts of the platform document the app
+ * reads — tracking (one path per contest that has a course; contests sharing a
+ * course repeat the same geojson URL and carry course_id so the app can draw
+ * it once), athletes and athlete_details URLs on /v2.
+ */
+async function nativeConfig(eventId) {
+  const { rows: ev } = await pool.query('SELECT id, event_json FROM v2.events WHERE id = $1', [eventId]);
+  if (!ev.length) return null;
+  const { rows: paths } = await pool.query(
+    `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale,
+            k.id AS course_id, k.name AS course_name, k.is_tracking AS course_tracking,
+            EXTRACT(EPOCH FROM k.updated_at)::bigint AS updated
+       FROM v2.contests c
+       JOIN v2.races r ON r.id = c.race_id AND r.event_id = $1
+       JOIN v2.courses k ON k.id = c.course_id
+      ORDER BY r.id, c.sort_order, c.name`,
+    [eventId]
+  );
+  const v2 = 'https://eventoapi.com/v2';
+  const doc = {
+    event_id: eventId,
+    source: 'v2',
+    athletes: { url: `${v2}/athletes/${eventId}`, avatar: 'mixed', show_athletes: true },
+    athlete_details: { url: `${v2}/splits/${eventId}?bib=#{number}&id=#{id}&contest=#{contest}` },
+  };
+  if (paths.length) {
+    doc.tracking = {
+      update_freq: 30,
+      data: `${v2}/tracking/${eventId}`,
+      map_style: 'road',
+      paths: paths.map((p) => ({
+        geojson: `${CDN}/events/${eventId}/courses/${p.course_id}.geojson`,
+        name: `p_${p.contest_id}`,
+        contest: String(p.contest_id),
+        contest_name: p.contest_name,
+        course_id: Number(p.course_id),
+        course_name: p.course_name,
+        is_tracking: p.is_tracking === true,
+        updated: Number(p.updated) || 0,
+        ...(p.elevation_y_scale != null && +p.elevation_y_scale > 0 ? { elevation_y_scale: +p.elevation_y_scale } : {}),
+      })),
+    };
+  }
+  return doc;
 }
 
 /** Default eventoapi /v1 URLs (keyed on the platform race id) → the /v2
