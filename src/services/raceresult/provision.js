@@ -302,7 +302,7 @@ function parseFeedBody(body) {
     const raw = String(row.splits || '');
     const splits = parseSplitsColumn(raw);
     // Non-activated participants come back masked with underscores → unreadable.
-    athletes.push({ bib: row.bib, id: row.id, splits, corrupt: splits.length === 0 && raw.length > 24 });
+    athletes.push({ bib: row.bib, id: row.id, splits, ...(splits.length === 0 && raw.length > 24 ? { corrupt: true } : {}) });
   }
   return athletes;
 }
