@@ -15,6 +15,8 @@ require('dotenv').config();
 const RR = 'https://events.raceresult.com';
 const SOURCE_EVENT = 381218;                 // Test-Event-2026 (owned by the Evento user) — read only (copyOf)
 const TEST_NAME = 'Evento Pipeline Test';
+// The only event this script will ever write raw data into. Hard-coded on purpose.
+const TEST_EVENT_ID = '421131';
 
 async function login() {
   const key = process.env.RR_TEST_APIKEY;
@@ -85,8 +87,7 @@ function toSeconds(hms) {
 }
 
 async function crossing(H, id, bib, timingPoint, hms) {
-  const ev = await info(H, id);
-  if (ev?.EventName !== TEST_NAME) throw new Error(`refusing: event ${id} is "${ev?.EventName}", not the test event`);
+  if (String(id) !== TEST_EVENT_ID) throw new Error(`refusing: crossings may only be added to test event ${TEST_EVENT_ID}`);
   const now = new Date();
   const time = hms ? toSeconds(hms) : now.getUTCHours() * 3600 + now.getUTCMinutes() * 60 + now.getUTCSeconds();
   await call(H, eventApi(id, 'rawdata/addmanual'), { timingPoint, bib, time, addT0: false });

@@ -1,7 +1,7 @@
 /**
  * Per-race activity log in Redis — what the CMS shows on the event Overview
  * (Live timing → Activity). One LIST per race, newest first, capped, expiring
- * two weeks after the last entry.
+ * one week after the last entry.
  *
  *   race:log:{race_id}  → JSON { at, kind, msg, by }
  *
@@ -11,7 +11,7 @@ const os = require('os');
 const redis = require('../config/redis');
 
 const CAP = 500;
-const TTL = 14 * 24 * 3600;
+const TTL = 7 * 24 * 3600;
 const ID = `${os.hostname()}:${process.pid}`;
 
 function raceLog(raceId, kind, msg) {
