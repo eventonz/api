@@ -1,4 +1,5 @@
-const { buildTracking } = require('../../services/tracking');
+const { buildTracking, buildTrackingV2 } = require('../../services/tracking');
+const pool = require('../../config/database');
 const { platformRacesForEvent } = require('../../services/v2bridge');
 
 /**
@@ -40,12 +41,24 @@ async function v2TrackingRoutes(app) {
     const merged = [];
     let lastMeta = null;
 
+    // Worker-fed (V2-native) races take precedence: their live_state is the
+    // source of truth and their cache is keyed on the v2 race id.
+    const { rows: states } = await pool.query(
+      "SELECT id, COALESCE(live_state,'idle') AS live_state FROM v2.races WHERE event_id = $1",
+      [event_id]
+    );
+    const v2Live = new Set(states.filter((r) => ['armed', 'live', 'finalising', 'done'].includes(r.live_state)).map((r) => String(r.id)));
+
     for (const race of races) {
-      if (!race.platform_race_id) continue;
-      const { status, body } = await buildTracking({
-        raceId: Number(race.platform_race_id),
-        tracks,
-      });
+      let result;
+      if (v2Live.has(String(race.id))) {
+        result = await buildTrackingV2({ v2RaceId: race.id, eventId: event_id, tracks });
+      } else if (race.platform_race_id) {
+        result = await buildTracking({ raceId: Number(race.platform_race_id), tracks });
+      } else {
+        continue;
+      }
+      const { status, body } = result;
       if (status !== 200) continue;
       lastMeta = body;
       for (const t of (body.tracks || [])) {
