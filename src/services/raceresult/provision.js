@@ -262,19 +262,44 @@ async function provisionRace(v2RaceId, opts = {}) {
  * dropped; a splits string that fails to parse throws so the caller reports
  * a broken feed rather than silently serving partial data.
  */
+/**
+ * The per-athlete `splits` column is a JSON array rendered by RaceResult
+ * expressions. For contests with no timing data yet RR has been seen to emit
+ * a mangled sentinel — `[{"_":1}]`, `[{"s":1}_` — so parse strictly first and
+ * fall back to scanning out each top-level {...} object and parsing those
+ * individually. Anything without an rr_id (sentinels, garbage) is dropped.
+ */
+function parseSplitsColumn(str) {
+  const text = String(str || '').trim();
+  if (!text) return [];
+  try {
+    const arr = JSON.parse(text);
+    if (Array.isArray(arr)) return arr.filter((s) => s && typeof s === 'object' && s.rr_id != null);
+  } catch { /* fall through to the tolerant scan */ }
+  const out = [];
+  let depth = 0, start = -1, inStr = false, esc = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inStr) { if (esc) esc = false; else if (ch === '\\') esc = true; else if (ch === '"') inStr = false; continue; }
+    if (ch === '"') { inStr = true; continue; }
+    if (ch === '{') { if (depth++ === 0) start = i; }
+    else if (ch === '}') {
+      if (--depth === 0 && start >= 0) {
+        try { const o = JSON.parse(text.slice(start, i + 1)); if (o && o.rr_id != null) out.push(o); } catch { /* skip */ }
+        start = -1;
+      }
+    }
+  }
+  return out;
+}
+
 function parseFeedBody(body) {
-  const rows = JSON.parse(body); // throws → caller reports
+  const rows = JSON.parse(body);
   if (!Array.isArray(rows)) throw new Error('feed did not return a JSON array');
   const athletes = [];
   for (const row of rows) {
     if (!row || row.id == null || row.id === '') continue;
-    const splits = JSON.parse(row.splits || '[]');
-    if (!Array.isArray(splits)) throw new Error('splits column is not a JSON array');
-    athletes.push({
-      bib: row.bib,
-      id: row.id,
-      splits: splits.filter((s) => s && !s.s),
-    });
+    athletes.push({ bib: row.bib, id: row.id, splits: parseSplitsColumn(row.splits) });
   }
   return athletes;
 }
