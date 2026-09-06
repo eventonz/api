@@ -20,6 +20,7 @@
 
 const pool  = require('../../config/database');
 const redis = require('../../config/redis');
+const { raceLog } = require('../../services/raceLog');
 
 const QUEUE_KEY   = 'ingest_queue';
 const LOOKUP_TTL  = 30; // seconds — race state cache; a Stop Live lands within this
@@ -78,6 +79,7 @@ async function v2TracksRoutes(app) {
 
     const live = races.filter(acceptsData);
     if (!live.length) {
+      for (const r of races) raceLog(r.id, 'push', `received while ${r.live_state} — ignored (race not live)`);
       return reply.code(202).send({ message: 'Race not accepting data' });
     }
 
@@ -89,6 +91,8 @@ async function v2TracksRoutes(app) {
       payload: request.body,
     }));
     await redis.lpush(QUEUE_KEY, ...jobs);
+    const n = Array.isArray(request.body) ? request.body.length : 1;
+    for (const r of live) raceLog(r.id, 'push', `received ${n} record${n === 1 ? '' : 's'} from RaceResult → queued`);
 
     return reply.code(202).send({ message: 'Queued', races: live.length });
   });

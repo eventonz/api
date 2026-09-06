@@ -19,6 +19,7 @@ const crypto = require('crypto');
 const timerAuth = require('../../plugins/timer-auth');
 const { provisionRace, splitsChanged, resolveRace, apiKeyForRace } = require('../../services/raceresult/provision');
 const { pullV2Race } = require('../../services/raceresult/v2Pull');
+const redis = require('../../config/redis');
 
 const raceIdSchema = {
   params: {
@@ -114,6 +115,15 @@ async function v2RaceResultRoutes(app) {
       return reply.code(502).send({ error: err.message });
     }
   };
+
+  /** GET /v2/raceresult/log/:race_id?limit=100 — the race's activity log (newest first). */
+  app.get('/log/:race_id', { schema: raceIdSchema }, async (request, reply) => {
+    const raceId = Number(request.params.race_id);
+    const limit = Math.min(Math.max(Number(request.query?.limit) || 100, 1), 500);
+    const raw = await redis.lrange(`race:log:${raceId}`, 0, limit - 1);
+    const entries = raw.map((x) => { try { return JSON.parse(x); } catch { return null; } }).filter(Boolean);
+    return reply.code(200).send({ race_id: raceId, entries });
+  });
 
   app.post('/provision/:race_id', { schema: raceIdSchema }, provisionHandler);
   app.get('/provision/:race_id/status', { schema: raceIdSchema }, statusHandler);
