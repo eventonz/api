@@ -21,7 +21,7 @@ async function v2OpsRoutes(app) {
     const workers = [];
     let cursor = '0';
     do {
-      const [next, keys] = await redis.scan(cursor, 'MATCH', 'worker:alive:*', 'COUNT', 100);
+      const [next, keys] = await redis.scan(cursor, 'MATCH', 'worker:alive:*', 'COUNT', 5000);
       cursor = next;
       if (keys.length) {
         const vals = await redis.mget(...keys);
