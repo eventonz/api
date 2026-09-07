@@ -44,7 +44,11 @@ async function authHook(request, reply) {
   let row = null;
   const cached = await redis.get(cacheKey).catch(() => null);
   if (cached === 'invalid') return reply.code(401).send({ error: 'Invalid API key' });
-  if (cached && cached !== 'valid') { try { row = JSON.parse(cached); } catch { row = null; } }
+  if (cached && cached !== 'valid') {
+    try { row = JSON.parse(cached); } catch { row = null; }
+    // A cached row from before api_keys.kind existed must not decide the switch.
+    if (row && row.kind === undefined) row = null;
+  }
   if (!row) {
     const { rows } = await pool.query(
       'SELECT id, name, app_id, kind FROM api_keys WHERE key_hash = $1 AND active = TRUE',
