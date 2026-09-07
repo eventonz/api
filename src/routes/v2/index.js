@@ -21,6 +21,7 @@ async function v2Routes(app) {
       key: (req) => req.auth?.type === 'install' ? `i:${req.auth.install_id}` : `k:${req.auth?.key_hash || 'anon'}`,
     }));
     authed.register(require('./auth'), { prefix: '/auth' });
+    authed.register(require('./ops'), { prefix: '/ops' });
     authed.register(require('./athletes'), { prefix: '/athletes' });
     authed.register(require('./splits'), { prefix: '/splits' });
     authed.register(require('./tracking'), { prefix: '/tracking' });

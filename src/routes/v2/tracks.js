@@ -103,7 +103,12 @@ async function v2TracksRoutes(app) {
 
     const live = races.filter(acceptsData);
     if (!live.length) {
-      for (const r of races) raceLog(r.id, 'push', `received while ${r.live_state} — ignored (race not live)`);
+      const bucket = Math.floor(Date.now() / 600000);
+      for (const r of races) {
+        raceLog(r.id, 'push', `received while ${r.live_state} — ignored (race not live)`);
+        // Counted so the worker can warn admins "RaceResult is pushing but nobody pressed Go live".
+        redis.incr(`ops:pushes_ignored:${r.id}:${bucket}`).then(() => redis.expire(`ops:pushes_ignored:${r.id}:${bucket}`, 1500)).catch(() => {});
+      }
       return reply.code(202).send({ message: 'Race not accepting data' });
     }
 
