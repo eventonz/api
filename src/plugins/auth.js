@@ -68,7 +68,10 @@ async function authHook(request, reply) {
   // Rollout switch: once every build uses install tokens, APP keys (baked into
   // builds) may only register. SERVER keys (CMS, worker, integrations —
   // api_keys.kind = 'server') are unaffected.
-  if (request.auth.kind !== 'server' && !request.routeOptions?.config?.allowApiKey && await readsRequireInstallToken()) {
+  // The Flutter (v1) app only ever carries its baked-in app key and has no
+  // install-token flow, so the switch applies to /v2 reads only.
+  const isV1 = (request.routeOptions?.url || request.url || '').startsWith('/v1/');
+  if (!isV1 && request.auth.kind !== 'server' && !request.routeOptions?.config?.allowApiKey && await readsRequireInstallToken()) {
     return reply.code(401).send({ error: 'Use an install token (POST /v2/auth/register)', code: 'INSTALL_TOKEN_REQUIRED' });
   }
 }
