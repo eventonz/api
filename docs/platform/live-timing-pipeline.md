@@ -82,8 +82,8 @@ flagged `corrupt` and the pull **leaves that athlete's cached data untouched**.
 | State | Set by | Worker behaviour |
 |---|---|---|
 | `idle` | default; CMS Schedule sets `live_from`/`live_until` | If `live_from` within 10 min → arms |
-| `armed` | worker (10 min before `live_from`) | Drift check → re-provision if splits moved; proving pull; pull every 150 s |
-| `live` | worker at `live_from`; **CMS Go live now** (sets `live_from=now`, `live_until=null`) | Pull every 150 s; accepts exporter pushes |
+| `armed` | worker (10 min before `live_from`) | Drift check → re-provision if splits moved; proving pull; pull every 150 s; startlist refresh every 15 min |
+| `live` | worker at `live_from`; **CMS Go live now** (sets `live_from=now`, `live_until=null`) | Pull every 150 s; startlist refresh every 15 min; accepts exporter pushes |
 | `finalising` | **CMS Stop live** (sets `live_until=now`); worker at `live_until`+3 h; ops auto-stop at 36 h | Final pull → upsert `v2.rr_results` → delete rows not in the final pull → Redis keys TTL 1 h → `done` |
 | `done` | worker | Reads fall back to `v2.rr_results`. Go live / Schedule allowed again. |
 | `error` | worker after 3 consecutive pull failures | Alert; CMS "Clear error" → idle |
@@ -91,8 +91,18 @@ flagged `corrupt` and the pull **leaves that athlete's cached data untouched**.
 Ingest accepts pushes only in `armed`/`live`/`finalising` (`/v2/tracks` checks a
 30 s Redis cache of race states). Tracking answers in those states and `done`.
 
-Scheduler constants (env): `PULL_INTERVAL_S=150`, `ARM_BEFORE_MIN=10`,
+Scheduler constants (env): `PULL_INTERVAL_S=150`, `ARM_BEFORE_MIN=10`, `ATHLETE_RELOAD_MIN=15`,
 `FINALISE_GRACE_H=3`, `MAX_LIVE_H=20` (warn), `AUTO_STOP_H=36` (auto-finalise).
+
+**Startlist refresh** (worker `src/lib/athletes.js`): while `armed`/`live`, every
+`ATHLETE_RELOAD_MIN` (due against `v2.races.entrants_last_loaded`, so a CMS load
+counts) the worker fetches the whole event startlist in ONE Org API call, diffs it
+in memory against the race's `v2.athletes` and writes only new or changed rows —
+identity `athlete_id` (RR pid) else bib; names/bib/contest refreshed, club/photo/
+members/external_id kept, nothing deleted. Run Melbourne (27k): ~20 s, 0 writes
+when unchanged. A masked (non-activated) startlist (>10 % underscored rows) is
+refused and logged as `error`; a failure backs off one interval
+(`schedule:athletesfail:{race}`). Logged as kind `athletes`.
 
 ## 4. Pull (worker `src/lib/rrFeed.js`, API `services/raceresult/v2Pull.js`)
 
@@ -165,7 +175,7 @@ Participant` webhooks in the RR file pointing at
 ## 9. Activity log and alerts
 
 Every stage logs to Redis `race:log:{race_id}` (newest first, 50 000 cap, 7 days):
-kinds `state · pull · list · finalise · push · webhook · notify · error`. CMS:
+kinds `state · pull · list · athletes · finalise · push · webhook · notify · error`. CMS:
 Overview card shows the latest line, `/events/{event}/log` is the full page with
 kind filters (API `GET /v2/raceresult/log/{race_id}`). Worker `lib/ops.js` raises
 admin alerts (see operations.md).
