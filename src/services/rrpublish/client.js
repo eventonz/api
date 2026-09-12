@@ -95,14 +95,18 @@ async function getOverrides(rrId) {
   }
   let overrides = null;
   try {
+    // v2 CMS overrides (keyed on the RR event id) win; v1's per-race row is the fallback.
     const { rows } = await pool.query(
-      `SELECT d.overrides
-       FROM rr_display_config d
-       JOIN races r ON r.id = d.race_id
-       WHERE r.rr_eventid = $1
-       ORDER BY d.updated_at DESC
+      `SELECT overrides FROM (
+         SELECT d.overrides, 0 AS pri, d.updated_at FROM v2.rr_display_config d WHERE d.rr_eventid = $1
+         UNION ALL
+         SELECT d.overrides, 1 AS pri, d.updated_at FROM rr_display_config d
+           JOIN races r ON r.id = d.race_id WHERE r.rr_eventid = $1
+       ) x
+       WHERE x.overrides IS NOT NULL AND x.overrides <> '{}'::jsonb
+       ORDER BY x.pri, x.updated_at DESC
        LIMIT 1`,
-      [rrId]
+      [Number(rrId)]
     );
     if (rows.length > 0 && rows[0].overrides && Object.keys(rows[0].overrides).length > 0) {
       overrides = rows[0].overrides;
