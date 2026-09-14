@@ -60,6 +60,8 @@ async function v2RaceObj(eventId) {
       contest_id: key,
       event_descr: rrText(c.name),
       distance: c.distance_km == null ? null : Number(c.distance_km),
+      // CMS Contests page: the ≤5 timing points the app shows first (v2.splits ids).
+      summary_split_ids: (c.summary_split_ids || []).map(Number),
       splits: mine.map((s) => ({
         id: Number(s.id),
         rr_splitid: s.rr_splitid != null && Number(s.rr_splitid) > 0 ? Number(s.rr_splitid) : 0,

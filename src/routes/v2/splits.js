@@ -109,7 +109,21 @@ async function buildFromV2Redis({ v2RaceId, event_id, athleteId, bib, contest })
     (e) => String(e.contest_id) === String(result.livetiming.contest_id)
   );
   const header = buildHeader(result.livetiming, rObj, { bib, athleteId, contest: contestId });
-  return athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header);
+  return withSummarySplits(athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header), evt);
+}
+
+/**
+ * Append the contest's summary timing points (CMS Contests page, ≤5) as a
+ * `summary_splits` item so the app's splits card can show those first and
+ * keep the full list behind "All N timing points". Labels match the Time
+ * table's first column, which is what the app keys splits on.
+ */
+function withSummarySplits(doc, evt) {
+  const ids = new Set((evt?.summary_split_ids || []).map(String));
+  if (!doc?.version2?.items || !ids.size) return doc;
+  const labels = (evt.splits || []).filter((s) => ids.has(String(s.id))).map((s) => s.name).filter(Boolean);
+  if (labels.length) doc.version2.items.push({ type: 'summary_splits', data: { labels } });
+  return doc;
 }
 
 /** Build the athlete-detail document from v2.contests / v2.splits / v2.rr_results. */
@@ -176,7 +190,7 @@ async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
   };
 
   const header = buildHeader(livetiming, raceobj, { bib, athleteId, contest: contestId });
-  return athleteDetailV2.build(livetiming, raceobj, evt.display_settings, header);
+  return withSummarySplits(athleteDetailV2.build(livetiming, raceobj, evt.display_settings, header), evt);
 }
 
 module.exports = v2SplitsRoutes;
