@@ -92,9 +92,9 @@ async function buildRaceObj(whereClause, params) {
     log_tracks:          r.logtracks       == 1,
     log_processed:       r.logprocessed    == 1,
     edition:             r.edition,
-    ss_raceid:           r.ss_raceid,
-    racetec_apikey:      r.racetec_apikey,
-    racetec_baseurl:     r.racetec_baseurl,
+    ss_raceid:           r.ss_raceid       ?? '',
+    racetec_apikey:      r.racetec_apikey  ?? '',
+    racetec_baseurl:     r.racetec_baseurl ?? '',
     rr_results:          r.rr_results      ?? '',
     rr_startlist:        r.rr_startlist    ?? '',
     timer:               r.timer           ?? '',
@@ -119,9 +119,26 @@ async function buildRaceObj(whereClause, params) {
     [r_id]
   );
 
-  raceobj.events = await Promise.all(eventRows.map((ev) => buildEventObj(ev, r_id)));
+  // Deep-coerce null → '' across events/splits/legs/cameras. CF's cfquery
+  // yields '' for SQL NULL and its split transformers read e.g.
+  // events[i].splits[j].split_type directly off the shared Redis object;
+  // a JSON null there throws "the value from key [SPLIT_TYPE] is NULL".
+  raceobj.events = (await Promise.all(eventRows.map((ev) => buildEventObj(ev, r_id))))
+    .map(nullsToEmpty);
 
   return raceobj;
+}
+
+/** Recursively replace null/undefined with '' in plain objects and arrays. */
+function nullsToEmpty(value) {
+  if (value == null) return '';
+  if (Array.isArray(value)) return value.map(nullsToEmpty);
+  if (typeof value === 'object' && Object.getPrototypeOf(value) === Object.prototype) {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) out[k] = nullsToEmpty(v);
+    return out;
+  }
+  return value;
 }
 
 async function buildEventObj(ev, r_id) {
