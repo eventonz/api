@@ -185,18 +185,22 @@ async function buildEventObj(ev, r_id) {
 
   return {
     id:               ev.event_id,
-    event_code:       ev.event_code,
+    // String columns are coerced null → '' to match what CF's cfquery puts in
+    // the shared raceobj:race:{r_id} cache. CF's split transformers read
+    // events[i].fourth_col / .medal / .cert_link etc. directly and throw
+    // "the value from key [FOURTH_COL] is NULL" when node-api cached a null.
+    event_code:       ev.event_code   ?? '',
     contest_id:       ev.contest_id,
-    event_descr:      ev.eventdescr,
+    event_descr:      ev.eventdescr   ?? '',
     distance:         ev.distance,
-    split_script:     ev.split_script,
+    split_script:     ev.split_script ?? '',
     splits,
     legs,
     live_cameras,
-    racedata:         ev.race_data,
-    medal:            ev.medal_url,
-    photo_link:       ev.photo_link,
-    cert_link:        ev.cert_link,
+    racedata:         ev.race_data    ?? '',
+    medal:            ev.medal_url    ?? '',
+    photo_link:       ev.photo_link   ?? '',
+    cert_link:        ev.cert_link    ?? '',
     use_net_times:    ev.use_net_times       == 1,
     await_at_next_split: ev.await_at_next_split == 1,
     // If use_tracking_path is blank, default to contest_id (matches CF).
@@ -208,8 +212,8 @@ async function buildEventObj(ev, r_id) {
     is_tracking:      ev.is_tracking    == 1,
     showRank:         ev.showrank       == 1,  // PG lowercases
     showPace:         ev.showpace       == 1,
-    fourth_col:       ev.fourth_col,
-    contest_type:     ev.contest_type,
+    fourth_col:       ev.fourth_col   ?? '',
+    contest_type:     ev.contest_type ?? '',
     display_settings: {
       type:           ev.ad_display_type?.trim()   || 'journey',
       wide:           !!ev.ad_wide,
