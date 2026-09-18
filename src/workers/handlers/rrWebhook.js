@@ -2,8 +2,8 @@
  * Worker handler for endpoint `rr_webhook`.
  *
  * Mirrors the legacy inline behavior previously in src/routes/v1/rr_webhook.js:
- *   1. Apply bib limit
- *   2. Upsert athlete (insert or update by race_id + athlete_id)
+ *   1. Apply bib limit + race edition
+ *   2. Atomic upsert (ON CONFLICT race_id + athlete_id), edition on insert and update
  *   3. Write Redis observation entries
  *
  * Runs entirely from queued jobs — no HTTP response involved.
@@ -24,42 +24,43 @@ async function handleRrWebhook(race_id, body) {
   const lastName    = String(values.LASTNAME  ?? '');
   const fullName    = `${firstName} ${lastName}`.trim();
   const rawBib      = parseInt(values.BIB, 10) || 0;
-  const contestId   = values['CONTEST.ID']   ?? null;
-  const contestName = values['CONTEST.NAME'] ?? '';
 
-  // 1. Bib limit — bibs above the limit treated as dynamic placeholders
-  const { rows: limitRows } = await pool.query(
-    'SELECT raceno_bib_limit FROM races WHERE id = $1 LIMIT 1',
+  // Missing contest → 99 with a placeholder name (mirrors the CF handler).
+  const contestId   = values['CONTEST.ID'] != null ? values['CONTEST.ID'] : 99;
+  const contestName = contestId === 99
+    ? 'No Contest assigned'
+    : String(values['CONTEST.NAME'] ?? '');
+
+  // 1. Race config — bib limit + edition. Bibs above the limit are dynamic
+  //    placeholders and stored blank; edition falls back to the current year.
+  const { rows: raceRows } = await pool.query(
+    'SELECT raceno_bib_limit, edition FROM races WHERE id = $1 LIMIT 1',
     [race_id]
   );
-  const bibLimit = limitRows.length > 0 && limitRows[0].raceno_bib_limit != null
-    ? parseInt(limitRows[0].raceno_bib_limit, 10)
-    : null;
-  const bibNo = (bibLimit !== null && rawBib > bibLimit) ? '' : String(values.BIB ?? '');
+  const race     = raceRows[0] ?? {};
+  const bibLimit = race.raceno_bib_limit != null ? parseInt(race.raceno_bib_limit, 10) : null;
+  const bibNo    = (bibLimit !== null && rawBib > bibLimit) ? '' : String(values.BIB ?? '');
+  const edition  = race.edition != null && String(race.edition).trim() !== ''
+    ? String(race.edition)
+    : String(new Date().getFullYear());
 
-  // 2. Upsert athlete
-  const { rows: existing } = await pool.query(
-    'SELECT id FROM athletes WHERE race_id = $1 AND athlete_id = $2 LIMIT 1',
-    [race_id, athleteId]
+  // 2. Atomic upsert on uq_athletes_race_athlete (race_id, athlete_id) —
+  //    edition is written on both insert and update, like the CF handler.
+  const { rows } = await pool.query(
+    `INSERT INTO athletes (race_id, athlete_id, raceno, name, first_name, last_name, contest, info, edition)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+     ON CONFLICT (race_id, athlete_id) DO UPDATE SET
+       name       = EXCLUDED.name,
+       first_name = EXCLUDED.first_name,
+       last_name  = EXCLUDED.last_name,
+       raceno     = EXCLUDED.raceno,
+       contest    = EXCLUDED.contest,
+       info       = EXCLUDED.info,
+       edition    = EXCLUDED.edition
+     RETURNING (xmax = 0) AS inserted`,
+    [race_id, athleteId, bibNo, fullName, firstName, lastName, contestId, contestName, edition]
   );
-
-  let action;
-  if (existing.length > 0) {
-    await pool.query(
-      `UPDATE athletes
-       SET name = $1, first_name = $2, last_name = $3, raceno = $4, contest = $5, info = $6
-       WHERE race_id = $7 AND athlete_id = $8`,
-      [fullName, firstName, lastName, bibNo, contestId, contestName, race_id, athleteId]
-    );
-    action = 'updated';
-  } else {
-    await pool.query(
-      `INSERT INTO athletes (race_id, athlete_id, raceno, name, first_name, last_name, contest, info)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-      [race_id, athleteId, bibNo, fullName, firstName, lastName, contestId, contestName]
-    );
-    action = 'inserted';
-  }
+  const action = rows[0]?.inserted ? 'inserted' : 'updated';
 
   // 3. Observation log
   logWebhookObservation(race_id, { athleteId, bibNo, firstName, lastName, action }).catch(() => {});
