@@ -69,7 +69,7 @@ function mergeSplitsFromConfig(livetiming, raceobj, urlContest) {
         'RaceTime', 'tod', 'leg_time', 'split_time',
         'split_pace', 'split_speed', 'leg_pace', 'leg_speed',
         'overall_place', 'gen_place', 'cat_place',
-        'estTOD', 'estRaceTime',
+        'estTOD', 'estRaceTime', 'anchor_at',
       ]) {
         if (k in live) row[k] = live[k];
       }
