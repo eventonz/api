@@ -44,10 +44,22 @@ function secsToHms(total) {
   return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
-function predictPos(lastDistance, speed, lastSplitTOD, totalDistance, tz) {
-  const nowSecs   = nowInTzSecs(tz);
-  const splitSecs = hmsToSecs(lastSplitTOD);
-  const secsDiff  = nowSecs - splitSecs;
+/**
+ * Seconds since the athlete's last crossing. Exporter-pushed records carry
+ * the server's receive time (anchor_at, UTC) — use that: it needs no clock
+ * agreement between the RaceResult event file and the CMS timezone. Pulled
+ * records only have the split's time of day, compared in the race timezone.
+ * Never negative (a clock/timezone mismatch must not drag the marker back).
+ */
+function secsSinceCrossing(t, tz) {
+  if (t.anchor_at) {
+    const at = Date.parse(t.anchor_at);
+    if (!Number.isNaN(at)) return Math.max(0, (Date.now() - at) / 1000);
+  }
+  return Math.max(0, nowInTzSecs(tz) - hmsToSecs(t.splittod));
+}
+
+function predictPos(lastDistance, speed, secsDiff, totalDistance) {
   const currentDistance = (Number(speed) || 0) * (secsDiff / 3600) + (Number(lastDistance) || 0);
   let pct = (currentDistance / (Number(totalDistance) || 1)) * 100;
   if (pct >= 100) pct = 100;
@@ -55,14 +67,11 @@ function predictPos(lastDistance, speed, lastSplitTOD, totalDistance, tz) {
   return Number(pct.toFixed(2));
 }
 
-function calculateLiveRaceTime(splittod, racetime, tz) {
+function calculateLiveRaceTime(racetime, secsDiff) {
   try {
     if (!racetime || String(racetime).trim() === '') {
       return { live_racetime: '', is_counting: false };
     }
-    const nowSecs   = nowInTzSecs(tz);
-    const splitSecs = hmsToSecs(splittod);
-    const secsDiff  = nowSecs - splitSecs;
     if (secsDiff < 0) {
       return { live_racetime: racetime, is_counting: false };
     }
@@ -191,7 +200,8 @@ function renderTracks(latest, race, tz) {
       continue;
     }
 
-    let latestPosition = predictPos(t.distance, t.speed, t.splittod, t.course_distance, tz);
+    const sinceCrossing = secsSinceCrossing(t, tz);
+    let latestPosition = predictPos(t.distance, t.speed, sinceCrossing, t.course_distance);
     // Never behind the last mat actually crossed (guards clock skew, simulated
     // or replayed times, and a missing/zero speed).
     if (!(latestPosition >= Number(t.percent_course))) latestPosition = Number(t.percent_course) || 0;
@@ -221,7 +231,7 @@ function renderTracks(latest, race, tz) {
     const trackRacetime = t.racetime || '';
     const liveTimeData = latestPosition >= 100
       ? { live_racetime: trackRacetime, is_counting: false }
-      : calculateLiveRaceTime(t.splittod, trackRacetime, tz);
+      : calculateLiveRaceTime(trackRacetime, sinceCrossing);
 
     out.push({
       track:        String(t.athlete_id),
@@ -339,6 +349,7 @@ async function getTracksFromV2RedisSplits(athleteIds, v2RaceId, raceobj) {
       racetime: rec.time ?? '', splitname: cfgSplits[i].name, splitracetime: rec.time ?? '',
       percent_course: pct, course_distance: total, speed, isgps: false,
       next_splitpercent: nextPct, contest_id: ev.contest_id, splittod: rec.tod ?? '', live_camera_url: '',
+      anchor_at: rec.pushed_at || '',
     });
   }
   return out;
