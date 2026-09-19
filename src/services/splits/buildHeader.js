@@ -105,18 +105,32 @@ function buildSummaryItem(livetiming, raceobj) {
   } else if (isStarted && livetiming.splits.length) {
     let lastTOD = '';
     let lastRaceTime = '';
+    let lastAnchor = '';
     for (const sp of livetiming.splits) {
       const hasTOD      = sp.tod      && !String(sp.tod).startsWith('*');
       const hasRaceTime = sp.RaceTime && !String(sp.RaceTime).startsWith('*');
       if (hasTOD && hasRaceTime) {
         lastTOD = sp.tod;
         lastRaceTime = sp.RaceTime;
+        lastAnchor = sp.anchor_at || '';
       } else if (hasTOD && !hasRaceTime && lastTOD === '' && lastRaceTime === '') {
         lastTOD = sp.tod;
         lastRaceTime = '00:00:00';
+        lastAnchor = sp.anchor_at || '';
       }
     }
-    if (lastTOD && lastRaceTime) {
+    // Exporter-pushed crossings carry the server receive time: race time at
+    // the mat + seconds since we received it. No dependence on the RaceResult
+    // event clock matching the race timezone (the 19 Sep rehearsal ran 5 h off).
+    const anchorMs = lastAnchor ? Date.parse(lastAnchor) : NaN;
+    if (lastRaceTime && !Number.isNaN(anchorMs)) {
+      const elapsed = Math.max(0, Math.floor((Date.now() - anchorMs) / 1000));
+      const rt = lastRaceTime.split(':').map(Number).reverse().reduce((acc, v, i) => acc + v * 60 ** i, 0);
+      const total = rt + elapsed;
+      const h = Math.floor(total / 3600), m = Math.floor((total % 3600) / 60), sec = total % 60;
+      liveRaceTime = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+      shouldTick   = true;
+    } else if (lastTOD && lastRaceTime) {
       liveRaceTime = calcLiveRaceTime(lastTOD, lastRaceTime, raceobj.timezone || 'UTC');
       shouldTick   = liveRaceTime !== '--:--:--';
     }

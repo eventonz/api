@@ -51,6 +51,9 @@ function fillFromRecord(row, rec, useNetTimes) {
   // gun-offset variant and reads wrong for wave starts.
   row.RaceTime      = useNetTimes ? (rec.chip || '') : (rec.time || '');
   row.tod           = rec.tod || '';
+  // Server receive time of an exporter push (UTC ISO) — the live clock anchors
+  // on this so the RaceResult event clock and race timezone need not agree.
+  row.anchor_at     = rec.pushed_at || '';
   row.split_pace    = rec.pace || '';
   row.split_speed   = rec.speed || '';
   row.overall_place = rec.rank || '';
