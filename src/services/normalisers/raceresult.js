@@ -33,6 +33,19 @@ function makeReader(rec) {
 const num = (v) => Number(v) || 0;
 const str = (v) => (v == null ? '' : String(v));
 
+// RaceResult's native push formats durations under an hour as "MM:SS"
+// ("25:05" = 25 min 5 s); everything downstream reads "HH:MM:SS", so that
+// became 25 h 5 min. Pad to HH:MM:SS. The Evento exporter formats hh:mm:ss
+// itself, so the Evento path is left alone.
+function padDuration(v) {
+  const t = str(v).trim();
+  if (!t) return t;
+  const parts = t.split(':');
+  if (parts.length === 2) return `00:${t}`;
+  if (parts.length === 3 && parts[0].length === 1) return `0${t}`;
+  return t;
+}
+
 // Ugo's data record (PascalCase) → trackdata
 function normaliseNativeRR(item, raceobj) {
   const get = makeReader(item);
@@ -45,7 +58,7 @@ function normaliseNativeRR(item, raceobj) {
   td.split_id   = rrSplitId > 0 ? rrSplitId : num(get('splitid', 0));
 
   td.tod        = str(get('splittod'));
-  td.race_time  = str(get('splitracetime'));
+  td.race_time  = padDuration(get('splitracetime'));
   td.split_name = str(get('splitname'));
 
   // Start splits always have empty race/gun/chip times — default to 00:00:00
@@ -78,13 +91,13 @@ function normaliseNativeRR(item, raceobj) {
   td.message = str(get('message_en')).trim();
 
   // Ranking and timing detail fields
-  td.split_chip          = str(get('splitchiptime'));
+  td.split_chip          = padDuration(get('splitchiptime'));
   td.overall_rank        = str(get('splitoverallrank'));
   td.gender_rank         = str(get('splitgenderrank'));
   td.agegroup_rank       = str(get('splitagegrouprank'));
   td.split_pace          = str(get('splitpace'));
   td.predicted_tod       = str(get('splitpredictedtod'));
-  td.predicted_race_time = str(get('splitpredictedracetime'));
+  td.predicted_race_time = padDuration(get('splitpredictedracetime'));
 
   return td;
 }
