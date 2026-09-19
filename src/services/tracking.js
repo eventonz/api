@@ -327,7 +327,11 @@ async function getTracksFromV2RedisSplits(athleteIds, v2RaceId, raceobj) {
     const pct = isFinal ? 100 : (total > 0 ? Number(((dist / total) * 100).toFixed(2)) : 0);
     const next = cfgSplits[i + 1];
     const nextPct = (next && total > 0) ? Number(((Number(next.split_distance) / total) * 100).toFixed(2)) : 100;
-    const speed = Number(rec.speed) || Number(cfgSplits[i].default_spd) || 0;
+    // Speed for extrapolation: the timing platform's split speed, else the
+    // CMS default speed of this split or ("auto") the nearest earlier split
+    // that has one — a zero speed would park the marker on the map.
+    let speed = Number(rec.speed) || 0;
+    for (let j = i; j >= 0 && !(speed > 0); j--) speed = Number(cfgSplits[j].default_spd) || 0;
 
     out.push({
       athlete_id: String(athleteIds[k]), raceNo: doc.bib ?? '', distance: dist, name: '',

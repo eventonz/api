@@ -38,7 +38,7 @@ async function v2RaceObj(eventId) {
     ),
     pool.query(
       `SELECT id, race_id, contest_id, name, sort_order, visible, split_type, is_leg,
-              accum_km, percent_course, default_speed, speed_adjust, fixed_elevation,
+              accum_km, percent_course, default_speed, default_speed_kmh, speed_adjust, fixed_elevation,
               send_push, push_type, rr_splitid
          FROM v2.splits WHERE race_id = ANY($1::bigint[]) ORDER BY race_id, contest_id, sort_order, id`,
       [raceIds]
@@ -70,7 +70,10 @@ async function v2RaceObj(eventId) {
         type: s.split_type,
         // NUMERIC 1/0 — athleteDetailV2 does a strict `visible !== 1`.
         visible: s.visible === false ? 0 : 1,
-        default_spd: s.default_speed,
+        // CMS Contests page saves default_speed_kmh; default_speed is the v1 column.
+        default_spd: s.default_speed_kmh != null && Number(s.default_speed_kmh) > 0
+          ? Number(s.default_speed_kmh)
+          : (s.default_speed != null && Number(s.default_speed) > 0 ? Number(s.default_speed) : null),
         push: s.send_push === true,
         percent_course: s.percent_course == null ? null : Number(s.percent_course),
         push_type: s.push_type,
