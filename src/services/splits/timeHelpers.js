@@ -87,6 +87,9 @@ function calcLiveRaceTime(lastSplitTOD, lastSplitRaceTime, raceTimezone) {
   const nowSecs = nowInTzSeconds(raceTimezone);
   let elapsed = nowSecs - todSecs;
   if (elapsed < 0) elapsed += 86400; // midnight cross
+  // A crossing more than 12 h "ago" is a clock/timezone mismatch between the
+  // timing event file and the race, not a runner still out — don't tick.
+  if (elapsed > 43200) return '--:--:--';
   const total = rtSecs + elapsed;
   if (total < 0) return '--:--:--';
   return secondsToRaceTime(total);
