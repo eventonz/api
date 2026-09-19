@@ -232,8 +232,10 @@ function buildTabbedTable(livetiming, ds, raceobj) {
 
     const row = [sp.name];
 
-    // Race Time — never show estimated value
-    row.push(sp.RaceTime && !isStarred(sp.RaceTime) ? sp.RaceTime : '-');
+    // Race Time — the estimate (italic) when the athlete hasn't crossed yet
+    if (sp.RaceTime && !isStarred(sp.RaceTime)) row.push(sp.RaceTime);
+    else if (isEstimate && sp.estRaceTime) row.push('*italic*' + stripStar(sp.estRaceTime));
+    else row.push('-');
 
     // Time of Day
     if (isEstimate) row.push('*italic*' + stripStar(sp.estTOD));

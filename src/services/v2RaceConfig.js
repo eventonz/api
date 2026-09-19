@@ -32,7 +32,8 @@ async function v2RaceObj(eventId) {
   const raceIds = races.map((r) => r.id);
   const [{ rows: contests }, { rows: splits }, { rows: legs }, { rows: ev }] = await Promise.all([
     pool.query(
-      `SELECT race_id, contest_id, name, distance_km, is_tracking, await_at_split, summary_split_ids
+      `SELECT race_id, contest_id, name, distance_km, is_tracking, await_at_split, summary_split_ids,
+              show_pace, show_ranks, use_estimates
          FROM v2.contests WHERE race_id = ANY($1::bigint[]) ORDER BY race_id, sort_order, name`,
       [raceIds]
     ),
@@ -88,15 +89,15 @@ async function v2RaceObj(eventId) {
                        distance: l.distance_m == null ? null : Number(l.distance_m) / 1000 })),
       live_cameras: [],
       medal: null, photo_link: null, cert_link: null,
-      use_net_times: false, use_estimates: false,
+      use_net_times: false, use_estimates: c.use_estimates !== false,
       await_at_next_split: c.await_at_split === true,
       is_tracking: c.is_tracking === true,
       use_tracking_path: key,
-      showRank: true, showPace: true,
+      showRank: c.show_ranks !== false, showPace: c.show_pace !== false,
       contest_type: null,
-      display_settings: { type: 'tabbed_table', wide: false, show_pace: true, show_ranks: true,
+      display_settings: { type: 'tabbed_table', wide: false, show_pace: c.show_pace !== false, show_ranks: c.show_ranks !== false,
                           show_elevation: false, elevation_type: 'altitude', linked_map: '',
-                          use_estimates: false, use_net: false, leg_display: 'plain' },
+                          use_estimates: c.use_estimates !== false, use_net: false, leg_display: 'plain' },
     };
   });
 

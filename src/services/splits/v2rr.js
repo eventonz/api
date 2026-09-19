@@ -61,8 +61,11 @@ function fillFromRecord(row, rec, useNetTimes) {
   row.cat_place     = rec.rank_ag || '';
   if ((rec.predicted || '') !== '') {
     row.estRaceTime = `*${rec.predicted}`;
-    if (row.tod === '') {
-      row.estTOD = `*${rec.predicted}`;
+    // Predicted time of day comes from the list too (predicted_tod, since the
+    // 19 Sep template); older lists only carry the race time — the estimates
+    // pass in transform() derives ToD from the start ToD in that case.
+    if (row.tod === '' && (rec.predicted_tod || '') !== '') {
+      row.estTOD = `*${rec.predicted_tod}`;
       row.tod = row.estTOD;
     }
   }
@@ -191,6 +194,21 @@ async function transform({ v2RaceId, athleteId, raceobj, contest }) {
   }
 
   const contestType = event?.contest_type || 'other';
+  // Lists provisioned before predicted_tod existed only carry the predicted
+  // race time: derive the time of day from any crossed split (ToD − race time
+  // = the athlete's start clock), so estimates still show both.
+  const toSecs = (t) => { const p = String(t || '').split(':').map(Number); return p.some(Number.isNaN) || !p.length ? null : p.reverse().reduce((a, v, i) => a + v * 60 ** i, 0); };
+  const toHms = (n) => { n = ((n % 86400) + 86400) % 86400; const h = Math.floor(n / 3600), m = Math.floor((n % 3600) / 60), s = n % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; };
+  const anchor = livetiming.splits.find((r) => r.tod && !String(r.tod).startsWith('*') && r.RaceTime && !String(r.RaceTime).startsWith('*'));
+  const startClock = anchor ? (toSecs(anchor.tod) ?? null) - (toSecs(anchor.RaceTime) ?? 0) : null;
+  if (startClock != null) {
+    for (const r of livetiming.splits) {
+      if (r.estRaceTime && !r.estTOD && (!r.tod || String(r.tod).startsWith('*'))) {
+        const rt = toSecs(String(r.estRaceTime).replace(/^\*/, ''));
+        if (rt != null) { r.estTOD = '*' + toHms(startClock + rt); r.tod = r.estTOD; }
+      }
+    }
+  }
   return { livetiming, contestType };
 }
 
