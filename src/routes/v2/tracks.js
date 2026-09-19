@@ -27,10 +27,10 @@ const LOOKUP_TTL  = 30; // seconds — race state cache; a Stop Live lands withi
 const ACCEPT_LIVE = new Set(['armed', 'live', 'finalising']);
 
 // rr_eventid → [{ id, live_state, status }] for every v2 race on that RR event.
-async function racesForRrEvent(rrEventId) {
+async function racesForRrEvent(rrEventId, { fresh = false } = {}) {
   const cacheKey = `v2:tracks:rr_event:${rrEventId}`;
   try {
-    const hit = await redis.get(cacheKey);
+    const hit = await (fresh ? Promise.resolve(null) : redis.get(cacheKey));
     if (hit) return JSON.parse(hit);
   } catch { /* fall through to PG */ }
 
@@ -101,7 +101,14 @@ async function v2TracksRoutes(app) {
       return reply.code(400).send({ msg: 'Body must be valid JSON' });
     }
 
-    const live = races.filter(acceptsData);
+    let live = races.filter(acceptsData);
+    if (!live.length) {
+      // The cached lookup can lag a Go live pressed seconds ago (the first
+      // RaceSim/exporter burst lands right after) — confirm against the DB
+      // before dropping anything.
+      races = await racesForRrEvent(rrEventId, { fresh: true });
+      live = races.filter(acceptsData);
+    }
     if (!live.length) {
       const bucket = Math.floor(Date.now() / 600000);
       for (const r of races) {

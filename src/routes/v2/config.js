@@ -69,7 +69,11 @@ async function nativeConfig(eventId) {
   const doc = {
     event_id: eventId,
     source: 'v2',
-    athletes: { url: `${v2}/athletes/${eventId}`, avatar: 'mixed', show_athletes: true },
+    // Marker / avatar disc text: CMS event setting, else initials — bibs run
+    // to five digits on big events and never fit a 30 pt disc.
+    athletes: { url: `${v2}/athletes/${eventId}`,
+                avatar: String(ev[0].event_json?.athletes?.avatar || ev[0].event_json?.avatar || 'initials').toLowerCase(),
+                show_athletes: true },
     athlete_details: { url: `${v2}/splits/${eventId}?bib=#{number}&id=#{id}&contest=#{contest}` },
   };
   if (paths.length) {
