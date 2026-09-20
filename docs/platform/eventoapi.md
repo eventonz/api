@@ -44,6 +44,7 @@ Headers `X-RateLimit-Limit/Remaining`, `429` + `Retry-After`.
 | `POST /v2/splits/{event}?id=&bib=&contest=` | athlete detail document (`version2.items`: summary, Legs, splits table). Redis while live, `v2.rr_results` when done. |
 | `POST /v2/tracking/{event}` `{tracks:[ids]}` | positions `{track, location %, speed, path, info, live_racetime, is_counting}`; live window only |
 | `GET/POST /v2/cheers/…` | no-login cheer board |
+| `GET /v2/photos/{event}/{bib}` | NorthSouth participant photos (`{enabled, gallery, photos:[{image,link}]}`); account key `NORTHSOUTH_AUTH` server-side, per-event key from CMS Settings; 60s cache |
 | `POST /v2/push/register`, `/sync`, `GET /v2/push/inbox` | FCM registry and topic sync (see push-notifications.md) |
 | `POST /v2/analytics` | batched app usage events |
 | `POST /v2/app_install` | install counting |

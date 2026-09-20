@@ -27,6 +27,7 @@ async function v2Routes(app) {
     authed.register(require('./tracking'), { prefix: '/tracking' });
     authed.register(require('./config'), { prefix: '/config' });
     authed.register(require('./cheers'), { prefix: '/cheers' });
+    authed.register(require('./photos'), { prefix: '/photos' });
     // App-level endpoints aliased from /v1 so the V2 app and CMS talk /v2
     // only — same handlers, same contracts (push is app/event-scoped, not
     // race-scoped, so no bridge is needed; rrpublish keys on the RR id).
