@@ -1,3 +1,4 @@
+const paceUnits = require('./paceUnits');
 /**
  * Athlete detail v2 page builder.
  * Mirrors API/api/v4/modules/split_scripts/athlete_detail_v2.cfm
@@ -23,6 +24,7 @@ function readDisplaySettings(ds) {
       elevationType:  ds.elevation_type || 'altitude',
       linkedMap:      ds.linked_map || '',
       legDisplay:     ds.leg_display === 'infolist' ? 'infolist' : 'plain',
+      paceUnit:       paceUnits.normaliseUnit(ds.pace_unit) || 'pace_km',
       journeyColor:   ds.journey_color || 'green',
     };
   }
@@ -254,22 +256,30 @@ function buildTabbedTable(livetiming, ds, raceobj) {
   }
   const tabs = [{ name: 'Time', columns: timeColumns, rows: timeRows }];
 
-  // --- Pace tab ---
+  // --- Pace tab --- value in the contest's unit (CMS Pace unit; auto = event
+  // units). RR's own pace/speed feed it; a swim /100m or anything RR left
+  // blank is derived from the segment time over the segment distance.
   if (ds.showPace) {
-    const paceColumns = ['Split', 'Avg Pace', 'Avg Speed'];
+    const unit = ds.paceUnit;
+    const label = paceUnits.unitLabel(unit);
+    const paceColumns = ['Split', `Pace (${label})`];
     const paceRows = [{ style: 'header', data: paceColumns }];
+    let prevSecs = null, prevDist = null;
     for (let i = 0; i < total; i++) {
       const sp = splits[i];
+      const secs = (sp.RaceTime && !isStarred(sp.RaceTime)) ? paceUnits.toSecs(sp.RaceTime) : null;
+      const dist = sp.split_distance != null ? Number(sp.split_distance) : null;
+      let value = '';
+      if (secs != null) {
+        const seg = (prevSecs != null && prevDist != null && dist != null && dist > prevDist)
+          ? { seconds: secs - prevSecs, distanceKm: dist - prevDist } : {};
+        value = paceUnits.format(unit, { paceMinKm: sp.split_pace, speedKmh: sp.split_speed, ...seg });
+        prevSecs = secs; if (dist != null) prevDist = dist;
+      }
       if (sp.visible !== 1) continue;
-      paceRows.push({
-        data: [
-          sp.name,
-          sp.split_pace ? sp.split_pace : '-',
-          (sp.split_speed && sp.split_speed !== '0.0km/hr') ? sp.split_speed : '-',
-        ],
-      });
+      paceRows.push({ data: [sp.name, value || '-'] });
     }
-    tabs.push({ name: 'Pace', columns: paceColumns, rows: paceRows });
+    tabs.push({ name: 'Pace', columns: paceColumns, unit, unit_label: label, rows: paceRows });
   }
 
   // --- Position tab ---
@@ -348,7 +358,15 @@ function appendLegs(items, livetiming, ds) {
       }
     }
 
-    if (result) resolved.push({ label, icon, result, pace });
+    // Every configured leg is listed — uncrossed ones with "-" — so the app
+    // knows the discipline sequence (swim → bike → run) before they finish.
+    const unit = paceUnits.normaliseUnit(leg.speed_type) || ds.paceUnit || 'pace_km';
+    const secs = paceUnits.toSecs(result);
+    const shown = result
+      ? (paceUnits.format(unit, { paceMinKm: leg.pace_minkm, speedKmh: leg.speed_kmh, seconds: secs, distanceKm: leg.distance }) || pace || '')
+      : '';
+    resolved.push({ label, icon, result, pace: shown, unit: paceUnits.unitLabel(unit),
+                    dist: leg.distance != null && Number(leg.distance) > 0 ? `${Number(leg.distance)} km` : '' });
   }
 
   if (!resolved.length) return;
@@ -370,9 +388,9 @@ function appendLegs(items, livetiming, ds) {
     });
     items.splice(pos + 1, 0, { type: 'infolist', data });
   } else {
-    const splitsArr = [{ style: 'header', data: ['Leg', 'Time', 'Speed/Pace'] }];
+    const splitsArr = [{ style: 'header', data: ['Leg', 'Time', 'Speed/Pace', 'Icon', 'Distance', 'Unit'] }];
     for (const r of resolved) {
-      splitsArr.push({ data: [r.label || 'Leg', r.result || '', r.pace || ''] });
+      splitsArr.push({ data: [r.label || 'Leg', r.result || '-', r.pace || '', r.icon || '', r.dist || '', r.unit || ''] });
     }
     items.splice(pos + 1, 0, { type: 'splits', splits: splitsArr });
   }

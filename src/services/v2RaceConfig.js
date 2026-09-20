@@ -1,4 +1,5 @@
 const pool = require('../config/database');
+const { normaliseUnit, contestUnit } = require('./splits/paceUnits');
 
 /**
  * A raceobj built from the V2 tables (v2.races / v2.contests / v2.splits /
@@ -33,7 +34,7 @@ async function v2RaceObj(eventId) {
   const [{ rows: contests }, { rows: splits }, { rows: legs }, { rows: ev }] = await Promise.all([
     pool.query(
       `SELECT race_id, contest_id, name, distance_km, is_tracking, await_at_split, summary_split_ids,
-              show_pace, show_ranks, use_estimates
+              show_pace, show_ranks, use_estimates, wide_splits, pace_unit
          FROM v2.contests WHERE race_id = ANY($1::bigint[]) ORDER BY race_id, sort_order, name`,
       [raceIds]
     ),
@@ -52,6 +53,7 @@ async function v2RaceObj(eventId) {
     pool.query('SELECT event_json FROM v2.events WHERE id = $1', [eventId]),
   ]);
 
+  const eventUnits = ev[0]?.event_json?.units || 'km';
   const events = contests.map((c) => {
     const key = String(c.contest_id);
     const mine = splits.filter((s) => String(s.race_id) === String(c.race_id)
@@ -85,7 +87,7 @@ async function v2RaceObj(eventId) {
       })),
       legs: legs.filter((l) => String(l.race_id) === String(c.race_id) && String(l.contest_id) === key)
         .map((l) => ({ id: Number(l.id), rr_splitid: l.rr_legid ?? 0, label: rrText(l.label),
-                       icon: l.icon, speed_type: l.speed_type || 'speed',
+                       icon: l.icon, speed_type: normaliseUnit(l.speed_type) || contestUnit(c.pace_unit, eventUnits),
                        distance: l.distance_m == null ? null : Number(l.distance_m) / 1000 })),
       live_cameras: [],
       medal: null, photo_link: null, cert_link: null,
@@ -95,9 +97,12 @@ async function v2RaceObj(eventId) {
       use_tracking_path: key,
       showRank: c.show_ranks !== false, showPace: c.show_pace !== false,
       contest_type: null,
-      display_settings: { type: 'tabbed_table', wide: false, show_pace: c.show_pace !== false, show_ranks: c.show_ranks !== false,
+      // CMS Contests page: wide = stacked rows for long timing-point names;
+      // pace_unit = how pace/speed is shown (auto → event distance units).
+      display_settings: { type: 'tabbed_table', wide: c.wide_splits === true, show_pace: c.show_pace !== false, show_ranks: c.show_ranks !== false,
                           show_elevation: false, elevation_type: 'altitude', linked_map: '',
-                          use_estimates: c.use_estimates !== false, use_net: false, leg_display: 'plain' },
+                          use_estimates: c.use_estimates !== false, use_net: false, leg_display: 'plain',
+                          pace_unit: contestUnit(c.pace_unit, eventUnits) },
     };
   });
 

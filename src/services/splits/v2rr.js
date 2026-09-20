@@ -170,15 +170,17 @@ async function transform({ v2RaceId, athleteId, raceobj, contest }) {
     const legByRRId = new Map(legs.map((r) => [String(r.rr_id), r]));
     for (const leg of cfgLegs) {
       const rec = leg.rr_splitid > 0 ? legByRRId.get(String(leg.rr_splitid)) : null;
-      let leg_pace = '';
-      if (rec) {
-        leg_pace = (leg.speed_type === 'pace' && rec.pace) ? rec.pace : (rec.speed || '');
-      }
+      // Raw inputs travel with the leg; athleteDetailV2 formats them in the
+      // leg's own unit (swim /100m, bike km/h, run /km …).
       livetiming.legs.push({
         label: leg.label || 'Leg',
         icon:  leg.icon || '',
         leg_result: rec ? (rec.time || '') : '',
-        leg_pace,
+        leg_pace: rec ? (rec.pace || rec.speed || '') : '',
+        speed_type: leg.speed_type || '',
+        distance: leg.distance == null ? null : Number(leg.distance),
+        pace_minkm: rec?.pace || '',
+        speed_kmh: rec?.speed || '',
       });
     }
   } else {

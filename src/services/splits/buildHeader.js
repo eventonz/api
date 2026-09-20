@@ -1,3 +1,4 @@
+const paceUnits = require('./paceUnits');
 /**
  * Header builder for the splits pipeline.
  * Mirrors API/api/v4/modules/split_scripts/build_header.cfm
@@ -87,6 +88,14 @@ function buildSummaryItem(livetiming, raceobj) {
   const summary = { top: {} };
   summary.top.subtitle = String(livetiming.contest_name ?? '');
   summary.top.result   = isFinished ? String(livetiming.result ?? '') : '';
+  // Contest pace unit (CMS Contests › Pace unit; auto → event units) for the
+  // progress cards' own pace figures. Code + display label.
+  {
+    const ev = (raceobj?.events || []).find((e) => String(e.contest_id) === String(livetiming.contest_id ?? livetiming.contest ?? ''))
+      || (raceobj?.events || [])[0];
+    const unit = paceUnits.normaliseUnit(ev?.display_settings?.pace_unit) || 'pace_km';
+    summary.top.pace_unit = { code: unit, label: paceUnits.unitLabel(unit), kind: paceUnits.unitKind(unit) };
+  }
 
   if (isFinished && livetiming.medal_url) {
     summary.top.medal = String(livetiming.medal_url);
