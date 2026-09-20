@@ -26,7 +26,7 @@ geojson) · **Schedule** · **Media** · **Notifications**.
 | **Schedule** | days/items, org locations, .ics | `v2.schedule_days/items`, `v2.locations` |
 | **Athletes** | Load athletes (RR Org API startlist), teams, RR participant **webhooks**, **Live timing** panel (same controls + exporter create/re-write) | `v2.athletes`; Org API `webhooks/*`, `exporters/*` |
 | **Notifications** | compose/send/schedule pushes, AI copy, history | `/v2/push/*` (server key) |
-| **App page › App defaults** | per-app header image, header style (backdrop/hero) and colour applied when RaceResult has no cover/brand colour — cascade RR → app defaults → Evento green; "Apply now" fills gaps on existing events (migration 038 `v2.apps.event_defaults`) | `lib/app-defaults.ts` |
+| **App › App defaults** (sidebar item, `/apps/{id}/defaults`) | per-app header image, header style (backdrop/hero) and colour applied when RaceResult has no cover/brand colour — cascade RR → app defaults → Evento green; "Apply now" fills gaps on existing events (migration 038 `v2.apps.event_defaults`) | `lib/app-defaults.ts` |
 | **Settings** | name/status/tz/date/venue/accent, images, **RaceResult** link per race + "In the RaceResult event file" card (list + exporter status/create/re-write, splits drift), NorthSouth photos, **Danger zone** delete (races, athletes, contests, splits, results, follows, cheers, pages, maps, schedule, app-list entry; RR file untouched) | `lib/rr-live.ts`, `lib/rr-exporter.ts`, `lib/event-delete.ts` |
 | **Resources → Health** (`/admin/health`, superadmin) | live races + hours, worker alerts (30 d), heartbeats, queues, 60 s refresh | `GET /v2/ops/health` |
 
