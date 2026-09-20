@@ -49,6 +49,7 @@ Headers `X-RateLimit-Limit/Remaining`, `429` + `Retry-After`.
 | `POST /v2/analytics` | batched app usage events |
 | `POST /v2/app_install` | install counting |
 | `GET /v2/rrpublish/{rrId}/…` | pass-through proxy to my.raceresult.com RRPublish for results-only events |
+| `POST /v2/timer/events` | timer self-service event: with `rr_event_id` the event's HOME is the results page (`header` + `rr_results` block; header image/colour from RR, else the app's event defaults) — no separate Results page or tab |
 
 ### CMS / worker (server key)
 | Method / path | Purpose |

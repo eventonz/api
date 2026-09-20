@@ -152,47 +152,45 @@ async function timerEventsV2Routes(app) {
       if (accent && !/^#[0-9A-F]{6}$/.test(accent)) {
         return reply.code(422).send(err(422, 'accent must be a hex colour like #2ABA92.'));
       }
-      // Accent cascade (same as the CMS): explicit accent → the event's
-      // my.raceresult BrandColorDark → Evento green.
+      // Cascade (same as the CMS): explicit accent → the event's my.raceresult
+      // BrandColorDark → the app's EVENT DEFAULTS (migration 038: header image,
+      // header style, colour set once per timer app) → Evento green.
       if (!accent && rrEventId) accent = await rrBrandColor(rrEventId);
+      const defaults = await appEventDefaults(v2AppId);
+      accent = accent || defaults.accent || '#2ABA92';
       const eventJson = {
         name,
         status: published ? 'open' : 'hidden',
         timeZone,
-        accent: accent || '#2ABA92',
+        accent,
         ...(isoDate ? { date: isoDate } : {}),
         ...(location ? { venue: location } : {}),
+        ...(defaults.headerImage ? { heroImage: defaults.headerImage } : {}),
       };
       await pool.query(
         'INSERT INTO v2.events (id, organisation_id, event_json) VALUES ($1, $2, $3::jsonb)',
         [eventId, v2OrgId, JSON.stringify(eventJson)]
       );
 
-      // --- Content: RR-linked events open to a my.raceresult results page.
+      // --- Content: RR-linked events — HOME IS THE RESULTS PAGE (same shape
+      // the CMS "Results only" flow writes): a `header` block (app default
+      // image; RaceResult's own /api/cover URL 404s for most events, so it is
+      // never used) + the inline `rr_results` block. No other pages, no nav.
       // (If a results_link is also set, the entry taps out instead — but the
       // page is ready the moment the link is removed.) ---
       if (rrEventId) {
-        // The event's whole content is one my.raceresult results page.
-        const pageJson = {
-          title: 'Results',
-          pageType: 'rr_results',
-          rrEventId: rrEventId,
-          athleteLinks: true,
-          blocks: [{
-            type: 'hero_image',
-            variant: 'full_bleed',
-            props: {
-              title: name,
-              sub: 'Live results',
-              image: `https://my.raceresult.com/${rrEventId}/api/cover`,
-              height: 300,
-            },
-          }],
+        const headerImage = defaults.headerImage || thumbnailUrl || '';
+        const homeJson = {
+          title: 'Home',
+          blocks: [
+            { type: 'header', variant: defaults.headerVariant, props: { ...(headerImage ? { image: headerImage } : {}), title: name, sub: 'Live results' } },
+            { type: 'rr_results', props: { rrEventId, athleteLinks: true, tabs: 'all' } },
+          ],
         };
         await pool.query(
           `INSERT INTO v2.pages (event_id, slug, page_type, page_json, sort)
-           VALUES ($1, 'results', 'rr_results', $2::jsonb, 0)`,
-          [eventId, JSON.stringify(pageJson)]
+           VALUES ($1, 'home', 'home', $2::jsonb, -1)`,
+          [eventId, JSON.stringify(homeJson)]
         );
       }
 
@@ -504,6 +502,22 @@ async function fetchRREvent(app, v2OrgId, v1OrgId, rrEventId) {
 
 /** The event's public my.raceresult brand colour (BrandColorDark) — same
  * source as the CMS's rrBrandColor. Empty string when unset/unreachable. */
+/** v2.apps.event_defaults (+ app accent as the colour fallback) — see CMS lib/event-defaults.ts. */
+async function appEventDefaults(appId) {
+  try {
+    const { rows } = await pool.query('SELECT event_defaults, accent FROM v2.apps WHERE id = $1', [appId]);
+    const d = rows[0]?.event_defaults || {};
+    const hex = (v) => (typeof v === 'string' && /^#[0-9A-Fa-f]{6}$/.test(v.trim()) ? v.trim().toUpperCase() : '');
+    return {
+      headerImage: typeof d.headerImage === 'string' ? d.headerImage.trim() : '',
+      headerVariant: d.headerVariant === 'hero' ? 'hero' : 'backdrop',
+      accent: hex(d.accent) || hex(rows[0]?.accent),
+    };
+  } catch {
+    return { headerImage: '', headerVariant: 'backdrop', accent: '' };
+  }
+}
+
 async function rrBrandColor(rrEventId) {
   try {
     const res = await fetch(`https://my.raceresult.com/${rrEventId}/results/config?lang=en`, {
