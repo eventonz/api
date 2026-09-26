@@ -183,7 +183,7 @@ async function timerEventsV2Routes(app) {
         const homeJson = {
           title: 'Home',
           blocks: [
-            { type: 'header', variant: defaults.headerVariant, props: { ...(headerImage ? { image: headerImage } : {}), title: name, sub: 'Live results' } },
+            { type: 'header', variant: defaults.headerVariant, props: { ...(headerImage ? { image: headerImage } : {}), title: name, ...(defaults.headerVariant === 'compact' ? {} : { sub: 'Live results' }) } },
             { type: 'rr_results', props: { rrEventId, athleteLinks: true, tabs: 'all' } },
           ],
         };
@@ -510,7 +510,7 @@ async function appEventDefaults(appId) {
     const hex = (v) => (typeof v === 'string' && /^#[0-9A-Fa-f]{6}$/.test(v.trim()) ? v.trim().toUpperCase() : '');
     return {
       headerImage: typeof d.headerImage === 'string' ? d.headerImage.trim() : '',
-      headerVariant: d.headerVariant === 'hero' ? 'hero' : 'backdrop',
+      headerVariant: ['hero', 'compact'].includes(d.headerVariant) ? d.headerVariant : 'backdrop',
       accent: hex(d.accent) || hex(rows[0]?.accent),
     };
   } catch {

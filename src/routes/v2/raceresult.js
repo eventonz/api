@@ -125,6 +125,13 @@ async function v2RaceResultRoutes(app) {
     return reply.code(200).send({ race_id: raceId, entries });
   });
 
+  /** DELETE /v2/raceresult/log/:race_id — wipe the race's activity log (CMS "Clear log"). */
+  app.delete('/log/:race_id', { schema: raceIdSchema }, async (request, reply) => {
+    const raceId = Number(request.params.race_id);
+    const removed = await redis.del(`race:log:${raceId}`);
+    return reply.code(200).send({ race_id: raceId, cleared: removed > 0 });
+  });
+
   app.post('/provision/:race_id', { schema: raceIdSchema }, provisionHandler);
   app.get('/provision/:race_id/status', { schema: raceIdSchema }, statusHandler);
   app.post('/pull/:race_id', { schema: raceIdSchema }, pullHandler);

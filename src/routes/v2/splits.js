@@ -59,8 +59,9 @@ async function v2SplitsRoutes(app) {
       if (!race.platform_race_id) continue;
       if (!contest && athleteId) {
         const { rows } = await pool.query(
-          'SELECT contest FROM v2.athletes WHERE race_id = $1 AND athlete_id = $2 LIMIT 1',
-          [race.id, athleteId]
+          `SELECT contest FROM v2.athletes WHERE race_id = $1 AND athlete_id = $2
+            ORDER BY (raceno::text = $3) DESC, updated_at DESC NULLS LAST, id DESC LIMIT 1`,
+          [race.id, athleteId, String(bib || '')]
         );
         contest = String(rows[0]?.contest ?? '').trim();
       }
@@ -72,7 +73,7 @@ async function v2SplitsRoutes(app) {
     // No platform race behind this event — render from the V2 config itself,
     // so the contest and every configured timing point still come back (with
     // whatever times the athlete has). Same document, same builders.
-    const built = await buildFromV2Config({ event_id, athleteId, bib, contest: contestParam });
+    const built = await buildFromV2Config({ event_id, athleteId, bib, contest: contest || contestParam });
     if (built) return reply.code(200).send(built);
     return reply.code(404).send({ error: 'No timing data for this event' });
   });
@@ -93,8 +94,9 @@ async function buildFromV2Redis({ v2RaceId, event_id, athleteId, bib, contest })
   if (!known) contestId = '';
   if (!contestId && athleteId) {
     const { rows } = await pool.query(
-      'SELECT contest::text FROM v2.athletes WHERE race_id = $1 AND athlete_id = $2 LIMIT 1',
-      [v2RaceId, athleteId]
+      `SELECT contest::text FROM v2.athletes WHERE race_id = $1 AND athlete_id = $2
+        ORDER BY (raceno::text = $3) DESC, updated_at DESC NULLS LAST, id DESC LIMIT 1`,
+      [v2RaceId, athleteId, String(bib || '')]
     ).catch(() => ({ rows: [] }));
     contestId = String(rows[0]?.contest || '').trim();
   }
@@ -138,8 +140,9 @@ async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
   if (!contestId && athleteId) {
     const { rows } = await pool.query(
       `SELECT a.contest::text FROM v2.athletes a JOIN v2.races r ON r.id = a.race_id
-        WHERE r.event_id = $1 AND a.athlete_id = $2 LIMIT 1`,
-      [event_id, athleteId]
+        WHERE r.event_id = $1 AND a.athlete_id = $2
+        ORDER BY (a.raceno::text = $3) DESC, a.updated_at DESC NULLS LAST, a.id DESC LIMIT 1`,
+      [event_id, athleteId, String(bib || '')]
     );
     contestId = String(rows[0]?.contest || '').trim();
   }

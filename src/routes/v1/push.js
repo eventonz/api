@@ -329,7 +329,9 @@ async function pushRoutes(app) {
     const where = ['status = $1', 'show_in_inbox', `sent_at >= NOW() - ($2 || ' days')::interval`];
     const params = ['sent', String(Math.min(Math.max(days || 14, 1), 90))];
     // An event inbox also shows app-wide sends; an app inbox shows everything.
-    if (event_id) { params.push(event_id); where.push(`(event_id = $${params.length} OR event_id IS NULL)`); }
+    // An event's bell shows ONLY that event's notifications — app-wide sends
+    // (event_id NULL) belong to the app-level inbox, never to an event's.
+    if (event_id) { params.push(event_id); where.push(`event_id = $${params.length}`); }
     if (app_id)   { params.push(app_id);   where.push(`(app_id = $${params.length} OR app_id IS NULL)`); }
     const { rows } = await pool.query(
       `SELECT id::int AS id, title, body, image, sent_at, event_id, data, i18n FROM v2.notifications
