@@ -330,6 +330,7 @@ npm start
 - `POST /v1/push/register` · `POST /v1/push/sync` · `POST /v1/push/send` (supports `send_after` for scheduling)
 - `POST /v1/push/run` (minute runner; EasyCron hits `GET|POST /v1/push_cron?key=`) · `DELETE /v1/push/:id` (cancel scheduled)
 - `GET /v1/push/inbox` · `GET /v1/push/followers`
+- `GET /v1/push/project?app_id` — which Firebase project the app sends through + dry-run check (one Firebase project per app: `services/fcm.js` + `services/pushCredentials.js`, table `v2.app_push_credentials`; see docs/platform/push-notifications.md)
 
 ### `/v2/*` — block-based native app (v2.* schema)
 

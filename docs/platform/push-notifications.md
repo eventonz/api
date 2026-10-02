@@ -35,10 +35,38 @@ nobody was subscribed to).
 - `GET /v2/push/inbox` — `v2.notifications` rows with `show_in_inbox` for the app's bell.
 - `GET /v2/push/followers?race_id&athlete_id` — counts.
 
-Firebase Admin credentials: `config/firebase-service-account.json` (gitignored)
-or `FIREBASE_SERVICE_ACCOUNT_B64`. Both the API droplet and the worker droplet
-hold the file. **APNs key must be "Sandbox & Production"** in both Firebase slots
-or debug builds get "Invalid APNs credential".
+- `GET /v2/push/project?app_id` — which Firebase project this server sends the
+  app's pushes through + a dry-run send (`{ok, own, project_id, error?}`). The CMS
+  "Check server" button; never returns the key.
+
+## One Firebase project per app
+
+Each store app has its **own Firebase project**. Three pieces must all belong to
+that project:
+
+| Piece | Where it lives |
+|---|---|
+| Client files (`GoogleService-Info.plist`, `google-services.json`) | `MOBILE-V2/configs/firebase/<app>/`, baked in by `build.sh` (config key `"firebase"`); bundle IDs must match the store app |
+| Service-account key (server → FCM) | `v2.app_push_credentials` (migration 041), uploaded in the CMS: app **Settings → Push notifications** |
+| APNs auth key | Firebase console → Cloud Messaging, **both** development and production slots ("Sandbox & Production" key, or debug builds get "Invalid APNs credential") |
+
+`services/fcm.js` (node-api) and `lib/fcm.js` (worker — same file, keep in step)
+take an `appId` on every call and pick the project through
+`pushCredentials.forApp(appId)` (60 s cache, so a key uploaded in the CMS is live
+within a minute, no restart). **An app with no row uses the shared default
+project** (`evento-7ec10`): `config/firebase-service-account.json` (gitignored) or
+`FIREBASE_SERVICE_ACCOUNT_B64`, held on both droplets.
+
+Tokens and topics are scoped to a project, so:
+- `/sync` subscribes in the project of the request's `app_id`;
+- a topic send goes out **once per project that has subscribers** (`topicApps` in
+  push.js, follower app ids in the worker) — an event or athlete followed from two
+  apps reaches both; apps sharing a project get one send;
+- token sends group tokens by their app.
+
+Stored keys are AES-256-GCM encrypted (`enc:v1:…`) when `PUSH_CREDENTIALS_KEY` is
+set on the CMS — it must then be set to the same value on node-api and the
+worker. Unset = stored as plain JSON (the readers accept both).
 
 ## Sender 1 — athlete crossings (worker)
 

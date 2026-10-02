@@ -1,21 +1,30 @@
 /**
- * Firebase Cloud Messaging (firebase-admin) — one shared Firebase project for
- * the V2 apps (evento-7ec10); every store bundle id is an "app" inside it.
+ * Firebase Cloud Messaging (firebase-admin) — ONE FIREBASE PROJECT PER APP.
  *
- * Credentials: FIREBASE_SERVICE_ACCOUNT = path to the service-account JSON
- * (default config/firebase-service-account.json, gitignored) or the JSON
- * itself base64-encoded in FIREBASE_SERVICE_ACCOUNT_B64.
+ * Every send / subscribe names the app it is for. An app with its own service
+ * account (v2.app_push_credentials, uploaded in the CMS — see
+ * pushCredentials.js) goes through that app's Firebase project; an app without
+ * one goes through the shared default project (evento-7ec10):
+ * FIREBASE_SERVICE_ACCOUNT = path to the service-account JSON (default
+ * config/firebase-service-account.json, gitignored) or the JSON itself
+ * base64-encoded in FIREBASE_SERVICE_ACCOUNT_B64.
+ *
+ * FCM tokens and topics are scoped to a project, so an event/athlete topic
+ * followed from several apps is sent once per project — distinctProjects().
  *
  * Delivery is by TOPIC (docs: MOBILE-V2/PUSH-PLAN.md): one send() call per
  * message, FCM fans out. subscribe/unsubscribe are idempotent.
+ *
+ * evento-worker carries a copy of this file (src/lib/fcm.js) — keep in step.
  */
 const path = require('path');
 const fs   = require('fs');
+const creds = require('./pushCredentials');
 
-let msg = null;
-let initError = null;
+const DEFAULT_KEY = 'default';
+const clients = new Map(); // project key → firebase-admin Messaging
 
-function loadCredential() {
+function loadDefaultCredential() {
   const b64 = process.env.FIREBASE_SERVICE_ACCOUNT_B64;
   if (b64) return JSON.parse(Buffer.from(b64, 'base64').toString('utf8'));
   const file = process.env.FIREBASE_SERVICE_ACCOUNT
@@ -24,18 +33,58 @@ function loadCredential() {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 
-function messaging() {
-  if (msg) return msg;
-  if (initError) throw initError;
+/** Key naming the Firebase project (and key version) an app sends through. */
+function keyOf(own) {
+  return own ? `${own.projectId}:${own.credential.private_key_id || ''}` : DEFAULT_KEY;
+}
+
+/** Which project an app sends through → 'default' or '{projectId}:{keyId}'. */
+async function projectKey(appId) {
+  return keyOf(await creds.forApp(appId));
+}
+
+/** firebase-admin Messaging for the app's project (one named admin app per project key). */
+async function messaging(appId) {
+  const own = await creds.forApp(appId);
+  const key = keyOf(own);
+  if (clients.has(key)) return clients.get(key);
+  const { getApps, initializeApp, cert } = require('firebase-admin/app');
+  const { getMessaging } = require('firebase-admin/messaging');
+  const name = `evento-${key}`;
+  const app = getApps().find((a) => a.name === name)
+    || initializeApp({ credential: cert(own ? own.credential : loadDefaultCredential()) }, name);
+  const m = getMessaging(app);
+  clients.set(key, m);
+  return m;
+}
+
+/**
+ * Reduce app ids to one per distinct Firebase project — a topic send goes out
+ * once per project, not once per app. null/undefined = the default project.
+ */
+async function distinctProjects(appIds) {
+  const seen = new Map();
+  for (const id of appIds) {
+    const key = await projectKey(id);
+    if (!seen.has(key)) seen.set(key, id ?? null);
+  }
+  return [...seen.values()];
+}
+
+/**
+ * CMS health check: can this server send through the app's project?
+ * A dry-run send validates the key and that the FCM API is enabled without
+ * delivering anything.
+ */
+async function check(appId) {
+  let own = null;
   try {
-    const { getApps, initializeApp, cert } = require('firebase-admin/app');
-    const { getMessaging } = require('firebase-admin/messaging');
-    const app = getApps()[0] || initializeApp({ credential: cert(loadCredential()) });
-    msg = getMessaging(app);
-    return msg;
+    own = await creds.forApp(appId);
+    const m = await messaging(appId);
+    await m.send({ topic: `app-${appId}-en`, notification: { title: 'check' } }, true);
+    return { ok: true, own: !!own, project_id: own ? own.projectId : (loadDefaultCredential().project_id || null) };
   } catch (err) {
-    initError = err;
-    throw err;
+    return { ok: false, own: !!own, project_id: own ? own.projectId : null, error: err.message };
   }
 }
 
@@ -62,16 +111,18 @@ function resolveText(v, lang = 'en') {
 }
 
 /** Batches of ≤1000 tokens per FCM call. */
-async function subscribe(tokens, topic) {
+async function subscribe(tokens, topic, appId) {
   if (!tokens.length || process.env.PUSH_DRY_RUN === '1') return;
+  const m = await messaging(appId);
   for (let i = 0; i < tokens.length; i += 1000) {
-    await messaging().subscribeToTopic(tokens.slice(i, i + 1000), topic);
+    await m.subscribeToTopic(tokens.slice(i, i + 1000), topic);
   }
 }
-async function unsubscribe(tokens, topic) {
+async function unsubscribe(tokens, topic, appId) {
   if (!tokens.length || process.env.PUSH_DRY_RUN === '1') return;
+  const m = await messaging(appId);
   for (let i = 0; i < tokens.length; i += 1000) {
-    await messaging().unsubscribeFromTopic(tokens.slice(i, i + 1000), topic);
+    await m.unsubscribeFromTopic(tokens.slice(i, i + 1000), topic);
   }
 }
 
@@ -95,19 +146,23 @@ function buildMessage({ topic, token, title, body, image, data = {}, category })
   return msg;
 }
 
-/** Send to a topic → FCM message id. PUSH_DRY_RUN=1 skips FCM (local dev, no service account). */
-async function sendToTopic(topic, payload) {
+/**
+ * Send to a topic in the app's Firebase project → FCM message id.
+ * PUSH_DRY_RUN=1 skips FCM (local dev, no service account).
+ */
+async function sendToTopic(topic, payload, appId) {
   if (process.env.PUSH_DRY_RUN === '1') return `dry-run:${topic}`;
-  return messaging().send(buildMessage({ ...payload, topic }));
+  return (await messaging(appId)).send(buildMessage({ ...payload, topic }));
 }
 
-/** Send to explicit tokens (≤500 per call) → { successCount, failureCount, invalid[] }. */
-async function sendToTokens(tokens, payload) {
+/** Send to explicit tokens of ONE app (≤500 per call) → { successCount, failureCount, invalid[] }. */
+async function sendToTokens(tokens, payload, appId) {
   let successCount = 0, failureCount = 0;
   const invalid = [], errors = [];
+  const m = await messaging(appId);
   for (let i = 0; i < tokens.length; i += 500) {
     const batch = tokens.slice(i, i + 500);
-    const res = await messaging().sendEach(batch.map((token) => buildMessage({ ...payload, token })));
+    const res = await m.sendEach(batch.map((token) => buildMessage({ ...payload, token })));
     successCount += res.successCount;
     failureCount += res.failureCount;
     res.responses.forEach((r, j) => {
@@ -122,4 +177,5 @@ async function sendToTokens(tokens, payload) {
 }
 
 module.exports = { subscribe, unsubscribe, sendToTopic, sendToTokens, validTopic, messaging,
+                   projectKey, distinctProjects, check,
                    LANGS, normLang, langTopic, stripLang, LANG_SUFFIX_RE, resolveText };

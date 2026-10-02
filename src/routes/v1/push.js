@@ -37,6 +37,11 @@ function mirrorToSimulator(payload) {
  * every launch/foreground/change (`/sync`); the server diffs against what this
  * device last synced (v2.follows + v2.device_topics) and fixes FCM. Subscribe/
  * unsubscribe are idempotent, so a re-sync after a missed call self-heals.
+ *
+ * ONE FIREBASE PROJECT PER APP (services/fcm.js): a device's tokens and topic
+ * subscriptions live in ITS app's project, so subscribe/unsubscribe use the
+ * request's app_id, and a topic send goes out once per project that has
+ * subscribers (topicApps) — an event followed from two apps reaches both.
  */
 async function pushRoutes(app) {
   const toInt = (v) => (v == null || v === '' ? null : Number(v));
@@ -77,7 +82,7 @@ async function pushRoutes(app) {
         follows: { type: 'array', items: { type: 'object' } },
       } } },
   }, async (request, reply) => {
-    const { token, event_id, topics, follows = [] } = request.body;
+    const { token, event_id, topics, follows = [], app_id } = request.body;
     const lang = fcm.normLang(request.body.lang);
     // The app sends BARE topics + its language; every subscription carries the
     // language suffix so a send can fan out per language. A language change
@@ -102,8 +107,8 @@ async function pushRoutes(app) {
     const toRemove = current.filter((t) => !wanted.includes(t));
 
     const errors = [];
-    for (const t of toAdd) { try { await fcm.subscribe([token], t); } catch (e) { errors.push(`${t}: ${e.message}`); } }
-    for (const t of toRemove) { try { await fcm.unsubscribe([token], t); } catch (e) { errors.push(`${t}: ${e.message}`); } }
+    for (const t of toAdd) { try { await fcm.subscribe([token], t, app_id); } catch (e) { errors.push(`${t}: ${e.message}`); } }
+    for (const t of toRemove) { try { await fcm.unsubscribe([token], t, app_id); } catch (e) { errors.push(`${t}: ${e.message}`); } }
     if (errors.length) request.log.error({ errors }, 'push/sync: FCM topic errors');
 
     // Mirror: follows rows (athlete topics) + device_topics (the rest).
@@ -213,7 +218,7 @@ async function pushRoutes(app) {
     const id = rows[0].id;
     if (scheduled) return { ok: true, id, topic, scheduled: true, send_after: sendAfter.toISOString() };
 
-    const result = await dispatch({ id, topic, title, body, i18n, image: b.image, data, category, tokens: b.tokens }, request.log);
+    const result = await dispatch({ id, app_id: toInt(b.app_id), topic, title, body, i18n, image: b.image, data, category, tokens: b.tokens }, request.log);
     if (!result.ok) return reply.code(502).send(result);
     return result;
   });
@@ -242,12 +247,29 @@ async function pushRoutes(app) {
   }
 
   /**
+   * The apps a topic send must go through, one per distinct Firebase project:
+   * the sender's app plus every app with a device subscribed to the topic
+   * (device_topics / follows mirror, any language). [null] = default project.
+   */
+  async function topicApps(topic, appId) {
+    const { rows } = await pool.query(
+      `SELECT DISTINCT dt.app_id::int AS app_id FROM v2.device_tokens dt
+        WHERE dt.id IN (SELECT device_token_id FROM v2.device_topics WHERE topic ~ $1
+                        UNION SELECT device_token_id FROM v2.follows WHERE notify AND topic ~ $1)`,
+      [`^${escapeRe(topic)}-(en|es|de|fr)$`]
+    );
+    const ids = rows.map((r) => r.app_id);
+    if (appId != null) ids.unshift(appId);
+    return fcm.distinctProjects(ids.length ? ids : [null]);
+  }
+
+  /**
    * Send one stored notification (row already inserted). Updates status.
    * Shared by /send (immediate) and /run (scheduled).
    *
-   * Topic sends go out once per language (`{topic}-{lang}`): translated
-   * languages get their copy, the rest get English. Token sends group the
-   * tokens by the device's stored language.
+   * Topic sends go out once per Firebase project and per language
+   * (`{topic}-{lang}`): translated languages get their copy, the rest get
+   * English. Token sends group the tokens by their app and stored language.
    */
   async function dispatch(n, log) {
     const data = { ...(n.data || {}), notification_id: String(n.id) };
@@ -259,26 +281,47 @@ async function pushRoutes(app) {
     try {
       let result;
       if (n.topic) {
-        const ids = {};
-        for (const lang of fcm.LANGS) ids[lang] = await fcm.sendToTopic(fcm.langTopic(n.topic, lang), copyFor(lang));
-        result = { message_id: ids.en, message_ids: ids, languages: copyLangs(i18n) };
+        const apps = await topicApps(n.topic, n.app_id);
+        const ids = {}, failed = [];
+        for (const appId of apps) {
+          try {
+            for (const lang of fcm.LANGS) {
+              const mid = await fcm.sendToTopic(fcm.langTopic(n.topic, lang), copyFor(lang), appId);
+              ids[lang] ||= mid;
+            }
+          } catch (e) {
+            failed.push(`app ${appId ?? 'default'}: ${e.message}`);
+          }
+        }
+        // Every project failed → the send failed; some → sent, with the errors kept on the row.
+        if (failed.length === apps.length) throw new Error(failed.join('; '));
+        result = { message_id: ids.en, message_ids: ids, languages: copyLangs(i18n), projects: apps.length };
+        if (failed.length) { result.errors = failed; log.error({ id: n.id, failed }, 'push dispatch: some projects failed'); }
       } else {
         const tokens = n.tokens || [];
-        const { rows } = await pool.query('SELECT fcm_token, lang FROM v2.device_tokens WHERE fcm_token = ANY($1)', [tokens]);
-        const langOf = new Map(rows.map((r) => [r.fcm_token, r.lang]));
-        const groups = {};
-        for (const t of tokens) (groups[fcm.normLang(langOf.get(t))] ||= []).push(t);
+        const { rows } = await pool.query('SELECT fcm_token, lang, app_id::int AS app_id FROM v2.device_tokens WHERE fcm_token = ANY($1)', [tokens]);
+        const known = new Map(rows.map((r) => [r.fcm_token, r]));
+        // A token only works in its own app's project: group by app, then language.
+        const groups = new Map();
+        for (const t of tokens) {
+          const row = known.get(t);
+          const appId = row ? row.app_id : (n.app_id ?? null);
+          const lang = fcm.normLang(row && row.lang);
+          const k = `${appId}|${lang}`;
+          if (!groups.has(k)) groups.set(k, { appId, lang, toks: [] });
+          groups.get(k).toks.push(t);
+        }
         result = { successCount: 0, failureCount: 0, invalid: [], errors: [] };
-        for (const [lang, toks] of Object.entries(groups)) {
-          const r = await fcm.sendToTokens(toks, copyFor(lang));
+        for (const { appId, lang, toks } of groups.values()) {
+          const r = await fcm.sendToTokens(toks, copyFor(lang), appId);
           result.successCount += r.successCount; result.failureCount += r.failureCount;
           result.invalid.push(...r.invalid); result.errors.push(...r.errors);
         }
         if (result.invalid.length) await pool.query('DELETE FROM v2.device_tokens WHERE fcm_token = ANY($1)', [result.invalid]);
       }
       await pool.query(
-        `UPDATE v2.notifications SET status = 'sent', sent_at = NOW(), fcm_message_id = $2, error = NULL WHERE id = $1`,
-        [n.id, result.message_id || null]
+        `UPDATE v2.notifications SET status = 'sent', sent_at = NOW(), fcm_message_id = $2, error = $3 WHERE id = $1`,
+        [n.id, result.message_id || null, n.topic && result.errors ? result.errors.join('; ') : null]
       );
       mirrorToSimulator(copyFor(process.env.PUSH_SIMCTL_LANG || 'en'));
       return { ok: true, id: n.id, topic: n.topic, ...result };
@@ -309,7 +352,7 @@ async function pushRoutes(app) {
          WHERE (status = 'scheduled' AND send_after <= NOW())
             OR (status = 'sending' AND send_after <= NOW() - interval '10 minutes')
          ORDER BY send_after LIMIT 50 FOR UPDATE SKIP LOCKED)
-       RETURNING id, topic, title, body, image, data, audience, i18n`
+       RETURNING id, app_id::int AS app_id, topic, title, body, image, data, audience, i18n`
     );
     const results = [];
     for (const r of rows) {
@@ -344,6 +387,13 @@ async function pushRoutes(app) {
       body: (i18n && fcm.resolveText(i18n.body, lang)) || r.body,
     }));
   });
+
+  // ── project check (CMS app Settings → Push notifications) ───────────────
+  // Which Firebase project this server sends the app's pushes through, and a
+  // dry-run send proving the key works. Never returns the key itself.
+  app.get('/project', {
+    schema: { querystring: { type: 'object', required: ['app_id'], properties: { app_id: { type: 'integer' } } } },
+  }, async (request) => fcm.check(request.query.app_id));
 
   // ── followers count (CMS) ───────────────────────────────────────────────
   app.get('/followers', async (request) => {
