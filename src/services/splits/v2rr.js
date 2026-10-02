@@ -85,8 +85,15 @@ async function transform({ v2RaceId, athleteId, raceobj, contest }) {
   if (!athleteId) return null;
   const cached = await getAthleteRecords(v2RaceId, athleteId);
   if (!cached) return null;
+  return transformRecords({ records: cached.splits, raceobj, contest });
+}
 
-  const records = cached.splits;
+/**
+ * The same build from an in-memory record array — used by the Redis path
+ * above and by the RaceTec live fetch (services/splits/v2racetec.js), so both
+ * platforms render the identical document.
+ */
+function transformRecords({ records, raceobj, contest }) {
   const legs    = records.filter((r) => r.leg);
   const splits  = records.filter((r) => !r.leg);
   const byRRId  = new Map();
@@ -214,4 +221,5 @@ async function transform({ v2RaceId, athleteId, raceobj, contest }) {
   return { livetiming, contestType };
 }
 
-module.exports = { transform, getAthleteRecords };
+module.exports = {
+  transformRecords, transform, getAthleteRecords };

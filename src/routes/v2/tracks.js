@@ -2,6 +2,7 @@
  * V2 timing ingest — /v2/tracks/*
  *
  * POST /v2/tracks/raceresult/:rr_eventid
+ * POST /v2/tracks/racetec/:apikey      (RaceTec / SES — timer_platform 'racetec')
  *
  * RaceResult pushes crossings here (the CMS writes this URL into the event
  * file as the push exporter target; Ugo's native array format is accepted
@@ -26,20 +27,21 @@ const QUEUE_KEY   = 'ingest_queue';
 const LOOKUP_TTL  = 30; // seconds — race state cache; a Stop Live lands within this
 const ACCEPT_LIVE = new Set(['armed', 'live', 'finalising']);
 
-// rr_eventid → [{ id, live_state, status }] for every v2 race on that RR event.
-async function racesForRrEvent(rrEventId, { fresh = false } = {}) {
-  const cacheKey = `v2:tracks:rr_event:${rrEventId}`;
+// Platform key → [{ id, live_state, status }] for every v2 race carrying it:
+// RaceResult = rr_raceid (one RR event can back several races), RaceTec =
+// the per-event api key (migration 042).
+async function racesForKey(platform, key, { fresh = false } = {}) {
+  const cacheKey = platform === 'racetec' ? `v2:tracks:racetec:${key}` : `v2:tracks:rr_event:${key}`;
   try {
     const hit = await (fresh ? Promise.resolve(null) : redis.get(cacheKey));
     if (hit) return JSON.parse(hit);
   } catch { /* fall through to PG */ }
 
   const { rows } = await pool.query(
-    `SELECT id, live_state, status
-       FROM v2.races
-      WHERE rr_raceid = $1
-      ORDER BY id`,
-    [rrEventId]
+    platform === 'racetec'
+      ? `SELECT id, live_state, status FROM v2.races WHERE racetec_apikey = $1 ORDER BY id`
+      : `SELECT id, live_state, status FROM v2.races WHERE rr_raceid = $1 ORDER BY id`,
+    [key]
   );
   const races = rows.map((r) => ({
     id: Number(r.id),
@@ -83,16 +85,11 @@ async function v2TracksRoutes(app) {
   app.removeContentTypeParser('application/json');
   app.addContentTypeParser('application/json', { parseAs: 'buffer' }, parseLoose);
 
-  app.post('/raceresult/:rr_eventid', {
-    schema: {
-      params: {
-        type: 'object',
-        properties: { rr_eventid: { type: 'integer' } },
-        required: ['rr_eventid'],
-      },
-    },
-  }, async (request, reply) => {
-    const races = await racesForRrEvent(request.params.rr_eventid);
+  // Both platforms share one handler: resolve the key to races, gate on live
+  // state, queue one job per live race for the worker.
+  const ingest = (platform, label) => async (request, reply) => {
+    const key = platform === 'racetec' ? request.params.apikey : request.params.rr_eventid;
+    let races = await racesForKey(platform, key);
     if (!races.length) return reply.code(400).send({ msg: 'Race not found' });
 
     if (!isValidJsonBody(request.body) || request.body.__raw !== undefined) {
@@ -106,7 +103,7 @@ async function v2TracksRoutes(app) {
       // The cached lookup can lag a Go live pressed seconds ago (the first
       // RaceSim/exporter burst lands right after) — confirm against the DB
       // before dropping anything.
-      races = await racesForRrEvent(rrEventId, { fresh: true });
+      races = await racesForKey(platform, key, { fresh: true });
       live = races.filter(acceptsData);
     }
     if (!live.length) {
@@ -123,15 +120,23 @@ async function v2TracksRoutes(app) {
     const jobs = live.map((race) => JSON.stringify({
       race_id: race.id,
       datetime,
-      endpoint: 'v2/tracks/raceresult',
+      endpoint: `v2/tracks/${platform}`,
       payload: request.body,
     }));
     await redis.lpush(QUEUE_KEY, ...jobs);
     const n = Array.isArray(request.body) ? request.body.length : 1;
-    for (const r of live) raceLog(r.id, 'push', `received ${n} record${n === 1 ? '' : 's'} from RaceResult → queued`);
+    for (const r of live) raceLog(r.id, 'push', `received ${n} record${n === 1 ? '' : 's'} from ${label} → queued`);
 
     return reply.code(202).send({ message: 'Queued', races: live.length });
-  });
+  };
+
+  app.post('/raceresult/:rr_eventid', {
+    schema: { params: { type: 'object', properties: { rr_eventid: { type: 'integer' } }, required: ['rr_eventid'] } },
+  }, ingest('raceresult', 'RaceResult'));
+
+  app.post('/racetec/:apikey', {
+    schema: { params: { type: 'object', properties: { apikey: { type: 'string', minLength: 8, maxLength: 80 } }, required: ['apikey'] } },
+  }, ingest('racetec', 'RaceTec'));
 }
 
 module.exports = v2TracksRoutes;

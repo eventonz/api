@@ -41,7 +41,7 @@ async function v2RaceObj(eventId) {
     pool.query(
       `SELECT id, race_id, contest_id, name, sort_order, visible, split_type, is_leg,
               accum_km, percent_course, default_speed, default_speed_kmh, speed_adjust, fixed_elevation,
-              send_push, push_type, rr_splitid
+              send_push, push_type, rr_splitid, short_name
          FROM v2.splits WHERE race_id = ANY($1::bigint[]) ORDER BY race_id, contest_id, sort_order, id`,
       [raceIds]
     ),
@@ -69,6 +69,8 @@ async function v2RaceObj(eventId) {
         id: Number(s.id),
         rr_splitid: s.rr_splitid != null && Number(s.rr_splitid) > 0 ? Number(s.rr_splitid) : 0,
         name: rrText(s.name),
+        // CMS 'Short' label for tight spots (checkpoint strip marker); null = use name.
+        short_name: s.short_name || null,
         order: s.sort_order,
         type: s.split_type,
         // NUMERIC 1/0 — athleteDetailV2 does a strict `visible !== 1`.

@@ -5,6 +5,7 @@ const { v2RaceObj } = require('../../services/v2RaceConfig');
 const { buildHeader } = require('../../services/splits/buildHeader');
 const athleteDetailV2 = require('../../services/splits/athleteDetailV2');
 const v2rr = require('../../services/splits/v2rr');
+const v2racetec = require('../../services/splits/v2racetec');
 
 /**
  * GET /v2/splits/:event_id?id=&contest=&bib=
@@ -43,6 +44,15 @@ async function v2SplitsRoutes(app) {
     const candidates = byRace ? [byRace] : races;
     let contest = byRace ? '' : contestParam;
 
+    // --- RaceTec races: the athlete's splits are fetched live from RaceTec
+    // here on the server (services/splits/v2racetec.js), never from Redis and
+    // never by the app. Falls through to the Redis/config paths on a miss so
+    // pushed crossings still show if RaceTec is unreachable.
+    for (const race of candidates) {
+      const built = await buildFromRaceTec({ v2RaceId: race.id, event_id, athleteId, bib, contest: contest || contestParam, log: request.log });
+      if (built) return reply.code(200).send(built);
+    }
+
     // --- V2-native path: the race's own redis_splits cache (written by the
     // provisioned-feed pull, keyed on the v2 race id). Takes precedence over
     // the platform-race bridge; a miss falls through untouched. ---
@@ -77,6 +87,50 @@ async function v2SplitsRoutes(app) {
     if (built) return reply.code(200).send(built);
     return reply.code(404).send({ error: 'No timing data for this event' });
   });
+}
+
+/**
+ * RaceTec: ask RaceTec for the athlete (by bib + contest) and render the same
+ * document. null when the race isn't RaceTec, nothing is known, or RaceTec
+ * fails (logged) — the caller falls through.
+ */
+async function buildFromRaceTec({ v2RaceId, event_id, athleteId, bib, contest, log }) {
+  const { rows } = await pool.query(
+    `SELECT id, timer_platform, racetec_baseurl, racetec_apikey FROM v2.races WHERE id = $1 AND timer_platform = 'racetec'`,
+    [v2RaceId]
+  ).catch(() => ({ rows: [] }));
+  const race = rows[0];
+  if (!race || !race.racetec_apikey) return null;
+
+  const raceobj = await v2RaceObj(event_id).catch(() => null);
+  // RaceTec identity is the bib; the app may only know the athlete id (= bib
+  // for RaceTec loads, but resolve through v2.athletes to be safe).
+  let raceNo = String(bib || '').trim();
+  let contestId = String(contest || '').trim();
+  const known = (raceobj?.events || []).some((e) => String(e.contest_id) === contestId);
+  if (!known) contestId = '';
+  if ((!raceNo || !contestId) && (athleteId || raceNo)) {
+    const { rows: a } = await pool.query(
+      `SELECT raceno, contest::text AS contest FROM v2.athletes WHERE race_id = $1 AND (athlete_id = $2 OR raceno = $3)
+        ORDER BY (athlete_id = $2) DESC, updated_at DESC NULLS LAST, id DESC LIMIT 1`,
+      [v2RaceId, String(athleteId || ''), raceNo]
+    ).catch(() => ({ rows: [] }));
+    if (a[0]) { raceNo = raceNo || String(a[0].raceno || ''); contestId = contestId || String(a[0].contest || ''); }
+  }
+  if (!raceNo || !contestId) return null;
+
+  let result = null;
+  try {
+    result = await v2racetec.transform({ race, bib: raceNo, raceobj, contest: contestId });
+  } catch (err) {
+    log?.warn({ err, v2RaceId, raceNo }, 'racetec athletesplits failed');
+    return null;
+  }
+  if (!result) return null;
+  const rObj = raceobj || { events: [], timezone: 'UTC' };
+  const evt = (rObj.events || []).find((e) => String(e.contest_id) === String(result.livetiming.contest_id));
+  const header = buildHeader(result.livetiming, rObj, { bib: raceNo, athleteId, contest: contestId });
+  return withSummarySplits(athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header), evt);
 }
 
 /**
@@ -121,10 +175,16 @@ async function buildFromV2Redis({ v2RaceId, event_id, athleteId, bib, contest })
  * table's first column, which is what the app keys splits on.
  */
 function withSummarySplits(doc, evt) {
+  if (!doc?.version2?.items) return doc;
   const ids = new Set((evt?.summary_split_ids || []).map(String));
-  if (!doc?.version2?.items || !ids.size) return doc;
-  const labels = (evt.splits || []).filter((s) => ids.has(String(s.id))).map((s) => s.name).filter(Boolean);
-  if (labels.length) doc.version2.items.push({ type: 'summary_splits', data: { labels } });
+  const labels = (evt?.splits || []).filter((s) => ids.has(String(s.id))).map((s) => s.name).filter(Boolean);
+  // CMS "Short" labels (v2.splits.short_name), keyed by the full name the app
+  // keys splits on — the checkpoint strip marker uses these where set.
+  const short = {};
+  for (const s of evt?.splits || []) if (s.name && s.short_name) short[s.name] = s.short_name;
+  if (labels.length || Object.keys(short).length) {
+    doc.version2.items.push({ type: 'summary_splits', data: { labels, short } });
+  }
   return doc;
 }
 
