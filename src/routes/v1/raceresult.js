@@ -116,7 +116,7 @@ async function raceresultRoutes(app) {
     }
     const resultsTable = raceobj.timing?.results_table || raceobj.results_table;
 
-    const run = () => finaliseRaceResult({ raceId, feedUrl, resultsTable });
+    const run = () => finaliseRaceResult({ raceId, feedUrl, resultsTable, bibLimit: raceobj.raceno_bib_limit });
 
     if (String(request.query?.wait || '') === '1') {
       try {

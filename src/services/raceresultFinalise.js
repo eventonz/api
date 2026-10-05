@@ -18,6 +18,7 @@
 const pool  = require('../config/database');
 const redis = require('../config/redis');
 const { fetchSplits } = require('./raceresultPull');
+const { isPlaceholderBib } = require('./trackPersistence');
 
 const ROWS_PER_INSERT   = 1000;  // 15 params/row, well under PG's 65535 cap
 const POST_FINALISE_TTL = 3600;  // grace period before redis_splits keys expire
@@ -129,7 +130,7 @@ async function deleteLiveCronJob(raceId) {
   }
 }
 
-async function finaliseRaceResult({ raceId, feedUrl, resultsTable }) {
+async function finaliseRaceResult({ raceId, feedUrl, resultsTable, bibLimit = 0 }) {
   const table = String(resultsTable || '').trim();
   if (!table || !/^[a-z_][a-z0-9_]*$/.test(table)) {
     throw new Error(`Invalid results table for race ${raceId}: "${resultsTable}"`);
@@ -149,6 +150,8 @@ async function finaliseRaceResult({ raceId, feedUrl, resultsTable }) {
   for (const rec of records) {
     const vals = recordToValues(raceId, rec);
     if (!vals) { skipped++; continue; }
+    // Dynamic bibs: never store a row for an athlete still on a placeholder bib.
+    if (isPlaceholderBib(vals[1], bibLimit)) { skipped++; continue; }
     batch.push(vals);
     if (batch.length >= ROWS_PER_INSERT) {
       await upsertBatch(table, batch);

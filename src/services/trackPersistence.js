@@ -24,6 +24,11 @@ const redis = require('../config/redis');
 // The table name comes from our own DB (raceobj.results_table), never from
 // user input, so interpolation is safe. Validated as alphanumeric below.
 // ---------------------------------------------------------------------------
+function isPlaceholderBib(bib, bibLimit) {
+  const limit = Number(bibLimit) || 0;
+  return limit > 0 && Number(bib) >= limit;
+}
+
 async function insertResultsTable(race_id, trackdata, raceobj) {
   const resultsTable = raceobj.results_table?.trim();
   if (!resultsTable) return;
@@ -32,6 +37,11 @@ async function insertResultsTable(race_id, trackdata, raceobj) {
   if (!/^[a-zA-Z0-9_]+$/.test(resultsTable)) {
     throw new Error(`Invalid results_table name: ${resultsTable}`);
   }
+
+  // Dynamic bibs: an athlete still on a placeholder bib (>= races.raceno_bib_limit)
+  // never gets a results row — the row would be orphaned under the old bib once
+  // their real bib is assigned (the table is keyed on race_no).
+  if (isPlaceholderBib(trackdata.race_no, raceobj.raceno_bib_limit)) return;
 
   const hasRRSplitId = trackdata.rr_splitid != null && Number(trackdata.rr_splitid) > 0;
 
@@ -243,6 +253,7 @@ async function logInsertError(race_id, resultsTable, trackdata, err) {
 }
 
 module.exports = {
+  isPlaceholderBib,
   insertResultsTable,
   insertRedis,
   upsertRedisSplits,

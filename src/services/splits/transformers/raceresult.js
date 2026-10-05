@@ -109,7 +109,13 @@ async function transform(raceobj, { athleteId, raceId, contest }) {
   for (const r of (rows || [])) {
     const reader = makeRowReader(r);
     const sid = Number(reader('split_id'));
-    if (Number.isFinite(sid)) rowsBySplit.set(sid, reader);
+    if (!Number.isFinite(sid)) continue;
+    // An athlete whose bib changed (placeholder bib → real bib) keeps a blank
+    // row under the old bib for the same split — never let it replace a timed one.
+    const prev = rowsBySplit.get(sid);
+    const timed = (rd) => String(rd('split_tod') ?? '').trim() !== '';
+    if (prev && timed(prev) && !timed(reader)) continue;
+    rowsBySplit.set(sid, reader);
   }
 
   livetiming.return_server = true;
