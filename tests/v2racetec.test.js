@@ -58,3 +58,25 @@ test('RaceTec error or unknown athlete → null (caller falls through), never th
   expect(await v2racetec.transform({ race, bib: '1', raceobj, contest: '4' })).toBeNull();
   expect(await v2racetec.transform({ race: { racetec_apikey: null }, bib: '1', raceobj, contest: '4' })).toBeNull();
 });
+
+describe('mergePushed', () => {
+  const { mergePushed } = require('../src/services/splits/v2racetec');
+  test('adds a pushed crossing RaceTec does not list, and fills an untimed one', () => {
+    const racetec = [
+      { rr_id: 1, name: 'Start', tod: '05:05:00', time: '00:00:00' },
+      { rr_id: 9, name: '3km', tod: '', time: '' },
+    ];
+    const pushed = [
+      { rr_id: 9, name: '3km', tod: '05:39:00', time: '34:00' },
+      { rr_id: 11, name: '6.3km', tod: '06:10:00', time: '65:00' },
+    ];
+    const out = mergePushed(racetec, pushed);
+    expect(out.find((r) => r.rr_id === 9).tod).toBe('05:39:00');
+    expect(out.find((r) => r.rr_id === 11).time).toBe('65:00');
+    expect(out).toHaveLength(3);
+  });
+  test('RaceTec time wins over a pushed one', () => {
+    const out = mergePushed([{ rr_id: 1, tod: '05:05:00', time: '00:00:00' }], [{ rr_id: 1, tod: '05:05:30', time: '00:00:30' }]);
+    expect(out[0].tod).toBe('05:05:00');
+  });
+});

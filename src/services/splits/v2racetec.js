@@ -17,7 +17,7 @@
  *              estimated_next_split_race_time, estimated_next_split_tod }] }
  */
 
-const { transformRecords } = require('./v2rr');
+const { transformRecords, getAthleteRecords } = require('./v2rr');
 
 const TIMEOUT_MS = 10_000;
 const str = (v) => (v == null ? '' : String(v)).trim();
@@ -70,22 +70,43 @@ function toRecords(data, cfgSplits) {
 }
 
 /**
+ * RaceTec's answer wins, but a crossing the timer PUSHED to us (Redis, via
+ * the worker) that RaceTec's own API doesn't show yet is added — or fills a
+ * point RaceTec lists without a time. Without this the live fetch hid pushed
+ * crossings whenever RaceTec answered at all.
+ */
+function mergePushed(records, pushed) {
+  if (!pushed.length) return records;
+  const byId = new Map(records.map((r) => [Number(r.rr_id), r]));
+  for (const p of pushed) {
+    const id = Number(p.rr_id);
+    if (!(id > 0)) continue;
+    const cur = byId.get(id);
+    if (!cur) { records.push({ ...p, label: p.label || p.name || '' }); byId.set(id, p); continue; }
+    if (str(cur.tod) === '' && str(p.tod) !== '') Object.assign(cur, { tod: p.tod, time: p.time || cur.time, chip: p.chip || cur.chip, pace: p.pace || cur.pace, speed: p.speed || cur.speed, rank: p.rank || cur.rank, rank_gender: p.rank_gender || cur.rank_gender, rank_ag: p.rank_ag || cur.rank_ag, predicted: '', predicted_tod: '' });
+  }
+  return records;
+}
+
+/**
  * @param {object} args
  * @param {object} args.race      v2.races row with racetec_baseurl + racetec_apikey
  * @param {string} args.bib       the athlete's race number (RaceTec identity)
  * @param {object} args.raceobj   v2RaceObj output
  * @param {string} args.contest   contest id (RaceTec event id)
+ * @param {string} [args.athleteId] for the pushed-crossings merge (= bib for RaceTec)
  * @returns {Promise<{livetiming, contestType}|null>} null = RaceTec had nothing
  */
-async function transform({ race, bib, raceobj, contest }) {
+async function transform({ race, bib, raceobj, contest, athleteId }) {
   if (!bib || !race?.racetec_apikey || !race?.racetec_baseurl || !contest) return null;
   const data = await fetchAthlete(race, contest, bib);
   if (!data) return null;
   const event = (raceobj?.events || []).find((e) => String(e.contest_id) === String(contest));
-  const records = toRecords(data, event?.splits || []);
+  const pushed = await getAthleteRecords(race.id, athleteId || bib);
+  const records = mergePushed(toRecords(data, event?.splits || []), pushed?.splits || []);
   const out = transformRecords({ records, raceobj, contest });
   if (out && str(data.webresults_link)) out.livetiming.webresults_link = str(data.webresults_link);
   return out;
 }
 
-module.exports = { transform, toRecords };
+module.exports = { transform, toRecords, mergePushed };

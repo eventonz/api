@@ -121,7 +121,7 @@ async function buildFromRaceTec({ v2RaceId, event_id, athleteId, bib, contest, l
 
   let result = null;
   try {
-    result = await v2racetec.transform({ race, bib: raceNo, raceobj, contest: contestId });
+    result = await v2racetec.transform({ race, bib: raceNo, raceobj, contest: contestId, athleteId });
   } catch (err) {
     log?.warn({ err, v2RaceId, raceNo }, 'racetec athletesplits failed');
     return null;
