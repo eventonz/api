@@ -63,6 +63,7 @@ async function resolveRace(v2RaceId) {
             r.name,
             r.rr_raceid,
             r.organisation_id      AS v2_org_id,
+            CASE WHEN r.timer_platform = 'racetec' THEN r.racetec_apikey END AS racetec_apikey,
             o.v1_org_id,
             o.rr_apikey            AS v2_org_key
        FROM v2.races r
@@ -73,7 +74,9 @@ async function resolveRace(v2RaceId) {
   if (!rows.length) throw new Error(`v2 race ${v2RaceId} not found`);
 
   const race = rows[0];
-  if (!race.rr_raceid) {
+  // A RaceTec race has no RaceResult event — it still resolves (its RaceTec
+  // key is the tenant secret for /v2/raceresult/log and friends).
+  if (!race.rr_raceid && !race.racetec_apikey) {
     throw new Error(`v2 race ${v2RaceId} has no RaceResult event id (rr_raceid)`);
   }
   return race;

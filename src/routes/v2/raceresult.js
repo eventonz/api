@@ -34,7 +34,9 @@ function sameSecret(a, b) {
   return ba.length === bb.length && crypto.timingSafeEqual(ba, bb);
 }
 
-/** evt_ tokens → timer auth; anything else must be the race's own org RR API key. */
+/** evt_ tokens → timer auth; anything else must be the race's own secret —
+ * the organisation's RaceResult API key, or for a RaceTec race its RaceTec
+ * API key (SES-style orgs have no RaceResult account at all). */
 async function tenantAuth(request, reply) {
   const header = request.headers['authorization'] || '';
   const bearer = header.startsWith('Bearer ') ? header.slice(7).trim() : '';
@@ -45,8 +47,8 @@ async function tenantAuth(request, reply) {
   if (bearer.startsWith('evt_')) return timerAuth(request, reply);
   try {
     const race = await resolveRace(Number(request.params.race_id));
-    const orgKey = await apiKeyForRace(race);
-    if (!sameSecret(bearer, orgKey)) throw new Error('key mismatch');
+    const secret = race.racetec_apikey || await apiKeyForRace(race);
+    if (!sameSecret(bearer, secret)) throw new Error('key mismatch');
   } catch (err) {
     request.log.warn({ raceId: request.params.race_id, err: err.message }, 'v2 raceresult org-key auth failed');
     return reply.code(401).send({ status: 'error', code: 401, message: 'Invalid credentials for this race' });
