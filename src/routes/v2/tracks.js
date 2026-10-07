@@ -24,6 +24,9 @@ const redis = require('../../config/redis');
 const { raceLog } = require('../../services/raceLog');
 
 const QUEUE_KEY   = 'ingest_queue';
+const RAW_CAP     = 500;              // raw pushes kept per race (newest first)
+const RAW_TTL     = 7 * 24 * 3600;
+const RAW_MAX     = 64 * 1024;        // bytes of body kept per push
 const LOOKUP_TTL  = 30; // seconds — race state cache; a Stop Live lands within this
 const ACCEPT_LIVE = new Set(['armed', 'live', 'finalising']);
 
@@ -56,6 +59,31 @@ async function racesForKey(platform, key, { fresh = false } = {}) {
 // or flagged live the old way via status.
 function acceptsData(race) {
   return ACCEPT_LIVE.has(race.live_state) || race.status === 'live';
+}
+
+// Keep every push as received, keyed by the timer's own id so it's easy to
+// find in Redis — racetec:pushes:{apikey} / raceresult:pushes:{rr_eventid} —
+// (scripts/show-pushes.js <key>). Live or not, JSON or not: the point is
+// seeing the raw traffic.
+function recordRawPush(races, platform, key, request) {
+  const body = request.body;
+  const text = body?.__raw !== undefined ? String(body.__raw) : JSON.stringify(body);
+  const entry = JSON.stringify({
+    at: new Date().toISOString(),
+    platform,
+    content_type: request.headers['content-type'] || '',
+    bytes: Buffer.byteLength(text || ''),
+    states: Object.fromEntries(races.map((r) => [r.id, r.live_state])),
+    body: (text || '').slice(0, RAW_MAX),
+  });
+  const listKey = `${platform}:pushes:${key}`;
+  redis.multi()
+    .lpush(listKey, entry)
+    .ltrim(listKey, 0, RAW_CAP - 1)
+    .expire(listKey, RAW_TTL)
+    .exec()
+    .catch(() => {});
+  return text || '';
 }
 
 function isValidJsonBody(body) {
@@ -91,6 +119,8 @@ async function v2TracksRoutes(app) {
     const key = platform === 'racetec' ? request.params.apikey : request.params.rr_eventid;
     let races = await racesForKey(platform, key);
     if (!races.length) return reply.code(400).send({ msg: 'Race not found' });
+    const rawText = recordRawPush(races, platform, key, request);
+    const preview = rawText.replace(/\s+/g, ' ').slice(0, 300);
 
     if (!isValidJsonBody(request.body) || request.body.__raw !== undefined) {
       const raw = String(request.body?.__raw ?? '').slice(0, 400);
@@ -109,7 +139,7 @@ async function v2TracksRoutes(app) {
     if (!live.length) {
       const bucket = Math.floor(Date.now() / 600000);
       for (const r of races) {
-        raceLog(r.id, 'push', `received while ${r.live_state} — ignored (race not live)`);
+        raceLog(r.id, 'push', `received while ${r.live_state} — ignored (race not live): ${preview}`);
         // Counted so the worker can warn admins "RaceResult is pushing but nobody pressed Go live".
         redis.incr(`ops:pushes_ignored:${r.id}:${bucket}`).then(() => redis.expire(`ops:pushes_ignored:${r.id}:${bucket}`, 1500)).catch(() => {});
       }
@@ -125,7 +155,7 @@ async function v2TracksRoutes(app) {
     }));
     await redis.lpush(QUEUE_KEY, ...jobs);
     const n = Array.isArray(request.body) ? request.body.length : 1;
-    for (const r of live) raceLog(r.id, 'push', `received ${n} record${n === 1 ? '' : 's'} from ${label} → queued`);
+    for (const r of live) raceLog(r.id, 'push', `received ${n} record${n === 1 ? '' : 's'} from ${label} → queued: ${preview}`);
 
     return reply.code(202).send({ message: 'Queued', races: live.length });
   };
