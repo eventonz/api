@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const { platformRacesForEvent } = require('../../services/v2bridge');
 const pool = require('../../config/database');
 
@@ -42,8 +43,26 @@ async function v2ConfigRoutes(app) {
     if (res.statusCode !== 200) return reply.send(res.body);
     let doc;
     try { doc = JSON.parse(res.body); } catch { return reply.send(res.body); }
-    return reply.send(rewriteV1Urls(doc, request.params.event_id, race.platform_race_id));
+    doc = rewriteV1Urls(doc, request.params.event_id, race.platform_race_id);
+    return reply.send(await applyV2EventSettings(doc, request.params.event_id));
   });
+}
+
+/**
+ * The bridged document carries the OLD race's settings; where the V2 event
+ * has its own (CMS Event Settings), those win. Currently: `avatar` (initials ·
+ * raceno · mixed). The document hash is folded with the override so a change
+ * in the CMS reaches apps that cache on `_hash`.
+ */
+async function applyV2EventSettings(doc, eventId) {
+  const { rows } = await pool.query(`SELECT event_json->>'avatar' AS avatar FROM v2.events WHERE id = $1`, [eventId]);
+  const avatar = String(rows[0]?.avatar || '').trim().toLowerCase();
+  if (!avatar || !doc.athletes || doc.athletes.avatar === avatar) return doc;
+  doc.athletes.avatar = avatar;
+  if (typeof doc._hash === 'string') {
+    doc._hash = crypto.createHash('sha256').update(`${doc._hash}|avatar=${avatar}`).digest('hex');
+  }
+  return doc;
 }
 
 /**
