@@ -183,7 +183,7 @@ async function timerEventsV2Routes(app) {
         const homeJson = {
           title: 'Home',
           blocks: [
-            { type: 'header', variant: defaults.headerVariant, props: { ...(headerImage ? { image: headerImage } : {}), title: name, ...(defaults.headerVariant === 'compact' ? {} : { sub: 'Live results' }) } },
+            { type: 'header', variant: defaults.headerVariant, props: { ...(headerImage && defaults.headerVariant !== 'compact' ? { image: headerImage } : {}), title: name, ...(defaults.headerVariant === 'compact' ? {} : { sub: 'Live results' }) } },
             { type: 'rr_results', props: { rrEventId, athleteLinks: true, tabs: 'all' } },
           ],
         };

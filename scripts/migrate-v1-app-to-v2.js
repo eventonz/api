@@ -84,8 +84,9 @@ async function mapLimit(items, n, fn) {
 (async () => {
   const c = await pool.connect();
   try {
-    const { rows: [app] } = await c.query('SELECT id, organisation_id, accent, events, event_defaults FROM v2.apps WHERE id = $1', [V2_APP]);
+    const { rows: [app] } = await c.query('SELECT id, organisation_id, accent, events, event_defaults, home_blocks FROM v2.apps WHERE id = $1', [V2_APP]);
     if (!app) throw new Error(`v2.apps ${V2_APP} not found`);
+    const { rows: [v1App] } = await c.query('SELECT id, name, hassearch, bg_color FROM public.apps WHERE id = $1', [V1_APP]);
     const orgId = app.organisation_id;
     const d = app.event_defaults || {};
     const defaults = {
@@ -98,6 +99,7 @@ async function mapLimit(items, n, fn) {
     const { rows: races } = await c.query(
       `SELECT r.id, r.event_name, r.event_date::text AS event_date, r.display_location, r.time_zone,
               r.rr_eventid, r.status, r.thumbnail, r.results_link,
+              r.size, r.large_image, r.tag_text, r.tag_color, r.raceno_bib_limit,
               v.id AS v2_race_id, v.event_id AS v2_event_id
          FROM public.races r
          JOIN public.app_race_join j ON j.race_id = r.id AND j.app_id = $1
@@ -123,7 +125,8 @@ async function mapLimit(items, n, fn) {
     };
 
     const entries = new Map(); // v1 race id → index entry
-    const report = { created: 0, skipped: 0, hidden: 0, noRR: 0, rrUnpublished: [], rrUnreachable: [], accentsFromRR: 0 };
+    const featured = [];       // v1 "large" list items → event_card blocks on the app home
+    const report = { created: 0, skipped: 0, hidden: 0, noRR: 0, linkOnly: 0, rrUnpublished: [], rrUnreachable: [], accentsFromRR: 0 };
     for (const r of races) {
       if (r.v2_event_id) { report.skipped++; continue; }
       const name = String(r.event_name || '').trim();
@@ -134,7 +137,11 @@ async function mapLimit(items, n, fn) {
       const timeZone = validTZ(r.time_zone || '') ? r.time_zone : 'Pacific/Auckland';
       const published = r.status === 'open';
       const thumb = r.thumbnail && !BLANK_THUMB.test(r.thumbnail) ? r.thumbnail : '';
-      const link = /^https?:\/\//.test(r.results_link || '') && !/evento\.co\.nz\/?$/.test(r.results_link) ? r.results_link.trim() : '';
+      // An external results link only matters when there is NO RaceResult event:
+      // with one, the native rr_results page wins (a `link` on the index entry
+      // would make the list open the timer's website instead of the event).
+      const rawLink = /^https?:\/\//.test(r.results_link || '') && !/evento\.co\.nz\/?$/.test(r.results_link) ? r.results_link.trim() : '';
+      const link = r.rr_eventid > 0 ? '' : rawLink;
 
       let accent = '';
       if (rr) {
@@ -149,23 +156,42 @@ async function mapLimit(items, n, fn) {
 
       const eventId = uniqueId(name);
       const heroImage = defaults.headerImage || thumb;
+      // External results link with no RaceResult event = a "results link only"
+      // event (CMS Overview card): a list entry that opens the timer's site,
+      // no pages of its own.
+      const linkOnly = !rr && !!link;
+      if (linkOnly) report.linkOnly++;
       const eventJson = {
         name, status: published ? 'open' : 'hidden', timeZone, accent,
         ...(date ? { date } : {}), ...(venue ? { venue } : {}), ...(heroImage ? { heroImage } : {}),
+        ...(linkOnly ? { linkOnly: true } : {}),
       };
       await c.query('INSERT INTO v2.events (id, organisation_id, event_json) VALUES ($1, $2, $3::jsonb)', [eventId, orgId, JSON.stringify(eventJson)]);
 
-      const blocks = [{ type: 'header', variant: defaults.headerVariant, props: { ...(heroImage ? { image: heroImage } : {}), title: name, ...(defaults.headerVariant === 'compact' ? {} : { sub: 'Live results' }) } }];
-      if (rr) blocks.push({ type: 'rr_results', props: { rrEventId: rr, athleteLinks: true, tabs: 'all' } });
-      await c.query(`INSERT INTO v2.pages (event_id, slug, page_type, page_json, sort) VALUES ($1, 'home', 'home', $2::jsonb, -1)`,
-        [eventId, JSON.stringify({ title: 'Home', blocks })]);
+      if (!linkOnly) {
+        const blocks = [{ type: 'header', variant: defaults.headerVariant, props: { ...(heroImage && defaults.headerVariant !== 'compact' ? { image: heroImage } : {}), title: name, ...(defaults.headerVariant === 'compact' ? {} : { sub: 'Live results' }) } }];
+        if (rr) blocks.push({ type: 'rr_results', props: { rrEventId: rr, athleteLinks: true, tabs: 'all' } });
+        await c.query(`INSERT INTO v2.pages (event_id, slug, page_type, page_json, sort) VALUES ($1, 'home', 'home', $2::jsonb, -1)`,
+          [eventId, JSON.stringify({ title: 'Home', blocks })]);
+      }
 
+      // Dynamic bibs (old CMS "Ignore bib numbers above") travels with the race.
+      const bibLimit = Number(r.raceno_bib_limit) > 0 ? Number(r.raceno_bib_limit) : null;
       if (r.v2_race_id) {
-        await c.query(`UPDATE v2.races SET event_id=$2, name=$3, event_date=$4::date, rr_raceid=$5, time_zone=$6, status='active', app_id=$7, updated_at=NOW() WHERE id=$1`,
-          [r.v2_race_id, eventId, name, date || null, rr ? parseInt(rr, 10) : null, timeZone, V2_APP]);
+        await c.query(`UPDATE v2.races SET event_id=$2, name=$3, event_date=$4::date, rr_raceid=$5, time_zone=$6, status='active', app_id=$7, raceno_bib_limit=COALESCE(raceno_bib_limit, $8), updated_at=NOW() WHERE id=$1`,
+          [r.v2_race_id, eventId, name, date || null, rr ? parseInt(rr, 10) : null, timeZone, V2_APP, bibLimit]);
       } else {
-        await c.query(`INSERT INTO v2.races (organisation_id, app_id, event_id, name, event_date, rr_raceid, time_zone, status, v1_race_id) VALUES ($1,$2,$3,$4,$5::date,$6,$7,'active',$8)`,
-          [orgId, V2_APP, eventId, name, date || null, rr ? parseInt(rr, 10) : null, timeZone, r.id]);
+        await c.query(`INSERT INTO v2.races (organisation_id, app_id, event_id, name, event_date, rr_raceid, time_zone, status, v1_race_id, raceno_bib_limit) VALUES ($1,$2,$3,$4,$5::date,$6,$7,'active',$8,$9)`,
+          [orgId, V2_APP, eventId, name, date || null, rr ? parseInt(rr, 10) : null, timeZone, r.id, bibLimit]);
+      }
+
+      // v1 "large" list items become an event_card above the list (the list's
+      // hideFeatured default then omits them from the rows).
+      if (String(r.size || '').toLowerCase() === 'large' && published) {
+        const badge = String(r.tag_text || '').trim();
+        const badgeColor = hex(r.tag_color);
+        featured.push({ type: 'event_card', props: { event: eventId, ...(r.large_image ? { image: String(r.large_image).trim() } : {}),
+          ...(badge ? { badge } : {}), ...(badgeColor ? { badgeColor } : {}) } });
       }
 
       const meta = [venue, date ? fmtDate(date) : ''].filter(Boolean).join(' · ');
@@ -181,8 +207,28 @@ async function mapLimit(items, n, fn) {
     const stubsDropped = existing.length - kept.length;
     await c.query('UPDATE v2.apps SET events = $2::jsonb, updated_at = NOW() WHERE id = $1', [V2_APP, JSON.stringify(index)]);
 
+    // App home: featured event_cards (v1 "large" items) above the list. The
+    // list keeps whatever the app already has, else the v1 look: small
+    // thumbnail rows with the v1 search toggle.
+    const homeBlocks = Array.isArray(app.home_blocks) ? app.home_blocks : [];
+    const alreadyFeatured = new Set(homeBlocks.filter((b) => b.type === 'event_card').map((b) => b.props?.event));
+    const newCards = featured.filter((b) => !alreadyFeatured.has(b.props.event));
+    let list = homeBlocks.find((b) => b.type === 'event_list');
+    if (!list) list = { type: 'event_list', props: {} };
+    if (!list.props) list.props = {};
+    // `variant` is a block-level field (not a prop); the index is already
+    // newest-first so `manual` keeps that order for a results-only app.
+    if (!list.variant) list.variant = 'compact';
+    if (list.props.search == null && v1App && v1App.hassearch) list.props.search = true;
+    if (!list.props.sort) list.props.sort = 'manual';
+    const rest = homeBlocks.filter((b) => b.type !== 'event_list' && b.type !== 'event_card');
+    // Header/backdrop and other blocks keep their place at the top; cards and the list follow.
+    const newHome = [...rest, ...newCards, ...homeBlocks.filter((b) => b.type === 'event_card'), list];
+    await c.query('UPDATE v2.apps SET home_blocks = $2::jsonb, updated_at = NOW() WHERE id = $1', [V2_APP, JSON.stringify(newHome)]);
+    console.log(`app home: ${newCards.length} featured card(s) added, list variant ${list.variant}${list.props.search ? ' + search' : ''}`);
+
     console.log('\n--- summary ---');
-    console.log(`events created: ${report.created}  (hidden: ${report.hidden}, no RR link: ${report.noRR}, accent from RR: ${report.accentsFromRR})`);
+    console.log(`events created: ${report.created}  (hidden: ${report.hidden}, no RR link: ${report.noRR}, results-link-only: ${report.linkOnly}, accent from RR: ${report.accentsFromRR})`);
     console.log(`skipped (already migrated / unnamed): ${report.skipped}`);
     console.log(`app index: ${existing.length} → ${index.length} entries (${stubsDropped} stubs replaced, ${kept.length} kept)`);
     if (report.rrUnpublished.length) console.log(`RR events NOT published on my.raceresult (${report.rrUnpublished.length}):\n  ${report.rrUnpublished.join('\n  ')}`);
