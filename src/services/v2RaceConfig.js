@@ -53,9 +53,27 @@ async function v2RaceObj(eventId) {
     pool.query('SELECT event_json FROM v2.events WHERE id = $1', [eventId]),
   ]);
 
+  // Finisher extras (CMS Contests › Finisher extras, migration 044). Loaded on
+  // their own and allowed to fail, so a deploy that lands before the migration
+  // still renders splits — just without certificate/photo/medal/cameras.
+  const [{ rows: extras }, { rows: cameras }] = await Promise.all([
+    pool.query(
+      `SELECT race_id, contest_id, cert_link, photo_link, medal_url
+         FROM v2.contests WHERE race_id = ANY($1::bigint[])`,
+      [raceIds]
+    ).catch(() => ({ rows: [] })),
+    pool.query(
+      `SELECT lc.id, lc.split_id, lc.yt_video_id, lc.start_time, lc.label, c.race_id, c.contest_id
+         FROM v2.live_cameras lc JOIN v2.contests c ON c.id = lc.contest_id
+        WHERE lc.race_id = ANY($1::bigint[]) ORDER BY lc.split_id, lc.id`,
+      [raceIds]
+    ).catch(() => ({ rows: [] })),
+  ]);
+
   const eventUnits = ev[0]?.event_json?.units || 'km';
   const events = contests.map((c) => {
     const key = String(c.contest_id);
+    const extra = extras.find((x) => String(x.race_id) === String(c.race_id) && String(x.contest_id) === key) || {};
     const mine = splits.filter((s) => String(s.race_id) === String(c.race_id)
                                    && String(s.contest_id) === key && !s.is_leg);
     return {
@@ -91,8 +109,13 @@ async function v2RaceObj(eventId) {
         .map((l) => ({ id: Number(l.id), rr_splitid: l.rr_legid ?? 0, label: rrText(l.label),
                        icon: l.icon, speed_type: normaliseUnit(l.speed_type) || contestUnit(c.pace_unit, eventUnits),
                        distance: l.distance_m == null ? null : Number(l.distance_m) / 1000 })),
-      live_cameras: [],
-      medal: null, photo_link: null, cert_link: null,
+      // split_id = v2.splits.id — athleteDetailV2 matches cameras on the split id.
+      live_cameras: cameras
+        .filter((cam) => String(cam.race_id) === String(c.race_id) && String(cam.contest_id) === key)
+        .map((cam) => ({ id: Number(cam.id), split_id: Number(cam.split_id), yt_video_id: cam.yt_video_id,
+                         start_time: cam.start_time || '', label: cam.label || '' })),
+      // '' not null — same shape as services/raceConfig.js (CF reads these raw).
+      medal: extra.medal_url || '', photo_link: extra.photo_link || '', cert_link: extra.cert_link || '',
       use_net_times: false, use_estimates: c.use_estimates !== false,
       await_at_next_split: c.await_at_split === true,
       is_tracking: c.is_tracking === true,
@@ -121,4 +144,35 @@ async function v2RaceObj(eventId) {
   };
 }
 
-module.exports = { v2RaceObj, rrText };
+/**
+ * Lay a V2 event's finisher extras (certificate / photo / medal / cameras, set
+ * on the CMS Contests page) over a PLATFORM raceobj, in place. Used when
+ * /v2/splits falls through to the bridged v1 race — after the live cache has
+ * expired post-race — so the V2 settings still show. Contests match on RR
+ * contest id; cameras are re-keyed from v2.splits ids to the platform split
+ * ids via rr_splitid. Only fields set in V2 override; the rest stay as is.
+ * `raceobj` must be a fresh copy (raceconfigByRaceId parses one per call).
+ */
+function overlayV2Extras(raceobj, v2obj) {
+  if (!raceobj?.events?.length || !v2obj?.events?.length) return raceobj;
+  for (const ev of raceobj.events) {
+    const v2 = v2obj.events.find((x) => String(x.contest_id) === String(ev.contest_id));
+    if (!v2) continue;
+    if (v2.medal) ev.medal = v2.medal;
+    if (v2.cert_link) ev.cert_link = v2.cert_link;
+    if (v2.photo_link) ev.photo_link = v2.photo_link;
+    if (v2.live_cameras?.length) {
+      const cams = [];
+      for (const cam of v2.live_cameras) {
+        const v2split = (v2.splits || []).find((sp) => Number(sp.id) === Number(cam.split_id));
+        const rr = Number(v2split?.rr_splitid) || 0;
+        const target = rr ? (ev.splits || []).find((sp) => Number(sp.rr_splitid) === rr) : null;
+        if (target) cams.push({ ...cam, split_id: target.id });
+      }
+      if (cams.length) ev.live_cameras = cams;
+    }
+  }
+  return raceobj;
+}
+
+module.exports = { v2RaceObj, rrText, overlayV2Extras };

@@ -11,6 +11,7 @@
  */
 
 const { raceconfigByRaceId } = require('../raceConfig');
+const { overlayV2Extras } = require('../v2RaceConfig');
 const sportsplits = require('./transformers/sportsplits');
 const raceresult  = require('./transformers/raceresult');
 const { buildHeader } = require('./buildHeader');
@@ -22,11 +23,13 @@ function findContestDisplaySettings(raceobj, contestId) {
   return evt?.display_settings ? { ...evt.display_settings } : {};
 }
 
-async function buildSplits({ raceId, bib, athleteId, contest }) {
+async function buildSplits({ raceId, bib, athleteId, contest, overlay }) {
   const raceobj = await raceconfigByRaceId(raceId);
   if (!raceobj) {
     return { status: 404, body: { error: 'Race not found' } };
   }
+  // /v2/splits bridge: the V2 event's certificate/photo/medal/cameras win.
+  if (overlay) overlayV2Extras(raceobj, overlay);
 
   let contestId = contest;
   let displaySettings = findContestDisplaySettings(raceobj, contestId);

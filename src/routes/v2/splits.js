@@ -65,8 +65,10 @@ async function v2SplitsRoutes(app) {
       }
     }
 
+    let v2Extras;  // the V2 event's finisher extras, loaded once if a bridge is tried
     for (const race of candidates) {
       if (!race.platform_race_id) continue;
+      if (v2Extras === undefined) v2Extras = await v2RaceObj(event_id).catch(() => null);
       if (!contest && athleteId) {
         const { rows } = await pool.query(
           `SELECT contest FROM v2.athletes WHERE race_id = $1 AND athlete_id = $2
@@ -76,7 +78,7 @@ async function v2SplitsRoutes(app) {
         contest = String(rows[0]?.contest ?? '').trim();
       }
       const { status, body } = await buildSplits({
-        raceId: Number(race.platform_race_id), bib, athleteId, contest,
+        raceId: Number(race.platform_race_id), bib, athleteId, contest, overlay: v2Extras,
       });
       if (status === 200) return reply.code(200).send(body);
     }
@@ -242,6 +244,9 @@ async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
     avg_pace: finishRow?.splitpace ?? '',
     showPace: evt.showPace,
     showRank: evt.showRank,
+    medal_url: evt.medal || '',
+    cert_link: evt.cert_link || '',
+    photo_link: evt.photo_link || '',
     // Config is merged in by buildHeader; these carry whatever times exist.
     splits: evt.splits.map((cfg) => {
       const t = timeFor(cfg) || {};
