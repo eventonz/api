@@ -29,7 +29,11 @@ nobody was subscribed to).
   `v2.follows` **scoped to this event** (`app-*`, `event-{this}`, `ath-*` recorded
   under this event), subscribes/unsubscribes via FCM (idempotent, self-healing),
   and records follows in `v2.follows` (`race_id, athlete_id, bib_number,
-  contest_id, event_id, topic, notify`). `v2.follows` is audit/count/fallback —
+  contest_id, event_id, topic, notify`). An `event_id` of `null`/`undefined`/`""`
+  means no event (a multi-event app's home — builds ≤ 100.0.6 send the literal
+  `"null"`): `event-null`/`ath-null-*` topics are dropped and any stale
+  `event-null-*` row is unsubscribed on the device's next sync.
+  `v2.follows` is audit/count/fallback —
   FCM topics are the delivery truth. Muting an athlete must unsubscribe (iOS
   shows topic pushes without waking the app).
 - `GET /v2/push/inbox` — `v2.notifications` rows with `show_in_inbox` for the app's bell.

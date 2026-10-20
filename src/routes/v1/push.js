@@ -46,6 +46,13 @@ function mirrorToSimulator(payload) {
 async function pushRoutes(app) {
   const toInt = (v) => (v == null || v === '' ? null : Number(v));
   const escapeRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // V2 builds up to 100.0.6 bake the literal "null" as the home event of a
+  // multi-event app (build.sh `jq -r .eventId`), so a device opted in on the
+  // app home synced `event-null`. "null"/"undefined"/"" mean NO event: such
+  // topics are dropped, and stale rows sit inside every sync's scope (below)
+  // so the next sync unsubscribes them.
+  const realEvent = (id) => (id && !/^(null|undefined)$/.test(String(id)) ? String(id) : null);
+  const noEventTopic = (t) => typeof t === 'string' && /^(event-(null|undefined)?|ath-(null|undefined)?-.*)$/.test(fcm.stripLang(t));
 
   async function upsertDevice({ app_id, platform, token, device_id, lang }) {
     const { rows } = await pool.query(
@@ -82,7 +89,9 @@ async function pushRoutes(app) {
         follows: { type: 'array', items: { type: 'object' } },
       } } },
   }, async (request, reply) => {
-    const { token, event_id, topics, follows = [], app_id } = request.body;
+    const { token, follows = [], app_id } = request.body;
+    const event_id = realEvent(request.body.event_id);
+    const topics = request.body.topics.filter((t) => !noEventTopic(t));
     const lang = fcm.normLang(request.body.lang);
     // The app sends BARE topics + its language; every subscription carries the
     // language suffix so a send can fan out per language. A language change
@@ -100,7 +109,8 @@ async function pushRoutes(app) {
          AND (topic LIKE 'app-%' OR topic ~ $2)
        UNION SELECT topic FROM v2.follows WHERE device_token_id = $1 AND notify
          AND topic LIKE 'ath-%' AND event_id IS NOT DISTINCT FROM $3`,
-      [deviceId, `^event-${escapeRe(event_id || '')}(-(en|es|de|fr))?$`, event_id || null]   // bare = pre-language row
+      // bare = pre-language row; event-null/-undefined always in scope so they go
+      [deviceId, `^event-(${escapeRe(event_id || '')}|null|undefined)(-(en|es|de|fr))?$`, event_id || null]
     );
     const current = have.map((r) => r.topic);
     const toAdd = wanted.filter((t) => !current.includes(t));
@@ -186,7 +196,7 @@ async function pushRoutes(app) {
       if (!b.app_id) return reply.code(400).send({ error: 'app_id required' });
       topic = `app-${b.app_id}`;
     } else if (b.audience === 'event') {
-      if (!b.event_id) return reply.code(400).send({ error: 'event_id required' });
+      if (!realEvent(b.event_id)) return reply.code(400).send({ error: 'event_id required' });
       topic = `event-${b.event_id}`;
     } else if (b.audience === 'athlete') {
       if (!b.race_id || !b.athlete_id) return reply.code(400).send({ error: 'race_id and athlete_id required' });
