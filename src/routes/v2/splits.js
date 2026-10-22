@@ -21,7 +21,26 @@ const v2racetec = require('../../services/splits/v2racetec');
  * that is swapped for the athlete's real RR contest (v2.athletes.contest) so
  * the transformer resolves splits config for the right stage.
  */
+/**
+ * Finish-camera links for the V2 apps: youtube.com/live/{id}?t= instead of
+ * youtu.be/{id}?t=. iOS 100.0.7 and earlier play youtu.be links in an in-app
+ * player that YouTube rejects (wrong page origin), but open a /live/ link in
+ * the YouTube app at the same second. /v1 (Flutter) keeps youtu.be.
+ */
+function appVideoLinks(doc) {
+  for (const item of doc?.version2?.items || []) {
+    if (item?.type !== 'videos' || !Array.isArray(item.data)) continue;
+    for (const v of item.data) {
+      const m = String(v?.url || '').match(/^https:\/\/youtu\.be\/([\w-]+)(?:\?t=(\d+))?/);
+      if (m) v.url = `https://www.youtube.com/live/${m[1]}${m[2] ? `?t=${m[2]}` : ''}`;
+    }
+  }
+  return doc;
+}
+
 async function v2SplitsRoutes(app) {
+  // Scoped to this plugin: only /v2/splits responses are rewritten.
+  app.addHook('preSerialization', async (_request, _reply, payload) => appVideoLinks(payload));
   app.get('/:event_id', {
     schema: {
       params: { type: 'object', properties: { event_id: { type: 'string' } }, required: ['event_id'] },
