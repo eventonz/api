@@ -44,6 +44,41 @@ async function v2AppVersionRoutes(app) {
     reply.header('X-Cache', 'MISS');
     return reply.send(payload);
   });
+  /**
+   * POST /v2/app_version/:app_id — build.sh `upload` records which block
+   * contract (blocks.schema.json version) the build it just sent to the store
+   * understands, so the CMS can grey out newer blocks for this app
+   * (v2.apps.live_contract, migration 047). Auth: the app's own API key
+   * (allowed even once reads require install tokens) or a server key.
+   */
+  app.post('/:app_id', {
+    config: { allowApiKey: true },
+    schema: {
+      params: { type: 'object', properties: { app_id: { type: 'integer' } }, required: ['app_id'] },
+      body: {
+        type: 'object',
+        properties: {
+          contract: { type: 'integer', minimum: 1 },
+          version:  { type: 'string' },
+          platform: { type: 'string', enum: ['ios', 'android'] },
+        },
+        required: ['contract', 'version'],
+      },
+    },
+  }, async (request, reply) => {
+    const { app_id } = request.params;
+    const auth = request.auth || {};
+    if (auth.kind !== 'server' && Number(auth.app_id) !== Number(app_id)) {
+      return reply.code(403).send({ error: 'Key does not belong to this app' });
+    }
+    const { contract, version } = request.body;
+    const { rowCount } = await pool.query(
+      `UPDATE v2.apps SET live_contract = $2, live_version = $3, live_contract_at = now() WHERE id = $1`,
+      [app_id, contract, version]
+    );
+    if (!rowCount) return reply.code(404).send({ error: 'App not found' });
+    return reply.send({ ok: true, app_id, live_contract: contract, live_version: version });
+  });
 }
 
 module.exports = v2AppVersionRoutes;
