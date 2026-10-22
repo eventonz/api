@@ -112,7 +112,9 @@ function walk(node, ctx, gfIdx, groupKey, labels, out) {
     while (idx < gf.length && gf[idx] === IGNORE) idx += 1;
     // Suppress the header label when this level is an actively-filtered grouping.
     const filterSet = idx < gf.length && gf[idx] !== '' && gf[idx] !== IGNORE;
-    for (const k of Object.keys(node).sort()) {
+    // Group keys carry a numeric sort prefix ("#1_…" … "#15_…"): compare the
+    // numbers, or "#10_" lands before "#2_" (DNF/DNS groups jumped to the top).
+    for (const k of Object.keys(node).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))) {
       const nextLabels = filterSet ? labels : [...labels, groupLabel(k, ctx.lang)];
       walk(node[k], ctx, idx + 1, k, nextLabels, out);
     }
