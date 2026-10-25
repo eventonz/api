@@ -36,7 +36,67 @@ geojson) · **Schedule** · **Media** · **Notifications**.
 per file via `v2.file_versions`) then `manifest.json` (no-cache) last.
 **Publish app**: `apps/{appId}/index.json` (no-cache): mode, events list, brand,
 accent. Spaces creds `SPACES_KEY/SECRET` (local: aws profile `evento-spaces`).
-CDN TTL 60 s = app poll interval.
+CDN TTL 60 s = app poll interval. File versions are never below the current
+Unix time (the 3 Oct import wrote timestamp versions; apps only refetch when a
+version goes up). Short `date` props from the picker ("2026-11-01T10:00") are
+completed to full ISO with the event's timezone offset on publish and in the
+preview route (`lib/date-normalise.ts`) — iOS only parses full ISO-8601.
+Published app indexes leave out events marked Hidden (`published: false`).
+
+## How-to: results + live tracking for a RaceResult event (organiser checklist)
+1. **Link RaceResult** — Event → Settings → RaceResult: pick the RR event
+   (`v2.races.rr_raceid`). Then Athletes → **Load athletes** (startlist).
+2. **Maps** — upload a GPX per distance (Maps); turn **tracking** on per map.
+3. **Contests** — **Load contests** from RR, then per contest: course in **Map &
+   tracking**, predictive tracking on, ≤5 **Summary** splits (the checkpoint
+   strip on followed rows; each split's **Short** name is its strip label), and
+   **Finisher extras**: certificate / photo URL templates (`{{RaceNo}}`,
+   `{{AthleteID}}`, `{{Contest}}`), medal image, finish-line camera (YouTube
+   id + timing point + camera start time, race-local) — migration 044.
+4. **Athletes page** — nothing to create: every event gets the system page
+   **Athletes** (slug `athletes`, an `athlete_hub` card: Following | All
+   athletes, search, Follow buttons). Customise it in Pages if you want
+   sponsors etc. around the hub. Don't confuse it with **Athlete** (slug
+   `athlete`) — that is the *detail template* one athlete opens into, never a tab.
+5. **Results page** — Pages → Add a page → **"my.raceresult.com results"**
+   (`pageType rr_results`, carries the race's RR event id). Shows nothing until
+   the RR event is **published on my.raceresult.com**. Results-only events use
+   the Overview toggle instead (Home *is* the results page).
+6. **Tracking page** — Pages → Add a page → **Tracking card**, variant `full`
+   (the page is the live map; `lib/tracking-page.ts ensureTrackingPage` is the
+   same recipe, auto-seeded for events created from RaceResult). Needs step 2
+   (map with tracking on) and step 3 (course on the contest).
+7. **Navigation (bottom bar)** — Event → **Navigation**. Home is always the
+   first tab; add up to **4** more. Click **+ Add tab**, then per tab set
+   **Label**, **Opens** (the page) and **Icon**. The usual RR timer bar:
+
+   | Label | Opens | Icon |
+   |---|---|---|
+   | Athletes | Athletes (`athletes`) | Athletes |
+   | Results | the my.raceresult.com results page | Results / flag |
+   | Tracking | the tracking page | Tracking / location |
+
+   Use ↑ ↓ to order, ✕ to remove, then **Save navigation**. **+ Add web link
+   tab** makes a tab that opens a web page instead.
+   An empty bar (no tabs) means the app shows no bottom bar at all.
+8. **Publish event** (nav, pages and maps only reach phones on publish — apps
+   pick it up within ~1 min), then on race day **Go live** (Overview → Live
+   timing).
+
+**Check on a phone:** Athletes tab lists the startlist and Follow works;
+Results shows lists once RR publishes; Tracking shows the course map (dots
+appear once athletes cross timing points). Blank Athletes tab = the tab points
+at `athlete` instead of `athletes`; "Tracking isn't set up yet" = see the
+bridge gotcha below.
+
+**Gotcha — the old-system bridge.** `/v2/config`, `/v2/athletes`, `/v2/splits`
+read through `v2.races.v1_race_id` (else a `public.races` row with the same
+`rr_raceid`) when one exists (`services/v2bridge.js`). Events copied from the
+old CMS keep that link, so an event set up in the new CMS (contests, courses,
+`v2.athletes`) still serves the OLD race's empty config: the tracking page says
+"Tracking isn't set up yet" and athlete search is empty. If the old race has no
+athletes/contests, clear `v2.races.v1_race_id` so the event goes V2-native.
+(Oct 2026: run-canberra-2026, embrunman.)
 
 ## RaceResult from the CMS (all with the org's RR key, `lib/raceresult.ts rrLogin`)
 event list (`api/public/eventlist`), contests/splits (`contests/get`,
