@@ -27,6 +27,7 @@ async function v2Routes(app) {
     authed.register(require('./tracking'), { prefix: '/tracking' });
     authed.register(require('./config'), { prefix: '/config' });
     authed.register(require('./cheers'), { prefix: '/cheers' });
+    authed.register(require('./predictions'), { prefix: '/predictions' });
     authed.register(require('./photos'), { prefix: '/photos' });
     authed.register(require('./app_version'), { prefix: '/app_version' });
     // App-level endpoints aliased from /v1 so the V2 app and CMS talk /v2

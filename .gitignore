@@ -32,3 +32,4 @@ pids/
 
 # Firebase service account (push) — never commit
 config/firebase-service-account.json
+.rr-config-cache.json
