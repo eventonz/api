@@ -52,7 +52,7 @@ async function v2SplitsRoutes(app) {
     const { event_id } = request.params;
     const q = request.query || {};
     const athleteId = (q.id || '').trim();
-    const bib = (q.bib || q.id || '').trim();
+    let bib = (q.bib || '').trim();
     const contestParam = (q.contest || '').trim();
 
     const races = await platformRacesForEvent(event_id);
@@ -62,6 +62,21 @@ async function v2SplitsRoutes(app) {
     const byRace = races.find((r) => String(r.id) === contestParam);
     const candidates = byRace ? [byRace] : races;
     let contest = byRace ? '' : contestParam;
+
+    // The V2 apps send only id + contest: take the race number from the
+    // startlist so {{RaceNo}} / {bib} in the finisher links (and the rr_results
+    // / RaceTec lookups) get the bib, not the RR athlete id. CF's id fallback
+    // stays for athletes the startlist doesn't know.
+    if (!bib && athleteId) {
+      const { rows } = await pool.query(
+        `SELECT raceno::text AS raceno FROM v2.athletes
+          WHERE race_id = ANY($1::int[]) AND athlete_id = $2
+          ORDER BY updated_at DESC NULLS LAST, id DESC LIMIT 1`,
+        [candidates.map((r) => Number(r.id)), athleteId]
+      ).catch(() => ({ rows: [] }));
+      bib = String(rows[0]?.raceno || '').trim();
+    }
+    if (!bib) bib = athleteId;
 
     // --- RaceTec races: the athlete's splits are fetched live from RaceTec
     // here on the server (services/splits/v2racetec.js), never from Redis and
@@ -185,7 +200,11 @@ async function buildFromV2Redis({ v2RaceId, event_id, athleteId, bib, contest })
   const evt = (rObj.events || []).find(
     (e) => String(e.contest_id) === String(result.livetiming.contest_id)
   );
-  const header = buildHeader(result.livetiming, rObj, { bib, athleteId, contest: contestId });
+  // {{Contest}} in the finisher links: the resolved contest, else the one the
+  // transformer found on the athlete's records.
+  const header = buildHeader(result.livetiming, rObj, {
+    bib, athleteId, contest: contestId || String(result.livetiming.contest_id ?? '').trim(),
+  });
   return withSummarySplits(athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header), evt);
 }
 

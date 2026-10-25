@@ -153,10 +153,15 @@ function buildExternalLinks(livetiming, { bib, athleteId, contest }) {
   if (!livetiming.result?.trim() || (!livetiming.cert_link && !livetiming.photo_link)) {
     return null;
   }
+  // Placeholders: the RR-style {{RaceNo}} / {{AthleteID}} / {{Contest}} and the
+  // block-template aliases {bib} / {athlete_id} (what the CMS and the apps'
+  // athlete_certificate / athlete_photos_link cards document). Case-insensitive,
+  // values URL-encoded.
+  const enc = (v) => encodeURIComponent(String(v ?? ''));
   const subst = (template) => String(template)
-    .replace(/\{\{RaceNo\}\}/g,    bib       || '')
-    .replace(/\{\{AthleteID\}\}/g, athleteId || '')
-    .replace(/\{\{Contest\}\}/g,   contest   || '');
+    .replace(/\{\{\s*RaceNo\s*\}\}|\{\s*bib\s*\}/gi,          enc(bib))
+    .replace(/\{\{\s*AthleteID\s*\}\}|\{\s*athlete_id\s*\}/gi, enc(athleteId))
+    .replace(/\{\{\s*Contest\s*\}\}/gi,                        enc(contest));
 
   const data = [];
   if (livetiming.cert_link) {
