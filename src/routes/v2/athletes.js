@@ -6,12 +6,32 @@ const pool = require('../../config/database');
  * {race_id} so the app's DBAthletesController works unchanged:
  *   body   { pageNumber, searchstring, race? }          (race = v2.races.id filter)
  *   reply  [{ raceno, name, info, athlete_id, contest, profile_image, entry_type,
- *             members[], total_count }]
+ *             members[], extras, total_count }]
+ * members[] carry {name, bib, country, status} (status = rider status such as
+ * 'BB' blue board / 'IF' individual finisher in stage races); extras is the
+ * free-form v2.athletes.extras jsonb (stage-race team meta) or null.
  * The startlist is loaded/refreshed in the CMS (RR Org API, timit teams, CSV,
  * webhooks) and changes right up to race day — the app searches the DB,
  * never a published snapshot.
  */
 const PAGE_SIZE = 20;
+
+/** athlete_details[] → app members[] (status only when the rider has one). */
+function membersOf(details) {
+  if (!Array.isArray(details)) return [];
+  return details.map((m) => {
+    const out = { name: m.name || '', bib: m.athletenumber || '', country: m.country || '' };
+    if (m.status != null && m.status !== '') out.status = String(m.status);
+    return out;
+  });
+}
+
+/** v2.athletes.extras for the given row ids (the search function doesn't return it). */
+async function extrasByRowId(ids) {
+  if (!ids.length) return new Map();
+  const { rows } = await pool.query('SELECT id, extras FROM v2.athletes WHERE id = ANY($1::bigint[])', [ids]).catch(() => ({ rows: [] }));
+  return new Map(rows.map((r) => [String(r.id), r.extras ?? null]));
+}
 
 async function v2AthleteRoutes(app) {
   app.post('/:event_id', {
@@ -36,10 +56,9 @@ async function v2AthleteRoutes(app) {
       [search, event_id, race && /^\d+$/.test(race) ? Number(race) : null, PAGE_SIZE, offset]
     );
 
+    const extras = await extrasByRowId(rows.map((x) => x.id).filter((id) => id != null));
     return rows.map((x) => {
-      const members = Array.isArray(x.athlete_details)
-        ? x.athlete_details.map((m) => ({ name: m.name || '', bib: m.athletenumber || '', country: m.country || '' }))
-        : [];
+      const members = membersOf(x.athlete_details);
       // Teams: riders as the info line so a search hit on a rider shows why.
       const info = (x.info || '').trim() || (members.length ? members.map((m) => m.name).filter(Boolean).join(' · ') : '');
       return {
@@ -47,16 +66,18 @@ async function v2AthleteRoutes(app) {
         // Timing-platform contest id (RR contest) — athlete-page cards target on this.
         contest_id: x.contest == null ? '' : String(x.contest),
         profile_image: x.profile_image, entry_type: x.entry_type, country: x.country, category: x.category,
-        gender: x.gender, members, total_count: Number(x.total_count),
+        gender: x.gender, members, extras: extras.get(String(x.id)) ?? null, total_count: Number(x.total_count),
       };
     });
   });
 
   // PATCH /v2/athletes/:event_id — re-validate the app's follow stubs against
   // the live startlist (same contract as v1's PATCH: body {athletes:[ids]} →
-  // {patchedathletes:[{id,name,number,profile_image,info}]}). No edition
-  // needed: v2 events are already scoped to one edition. profile_image is
-  // omitted when unset so the app clears a removed photo.
+  // {patchedathletes:[{id,name,number,profile_image,info,members,country,
+  // entry_type,extras}]}). No edition needed: v2 events are already scoped to
+  // one edition. profile_image is omitted when unset so the app clears a
+  // removed photo. members/extras ride along so follow stubs of stage-race
+  // teams know their riders.
   app.patch('/:event_id', {
     schema: {
       params: { type: 'object', properties: { event_id: { type: 'string' } }, required: ['event_id'] },
@@ -69,16 +90,20 @@ async function v2AthleteRoutes(app) {
     const ids = request.body.athletes.map(String).filter(Boolean);
     if (!ids.length) return { patchedathletes: [] };
     const { rows } = await pool.query(
-      `SELECT a.athlete_id, a.raceno, a.name, a.info, a.category, a.profile_image, a.athlete_details, a.contest
+      `SELECT a.athlete_id, a.raceno, a.name, a.info, a.category, a.profile_image, a.athlete_details, a.contest,
+              a.country, a.entry_type, a.extras
        FROM v2.athletes a JOIN v2.races r ON r.id = a.race_id
        WHERE r.event_id = $1 AND a.athlete_id = ANY($2::text[])`,
       [event_id, ids]
     );
     return {
       patchedathletes: rows.map((x) => {
-        const members = Array.isArray(x.athlete_details) ? x.athlete_details.map((m) => m.name).filter(Boolean) : [];
-        const info = (x.info || '').trim() || (x.category || '').trim() || members.join(' · ');
-        const out = { id: x.athlete_id, name: x.name, number: x.raceno, info, contest_id: x.contest == null ? '' : String(x.contest) };
+        const members = membersOf(x.athlete_details);
+        const info = (x.info || '').trim() || (x.category || '').trim() || members.map((m) => m.name).filter(Boolean).join(' · ');
+        const out = {
+          id: x.athlete_id, name: x.name, number: x.raceno, info, contest_id: x.contest == null ? '' : String(x.contest),
+          members, country: x.country || '', entry_type: x.entry_type || '', extras: x.extras ?? null,
+        };
         if (x.profile_image) out.profile_image = x.profile_image;
         return out;
       }),
