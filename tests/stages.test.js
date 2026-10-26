@@ -190,3 +190,30 @@ describe('scripts/lib/stagesCsv', () => {
     expect(rowsToBody(rows, 'starts')).toEqual({ format: 'starts', starts: [{ bib: '9001', stage_no: 2, stage_name: 'Stage 2', date: '2026-10-27', time: '07:00', chute: 'A' }] });
   });
 });
+
+describe('PATCH /v2/athletes/:event_id — follow stubs carry riders', () => {
+  const fastify = require('fastify');
+  let app;
+  beforeAll(async () => {
+    app = fastify();
+    app.register(require('../src/routes/v2/athletes'), { prefix: '/v2/athletes' });
+    await app.ready();
+  });
+  afterAll(() => app.close());
+  test('returns members with status, country, entry_type and extras', async () => {
+    pool.query.mockReset();
+    pool.query.mockResolvedValue({ rows: [{
+      athlete_id: 'T9001', raceno: '9001', name: 'Toyota Specialized Imbuko', info: '', category: 'Men', profile_image: null, contest: 1,
+      country: 'ZA', entry_type: 'team', extras: { sponsor: 'Toyota' },
+      athlete_details: [{ name: 'Matthew Beers', country: 'ZA', athletenumber: '9001-1', status: 'BB' }, { name: 'Tristan Nortje', country: 'ZA', athletenumber: '9001-2' }],
+    }] });
+    const res = await app.inject({ method: 'PATCH', url: '/v2/athletes/epic', payload: { athletes: ['T9001'] } });
+    expect(res.statusCode).toBe(200);
+    expect(res.json().patchedathletes[0]).toEqual({
+      id: 'T9001', name: 'Toyota Specialized Imbuko', number: '9001', info: 'Men', contest_id: '1',
+      members: [{ name: 'Matthew Beers', bib: '9001-1', country: 'ZA', status: 'BB' }, { name: 'Tristan Nortje', bib: '9001-2', country: 'ZA' }],
+      country: 'ZA', entry_type: 'team', extras: { sponsor: 'Toyota' },
+    });
+    expect(pool.query.mock.calls[0][0]).toMatch(/a\.country_name AS country/);
+  });
+});

@@ -91,7 +91,7 @@ async function v2AthleteRoutes(app) {
     if (!ids.length) return { patchedathletes: [] };
     const { rows } = await pool.query(
       `SELECT a.athlete_id, a.raceno, a.name, a.info, a.category, a.profile_image, a.athlete_details, a.contest,
-              a.country, a.entry_type, a.extras
+              a.country_name AS country, a.entry_type, a.extras
        FROM v2.athletes a JOIN v2.races r ON r.id = a.race_id
        WHERE r.event_id = $1 AND a.athlete_id = ANY($2::text[])`,
       [event_id, ids]
