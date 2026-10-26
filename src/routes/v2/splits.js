@@ -292,11 +292,40 @@ async function buildFromV2Config({ event_id, athleteId, bib, contest }) {
                split_pace: t.splitpace ?? '', split_speed: t.splitspeed ?? '',
                overall_place: t.overall_rank ?? '', gen_place: t.gender_rank ?? '', cat_place: t.agegroup_rank ?? '' };
     }),
-    legs: [],
+    // Legs are stored in v2.rr_results like any other RR timing point (the
+    // worker's finalise upserts every record with an RR id), keyed on the
+    // leg's rr_legid — match them the way the live transformer (v2rr.js) does.
+    legs: legsFromResults(evt, byRr),
   };
 
   const header = buildHeader(livetiming, raceobj, { bib, athleteId, contest: contestId });
   return withSummarySplits(athleteDetailV2.build(livetiming, raceobj, evt.display_settings, header), evt);
 }
 
+/**
+ * The contest's configured legs with the athlete's times from v2.rr_results
+ * (rows keyed by rr_splitid). Same row shape v2rr.js builds on the live path,
+ * so athleteDetailV2.appendLegs formats both identically. Every configured
+ * leg comes back; an uncrossed one has an empty leg_result.
+ */
+function legsFromResults(evt, byRr) {
+  const cfgLegs = Array.isArray(evt?.legs) ? evt.legs : [];
+  return cfgLegs.map((leg) => {
+    const rec = Number(leg.rr_splitid) > 0 ? byRr.get(String(leg.rr_splitid)) : null;
+    const pace  = rec?.splitpace  ?? '';
+    const speed = rec?.splitspeed ?? '';
+    return {
+      label: leg.label || 'Leg',
+      icon:  leg.icon || '',
+      leg_result: rec?.split_gun ?? '',
+      leg_pace: pace || speed || '',
+      speed_type: leg.speed_type || '',
+      distance: leg.distance == null ? null : Number(leg.distance),
+      pace_minkm: pace,
+      speed_kmh: speed,
+    };
+  });
+}
+
 module.exports = v2SplitsRoutes;
+module.exports.legsFromResults = legsFromResults;
