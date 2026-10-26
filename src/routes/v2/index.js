@@ -28,6 +28,7 @@ async function v2Routes(app) {
     authed.register(require('./config'), { prefix: '/config' });
     authed.register(require('./cheers'), { prefix: '/cheers' });
     authed.register(require('./predictions'), { prefix: '/predictions' });
+    authed.register(require('./stages'), { prefix: '/stages' });
     authed.register(require('./photos'), { prefix: '/photos' });
     authed.register(require('./app_version'), { prefix: '/app_version' });
     // App-level endpoints aliased from /v1 so the V2 app and CMS talk /v2
@@ -44,6 +45,8 @@ async function v2Routes(app) {
   app.register(async (pub) => {
     pub.addHook('preHandler', rateLimit({ name: 'ingest', limit: Number(process.env.INGEST_PER_MINUTE || 3000), windowSec: 60, key: clientIp }));
     pub.register(require('./rr_webhook'), { prefix: '/rr_webhook' });
+    // Stage-race results/starts ingest — server key or evt_ token (checked inside).
+    pub.register(require('./stages').ingest, { prefix: '/stages' });
     pub.register(require('./tracks'), { prefix: '/tracks' });
   });
 }
