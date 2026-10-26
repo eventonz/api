@@ -30,6 +30,7 @@ results tables) — read-only for the CMS; the API still serves `/v1` from it.
 | Key | Type / TTL | Written by | Read by |
 |---|---|---|---|
 | `redis_splits:{race_id}:athlete:{athlete_id}` | JSON `{bib, splits[]}`, 72 h (1 h after finalise) | worker pull (overwrite), ingest merge (`pushed_at`) | `/v2/splits`, `/v2/tracking` |
+| `redis_stages:{race_id}:bib:{raceno}` | JSON `{stages[], next_start, updated}`, 72 h | stages-worker (each job), API on a read miss | `/v2/stages` |
 | `ingest_queue`, `notify_queue` | lists | API tracks/webhook routes; ingest-worker | ingest-worker; notify-worker |
 | `failed:{process|webhook|push}:{race_id}` | list, 7 d | worker on handler error | dashboard requeue/clear |
 | `race:log:{race_id}` | list ≤50 000, 7 d | worker + API (`raceLog`) | CMS activity log via API |

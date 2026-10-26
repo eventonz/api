@@ -9,6 +9,7 @@ pipeline was completed end to end.
 |---|---|
 | [architecture.md](architecture.md) | The map: components, hosts, repos, data stores, how a change gets deployed |
 | [live-timing-pipeline.md](live-timing-pipeline.md) | RaceResult → list + exporter → pulls and pushes → Redis → results table → app. States, Redis keys, gotchas |
+| [stage-races.md](stage-races.md) | Multi-day team races: stage times + GC + next-day start chutes. `POST/GET /v2/stages`, `redis_stages:*`, `v2.stage_results/stage_starts`, the CSV CLI |
 | [eventoapi.md](eventoapi.md) | Every `/v2` endpoint, the three kinds of credential, install tokens, rate limits, response shapes |
 | [push-notifications.md](push-notifications.md) | FCM topics and language suffixes, follows, athlete crossing pushes, scheduled CMS pushes, inbox |
 | [cms.md](cms.md) | What each CMS screen does and which table/endpoint it touches; publishing to the CDN |
