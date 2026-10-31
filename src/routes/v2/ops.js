@@ -95,9 +95,15 @@ async function v2OpsRoutes(app) {
       }
     } while (cursor !== '0');
     const systemRaw = await redis.lrange('ops:live:samples:system', 0, nSamples - 1);
+    // Picker: everything live now plus anything that was live in the last week.
+    const { rows: recent } = await pool.query(
+      `SELECT id, name, event_id, live_state, live_from, live_until FROM v2.races
+        WHERE live_state IN ('armed','live','finalising','error') OR live_from > NOW() - INTERVAL '7 days'
+        ORDER BY (live_state IN ('armed','live','finalising','error')) DESC, live_from DESC NULLS LAST LIMIT 30`
+    );
     return reply.send({
       at: new Date().toISOString(), mins,
-      races,
+      races, recent,
       queues: { ingest_queue: await redis.llen('ingest_queue'), notify_queue: await redis.llen('notify_queue') },
       workers,
       stats: { ingest_processed: Number(await redis.get('worker:stats:ingest_queue:processed')) || 0, notify_processed: Number(await redis.get('worker:stats:notify_queue:processed')) || 0 },
