@@ -55,12 +55,17 @@ async function v2ConfigRoutes(app) {
  * in the CMS reaches apps that cache on `_hash`.
  */
 async function applyV2EventSettings(doc, eventId) {
-  const { rows } = await pool.query(`SELECT event_json->>'avatar' AS avatar FROM v2.events WHERE id = $1`, [eventId]);
+  const { rows } = await pool.query(
+    `SELECT event_json->>'avatar' AS avatar, event_json->'liveActivities' AS live FROM v2.events WHERE id = $1`, [eventId]);
+  if (!doc.athletes) return doc;
   const avatar = String(rows[0]?.avatar || '').trim().toLowerCase();
-  if (!avatar || !doc.athletes || doc.athletes.avatar === avatar) return doc;
-  doc.athletes.avatar = avatar;
-  if (typeof doc._hash === 'string') {
-    doc._hash = crypto.createHash('sha256').update(`${doc._hash}|avatar=${avatar}`).digest('hex');
+  // CMS Event Settings → Live Activities (iOS Lock Screen cards); default on.
+  const live = rows[0]?.live !== false;
+  let changed = '';
+  if (avatar && doc.athletes.avatar !== avatar) { doc.athletes.avatar = avatar; changed += `|avatar=${avatar}`; }
+  if (doc.athletes.live_activities !== live) { doc.athletes.live_activities = live; changed += `|live=${live}`; }
+  if (changed && typeof doc._hash === 'string') {
+    doc._hash = crypto.createHash('sha256').update(`${doc._hash}${changed}`).digest('hex');
   }
   return doc;
 }
@@ -92,6 +97,8 @@ async function nativeConfig(eventId) {
     // to five digits on big events and never fit a 30 pt disc.
     athletes: { url: `${v2}/athletes/${eventId}`,
                 avatar: String(ev[0].event_json?.athletes?.avatar || ev[0].event_json?.avatar || 'initials').toLowerCase(),
+                // CMS Event Settings → Live Activities (iOS Lock Screen cards); default on.
+                live_activities: ev[0].event_json?.liveActivities !== false,
                 show_athletes: true },
     athlete_details: { url: `${v2}/splits/${eventId}?bib=#{number}&id=#{id}&contest=#{contest}` },
   };
@@ -135,3 +142,4 @@ function rewriteV1Urls(doc, eventId, raceId) {
 }
 
 module.exports = v2ConfigRoutes;
+module.exports.applyV2EventSettings = applyV2EventSettings;
