@@ -1,4 +1,5 @@
 const pool = require('../../config/database');
+const redis = require('../../config/redis');
 const fcm  = require('../../services/fcm');
 const os   = require('os');
 const fs   = require('fs');
@@ -76,6 +77,59 @@ async function pushRoutes(app) {
   }, async (request) => {
     const id = await upsertDevice(request.body);
     return { ok: true, device_token_id: id };
+  });
+
+  // ── live_activity: iOS Live Activity push tokens ────────────────────────
+  // One row per athlete card ('activity') + one per device ('push_to_start',
+  // iOS 17.2). The send goes through the device's FCM token
+  // (apns.live_activity_token), so the row points at v2.device_tokens.
+  // evento-worker (lib/liveActivity.js) pushes content-state updates; the
+  // Redis flag live:race:{id} lets it skip races with no open cards.
+  app.post('/live_activity', {
+    schema: { body: { type: 'object', required: ['app_id', 'kind', 'token'],
+      properties: {
+        app_id: { type: 'integer' }, kind: { type: 'string', enum: ['activity', 'push_to_start'] },
+        token: { type: 'string', minLength: 16, maxLength: 512 }, platform: { type: 'string' },
+        device_id: { type: 'string' }, event_id: { type: 'string' }, athlete_key: { type: 'string' },
+        bib: { type: 'string' }, activity_id: { type: 'string' },
+      } } },
+  }, async (request, reply) => {
+    const b = request.body;
+    const event_id = realEvent(b.event_id);
+    const { rows: dev } = await pool.query(
+      `SELECT id FROM v2.device_tokens WHERE app_id = $1 AND platform = 'ios' AND device_id = $2
+        ORDER BY last_seen_at DESC LIMIT 1`, [b.app_id, b.device_id || '']);
+    const deviceTokenId = dev[0]?.id ?? null;
+    let raceId = null;
+    if (event_id) {
+      const { rows: r } = await pool.query(
+        'SELECT id FROM v2.races WHERE event_id = $1 ORDER BY (app_id = $2) DESC, id DESC LIMIT 1', [event_id, b.app_id]);
+      raceId = r[0]?.id ?? null;
+    }
+    const { rows } = await pool.query(
+      `INSERT INTO v2.live_activities
+         (app_id, device_id, device_token_id, kind, token, event_id, race_id, athlete_key, bib, activity_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+       ON CONFLICT (token) DO UPDATE SET
+         device_token_id = COALESCE(EXCLUDED.device_token_id, v2.live_activities.device_token_id),
+         event_id = COALESCE(EXCLUDED.event_id, v2.live_activities.event_id),
+         race_id = COALESCE(EXCLUDED.race_id, v2.live_activities.race_id),
+         athlete_key = COALESCE(EXCLUDED.athlete_key, v2.live_activities.athlete_key),
+         bib = COALESCE(EXCLUDED.bib, v2.live_activities.bib),
+         activity_id = COALESCE(EXCLUDED.activity_id, v2.live_activities.activity_id),
+         ended_at = NULL, updated_at = NOW()
+       RETURNING id`,
+      [b.app_id, b.device_id || null, deviceTokenId, b.kind, b.token, event_id, raceId,
+       b.athlete_key || null, b.bib || null, b.activity_id || null]);
+    // A fresh activity token for the same device + athlete supersedes the old card.
+    if (b.kind === 'activity' && deviceTokenId && b.athlete_key) {
+      await pool.query(
+        `UPDATE v2.live_activities SET ended_at = NOW() WHERE kind = 'activity' AND device_token_id = $1
+           AND athlete_key = $2 AND race_id IS NOT DISTINCT FROM $3 AND id <> $4 AND ended_at IS NULL`,
+        [deviceTokenId, b.athlete_key, raceId, rows[0].id]);
+    }
+    if (raceId) { try { await redis.set(`live:race:${raceId}`, '1', 'EX', 36 * 3600); } catch { /* flag only */ } }
+    return reply.send({ ok: true, id: rows[0].id, race_id: raceId, device_token_id: deviceTokenId });
   });
 
   // ── sync: full intended topic set for this device ───────────────────────
