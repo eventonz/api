@@ -87,6 +87,10 @@ function buildSummaryItem(livetiming, raceobj) {
 
   const summary = { top: {} };
   summary.top.subtitle = String(livetiming.contest_name ?? '');
+  // The athlete's contest. Apps opening an athlete from a results list don't
+  // know it, and contest-gated cards (e.g. course replay) need it.
+  const contestId = String(livetiming.contest_id ?? livetiming.contest ?? '').trim();
+  if (contestId) summary.top.contest_id = contestId;
   summary.top.result   = isFinished ? String(livetiming.result ?? '') : '';
   // Contest pace unit (CMS Contests › Pace unit; auto → event units) for the
   // progress cards' own pace figures. Code + display label.

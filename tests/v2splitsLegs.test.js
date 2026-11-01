@@ -59,3 +59,15 @@ test('the rendered document carries a Legs section on the finalised path', () =>
   expect(text).toContain('Swim');
   expect(text).toContain('Bike');
 });
+
+test('the summary carries the athlete contest id (results-list taps arrive without one)', () => {
+  const livetiming = {
+    contest_id: '1', contest_name: 'Olympic Tri', finish_status: 4, result: '02:12:10',
+    splits: [], legs: [],
+  };
+  const raceobj = { timezone: 'Australia/Melbourne', events: [evt] };
+  const header = buildHeader(livetiming, raceobj, { bib: '7', athleteId: '7', contest: '1' });
+  const doc = athleteDetailV2.build(livetiming, raceobj, {}, header);
+  const summary = doc.version2.items.find((i) => i.type === 'summary');
+  expect(summary.data.top.contest_id).toBe('1');
+});
