@@ -143,3 +143,28 @@ psql … -c "select * from v2.stage_results where race_id=653 order by raceno, s
 ```
 
 Test data: `v2.races.id` 653 (`evento-pipeline-test-2`), teams 9001–9004.
+
+## Sportsplits stage races (W2W 2026, migration 052)
+
+Races with `timer_platform = 'sportsplits'` (CMS Settings → Sportsplits) take
+times from Sportsplits instead of `v2.stage_results`; nothing is stored.
+
+- **Settings** on `v2.races`: `sportsplits_raceid`, `sportsplits_apikey`,
+  `sportsplits_live_stage` (set by hand each morning), `sportsplits_gc`, and
+  `sportsplits_ebike_live_stage` / `sportsplits_ebike_gc`. An e-bike team has
+  `v2.athletes.contest` = the e-bike GC.
+- **Checkpoint key**: `v2.splits.rr_splitid = contest * 1000 + split_id`
+  (Sportsplits reuses split ids in every stage). Same rule in the CMS loader
+  and the worker normaliser.
+- **Teams**: CMS "Load / update teams" groups start-list riders by team
+  (rider 792 → team 79), riders in `athlete_details` with ISO2 `country`,
+  team flag in `country_name`. Upserts; never deletes.
+- **Pushes**: `POST /v2/tracks/sportsplits/{raceid}` (one per rider crossing)
+  → `ingest_queue` → worker `normalisers/sportsplits.js` → `redis_splits`,
+  `v2.rr_results`, follower pushes. Accepted only while the race is live.
+- **`GET /v2/splits/{event}`**: the team's live stage from Sportsplits
+  (`…/events/{stage}/results/teams/race_no/{team}?splits=true`, 30 s Redis
+  cache `ss:team:*`) merged with pushed crossings for that stage.
+- **`GET /v2/stages/{event}?bib=`**: the team's GC result → one row per stage
+  (stage time, GC time, GC rank, category rank; Prologue = stage 0), plus
+  `gc` {time, rank, of, cat_rank, cat_of} once GC has a finish time.

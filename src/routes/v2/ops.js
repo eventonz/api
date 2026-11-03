@@ -53,14 +53,15 @@ async function v2OpsRoutes(app) {
 
     const { rows: raceRows } = await pool.query(
       raceId
-        ? `SELECT id, name, event_id, rr_raceid, racetec_apikey, timer_platform, live_state, status, live_from, live_until, last_pull_at, last_data_at FROM v2.races WHERE id = $1`
-        : `SELECT id, name, event_id, rr_raceid, racetec_apikey, timer_platform, live_state, status, live_from, live_until, last_pull_at, last_data_at FROM v2.races WHERE live_state IN ('armed','live','finalising','error') ORDER BY live_from`,
+        ? `SELECT id, name, event_id, rr_raceid, racetec_apikey, sportsplits_raceid, timer_platform, live_state, status, live_from, live_until, last_pull_at, last_data_at FROM v2.races WHERE id = $1`
+        : `SELECT id, name, event_id, rr_raceid, racetec_apikey, sportsplits_raceid, timer_platform, live_state, status, live_from, live_until, last_pull_at, last_data_at FROM v2.races WHERE live_state IN ('armed','live','finalising','error') ORDER BY live_from`,
       raceId ? [raceId] : []
     );
 
     const races = [];
     for (const r of raceRows) {
-      const pushKey = r.timer_platform === 'racetec' ? `racetec:pushes:${r.racetec_apikey}` : `raceresult:pushes:${r.rr_raceid}`;
+      const pushKey = r.timer_platform === 'racetec' ? `racetec:pushes:${r.racetec_apikey}`
+        : r.timer_platform === 'sportsplits' ? `sportsplits:pushes:${r.sportsplits_raceid}` : `raceresult:pushes:${r.rr_raceid}`;
       const [pushRaw, logRaw, samplesRaw, athletes, results, ignoredKeys] = await Promise.all([
         redis.lrange(pushKey, 0, 999),
         redis.lrange(`race:log:${r.id}`, 0, 4999),

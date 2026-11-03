@@ -354,6 +354,7 @@ Timer auth (`evt_` tokens):
 Public (v2.races id is the gate):
 - `POST /v2/rr_webhook/:race_id`            — RaceResult participant webhook; LPUSHes `ingest_queue`, 202 (evento-worker upserts v2.athletes)
 - `POST /v2/tracks/raceresult/:rr_eventid`  — timing pushes for v2 races; LPUSHes `ingest_queue` (drained by ../evento-worker), 202 (needs migrations 006 + 008)
+- `POST /v2/tracks/sportsplits/:raceid`     — Sportsplits rider crossings (W2W stage races, migration 052); same queue, worker normaliser `sportsplits`
 
 ### Not yet implemented
 - `/v1/assistant_knowledge`, `/v1/assistant_map` — Admin/embed endpoints (CF-only).

@@ -1,0 +1,102 @@
+/** Sportsplits (W2W 2026): live team stage + GC fetched server side, merged with pushed crossings. */
+const mockRedis = { get: jest.fn(), set: jest.fn(() => Promise.resolve('OK')) };
+jest.mock('../src/config/redis', () => mockRedis);
+jest.mock('../src/config/database', () => ({ query: jest.fn() }));
+const pool = require('../src/config/database');
+const ss = require('../src/services/sportsplits');
+const v2sportsplits = require('../src/services/splits/v2sportsplits');
+
+const race = { id: 373, sportsplits_raceid: 19801, sportsplits_apikey: 'KEY', sportsplits_live_stage: '2', sportsplits_gc: '1',
+  sportsplits_ebike_live_stage: '6', sportsplits_ebike_gc: '8' };
+// Stage 1 = contest 2: Start 8, WP1 3, Finish 1 → keys 2008 / 2003 / 2001.
+const raceobj = { timezone: 'Africa/Johannesburg', events: [{
+  contest_id: '2', event_descr: 'Stage 1',
+  splits: [
+    { id: 1, rr_splitid: 2008, name: 'Start', order: 0, visible: 1, split_type: 'start' },
+    { id: 2, rr_splitid: 2003, name: 'WP1 26km', order: 1, visible: 1, split_type: 'split' },
+    { id: 3, rr_splitid: 2001, name: 'Finish', order: 2, visible: 1, split_type: 'finish' },
+  ],
+}] };
+const stageTeam = {
+  finish_time: '', overall_pos: null, type_pos: null,
+  splits: [
+    { split_id: 8, name: 'Start', tod: '07:00:00', race_time: '' },
+    { split_id: 3, name: 'WP1', tod: '08:31:05', race_time: '01:31:05', leg_speed: 17.12, overall_pos: 12, type_pos: 3 },
+  ],
+};
+
+beforeEach(() => { mockRedis.get.mockReset(); mockRedis.get.mockResolvedValue(null); global.fetch = jest.fn(); });
+
+test('checkpoint key = contest * 1000 + split id', () => {
+  expect(ss.splitKey(2, 8)).toBe(2008);
+  expect(ss.splitKey('4', 1)).toBe(4001);
+});
+
+test('e-bike teams read the e-bike stage and GC; others the normal pair (GC defaults to event 1)', () => {
+  expect(ss.stagesFor(race, '8')).toEqual({ live: '6', gc: '8', ebike: true });
+  expect(ss.stagesFor(race, null)).toEqual({ live: '2', gc: '1', ebike: false });
+  expect(ss.stagesFor({ ...race, sportsplits_gc: null }, '').gc).toBe('1');
+});
+
+test('fetchTeamResult calls the team endpoint with the key, caches, and treats 404 as no result', async () => {
+  global.fetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({ race_event_team: stageTeam }) });
+  const t = await ss.fetchTeamResult(race, '2', '79');
+  expect(t.splits).toHaveLength(2);
+  const [url, opts] = global.fetch.mock.calls[0];
+  expect(url).toBe('https://api.sportsplits.com/v2/races/19801/events/2/results/teams/race_no/79?splits=true');
+  expect(opts.headers['X-API-KEY']).toBe('KEY');
+  expect(mockRedis.set).toHaveBeenCalledWith('ss:team:19801:2:79', expect.any(String), 'EX', 30);
+
+  global.fetch.mockResolvedValueOnce({ ok: false, status: 404 });
+  expect(await ss.fetchTeamResult(race, '2', '1')).toBeNull();
+  global.fetch.mockResolvedValueOnce({ ok: false, status: 500 });
+  await expect(ss.fetchTeamResult(race, '2', '2')).rejects.toThrow(/500/);
+});
+
+test('live stage renders on the CMS checkpoints with Sportsplits times and ranks', async () => {
+  const fetchTeam = jest.fn(async () => stageTeam);
+  const { livetiming } = await v2sportsplits.transform({ race, team: { raceno: '79', athlete_id: '79' }, stage: '2', raceobj, fetchTeam });
+  expect(fetchTeam).toHaveBeenCalledWith(race, '2', '79');
+  expect(livetiming.finish_status).toBe(3);
+  const byName = Object.fromEntries(livetiming.splits.map((s) => [s.name, s]));
+  expect(byName['Start'].tod).toBe('07:00:00');
+  expect(byName['WP1 26km']).toMatchObject({ RaceTime: '01:31:05', tod: '08:31:05', overall_place: '12' });
+  expect(byName['Finish'].tod).toBe('');
+});
+
+test('finished stage: result + places from the team summary', async () => {
+  const done = { ...stageTeam, finish_time: '03:02:11', overall_pos: 9, type_pos: 2,
+    splits: [...stageTeam.splits, { split_id: 1, name: 'Finish', tod: '10:02:11', race_time: '03:02:11' }] };
+  const { livetiming } = await v2sportsplits.transform({ race, team: { raceno: '79' }, stage: '2', raceobj, fetchTeam: async () => done });
+  expect(livetiming).toMatchObject({ finish_status: 4, result: '03:02:11', overall_place: '9', overall_cat_place: '2' });
+});
+
+test('Sportsplits down → pushed crossings for THIS stage still show (other stages ignored)', async () => {
+  mockRedis.get.mockResolvedValueOnce(JSON.stringify({ bib: 79, splits: [
+    { rr_id: 2003, name: 'WP1', tod: '08:31:09', time: '1:31:09' },
+    { rr_id: 3003, name: 'WP1', tod: '08:10:00', time: '1:10:00' },
+  ] }));
+  const fetchTeam = async () => { throw new Error('timeout'); };
+  const { livetiming } = await v2sportsplits.transform({ race, team: { raceno: '79', athlete_id: '79' }, stage: '2', raceobj, fetchTeam });
+  const wp1 = livetiming.splits.find((s) => s.name === 'WP1 26km');
+  expect(wp1.tod).toBe('08:31:09');
+});
+
+test('GC result → stage rows (stage time, GC time, GC + category rank; Prologue = stage 0)', () => {
+  const rows = ss.gcStageRows({ splits: [
+    { name: 'Prologue', split_time: '00:25:01', race_time: '00:25:01', overall_pos: 4, type_pos: 1 },
+    { name: 'Stage 1', split_time: '03:02:11', race_time: '03:27:12', overall_pos: 6, type_pos: 2 },
+  ] }, 373, '79');
+  expect(rows.map((r) => [r.stage_no, r.stage_name, r.stage_time, r.gc_time, r.gc_rank, r.cat_rank])).toEqual([
+    [0, 'Prologue', '00:25:01', '00:25:01', 4, 1],
+    [1, 'Stage 1', '03:02:11', '03:27:12', 6, 2],
+  ]);
+  expect(ss.gcStageRows(null, 373, '79')).toEqual([]);
+});
+
+test('sportsplitsRace: only races set up for Sportsplits', async () => {
+  pool.query.mockResolvedValueOnce({ rows: [race] });
+  expect(await ss.sportsplitsRace(373)).toBe(race);
+  pool.query.mockResolvedValueOnce({ rows: [{ ...race, sportsplits_apikey: null }] });
+  expect(await ss.sportsplitsRace(373)).toBeNull();
+});

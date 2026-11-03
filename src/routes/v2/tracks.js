@@ -3,6 +3,7 @@
  *
  * POST /v2/tracks/raceresult/:rr_eventid
  * POST /v2/tracks/racetec/:apikey      (RaceTec / SES — timer_platform 'racetec')
+ * POST /v2/tracks/sportsplits/:raceid  (Sportsplits — timer_platform 'sportsplits', W2W; migration 052)
  *
  * RaceResult pushes crossings here (the CMS writes this URL into the event
  * file as the push exporter target; Ugo's native array format is accepted
@@ -34,7 +35,8 @@ const ACCEPT_LIVE = new Set(['armed', 'live', 'finalising']);
 // RaceResult = rr_raceid (one RR event can back several races), RaceTec =
 // the per-event api key (migration 042).
 async function racesForKey(platform, key, { fresh = false } = {}) {
-  const cacheKey = platform === 'racetec' ? `v2:tracks:racetec:${key}` : `v2:tracks:rr_event:${key}`;
+  const cacheKey = platform === 'racetec' ? `v2:tracks:racetec:${key}`
+    : platform === 'sportsplits' ? `v2:tracks:sportsplits:${key}` : `v2:tracks:rr_event:${key}`;
   try {
     const hit = await (fresh ? Promise.resolve(null) : redis.get(cacheKey));
     if (hit) return JSON.parse(hit);
@@ -43,7 +45,9 @@ async function racesForKey(platform, key, { fresh = false } = {}) {
   const { rows } = await pool.query(
     platform === 'racetec'
       ? `SELECT id, live_state, status FROM v2.races WHERE racetec_apikey = $1 ORDER BY id`
-      : `SELECT id, live_state, status FROM v2.races WHERE rr_raceid = $1 ORDER BY id`,
+      : platform === 'sportsplits'
+        ? `SELECT id, live_state, status FROM v2.races WHERE sportsplits_raceid = $1 AND timer_platform = 'sportsplits' ORDER BY id`
+        : `SELECT id, live_state, status FROM v2.races WHERE rr_raceid = $1 ORDER BY id`,
     [key]
   );
   const races = rows.map((r) => ({
@@ -116,7 +120,8 @@ async function v2TracksRoutes(app) {
   // Both platforms share one handler: resolve the key to races, gate on live
   // state, queue one job per live race for the worker.
   const ingest = (platform, label) => async (request, reply) => {
-    const key = platform === 'racetec' ? request.params.apikey : request.params.rr_eventid;
+    const key = platform === 'racetec' ? request.params.apikey
+      : platform === 'sportsplits' ? request.params.raceid : request.params.rr_eventid;
     let races = await racesForKey(platform, key);
     if (!races.length) return reply.code(400).send({ msg: 'Race not found' });
     const rawText = recordRawPush(races, platform, key, request);
@@ -167,6 +172,10 @@ async function v2TracksRoutes(app) {
   app.post('/racetec/:apikey', {
     schema: { params: { type: 'object', properties: { apikey: { type: 'string', minLength: 8, maxLength: 80 } }, required: ['apikey'] } },
   }, ingest('racetec', 'RaceTec'));
+
+  app.post('/sportsplits/:raceid', {
+    schema: { params: { type: 'object', properties: { raceid: { type: 'integer' } }, required: ['raceid'] } },
+  }, ingest('sportsplits', 'Sportsplits'));
 }
 
 module.exports = v2TracksRoutes;

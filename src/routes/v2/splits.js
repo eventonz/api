@@ -6,6 +6,8 @@ const { buildHeader } = require('../../services/splits/buildHeader');
 const athleteDetailV2 = require('../../services/splits/athleteDetailV2');
 const v2rr = require('../../services/splits/v2rr');
 const v2racetec = require('../../services/splits/v2racetec');
+const v2sportsplits = require('../../services/splits/v2sportsplits');
+const sportsplits = require('../../services/sportsplits');
 
 /**
  * GET /v2/splits/:event_id?id=&contest=&bib=
@@ -78,6 +80,14 @@ async function v2SplitsRoutes(app) {
     }
     if (!bib) bib = athleteId;
 
+    // --- Sportsplits stage races (W2W): the team's LIVE stage is fetched from
+    // Sportsplits here on the server and merged with pushed crossings
+    // (services/splits/v2sportsplits.js). The CMS sets which stage is live.
+    for (const race of candidates) {
+      const built = await buildFromSportsplits({ v2RaceId: race.id, event_id, athleteId, bib, log: request.log });
+      if (built) return reply.code(200).send(built);
+    }
+
     // --- RaceTec races: the athlete's splits are fetched live from RaceTec
     // here on the server (services/splits/v2racetec.js), never from Redis and
     // never by the app. Falls through to the Redis/config paths on a miss so
@@ -123,6 +133,33 @@ async function v2SplitsRoutes(app) {
     if (built) return reply.code(200).send(built);
     return reply.code(404).send({ error: 'No timing data for this event' });
   });
+}
+
+/**
+ * Sportsplits: the team's live stage (CMS "Live stage", the e-bike one for an
+ * e-bike team) from Sportsplits + pushed crossings. null when the race isn't
+ * Sportsplits, no stage is set, or the team is unknown — the caller falls through.
+ */
+async function buildFromSportsplits({ v2RaceId, event_id, athleteId, bib, log }) {
+  const race = await sportsplits.sportsplitsRace(v2RaceId);
+  if (!race) return null;
+  const team = await sportsplits.findTeam(v2RaceId, athleteId, bib);
+  if (!team) return null;
+  const { live } = sportsplits.stagesFor(race, team.contest);
+  if (!live) return null;
+  const raceobj = await v2RaceObj(event_id).catch(() => null);
+  let result = null;
+  try {
+    result = await v2sportsplits.transform({ race, team, stage: live, raceobj, fetchTeam: sportsplits.fetchTeamResult });
+  } catch (err) {
+    log?.warn({ err, v2RaceId, team: team.raceno }, 'sportsplits team splits failed');
+    return null;
+  }
+  if (!result) return null;
+  const rObj = raceobj || { events: [], timezone: 'UTC' };
+  const evt = (rObj.events || []).find((e) => String(e.contest_id) === String(live));
+  const header = buildHeader(result.livetiming, rObj, { bib: team.raceno, athleteId: team.athlete_id, contest: live });
+  return withSummarySplits(athleteDetailV2.build(result.livetiming, rObj, evt?.display_settings || {}, header), evt);
 }
 
 /**
