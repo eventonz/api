@@ -345,11 +345,15 @@ Bearer API key (same keys as /v1):
 - `GET   /v2/splits/:event_id?id=&bib=&contest=` — athlete-detail splits document
 - `POST  /v2/tracking/:event_id`            — body `{tracks:[…]}`; merges all bridged platform races
 - `GET|POST|PATCH /v2/cheers/:event_id/:athlete_id[...]` — cheer wall
+- `GET   /v2/finisher_photos/:event_id/:bib` — Finisher Snap crew photos for the athlete/team page block (cached 30 s)
 - `/v2/push/*`, `/v2/analytics`, `/v2/app_install`, `/v2/rrpublish/*` — aliases of the /v1 modules (same handlers/contracts) so v2 clients never write a /v1 path
 
 Timer auth (`evt_` tokens):
 - `POST|PATCH|DELETE /v2/timer/events[/:event_id]` — create/update/delete a V2 event + app-index card
 - `POST /v2/raceresult/provision/:race_id` · `GET .../status` · `POST /v2/raceresult/pull/:race_id`
+
+Finisher Snap photographer app (`snp_` token from the event code; docs/platform/finisher-snap.md):
+- `GET /v2/snap/events` · `POST /v2/snap/login` · `GET /v2/snap/athletes` · `POST /v2/snap/uploads` (presigned Spaces PUT) · `GET|POST /v2/snap/photos` · `DELETE /v2/snap/photos/:id`
 
 Public (v2.races id is the gate):
 - `POST /v2/rr_webhook/:race_id`            — RaceResult participant webhook; LPUSHes `ingest_queue`, 202 (evento-worker upserts v2.athletes)

@@ -30,6 +30,8 @@ async function v2Routes(app) {
     authed.register(require('./predictions'), { prefix: '/predictions' });
     authed.register(require('./stages'), { prefix: '/stages' });
     authed.register(require('./photos'), { prefix: '/photos' });
+    // Finisher Snap crew photos for the athlete/team page block.
+    authed.register(require('./snap').photosRead, { prefix: '/finisher_photos' });
     authed.register(require('./app_version'), { prefix: '/app_version' });
     // App-level endpoints aliased from /v1 so the V2 app and CMS talk /v2
     // only — same handlers, same contracts (push is app/event-scoped, not
@@ -38,6 +40,11 @@ async function v2Routes(app) {
     authed.register(require('../v1/analytics'), { prefix: '/analytics' });
     authed.register(require('../v1/app_install'), { prefix: '/app_install' });
     authed.register(require('../v1/rrpublish'), { prefix: '/rrpublish' });
+  });
+  // Finisher Snap photographer app — event code → snap token (checked inside).
+  app.register(async (snap) => {
+    snap.addHook('preHandler', rateLimit({ name: 'snap', limit: Number(process.env.SNAP_PER_MINUTE || 300), windowSec: 60, key: clientIp }));
+    snap.register(require('./snap'), { prefix: '/snap' });
   });
   // Public — the v2.races id in the URL is the gate (same policy as /v1).
   // Public ingest is IP-limited so a stray script can't flood the queue
