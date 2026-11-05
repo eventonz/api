@@ -84,6 +84,7 @@ async function nativeConfig(eventId) {
   const { rows: paths } = await pool.query(
     `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale,
             k.id AS course_id, k.name AS course_name, k.is_tracking AS course_tracking,
+            r.timer_platform, r.sportsplits_live_stage,
             EXTRACT(EPOCH FROM k.updated_at)::bigint AS updated
        FROM v2.contests c
        JOIN v2.races r ON r.id = c.race_id AND r.event_id = $1
@@ -104,6 +105,11 @@ async function nativeConfig(eventId) {
                 show_athletes: true },
     athlete_details: { url: `${v2}/splits/${eventId}?bib=#{number}&id=#{id}&contest=#{contest}` },
   };
+  // Sportsplits stage races: only the CMS live stage is tracked, so store apps
+  // (which can't tell a team's stage) draw today's course or none.
+  const tracked = (p) => p.is_tracking === true
+    && (p.timer_platform !== 'sportsplits' || !p.sportsplits_live_stage
+        || String(p.contest_id) === String(p.sportsplits_live_stage));
   if (paths.length) {
     doc.tracking = {
       update_freq: 30,
@@ -116,7 +122,7 @@ async function nativeConfig(eventId) {
         contest_name: p.contest_name,
         course_id: Number(p.course_id),
         course_name: p.course_name,
-        is_tracking: p.is_tracking === true,
+        is_tracking: tracked(p),
         updated: Number(p.updated) || 0,
         ...(p.elevation_y_scale != null && +p.elevation_y_scale > 0 ? { elevation_y_scale: +p.elevation_y_scale } : {}),
       })),
