@@ -71,3 +71,13 @@ test('the summary carries the athlete contest id (results-list taps arrive witho
   const summary = doc.version2.items.find((i) => i.type === 'summary');
   expect(summary.data.top.contest_id).toBe('1');
 });
+
+test('the summary carries the contest "use estimates" setting so apps can skip their own estimates', () => {
+  const livetiming = { contest_id: '1', finish_status: 3, splits: [], legs: [] };
+  const off = { timezone: 'UTC', events: [{ ...evt, display_settings: { ...(evt.display_settings || {}), use_estimates: false } }] };
+  const on = { timezone: 'UTC', events: [{ ...evt, display_settings: { ...(evt.display_settings || {}), use_estimates: true } }] };
+  const top = (ro) => athleteDetailV2.build(livetiming, ro, {}, buildHeader(livetiming, ro, { bib: '7', athleteId: '7', contest: '1' }))
+    .version2.items.find((i) => i.type === 'summary').data.top;
+  expect(top(off).use_estimates).toBe(false);
+  expect(top(on).use_estimates).toBe(true);
+});

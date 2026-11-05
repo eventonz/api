@@ -99,6 +99,10 @@ function buildSummaryItem(livetiming, raceobj) {
       || (raceobj?.events || [])[0];
     const unit = paceUnits.normaliseUnit(ev?.display_settings?.pace_unit) || 'pace_km';
     summary.top.pace_unit = { code: unit, label: paceUnits.unitLabel(unit), kind: paceUnits.unitKind(unit) };
+    // CMS Contests › Use estimates: apps skip their own "on pace" estimates when false.
+    if (ev?.display_settings && 'use_estimates' in ev.display_settings) {
+      summary.top.use_estimates = ev.display_settings.use_estimates !== false;
+    }
   }
 
   if (isFinished && livetiming.medal_url) {
