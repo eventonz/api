@@ -145,9 +145,11 @@ async function buildFromSportsplits({ v2RaceId, event_id, athleteId, bib, log })
   if (!race) return null;
   const team = await sportsplits.findTeam(v2RaceId, athleteId, bib);
   if (!team) return null;
-  const { live } = sportsplits.stagesFor(race, team.contest);
-  if (!live) return null;
+  const { live: liveStage, ebike } = sportsplits.stagesFor(race, team.contest);
+  if (!liveStage) return null;
   const raceobj = await v2RaceObj(event_id).catch(() => null);
+  // Team not entered in the live stage (Elite-only Prologue) → show its next stage.
+  const live = ebike ? liveStage : await sportsplits.stageForTeam(race, team, liveStage, raceobj);
   let result = null;
   try {
     result = await v2sportsplits.transform({ race, team, stage: live, raceobj, fetchTeam: sportsplits.fetchTeamResult });

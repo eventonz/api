@@ -97,6 +97,68 @@ async function fetchTeamResult(race, eventId, teamNo) {
   return team;
 }
 
+/**
+ * Team numbers entered in one Sportsplits event (from its start-list), cached
+ * 5 min. Empty Set = start-list not published. Throws when Sportsplits fails.
+ */
+async function fetchStageEntries(race, eventId) {
+  const ssRace = race.sportsplits_raceid;
+  const cacheKey = `ss:entries:${ssRace}:${eventId}`;
+  try {
+    const hit = await redis.get(cacheKey);
+    if (hit) return new Set(JSON.parse(hit));
+  } catch { /* fetch */ }
+  const teams = new Set();
+  for (let page = 1; page <= 20; page++) {
+    const url = `${BASE}/races/${ssRace}/events/${encodeURIComponent(eventId)}/start-list?page=${page}`;
+    const res = await fetch(url, {
+      headers: { 'X-API-KEY': race.sportsplits_apikey, accept: 'application/json' },
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    });
+    if (!res.ok) throw new Error(`Sportsplits start-list → HTTP ${res.status}`);
+    const body = await res.json();
+    for (const r of Array.isArray(body?.data) ? body.data : []) {
+      const no = str(r.team1_race_no ?? r.team1?.race_no) || str(r.race_no).slice(0, -1);
+      if (no) teams.add(no);
+    }
+    if (!body?.next_page_url) break;
+  }
+  redis.set(cacheKey, JSON.stringify([...teams]), 'EX', 300).catch(() => {});
+  return teams;
+}
+
+const stageNo = (name) => {
+  const n = str(name);
+  if (/prologue/i.test(n)) return 0;
+  const m = /^stage\s*(\d+)$/i.exec(n);
+  return m ? Number(m[1]) : null;
+};
+
+/** The first "Stage N" contest after the given one (Prologue → Stage 1), or ''. */
+function nextStage(raceobj, contestId) {
+  const events = raceobj?.events || [];
+  const cur = events.find((e) => str(e.contest_id) === str(contestId));
+  const curNo = cur ? stageNo(cur.event_descr) : null;
+  if (curNo == null) return '';
+  const later = events
+    .map((e) => ({ id: str(e.contest_id), no: stageNo(e.event_descr) }))
+    .filter((e) => e.no != null && e.no > curNo)
+    .sort((a, b) => a.no - b.no);
+  return later[0]?.id || '';
+}
+
+/**
+ * The stage a team's page shows. Normally the live stage; but when the live
+ * stage has a published start-list and the team isn't on it (the Elite-only
+ * Prologue), the next stage instead — so other teams don't go blank.
+ */
+async function stageForTeam(race, team, live, raceobj, { entries = fetchStageEntries } = {}) {
+  let set = null;
+  try { set = await entries(race, live); } catch { return live; }
+  if (!set || set.size === 0 || set.has(str(team.raceno))) return live;
+  return nextStage(raceobj, live) || live;
+}
+
 /** "Stage 2" → 2, "Prologue" → 0, else position + 1. */
 function stageNumber(name, index) {
   const n = str(name);
@@ -128,5 +190,5 @@ function gcStageRows(gcTeam, raceId, raceno) {
 }
 
 module.exports = {
-  SPLIT_FACTOR, splitKey, sportsplitsRace, stagesFor, findTeam, fetchTeamResult, stageNumber, gcStageRows,
+  SPLIT_FACTOR, splitKey, sportsplitsRace, stagesFor, findTeam, fetchTeamResult, fetchStageEntries, nextStage, stageForTeam, stageNumber, gcStageRows,
 };

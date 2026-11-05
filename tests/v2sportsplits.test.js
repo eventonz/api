@@ -100,3 +100,35 @@ test('sportsplitsRace: only races set up for Sportsplits', async () => {
   pool.query.mockResolvedValueOnce({ rows: [{ ...race, sportsplits_apikey: null }] });
   expect(await ss.sportsplitsRace(373)).toBeNull();
 });
+
+describe('Prologue for Elite only: teams not on the live stage show the next stage', () => {
+  const obj = { events: [
+    { contest_id: '1', event_descr: 'GC' }, { contest_id: '2', event_descr: 'Stage 1' },
+    { contest_id: '3', event_descr: 'Stage 2' }, { contest_id: '5', event_descr: 'Prologue' },
+    { contest_id: '6', event_descr: 'GC: UCI Riders' },
+  ] };
+  const entries = async () => new Set(['7', '12']);
+
+  test('nextStage: Prologue → Stage 1, Stage 1 → Stage 2, last/unknown → empty', () => {
+    expect(ss.nextStage(obj, '5')).toBe('2');
+    expect(ss.nextStage(obj, '2')).toBe('3');
+    expect(ss.nextStage(obj, '3')).toBe('');
+    expect(ss.nextStage(obj, '1')).toBe('');
+  });
+
+  test('entered team keeps the live stage; others move on; empty or failed start-list keeps live', async () => {
+    expect(await ss.stageForTeam(race, { raceno: '7' }, '5', obj, { entries })).toBe('5');
+    expect(await ss.stageForTeam(race, { raceno: '118' }, '5', obj, { entries })).toBe('2');
+    expect(await ss.stageForTeam(race, { raceno: '118' }, '5', obj, { entries: async () => new Set() })).toBe('5');
+    expect(await ss.stageForTeam(race, { raceno: '118' }, '5', obj, { entries: async () => { throw new Error('x'); } })).toBe('5');
+  });
+
+  test('fetchStageEntries reads team numbers off every start-list page', async () => {
+    global.fetch
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ data: [{ race_no: 71, team1: { race_no: 7 } }, { race_no: 1041, team1_race_no: 398 }], next_page_url: 'p2' }) })
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ data: [{ race_no: 122, team1: {} }], next_page_url: null }) });
+    const set = await ss.fetchStageEntries(race, '5');
+    expect([...set].sort()).toEqual(['12', '398', '7']);
+    expect(global.fetch.mock.calls[0][0]).toBe('https://api.sportsplits.com/v2/races/19801/events/5/start-list?page=1');
+  });
+});
