@@ -10,7 +10,7 @@ const pool = require('../config/database');
  */
 async function platformRacesForEvent(eventId) {
   const { rows } = await pool.query(
-    `SELECT r.id, r.v1_race_id, r.rr_raceid,
+    `SELECT r.id, r.v1_race_id, r.rr_raceid, r.timer_platform,
             COALESCE(r.v1_race_id,
                      (SELECT p.id FROM public.races p WHERE p.rr_raceid = r.rr_raceid ORDER BY p.id DESC LIMIT 1)) AS platform_race_id
      FROM v2.races r WHERE r.event_id = $1 ORDER BY r.id`,

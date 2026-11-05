@@ -22,7 +22,9 @@ async function v2ConfigRoutes(app) {
     },
   }, async (request, reply) => {
     const races = await platformRacesForEvent(request.params.event_id);
-    const race = races.find((r) => r.platform_race_id);
+    // Sportsplits races (W2W 2026) are V2-only even when linked to an old race:
+    // the old race's tracking courses are last year's.
+    const race = races.some((r) => r.timer_platform === 'sportsplits') ? null : races.find((r) => r.platform_race_id);
     // V2-native event (worker-fed, no platform race): build the document from
     // the v2 tables instead of bridging.
     if (!race) {
