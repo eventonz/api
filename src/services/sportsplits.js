@@ -100,10 +100,11 @@ async function fetchTeamResult(race, eventId, teamNo) {
 /**
  * Team numbers entered in one Sportsplits event (from its start-list), cached
  * 5 min. Empty Set = start-list not published. Throws when Sportsplits fails.
+ * racingOnly: just the teams whose team type starts with "Racing" (Elite).
  */
-async function fetchStageEntries(race, eventId) {
+async function fetchStageEntries(race, eventId, { racingOnly = false } = {}) {
   const ssRace = race.sportsplits_raceid;
-  const cacheKey = `ss:entries:${ssRace}:${eventId}`;
+  const cacheKey = `ss:entries:${ssRace}:${eventId}${racingOnly ? ':racing' : ''}`;
   try {
     const hit = await redis.get(cacheKey);
     if (hit) return new Set(JSON.parse(hit));
@@ -119,7 +120,8 @@ async function fetchStageEntries(race, eventId) {
     const body = await res.json();
     for (const r of Array.isArray(body?.data) ? body.data : []) {
       const no = str(r.team1_race_no ?? r.team1?.race_no) || str(r.race_no).slice(0, -1);
-      if (no) teams.add(no);
+      const type = str(r.team1_type_name ?? r.team1?.type?.name);
+      if (no && (!racingOnly || /^racing\b/i.test(type))) teams.add(no);
     }
     if (!body?.next_page_url) break;
   }
@@ -151,12 +153,20 @@ function nextStage(raceobj, contestId) {
  * The stage a team's page shows. Normally the live stage; but when the live
  * stage has a published start-list and the team isn't on it (the Elite-only
  * Prologue), the next stage instead — so other teams don't go blank.
+ * Prologue with no start-list yet: its entrants are taken to be the "Racing"
+ * teams on the next stage's start-list (W2W: the Elite women).
  */
 async function stageForTeam(race, team, live, raceobj, { entries = fetchStageEntries } = {}) {
+  const next = nextStage(raceobj, live);
+  if (!next) return live;
   let set = null;
-  try { set = await entries(race, live); } catch { return live; }
+  try {
+    set = await entries(race, live);
+    const cur = (raceobj?.events || []).find((e) => str(e.contest_id) === str(live));
+    if ((!set || set.size === 0) && stageNo(cur?.event_descr) === 0) set = await entries(race, next, { racingOnly: true });
+  } catch { return live; }
   if (!set || set.size === 0 || set.has(str(team.raceno))) return live;
-  return nextStage(raceobj, live) || live;
+  return next;
 }
 
 /** "Stage 2" → 2, "Prologue" → 0, else position + 1. */

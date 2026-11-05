@@ -123,6 +123,24 @@ describe('Prologue for Elite only: teams not on the live stage show the next sta
     expect(await ss.stageForTeam(race, { raceno: '118' }, '5', obj, { entries: async () => { throw new Error('x'); } })).toBe('5');
   });
 
+  test('Prologue with no start-list yet: Racing teams from Stage 1 race it, the rest show Stage 1', async () => {
+    const calls = [];
+    const fake = async (_r, ev, opts = {}) => { calls.push([ev, !!opts.racingOnly]); return ev === '5' ? new Set() : new Set(['30']); };
+    expect(await ss.stageForTeam(race, { raceno: '30' }, '5', obj, { entries: fake })).toBe('5');
+    expect(await ss.stageForTeam(race, { raceno: '67' }, '5', obj, { entries: fake })).toBe('2');
+    expect(calls).toContainEqual(['2', true]);
+    // Not the Prologue: an empty start-list keeps everyone on the live stage.
+    expect(await ss.stageForTeam(race, { raceno: '67' }, '2', obj, { entries: async () => new Set() })).toBe('2');
+  });
+
+  test('racingOnly keeps just the "Racing" team types', async () => {
+    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ data: [
+      { race_no: 301, team1: { race_no: 30, type: { name: 'Racing (19+) - Women' } } },
+      { race_no: 671, team1: { race_no: 67, type: { name: 'Grand Masters (50-59) Men' } } },
+    ], next_page_url: null }) });
+    expect([...await ss.fetchStageEntries(race, '2', { racingOnly: true })]).toEqual(['30']);
+  });
+
   test('fetchStageEntries reads team numbers off every start-list page', async () => {
     global.fetch
       .mockResolvedValueOnce({ ok: true, json: async () => ({ data: [{ race_no: 71, team1: { race_no: 7 } }, { race_no: 1041, team1_race_no: 398 }], next_page_url: 'p2' }) })
