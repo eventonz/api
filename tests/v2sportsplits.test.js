@@ -150,3 +150,24 @@ describe('Prologue for Elite only: teams not on the live stage show the next sta
     expect(global.fetch.mock.calls[0][0]).toBe('https://api.sportsplits.com/v2/races/19801/events/5/start-list?page=1');
   });
 });
+
+describe('Elite GC: teams missing from the main GC are looked up in the other GC events', () => {
+  const events = [{ id: '5', name: 'Prologue' }, { id: '2', name: 'Stage 1' }, { id: '1', name: 'GC' }, { id: '6', name: 'GC: Elite Women' }, { id: '8', name: 'GC E-Bike' }];
+  const gcRace = { ...race, sportsplits_ebike_gc: '8' };
+
+  test('gcCandidates: configured GC first, then other GC events, never the e-bike GC', async () => {
+    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ data: events.map((e) => ({ event_id: e.id, name: e.name })) }) });
+    expect(await ss.gcCandidates(gcRace, '1')).toEqual(['1', '6']);
+    expect(global.fetch.mock.calls[0][0]).toBe('https://api.sportsplits.com/v2/races/19801/events');
+  });
+
+  test('fetchGcResult: main GC empty → Elite GC result; nowhere → null', async () => {
+    const candidates = async () => ['1', '6'];
+    const elite = { finish_time: '', splits: [{ name: 'Prologue', race_time: '00:47:45', overall_pos: 1 }] };
+    const fetchTeam = jest.fn(async (_r, ev, no) => (ev === '6' && no === '4') ? elite : (ev === '1' ? { splits: [] } : null));
+    const got = await ss.fetchGcResult(gcRace, '1', '4', { candidates, fetchTeam });
+    expect(got.gc_event).toBe('6');
+    expect(got.splits[0].race_time).toBe('00:47:45');
+    expect(await ss.fetchGcResult(gcRace, '1', '999', { candidates, fetchTeam })).toBeNull();
+  });
+});

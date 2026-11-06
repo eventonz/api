@@ -52,7 +52,7 @@ async function sportsplitsStages(raceId, bib, log) {
   if (!team) return null;
   const { gc } = sportsplits.stagesFor(race, team.contest);
   let gcTeam = null;
-  try { gcTeam = await sportsplits.fetchTeamResult(race, gc, team.raceno); } catch (err) {
+  try { gcTeam = await sportsplits.fetchGcResult(race, gc, team.raceno); } catch (err) {
     log?.warn({ err, raceId, bib }, 'sportsplits GC fetch failed');
   }
   const rows = sportsplits.gcStageRows(gcTeam, raceId, team.raceno);

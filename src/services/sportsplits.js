@@ -169,6 +169,47 @@ async function stageForTeam(race, team, live, raceobj, { entries = fetchStageEnt
   return next;
 }
 
+/**
+ * Every Sportsplits GC event of the race, configured one first: the main GC
+ * plus any extra "GC: Elite Women" style event (teams raced under a separate
+ * classification sit only in theirs). The e-bike GC is left to stagesFor.
+ * Event list cached 10 min. Falls back to just the configured GC on failure.
+ */
+async function gcCandidates(race, gc) {
+  const ssRace = race.sportsplits_raceid;
+  const cacheKey = `ss:events:${ssRace}`;
+  let events = null;
+  try { const hit = await redis.get(cacheKey); if (hit) events = JSON.parse(hit); } catch { /* fetch */ }
+  if (!events) {
+    try {
+      const res = await fetch(`${BASE}/races/${ssRace}/events`, {
+        headers: { 'X-API-KEY': race.sportsplits_apikey, accept: 'application/json' },
+        signal: AbortSignal.timeout(TIMEOUT_MS),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const body = await res.json();
+      events = (Array.isArray(body?.data) ? body.data : Array.isArray(body) ? body : [])
+        .map((e) => ({ id: str(e.event_id ?? e.id), name: str(e.name) }));
+      redis.set(cacheKey, JSON.stringify(events), 'EX', 600).catch(() => {});
+    } catch { return [str(gc)]; }
+  }
+  const ebike = str(race.sportsplits_ebike_gc);
+  const extra = events.filter((e) => /\bgc\b/i.test(e.name) && e.id !== str(gc) && e.id !== ebike).map((e) => e.id);
+  return [str(gc), ...extra];
+}
+
+/**
+ * The team's GC result: the configured GC first, then any other GC event
+ * (Elite teams only exist in "GC: Elite Women"). null when none has it.
+ */
+async function fetchGcResult(race, gc, teamNo, { candidates = gcCandidates, fetchTeam = fetchTeamResult } = {}) {
+  for (const ev of await candidates(race, gc)) {
+    const t = await fetchTeam(race, ev, teamNo);
+    if (t && (Array.isArray(t.splits) && t.splits.length || str(t.finish_time))) return { ...t, gc_event: ev };
+  }
+  return null;
+}
+
 /** "Stage 2" → 2, "Prologue" → 0, else position + 1. */
 function stageNumber(name, index) {
   const n = str(name);
@@ -201,4 +242,5 @@ function gcStageRows(gcTeam, raceId, raceno) {
 
 module.exports = {
   SPLIT_FACTOR, splitKey, sportsplitsRace, stagesFor, findTeam, fetchTeamResult, fetchStageEntries, nextStage, stageForTeam, stageNumber, gcStageRows,
+  gcCandidates, fetchGcResult,
 };
