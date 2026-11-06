@@ -305,12 +305,16 @@ async function buildTracking({ raceId, tracks }) {
  * geometry comes from the v2 raceobj (v2.contests / v2.splits). Same output
  * shape as getTracksFromRedisSplits so renderTracks is shared.
  */
-async function getTracksFromV2RedisSplits(athleteIds, v2RaceId, raceobj) {
+async function getTracksFromV2RedisSplits(athleteIds, v2RaceId, raceobj, onlyContests = null) {
   if (!athleteIds.length) return [];
   const values = await redis.mget(athleteIds.map((id) => `redis_splits:${v2RaceId}:athlete:${id}`));
 
+  // Stage races: only the live stage's checkpoints place a marker — a
+  // crossing from an earlier stage (yesterday's finish) must not park the
+  // athlete at the end of today's course.
   const bySplitId = new Map();
   for (const ev of (raceobj.events || [])) {
+    if (onlyContests && !onlyContests.has(String(ev.contest_id))) continue;
     const cfgSplits = (Array.isArray(ev.splits) ? ev.splits : []).filter((c) => !c.is_leg);
     cfgSplits.forEach((c, i) => { if (Number(c.rr_splitid) > 0) bySplitId.set(Number(c.rr_splitid), { ev, cfgSplits, i }); });
   }
@@ -374,8 +378,15 @@ async function buildTrackingV2({ v2RaceId, eventId, tracks }) {
   }
   const raceobj = await v2RaceObj(eventId);
   if (!raceobj) return { status: 404, body: { error: 'Event not found' } };
-  const latest = await getTracksFromV2RedisSplits(tracks.map(String), v2RaceId, raceobj);
+  // Sportsplits stage races: positions come from the CMS live stage only.
+  let onlyContests = null;
+  const ss = await require('./sportsplits').sportsplitsRace(v2RaceId).catch(() => null);
+  if (ss) {
+    onlyContests = new Set([ss.sportsplits_live_stage, ss.sportsplits_ebike_live_stage].filter(Boolean).map(String));
+    if (!onlyContests.size) onlyContests = null;
+  }
+  const latest = await getTracksFromV2RedisSplits(tracks.map(String), v2RaceId, raceobj, onlyContests);
   return { status: 200, body: { tracks: renderTracks(latest, raceobj, raceobj.timezone || rows[0].time_zone || 'UTC') } };
 }
 
-module.exports = { buildTracking, buildTrackingV2 };
+module.exports = { getTracksFromV2RedisSplits, buildTracking, buildTrackingV2 };
