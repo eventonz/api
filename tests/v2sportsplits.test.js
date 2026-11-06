@@ -116,6 +116,10 @@ describe('Prologue for Elite only: teams not on the live stage show the next sta
     expect(ss.nextStage(obj, '1')).toBe('');
   });
 
+  test('a normal stage never moves a team on, even when it is missing from the start-list', async () => {
+    expect(await ss.stageForTeam(race, { raceno: '52' }, '2', obj, { entries: async () => new Set(['7']) })).toBe('2');
+  });
+
   test('entered team keeps the live stage; others move on; empty or failed start-list keeps live', async () => {
     expect(await ss.stageForTeam(race, { raceno: '7' }, '5', obj, { entries })).toBe('5');
     expect(await ss.stageForTeam(race, { raceno: '118' }, '5', obj, { entries })).toBe('2');

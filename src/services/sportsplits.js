@@ -159,11 +159,15 @@ function nextStage(raceobj, contestId) {
 async function stageForTeam(race, team, live, raceobj, { entries = fetchStageEntries } = {}) {
   const next = nextStage(raceobj, live);
   if (!next) return live;
+  // Only a Prologue is ridden by a subset of the field. On a normal stage a
+  // team missing from Sportsplits' start-list (late entry, withdrawal, data
+  // gap) still belongs on that stage, not the next one.
+  const cur = (raceobj?.events || []).find((e) => str(e.contest_id) === str(live));
+  if (stageNo(cur?.event_descr) !== 0) return live;
   let set = null;
   try {
     set = await entries(race, live);
-    const cur = (raceobj?.events || []).find((e) => str(e.contest_id) === str(live));
-    if ((!set || set.size === 0) && stageNo(cur?.event_descr) === 0) set = await entries(race, next, { racingOnly: true });
+    if (!set || set.size === 0) set = await entries(race, next, { racingOnly: true });
   } catch { return live; }
   if (!set || set.size === 0 || set.has(str(team.raceno))) return live;
   return next;
