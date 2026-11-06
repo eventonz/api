@@ -179,24 +179,79 @@ async function stageForTeam(race, team, live, raceobj, { entries = fetchStageEnt
  * classification sit only in theirs). The e-bike GC is left to stagesFor.
  * Event list cached 10 min. Falls back to just the configured GC on failure.
  */
-async function gcCandidates(race, gc) {
+/** The race's Sportsplits events [{ id, name, date }] (10 min cache). Throws on failure. */
+async function fetchEvents(race) {
   const ssRace = race.sportsplits_raceid;
-  const cacheKey = `ss:events:${ssRace}`;
-  let events = null;
-  try { const hit = await redis.get(cacheKey); if (hit) events = JSON.parse(hit); } catch { /* fetch */ }
-  if (!events) {
-    try {
-      const res = await fetch(`${BASE}/races/${ssRace}/events`, {
-        headers: { 'X-API-KEY': race.sportsplits_apikey, accept: 'application/json' },
-        signal: AbortSignal.timeout(TIMEOUT_MS),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const body = await res.json();
-      events = (Array.isArray(body?.data) ? body.data : Array.isArray(body) ? body : [])
-        .map((e) => ({ id: str(e.event_id ?? e.id), name: str(e.name) }));
-      redis.set(cacheKey, JSON.stringify(events), 'EX', 600).catch(() => {});
-    } catch { return [str(gc)]; }
+  const cacheKey = `ss:events:v2:${ssRace}`;
+  try { const hit = await redis.get(cacheKey); if (hit) return JSON.parse(hit); } catch { /* fetch */ }
+  const res = await fetch(`${BASE}/races/${ssRace}/events`, {
+    headers: { 'X-API-KEY': race.sportsplits_apikey, accept: 'application/json' },
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+  });
+  if (!res.ok) throw new Error(`Sportsplits events → HTTP ${res.status}`);
+  const body = await res.json();
+  const events = (Array.isArray(body?.data) ? body.data : Array.isArray(body) ? body : [])
+    .map((e) => ({ id: str(e.event_id ?? e.id), name: str(e.name), date: str(e.date).slice(0, 10) || null }));
+  redis.set(cacheKey, JSON.stringify(events), 'EX', 600).catch(() => {});
+  return events;
+}
+
+/**
+ * Start waves for one stage event: { teamNo: { chute, time } } from the
+ * start-list's per-rider `wave` (batch name + gun time). Empty until
+ * Sportsplits publishes that stage's list (the evening before). 5 min cache.
+ */
+async function fetchStageStarts(race, eventId) {
+  const ssRace = race.sportsplits_raceid;
+  const cacheKey = `ss:starts:${ssRace}:${eventId}`;
+  try { const hit = await redis.get(cacheKey); if (hit) return JSON.parse(hit); } catch { /* fetch */ }
+  const starts = {};
+  for (let page = 1; page <= 20; page++) {
+    const url = `${BASE}/races/${ssRace}/events/${encodeURIComponent(eventId)}/start-list?page=${page}`;
+    const res = await fetch(url, {
+      headers: { 'X-API-KEY': race.sportsplits_apikey, accept: 'application/json' },
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+    });
+    if (!res.ok) throw new Error(`Sportsplits start-list → HTTP ${res.status}`);
+    const body = await res.json();
+    for (const r of Array.isArray(body?.data) ? body.data : []) {
+      const no = str(r.team1_race_no ?? r.team1?.race_no) || str(r.race_no).slice(0, -1);
+      const chute = str(r.wave_name ?? r.wave?.name);
+      const time = str(r.wave_gun_time ?? r.wave?.gun_time ?? r.wave_approx_time ?? r.wave?.approx_time).slice(0, 5);
+      if (no && !starts[no] && (chute || time)) starts[no] = { chute: chute || null, time: time || null };
+    }
+    if (!body?.next_page_url) break;
   }
+  redis.set(cacheKey, JSON.stringify(starts), 'EX', 300).catch(() => {});
+  return starts;
+}
+
+/**
+ * Start-sheet rows (services/stages buildStagesDoc shape) for a team, one per
+ * Sportsplits stage event that lists it: the batch letter is the chute, the
+ * wave gun time the start time, the event date the start date. A stage whose
+ * list isn't published yet contributes nothing. `event_id` lets the caller
+ * pick the CMS live stage's row as today's start.
+ */
+async function stageStartRows(race, raceId, teamNo, { events = fetchEvents, starts = fetchStageStarts } = {}) {
+  let list;
+  try { list = await events(race); } catch { return []; }
+  const rows = [];
+  for (const ev of list) {
+    const no = stageNo(ev.name);           // Prologue → 0, "Stage N" → N, GC etc → skipped
+    if (no == null) continue;
+    let waves;
+    try { waves = await starts(race, ev.id); } catch { continue; }
+    const w = waves[str(teamNo)];
+    if (!w) continue;
+    rows.push({ race_id: raceId, raceno: teamNo, event_id: ev.id, stage_no: no, stage_name: ev.name, start_date: ev.date, start_time: w.time, chute: w.chute, updated_at: null });
+  }
+  return rows;
+}
+
+async function gcCandidates(race, gc) {
+  let events;
+  try { events = await fetchEvents(race); } catch { return [str(gc)]; }
   const ebike = str(race.sportsplits_ebike_gc);
   const extra = events.filter((e) => /\bgc\b/i.test(e.name) && e.id !== str(gc) && e.id !== ebike).map((e) => e.id);
   return [str(gc), ...extra];
@@ -246,5 +301,5 @@ function gcStageRows(gcTeam, raceId, raceno) {
 
 module.exports = {
   SPLIT_FACTOR, splitKey, sportsplitsRace, stagesFor, findTeam, fetchTeamResult, fetchStageEntries, nextStage, stageForTeam, stageNumber, gcStageRows,
-  gcCandidates, fetchGcResult,
+  gcCandidates, fetchGcResult, fetchEvents, fetchStageStarts, stageStartRows,
 };

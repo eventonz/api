@@ -50,15 +50,27 @@ async function sportsplitsStages(raceId, bib, log) {
   if (!race) return null;
   const team = await sportsplits.findTeam(raceId, '', bib);
   if (!team) return null;
-  const { gc } = sportsplits.stagesFor(race, team.contest);
+  const { gc, live } = sportsplits.stagesFor(race, team.contest);
   let gcTeam = null;
   try { gcTeam = await sportsplits.fetchGcResult(race, gc, team.raceno); } catch (err) {
     log?.warn({ err, raceId, bib }, 'sportsplits GC fetch failed');
   }
   const rows = sportsplits.gcStageRows(gcTeam, raceId, team.raceno);
-  const { starts } = await readStagesFromDb([raceId], team.raceno).catch(() => ({ starts: [] }));
+  // Start sheet: Sportsplits waves (batch + gun time per stage list), with any
+  // hand-entered v2.stage_starts row overriding its stage.
+  const { starts: manual } = await readStagesFromDb([raceId], team.raceno).catch(() => ({ starts: [] }));
+  const manualNos = new Set(manual.map((s) => Number(s.stage_no)));
+  const waves = await sportsplits.stageStartRows(race, raceId, team.raceno);
+  const starts = [...manual, ...waves.filter((w) => !manualNos.has(Number(w.stage_no)))];
   if (!rows.length && !starts.length) return null;
   const doc = buildStagesDoc(rows, starts);
+  // Today's start = the stage set live in the CMS (its Sportsplits event id),
+  // whether or not the team already has a time for it; otherwise the first
+  // stage without a result (buildStagesDoc), e.g. tomorrow once its list is out.
+  const today = waves.find((w) => w.event_id === live);
+  if (today) {
+    doc.next_start = { stage_no: today.stage_no, name: today.stage_name, date: today.start_date, time: today.start_time, chute: today.chute };
+  }
   if (gcTeam?.finish_time) {
     doc.gc = { time: String(gcTeam.finish_time), rank: gcTeam.overall_pos ?? null, of: gcTeam.overall_total ?? null,
                cat_rank: gcTeam.type_pos ?? null, cat_of: gcTeam.type_total ?? null };

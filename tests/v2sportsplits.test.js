@@ -160,7 +160,7 @@ describe('Elite GC: teams missing from the main GC are looked up in the other GC
   const gcRace = { ...race, sportsplits_ebike_gc: '8' };
 
   test('gcCandidates: configured GC first, then other GC events, never the e-bike GC', async () => {
-    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ data: events.map((e) => ({ event_id: e.id, name: e.name })) }) });
+    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ data: events.map((e) => ({ event_id: e.id, name: e.name, date: '2026-11-06T00:00:00.000000Z' })) }) });
     expect(await ss.gcCandidates(gcRace, '1')).toEqual(['1', '6']);
     expect(global.fetch.mock.calls[0][0]).toBe('https://api.sportsplits.com/v2/races/19801/events');
   });
@@ -173,5 +173,68 @@ describe('Elite GC: teams missing from the main GC are looked up in the other GC
     expect(got.gc_event).toBe('6');
     expect(got.splits[0].race_time).toBe('00:47:45');
     expect(await ss.fetchGcResult(gcRace, '1', '999', { candidates, fetchTeam })).toBeNull();
+  });
+});
+
+describe('Start sheet from Sportsplits waves (next-start card)', () => {
+  const events = [{ id: '5', name: 'Prologue', date: '2026-11-05' }, { id: '2', name: 'Stage 1', date: '2026-11-06' },
+    { id: '3', name: 'Stage 2', date: '2026-11-07' }, { id: '1', name: 'GC', date: '2026-11-06' }];
+
+  test('fetchStageStarts: one entry per team from the riders\' wave (batch + gun time HH:MM)', async () => {
+    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({ data: [
+      { race_no: 1181, team1_race_no: 118, wave: { name: 'D', gun_time: '07:20:00' } },
+      { race_no: 1182, team1_race_no: 118, wave: { name: 'D', gun_time: '07:20:00' } },
+      { race_no: 21, team1_race_no: 2, wave_name: 'Elite Women', wave_gun_time: '07:00:00' },
+      { race_no: 991, team1_race_no: 99, wave: null },
+    ], next_page_url: null }) });
+    const got = await ss.fetchStageStarts(race, '2');
+    expect(got).toEqual({ 118: { chute: 'D', time: '07:20' }, 2: { chute: 'Elite Women', time: '07:00' } });
+    expect(global.fetch.mock.calls[0][0]).toBe('https://api.sportsplits.com/v2/races/19801/events/2/start-list?page=1');
+    expect(mockRedis.set).toHaveBeenCalledWith('ss:starts:19801:2', expect.any(String), 'EX', 300);
+  });
+
+  test('stageStartRows: a row per stage list the team is on; unpublished stage lists add nothing; GC skipped', async () => {
+    const starts = jest.fn(async (_r, ev) => (ev === '2' ? { 118: { chute: 'D', time: '07:20' } } : {}));
+    const rows = await ss.stageStartRows(race, 373, '118', { events: async () => events, starts });
+    expect(rows).toEqual([{ race_id: 373, raceno: '118', event_id: '2', stage_no: 1, stage_name: 'Stage 1', start_date: '2026-11-06', start_time: '07:20', chute: 'D', updated_at: null }]);
+    expect(starts.mock.calls.map((c) => c[1])).toEqual(['5', '2', '3']);   // never the GC event
+  });
+
+  test('stageStartRows: Sportsplits down → no rows (card stays quiet, nothing throws)', async () => {
+    expect(await ss.stageStartRows(race, 373, '118', { events: async () => { throw new Error('boom'); } })).toEqual([]);
+  });
+
+  test('buildStagesDoc with wave rows: next_start = first stage without a result', () => {
+    const { buildStagesDoc } = require('../src/services/stages');
+    const results = [{ stage_no: 1, stage_name: 'Stage 1', stage_time: '03:10:00', gc_time: '03:10:00', updated_at: '2026-11-06T09:00:00Z' }];
+    const starts = [
+      { stage_no: 1, stage_name: 'Stage 1', start_date: '2026-11-06', start_time: '07:20', chute: 'D' },
+      { stage_no: 2, stage_name: 'Stage 2', start_date: '2026-11-07', start_time: '07:15', chute: 'B' },
+    ];
+    expect(buildStagesDoc(results, starts).next_start).toEqual({ stage_no: 2, name: 'Stage 2', date: '2026-11-07', time: '07:15', chute: 'B' });
+    expect(buildStagesDoc([], starts.slice(0, 1)).next_start).toEqual({ stage_no: 1, name: 'Stage 1', date: '2026-11-06', time: '07:20', chute: 'D' });
+  });
+});
+
+describe('/v2/stages for Sportsplits: today\'s start is the CMS live stage', () => {
+  jest.mock('../src/services/v2RaceConfig', () => ({ v2RaceObj: async () => null }), { virtual: false });
+  test('live stage wave wins even when the team already has that stage\'s time', async () => {
+    const stagesRoute = require('../src/routes/v2/stages');
+    const Fastify = require('fastify');
+    const app = Fastify();
+    jest.spyOn(ss, 'sportsplitsRace').mockResolvedValue(race);
+    jest.spyOn(ss, 'findTeam').mockResolvedValue({ raceno: '118', contest: '2' });
+    jest.spyOn(ss, 'fetchGcResult').mockResolvedValue({ finish_time: '03:10:00', splits: [{ name: 'Stage 1', split_time: '03:10:00', race_time: '03:10:00', overall_pos: 5 }] });
+    jest.spyOn(ss, 'stageStartRows').mockResolvedValue([
+      { race_id: 373, raceno: '118', event_id: '2', stage_no: 1, stage_name: 'Stage 1', start_date: '2026-11-06', start_time: '07:25', chute: 'D', updated_at: null },
+      { race_id: 373, raceno: '118', event_id: '3', stage_no: 2, stage_name: 'Stage 2', start_date: '2026-11-07', start_time: '07:15', chute: 'B', updated_at: null },
+    ]);
+    pool.query.mockImplementation(async (sql) => (/FROM v2\.races/.test(sql) ? { rows: [{ id: 373 }] } : { rows: [] }));
+    app.addHook('onRequest', async (req) => { req.auth = { api_key_id: 1 }; });
+    await app.register(stagesRoute, { prefix: '/v2/stages' });
+    const res = await app.inject({ method: 'GET', url: '/v2/stages/chardonnay?bib=118' });
+    expect(res.statusCode).toBe(200);
+    expect(res.json().next_start).toEqual({ stage_no: 1, name: 'Stage 1', date: '2026-11-06', time: '07:25', chute: 'D' });
+    jest.restoreAllMocks();
   });
 });
