@@ -281,8 +281,13 @@ function stageNumber(name, index) {
  * GC team result → rows for services/stages buildStagesDoc. Each GC "split" is
  * a stage: split_time = the stage time, race_time = GC time after it,
  * overall_pos = GC rank, type_pos = category rank.
+ *
+ * A team Sportsplits marks `is_active: false` (a rider withdrew, the other
+ * rides on as an Individual Finisher) still carries ranked stage splits, but
+ * is no longer a team: it gets no stage results at all.
  */
 function gcStageRows(gcTeam, raceId, raceno) {
+  if (gcTeam && gcTeam.is_active === false) return [];
   const splits = Array.isArray(gcTeam?.splits) ? gcTeam.splits : [];
   return splits.map((s, i) => ({
     race_id: raceId,

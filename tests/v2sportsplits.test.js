@@ -94,6 +94,16 @@ test('GC result → stage rows (stage time, GC time, GC + category rank; Prologu
   expect(ss.gcStageRows(null, 373, '79')).toEqual([]);
 });
 
+test('GC team is_active=false (rider went IF) → no stage rows even though Sportsplits still ranks its splits', () => {
+  const inactive = { is_active: false, finish_time: null, overall_pos: null, splits: [
+    { name: 'Stage 1', split_time: '04:04:01', race_time: '04:04:01', overall_pos: 112, type_pos: 43 },
+    { name: 'Stage 2', split_time: '03:40:24', race_time: '07:44:26', overall_pos: 73, type_pos: 31 },
+  ] };
+  expect(ss.gcStageRows(inactive, 373, '101')).toEqual([]);
+  expect(ss.gcStageRows({ ...inactive, is_active: true }, 373, '101')).toHaveLength(2);
+  expect(ss.gcStageRows({ ...inactive, is_active: undefined }, 373, '101')).toHaveLength(2);
+});
+
 test('sportsplitsRace: only races set up for Sportsplits', async () => {
   pool.query.mockResolvedValueOnce({ rows: [race] });
   expect(await ss.sportsplitsRace(373)).toBe(race);
