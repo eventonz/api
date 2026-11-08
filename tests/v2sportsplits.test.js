@@ -247,4 +247,26 @@ describe('/v2/stages for Sportsplits: today\'s start is the CMS live stage', () 
     expect(res.json().next_start).toEqual({ stage_no: 1, name: 'Stage 1', date: '2026-11-06', time: '07:25', chute: 'D' });
     jest.restoreAllMocks();
   });
+
+  test('GC team is_active=false (IF rider) → empty stages, next start kept', async () => {
+    const stagesRoute = require('../src/routes/v2/stages');
+    const Fastify = require('fastify');
+    const app = Fastify();
+    jest.spyOn(ss, 'sportsplitsRace').mockResolvedValue(race);
+    jest.spyOn(ss, 'findTeam').mockResolvedValue({ raceno: '101', contest: '3' });
+    jest.spyOn(ss, 'fetchGcResult').mockResolvedValue({ is_active: false, finish_time: null, overall_pos: null,
+      splits: [{ name: 'Stage 1', split_time: '04:04:01', race_time: '04:04:01', overall_pos: 112 }] });
+    jest.spyOn(ss, 'stageStartRows').mockResolvedValue([
+      { race_id: 373, raceno: '101', event_id: '3', stage_no: 2, stage_name: 'Stage 2', start_date: '2026-11-07', start_time: '07:25', chute: 'D', updated_at: null },
+    ]);
+    pool.query.mockImplementation(async (sql) => (/FROM v2\.races/.test(sql) ? { rows: [{ id: 373 }] } : { rows: [] }));
+    app.addHook('onRequest', async (req) => { req.auth = { api_key_id: 1 }; });
+    await app.register(stagesRoute, { prefix: '/v2/stages' });
+    const res = await app.inject({ method: 'GET', url: '/v2/stages/chardonnay?bib=101' });
+    expect(res.statusCode).toBe(200);
+    expect(res.json().stages).toEqual([]);
+    expect(res.json().gc).toBeUndefined();
+    expect(res.json().next_start).toEqual({ stage_no: 2, name: 'Stage 2', date: '2026-11-07', time: '07:25', chute: 'D' });
+    jest.restoreAllMocks();
+  });
 });

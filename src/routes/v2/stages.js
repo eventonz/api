@@ -64,6 +64,10 @@ async function sportsplitsStages(raceId, bib, log) {
   const starts = [...manual, ...waves.filter((w) => !manualNos.has(Number(w.stage_no)))];
   if (!rows.length && !starts.length) return null;
   const doc = buildStagesDoc(rows, starts);
+  // A team Sportsplits marks is_active=false (one rider withdrew, the other
+  // rides on as an Individual Finisher) is no longer a team: no stages table
+  // at all (the apps hide it when `stages` is empty), only its next start.
+  if (gcTeam?.is_active === false) doc.stages = [];
   // Today's start = the stage set live in the CMS (its Sportsplits event id),
   // whether or not the team already has a time for it; otherwise the first
   // stage without a result (buildStagesDoc), e.g. tomorrow once its list is out.
