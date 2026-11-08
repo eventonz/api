@@ -132,7 +132,7 @@ async function fetchStageEntries(race, eventId, { racingOnly = false } = {}) {
 const stageNo = (name) => {
   const n = str(name);
   if (/prologue/i.test(n)) return 0;
-  const m = /^stage\s*(\d+)$/i.exec(n);
+  const m = /^stage\s*(\d+)\b/i.exec(n);   // "Stage 1", "Stage 1 E-Bike"
   return m ? Number(m[1]) : null;
 };
 

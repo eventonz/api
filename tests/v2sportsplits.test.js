@@ -94,6 +94,22 @@ test('GC result → stage rows (stage time, GC time, GC + category rank; Prologu
   expect(ss.gcStageRows(null, 373, '79')).toEqual([]);
 });
 
+test('stageStartRows: an e-bike team gets its start from the "Stage N E-Bike" list (Pinotage)', async () => {
+  const events = async () => [
+    { id: '2', name: 'Stage 1', date: '2026-11-09' }, { id: '5', name: 'Stage 1 E-Bike', date: '2026-11-09' },
+    { id: '3', name: 'Stage 2', date: '2026-11-10' }, { id: '1', name: 'GC', date: '2026-11-09' }, { id: '8', name: 'GC E-Bike', date: '2026-11-09' },
+  ];
+  const starts = async (_race, ev) => ({
+    '2': { '51': { chute: 'E', time: '07:30' } },
+    '5': { '52': { chute: 'E-Bike Open C', time: '07:10' } },
+    '3': {}, '1': {}, '8': {},
+  })[ev];
+  const ebike = await ss.stageStartRows(race, 158, '52', { events, starts });
+  expect(ebike.map((r) => [r.stage_no, r.stage_name, r.start_date, r.start_time, r.chute])).toEqual([[1, 'Stage 1 E-Bike', '2026-11-09', '07:10', 'E-Bike Open C']]);
+  const normal = await ss.stageStartRows(race, 158, '51', { events, starts });
+  expect(normal.map((r) => [r.stage_no, r.start_time, r.chute])).toEqual([[1, '07:30', 'E']]);
+});
+
 test('GC team is_active=false (rider went IF) → no stage rows even though Sportsplits still ranks its splits', () => {
   const inactive = { is_active: false, finish_time: null, overall_pos: null, splits: [
     { name: 'Stage 1', split_time: '04:04:01', race_time: '04:04:01', overall_pos: 112, type_pos: 43 },
