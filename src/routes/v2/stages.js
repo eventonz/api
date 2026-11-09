@@ -71,9 +71,12 @@ async function sportsplitsStages(raceId, bib, log) {
   // Today's start = the stage set live in the CMS (its Sportsplits event id),
   // whether or not the team already has a time for it; otherwise the first
   // stage without a result (buildStagesDoc), e.g. tomorrow once its list is out.
+  // Its date is today's in the race's time zone: Sportsplits stamps every stage
+  // with the race's first day, so the CMS live-stage choice is the only date we trust.
   const today = waves.find((w) => w.event_id === live);
   if (today) {
-    doc.next_start = { stage_no: today.stage_no, name: today.stage_name, date: today.start_date, time: today.start_time, chute: today.chute };
+    const date = sportsplits.todayIn(race.time_zone) || today.start_date;
+    doc.next_start = { stage_no: today.stage_no, name: today.stage_name, date, time: today.start_time, chute: today.chute };
   }
   if (gcTeam?.finish_time) {
     doc.gc = { time: String(gcTeam.finish_time), rank: gcTeam.overall_pos ?? null, of: gcTeam.overall_total ?? null,

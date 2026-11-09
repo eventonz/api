@@ -6,7 +6,7 @@ const pool = require('../src/config/database');
 const ss = require('../src/services/sportsplits');
 const v2sportsplits = require('../src/services/splits/v2sportsplits');
 
-const race = { id: 373, sportsplits_raceid: 19801, sportsplits_apikey: 'KEY', sportsplits_live_stage: '2', sportsplits_gc: '1',
+const race = { id: 373, time_zone: 'Africa/Johannesburg', sportsplits_raceid: 19801, sportsplits_apikey: 'KEY', sportsplits_live_stage: '2', sportsplits_gc: '1',
   sportsplits_ebike_live_stage: '6', sportsplits_ebike_gc: '8' };
 // Stage 1 = contest 2: Start 8, WP1 3, Finish 1 → keys 2008 / 2003 / 2001.
 const raceobj = { timezone: 'Africa/Johannesburg', events: [{
@@ -108,6 +108,12 @@ test('stageStartRows: an e-bike team gets its start from the "Stage N E-Bike" li
   expect(ebike.map((r) => [r.stage_no, r.stage_name, r.start_date, r.start_time, r.chute])).toEqual([[1, 'Stage 1 E-Bike', '2026-11-09', '07:10', 'E-Bike Open C']]);
   const normal = await ss.stageStartRows(race, 158, '51', { events, starts });
   expect(normal.map((r) => [r.stage_no, r.start_time, r.chute])).toEqual([[1, '07:30', 'E']]);
+});
+
+test('todayIn: a date in the race time zone, null without one', () => {
+  expect(ss.todayIn('Africa/Johannesburg')).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(ss.todayIn('')).toBeNull();
+  expect(ss.todayIn('Not/AZone')).toBeNull();
 });
 
 test('GC team is_active=false (rider went IF) → no stage rows even though Sportsplits still ranks its splits', () => {
@@ -260,7 +266,8 @@ describe('/v2/stages for Sportsplits: today\'s start is the CMS live stage', () 
     await app.register(stagesRoute, { prefix: '/v2/stages' });
     const res = await app.inject({ method: 'GET', url: '/v2/stages/chardonnay?bib=118' });
     expect(res.statusCode).toBe(200);
-    expect(res.json().next_start).toEqual({ stage_no: 1, name: 'Stage 1', date: '2026-11-06', time: '07:25', chute: 'D' });
+    // Dated today (race clock), not with Sportsplits' per-event date, which is the race's first day for every stage.
+    expect(res.json().next_start).toEqual({ stage_no: 1, name: 'Stage 1', date: ss.todayIn('Africa/Johannesburg'), time: '07:25', chute: 'D' });
     jest.restoreAllMocks();
   });
 
@@ -282,6 +289,7 @@ describe('/v2/stages for Sportsplits: today\'s start is the CMS live stage', () 
     expect(res.statusCode).toBe(200);
     expect(res.json().stages).toEqual([]);
     expect(res.json().gc).toBeUndefined();
+    // Not the live stage (event 3 vs live '2'): the first stage without a result, with Sportsplits' own date.
     expect(res.json().next_start).toEqual({ stage_no: 2, name: 'Stage 2', date: '2026-11-07', time: '07:25', chute: 'D' });
     jest.restoreAllMocks();
   });

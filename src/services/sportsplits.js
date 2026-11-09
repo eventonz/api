@@ -36,7 +36,7 @@ function splitKey(contestId, splitId) {
 /** The Sportsplits settings of a v2 race, or null when it isn't a Sportsplits race. */
 async function sportsplitsRace(v2RaceId) {
   const { rows } = await pool.query(
-    `SELECT id, sportsplits_raceid, sportsplits_apikey, sportsplits_live_stage, sportsplits_gc,
+    `SELECT id, time_zone, sportsplits_raceid, sportsplits_apikey, sportsplits_live_stage, sportsplits_gc,
             sportsplits_ebike_live_stage, sportsplits_ebike_gc
        FROM v2.races WHERE id = $1 AND timer_platform = 'sportsplits'`,
     [v2RaceId]
@@ -55,6 +55,17 @@ function stagesFor(race, teamContest) {
   return ebike
     ? { live: str(race.sportsplits_ebike_live_stage), gc: str(race.sportsplits_ebike_gc), ebike: true }
     : { live: str(race.sportsplits_live_stage), gc: str(race.sportsplits_gc) || '1', ebike: false };
+}
+
+/**
+ * Today's date (YYYY-MM-DD) in the race's time zone, or null without one.
+ * Sportsplits dates every W2W event with the race's first day (Pinotage 2026
+ * lists Stage 2 and 3 as 9 Nov), so the stage set live in the CMS is dated by
+ * the clock instead: live stage = today's stage.
+ */
+function todayIn(timeZone) {
+  if (!timeZone) return null;
+  try { return new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); } catch { return null; }
 }
 
 /** A team's raceno + contest from v2.athletes (the app may send the athlete id or the bib). */
@@ -306,5 +317,5 @@ function gcStageRows(gcTeam, raceId, raceno) {
 
 module.exports = {
   SPLIT_FACTOR, splitKey, sportsplitsRace, stagesFor, findTeam, fetchTeamResult, fetchStageEntries, nextStage, stageForTeam, stageNumber, gcStageRows,
-  gcCandidates, fetchGcResult, fetchEvents, fetchStageStarts, stageStartRows,
+  gcCandidates, fetchGcResult, fetchEvents, fetchStageStarts, stageStartRows, todayIn,
 };
