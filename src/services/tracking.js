@@ -31,7 +31,10 @@ function hmsToSecs(hms) {
   if (!hms) return 0;
   const clean = String(hms).split('.')[0];
   const parts = clean.split(':').map((n) => Number(n) || 0);
-  if (parts.length === 2) return parts[0] * 3600 + parts[1] * 60;
+  // Two groups are MM:SS — RaceResult and the worker (rrDuration) drop zero
+  // hours from durations, so a 17-minute split arrives as "17:32". Times of
+  // day are always H:MM:SS.
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
   if (parts.length >= 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
   return 0;
 }
@@ -389,4 +392,4 @@ async function buildTrackingV2({ v2RaceId, eventId, tracks }) {
   return { status: 200, body: { tracks: renderTracks(latest, raceobj, raceobj.timezone || rows[0].time_zone || 'UTC') } };
 }
 
-module.exports = { getTracksFromV2RedisSplits, buildTracking, buildTrackingV2 };
+module.exports = { getTracksFromV2RedisSplits, buildTracking, buildTrackingV2, hmsToSecs };
