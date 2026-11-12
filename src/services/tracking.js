@@ -424,7 +424,8 @@ async function buildTrackingV2({ v2RaceId, eventId, tracks }) {
 /**
  * Ratio tables evento-worker keeps per tracked contest with field prediction
  * on: tracking_ratios:{v2_race_id}:{contest_id} → { segments: [...] }.
- * Returns { contest_id: segments } — empty on any failure (old method runs).
+ * Returns { contest_id: segments } — empty on any failure or when the Redis
+ * off switch is set (old method runs).
  */
 async function loadFieldRatios(v2RaceId, raceobj, onlyContests = null) {
   try {
@@ -432,12 +433,16 @@ async function loadFieldRatios(v2RaceId, raceobj, onlyContests = null) {
     const contests = (raceobj.events || []).filter((e) => e.field_prediction === true && e.is_tracking !== false
       && (!onlyContests || onlyContests.has(String(e.contest_id))));
     if (!contests.length) return {};
-    const values = await redis.mget(contests.map((e) => `tracking_ratios:${v2RaceId}:${e.contest_id}`));
+    // Race-day revert without a deploy: SET tracking_ratios:off 1 (everything)
+    // or tracking_ratios:off:{race} 1 (one race) and the old method runs.
+    const keys = ['tracking_ratios:off', `tracking_ratios:off:${v2RaceId}`, ...contests.map((e) => `tracking_ratios:${v2RaceId}:${e.contest_id}`)];
+    const values = await redis.mget(keys);
+    if (values[0] || values[1]) return {};
     const out = {};
     contests.forEach((e, i) => {
-      if (!values[i]) return;
+      if (!values[i + 2]) return;
       try {
-        const doc = JSON.parse(values[i]);
+        const doc = JSON.parse(values[i + 2]);
         if (Array.isArray(doc?.segments)) out[String(e.contest_id)] = doc.segments;
       } catch { /* ignore a bad table */ }
     });

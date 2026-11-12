@@ -60,12 +60,17 @@ test('a corrupt table in Redis falls back silently', async () => {
 });
 
 test('loadFieldRatios reads only flagged tracked contests and survives bad JSON', async () => {
-  mockRedis.mget.mockResolvedValue([JSON.stringify({ segments }), '{not json']);
+  mockRedis.mget.mockResolvedValue([null, null, JSON.stringify({ segments }), '{not json']);
   const raceobj = { events: [contest({ field_prediction: true }), { contest_id: '7', field_prediction: true, is_tracking: true, splits: [] },
     { contest_id: '1', field_prediction: false, is_tracking: true, splits: [] }] };
   const out = await loadFieldRatios(158, raceobj, null);
-  expect(mockRedis.mget).toHaveBeenLastCalledWith(['tracking_ratios:158:4', 'tracking_ratios:158:7']);
+  expect(mockRedis.mget).toHaveBeenLastCalledWith(['tracking_ratios:off', 'tracking_ratios:off:158', 'tracking_ratios:158:4', 'tracking_ratios:158:7']);
   expect(Object.keys(out)).toEqual(['4']);
+  // Race-day revert: the Redis off switch (global or per race) empties the tables.
+  mockRedis.mget.mockResolvedValue(['1', null, JSON.stringify({ segments }), null]);
+  expect(await loadFieldRatios(158, raceobj, null)).toEqual({});
+  mockRedis.mget.mockResolvedValue([null, '1', JSON.stringify({ segments }), null]);
+  expect(await loadFieldRatios(158, raceobj, null)).toEqual({});
   expect(await loadFieldRatios(158, raceobj, new Set(['1']))).toEqual({});
   mockRedis.mget.mockRejectedValue(new Error('redis down'));
   expect(await loadFieldRatios(158, raceobj, null)).toEqual({});
