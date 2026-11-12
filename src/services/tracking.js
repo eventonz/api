@@ -14,6 +14,28 @@ const redis = require('../config/redis');
 const { raceconfigByRaceId } = require('./raceConfig');
 const pool = require('../config/database');
 const { v2RaceObj } = require('./v2RaceConfig');
+const { fieldSpeed } = require('./trackingRatios');
+
+/** Kill switch for field-based prediction: TRACKING_FIELD_PREDICTION=off. */
+const fieldPredictionEnabled = () => String(process.env.TRACKING_FIELD_PREDICTION ?? 'on').toLowerCase() !== 'off';
+
+/**
+ * Field-based prediction for one track (V2 races only): the speed the field
+ * says this rider should be doing on the segment they are on, from the ratio
+ * table evento-worker keeps in Redis (race.field_ratios, loaded by
+ * buildTrackingV2). null = not on, not ready, or any guard failed → the caller
+ * keeps the flat last-known speed. Never throws.
+ */
+function fieldPredictionFor(t, race, contestEv) {
+  try {
+    if (!fieldPredictionEnabled() || !contestEv || contestEv.field_prediction !== true) return null;
+    const table = race?.field_ratios?.[String(t.contest_id)];
+    if (!table || !Array.isArray(t.records) || !(Number(t.start_rr_splitid) > 0)) return null;
+    return fieldSpeed(table, t.records, Number(t.start_rr_splitid));
+  } catch {
+    return null;
+  }
+}
 
 function nowInTzSecs(tz) {
   const fmt = new Intl.DateTimeFormat('en-GB', {
@@ -204,11 +226,15 @@ function renderTracks(latest, race, tz) {
     }
 
     const sinceCrossing = secsSinceCrossing(t, tz);
-    let latestPosition = predictPos(t.distance, t.speed, sinceCrossing, t.course_distance);
+    const contestEvForTrack = (race.events || []).find((e) => String(e.contest_id) === String(t.contest_id));
+    // Field-based prediction (per-contest CMS flag): own pace so far × the
+    // field's ratio for this segment, instead of the previous segment's speed.
+    const field = fieldPredictionFor(t, race, contestEvForTrack);
+    let speed   = field ? field.kmh : (Number(t.speed) || 0);
+    let latestPosition = predictPos(t.distance, speed, sinceCrossing, t.course_distance);
     // Never behind the last mat actually crossed (guards clock skew, simulated
     // or replayed times, and a missing/zero speed).
     if (!(latestPosition >= Number(t.percent_course))) latestPosition = Number(t.percent_course) || 0;
-    let speed   = Number(t.speed) || 0;
     let message = t.isgps
       ? `GPS Update, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} \nSpeed: ${speed} km/h`
       : `Last Timing Split, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} `;
@@ -218,11 +244,11 @@ function renderTracks(latest, race, tz) {
     // cms/eventssplits/predictive-tracking.cfm):
     //   1 — park at the next mat, zero speed, "Awaiting Update"
     //   0 (default) — keep extrapolating at last-known speed, capped at 100
+    // A field-based prediction is a prediction of the NEXT mat, so it never
+    // runs past it either: the marker holds there until the read arrives.
     try {
-      const contestEv = (race.events || []).find(
-        (e) => String(e.contest_id) === String(t.contest_id)
-      );
-      const awaitAtNext = Number(contestEv?.await_at_next_split ?? 0) === 1;
+      const contestEv = contestEvForTrack;
+      const awaitAtNext = Number(contestEv?.await_at_next_split ?? 0) === 1 || field != null;
       if (awaitAtNext && latestPosition > Number(t.next_splitpercent)) {
         latestPosition = Number(t.next_splitpercent);
         speed = 0;
@@ -357,6 +383,8 @@ async function getTracksFromV2RedisSplits(athleteIds, v2RaceId, raceobj, onlyCon
       percent_course: pct, course_distance: total, speed, isgps: false,
       next_splitpercent: nextPct, contest_id: ev.contest_id, splittod: rec.tod ?? '', live_camera_url: '',
       anchor_at: rec.pushed_at || '',
+      // For field-based prediction: the rider's crossings and this contest's start mat.
+      records, start_rr_splitid: Number(cfgSplits[0]?.rr_splitid) || 0,
     });
   }
   return out;
@@ -389,7 +417,34 @@ async function buildTrackingV2({ v2RaceId, eventId, tracks }) {
     if (!onlyContests.size) onlyContests = null;
   }
   const latest = await getTracksFromV2RedisSplits(tracks.map(String), v2RaceId, raceobj, onlyContests);
+  raceobj.field_ratios = await loadFieldRatios(v2RaceId, raceobj, onlyContests);
   return { status: 200, body: { tracks: renderTracks(latest, raceobj, raceobj.timezone || rows[0].time_zone || 'UTC') } };
 }
 
-module.exports = { getTracksFromV2RedisSplits, buildTracking, buildTrackingV2, hmsToSecs };
+/**
+ * Ratio tables evento-worker keeps per tracked contest with field prediction
+ * on: tracking_ratios:{v2_race_id}:{contest_id} → { segments: [...] }.
+ * Returns { contest_id: segments } — empty on any failure (old method runs).
+ */
+async function loadFieldRatios(v2RaceId, raceobj, onlyContests = null) {
+  try {
+    if (!fieldPredictionEnabled()) return {};
+    const contests = (raceobj.events || []).filter((e) => e.field_prediction === true && e.is_tracking !== false
+      && (!onlyContests || onlyContests.has(String(e.contest_id))));
+    if (!contests.length) return {};
+    const values = await redis.mget(contests.map((e) => `tracking_ratios:${v2RaceId}:${e.contest_id}`));
+    const out = {};
+    contests.forEach((e, i) => {
+      if (!values[i]) return;
+      try {
+        const doc = JSON.parse(values[i]);
+        if (Array.isArray(doc?.segments)) out[String(e.contest_id)] = doc.segments;
+      } catch { /* ignore a bad table */ }
+    });
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+module.exports = { getTracksFromV2RedisSplits, buildTracking, buildTrackingV2, hmsToSecs, renderTracks, loadFieldRatios };

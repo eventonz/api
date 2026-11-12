@@ -12,6 +12,11 @@ const { normaliseUnit, contestUnit } = require('./splits/paceUnits');
  * lets the app draw the splits list before the first mat fires.
  */
 
+/** Organisations whose contests use field-based prediction unless the contest says otherwise. */
+function fieldPredictionOrgs() {
+  return String(process.env.FIELD_PREDICTION_ORGS ?? '1').split(',').map((x) => Number(x.trim())).filter((x) => x > 0);
+}
+
 /** RaceResult multi-language labels: "{EN:Finish|DE:Ziel|FR:Arrivée}". */
 function rrText(v) {
   const raw = String(v ?? '').trim();
@@ -33,10 +38,14 @@ async function v2RaceObj(eventId) {
   const raceIds = races.map((r) => r.id);
   const [{ rows: contests }, { rows: splits }, { rows: legs }, { rows: ev }] = await Promise.all([
     pool.query(
-      `SELECT race_id, contest_id, name, distance_km, is_tracking, await_at_split, summary_split_ids,
-              show_pace, show_ranks, use_estimates, wide_splits, pace_unit
-         FROM v2.contests WHERE race_id = ANY($1::bigint[]) ORDER BY race_id, sort_order, name`,
-      [raceIds]
+      `SELECT c.race_id, c.contest_id, c.name, c.distance_km, c.is_tracking, c.await_at_split, c.summary_split_ids,
+              c.show_pace, c.show_ranks, c.use_estimates, c.wide_splits, c.pace_unit,
+              COALESCE(c.field_prediction, e.organisation_id = ANY($2::bigint[]), false) AS field_prediction
+         FROM v2.contests c
+         JOIN v2.races r ON r.id = c.race_id
+         LEFT JOIN v2.events e ON e.id = r.event_id
+        WHERE c.race_id = ANY($1::bigint[]) ORDER BY c.race_id, c.sort_order, c.name`,
+      [raceIds, fieldPredictionOrgs()]
     ),
     pool.query(
       `SELECT id, race_id, contest_id, name, sort_order, visible, split_type, is_leg,
@@ -119,6 +128,9 @@ async function v2RaceObj(eventId) {
       use_net_times: false, use_estimates: c.use_estimates !== false,
       await_at_next_split: c.await_at_split === true,
       is_tracking: c.is_tracking === true,
+      // Field-based prediction (migration 055): explicit per contest, else on
+      // for the organisations in FIELD_PREDICTION_ORGS (Epic Series by default).
+      field_prediction: c.field_prediction === true,
       use_tracking_path: key,
       showRank: c.show_ranks !== false, showPace: c.show_pace !== false,
       contest_type: null,

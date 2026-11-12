@@ -9,7 +9,7 @@
 | `events` | `id` = slug; `event_json` (name, dateLabel, venue, date, timeZone, accent, hero, nav, `hideNav`, `linkOnly`, northsouth) |
 | `pages` | `slug`, `page_type`, `page_json` (blocks) |
 | `races` | one per RaceResult event: `rr_raceid`, `organisation_id`, `event_id`, `event_date`, `time_zone`, `status`, `v1_race_id` (bridge), `entrants_last_loaded`; **list**: `rr_list_name`, `rr_splits_url`, `rr_splits_hash`, `provisioned_at`; **live**: `live_state idle|armed|live|finalising|done|error`, `live_from`, `live_until`, `last_pull_at`, `last_data_at` |
-| `contests` | `contest_id` (RR), `name`, `distance_km`, `course_id` → courses, `is_tracking`, `await_at_split`, `elevation_y_scale`, `summary_split_ids` |
+| `contests` | `contest_id` (RR), `name`, `distance_km`, `course_id` → courses, `is_tracking`, `await_at_split`, `field_prediction` (null = org default), `elevation_y_scale`, `summary_split_ids` |
 | `splits` | per contest timing point: `rr_splitid`, `name`, `rr_splitname`, `sort_order`, `split_type`, `is_leg=false`, `visible`, `distance_m`, `accum_km`, `percent_course`, `default_speed`, `send_push`, `push_type` (unused) |
 | `legs` | RR SplitType 9: `rr_legid`, `label`, `start_split_id`, `end_split_id`, `icon`, `speed_type`, `distance_m`, `visible` |
 | `courses` | `geojson jsonb`, `distance_km`, `climb_m`, `is_tracking`, GPX download flag; published as `courses/{id}.geojson` |

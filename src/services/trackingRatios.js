@@ -19,12 +19,22 @@
  * timing point onward. Everything before that, and any segment with fewer
  * than MIN_TEAMS through its far mat, stays on the old flat-speed method.
  *
- * NOT wired into tracking.js yet — how it switches on is still to be decided.
- * Pure: takes the mats of one contest and the teams' crossings, returns one
- * entry per segment. See ../../docs/field-based-tracking-prediction.md.
+ * Wiring: evento-worker rebuilds the table every tick into Redis
+ * tracking_ratios:{v2_race_id}:{contest_id} (short TTL); tracking.js reads it
+ * when the contest's field_prediction flag is on and calls fieldSpeed(), which
+ * applies the sanity guards below and returns null on ANY doubt so the caller
+ * keeps the old flat-speed method. Env TRACKING_FIELD_PREDICTION=off is the
+ * kill switch. See ../../docs/field-based-tracking-prediction.md.
  */
 
 const MIN_TEAMS = 20;
+// Guards: a ratio outside this band, or a field spread wider than this, is
+// not trusted; a resulting speed is clamped to what a rider can plausibly do.
+const RATIO_MIN = 0.3;
+const RATIO_MAX = 2.0;
+const SPREAD_MAX = 0.5;
+const KMH_MIN = 2;
+const KMH_MAX = 60;
 
 /** 'HH:MM:SS' / 'HH:MM:SS.s' → seconds since midnight; null if unparseable. */
 function todSecs(tod) {
@@ -153,4 +163,44 @@ function expectedNextMat(table, recs, startId) {
   };
 }
 
-module.exports = { computeSegmentRatios, expectedNextMat, matsFromContest, todSecs, MIN_TEAMS };
+/**
+ * The speed tracking should extrapolate a rider at, from the field table —
+ * or null, meaning "use the old method". Every guard that fails returns null;
+ * nothing here throws.
+ *
+ * @param {unknown} table — the segments array as stored in Redis (untrusted)
+ * @param {{rr_id:number, tod:string}[]} recs — the rider's crossings
+ * @param {number} startId — rr_splitid of the start mat
+ * @returns {{kmh:number, segment:string, expected_tod_secs:number}|null}
+ */
+function fieldSpeed(table, recs, startId) {
+  try {
+    if (!Array.isArray(table) || !table.length) return null;
+    const clean = table.filter((s) => s && typeof s === 'object'
+      && Number(s.from_id) > 0 && Number(s.to_id) > 0 && Number(s.km) > 0
+      && (s.ratio == null || Number.isFinite(Number(s.ratio))));
+    if (clean.length !== table.length) return null;
+    const p = expectedNextMat(clean, recs, startId);
+    if (!p) return null;
+    const seg = clean.find((s) => `${s.from} → ${s.to}` === p.segment);
+    if (!seg || !(seg.n >= MIN_TEAMS)) return null;
+    const ratio = Number(seg.ratio);
+    const spread = Number(seg.spread);
+    if (!(ratio >= RATIO_MIN && ratio <= RATIO_MAX)) return null;
+    if (!(Number.isFinite(spread) && spread >= 0 && spread <= SPREAD_MAX)) return null;
+    const kmh = Number(p.expected_kmh);
+    if (!Number.isFinite(kmh) || kmh <= 0) return null;
+    return {
+      kmh: Math.min(KMH_MAX, Math.max(KMH_MIN, kmh)),
+      segment: p.segment,
+      expected_tod_secs: p.expected_tod_secs,
+    };
+  } catch {
+    return null;
+  }
+}
+
+module.exports = {
+  computeSegmentRatios, expectedNextMat, fieldSpeed, matsFromContest, todSecs,
+  MIN_TEAMS, RATIO_MIN, RATIO_MAX, SPREAD_MAX, KMH_MIN, KMH_MAX,
+};

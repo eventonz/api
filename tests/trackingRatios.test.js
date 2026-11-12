@@ -83,3 +83,43 @@ test('mats come from a raceobj contest in course order, legs and unkeyed splits 
   expect(todSecs('07:35:00')).toBe(27300);
   expect(todSecs('bad')).toBeNull();
 });
+
+describe('fieldSpeed guards — anything doubtful → null, the old method runs', () => {
+  const { fieldSpeed, KMH_MIN, KMH_MAX } = require('../src/services/trackingRatios');
+  const field = []; for (let i = 0; i < 30; i++) field.push(team(22 - i * 0.2, 0.68));
+  const table = computeSegmentRatios(MATS, field);
+  const rider = team(16.2, 0.68, undefined, false); // on the WP2 → WP3 climb
+
+  test('a good table gives own pace × ratio', () => {
+    const f = fieldSpeed(table, rider, 4008);
+    expect(f.segment).toBe('WP2 → WP3');
+    expect(f.kmh).toBeCloseTo(11.0, 1);
+  });
+  test('garbage tables', () => {
+    expect(fieldSpeed(null, rider, 4008)).toBeNull();
+    expect(fieldSpeed('nope', rider, 4008)).toBeNull();
+    expect(fieldSpeed([], rider, 4008)).toBeNull();
+    expect(fieldSpeed([{ bad: true }], rider, 4008)).toBeNull();
+    expect(fieldSpeed(table.map((s) => ({ ...s, ratio: 'abc' })), rider, 4008)).toBeNull();
+    expect(fieldSpeed(table.map((s) => ({ ...s, km: 0 })), rider, 4008)).toBeNull();
+  });
+  test('ratio outside 0.3–2.0, spread over 50 %, or thin field', () => {
+    const tweak = (patch) => table.map((s) => (s.to === 'WP3' ? { ...s, ...patch } : s));
+    expect(fieldSpeed(tweak({ ratio: 0.2 }), rider, 4008)).toBeNull();
+    expect(fieldSpeed(tweak({ ratio: 2.5 }), rider, 4008)).toBeNull();
+    expect(fieldSpeed(tweak({ spread: 0.6 }), rider, 4008)).toBeNull();
+    expect(fieldSpeed(tweak({ n: 5 }), rider, 4008)).toBeNull();
+    expect(fieldSpeed(tweak({ ready: false, ratio: null }), rider, 4008)).toBeNull();
+  });
+  test('speed is clamped to a plausible range', () => {
+    const tweak = (patch) => table.map((s) => (s.to === 'WP3' ? { ...s, ...patch } : s));
+    expect(fieldSpeed(tweak({ ratio: 0.3 }), team(5, 0.3, undefined, false), 4008).kmh).toBe(KMH_MIN);
+    expect(fieldSpeed(tweak({ ratio: 2 }), team(40, 2, undefined, false), 4008).kmh).toBe(KMH_MAX);
+  });
+  test('garbage rider records', () => {
+    expect(fieldSpeed(table, null, 4008)).toBeNull();
+    expect(fieldSpeed(table, [{ rr_id: 'x', tod: 42 }], 4008)).toBeNull();
+    expect(fieldSpeed(table, rider, 0)).toBeNull();
+    expect(fieldSpeed(table, [{ rr_id: 4008, tod: '07:35:00' }], 4008)).toBeNull(); // before first mat
+  });
+});
