@@ -4,7 +4,6 @@
  * Mirrors the persistence helpers in API/api/v4/modules/tracks.cfm:
  *   insertResultsTable()
  *   insertRedis()
- *   logToProcessQueue()
  *
  * Called after processContestandSplits + processSpeed (Stage 3).
  * All three are fire-and-don't-block-the-response where appropriate —
@@ -220,22 +219,6 @@ async function upsertRedisSplits(race_id, trackdata) {
 }
 
 // ---------------------------------------------------------------------------
-// logToProcessQueue
-//
-// Appends a timestamped entry to the Redis process_queue list.
-// Used for observability / replay. Fire-and-forget — errors are swallowed.
-// ---------------------------------------------------------------------------
-async function logToProcessQueue(race_id, rawJson) {
-  const entry = JSON.stringify({
-    timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-    race_id:   Number(race_id),
-    payload:   rawJson,
-  });
-
-  await redis.rpush('process_queue', entry);
-}
-
-// ---------------------------------------------------------------------------
 // Internal: write insert error details to Redis for debugging
 // Mirrors CF's debug Redis write inside insertResultsTable catch block
 // ---------------------------------------------------------------------------
@@ -257,5 +240,4 @@ module.exports = {
   insertResultsTable,
   insertRedis,
   upsertRedisSplits,
-  logToProcessQueue,
 };

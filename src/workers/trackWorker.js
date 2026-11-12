@@ -26,7 +26,6 @@ const {
   insertResultsTable,
   insertRedis,
   upsertRedisSplits,
-  logToProcessQueue,
 } = require('../services/trackPersistence');
 const { sendPushToQueue } = require('../services/trackPush');
 const { handleRrWebhook } = require('./handlers/rrWebhook');
@@ -77,9 +76,6 @@ async function handleTracksJob(race_id, body, endpoint) {
     console.warn('[worker] race not found at process time:', race_id);
     return;
   }
-
-  // Audit log of raw payload (fire and forget)
-  logToProcessQueue(race_id, JSON.stringify(body)).catch(() => {});
 
   if (!isWithinReceptionWindow(raceobj)) return;
 

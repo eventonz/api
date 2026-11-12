@@ -153,7 +153,8 @@ function logDataIssue(raceId, error, payload) {
     error,
     payload:   JSON.stringify(payload),
   });
-  redis.rpush('data_issues', entry).catch(() => {});
+  // Capped: this list is never drained (12 Nov 2026 process_queue hit 216 MB).
+  redis.multi().rpush('data_issues', entry).ltrim('data_issues', -2000, -1).exec().catch(() => {});
 }
 
 function isEventoCreated(rec) {
