@@ -30,8 +30,12 @@
 const MIN_TEAMS = 20;
 // Guards: a ratio outside this band, or a field spread wider than this, is
 // not trusted; a resulting speed is clamped to what a rider can plausibly do.
+// RATIO_MAX was 2.0 until W2W Shiraz Stage 1 (13 Nov 2026): a neutralised
+// 5km opener at ~10 km/h followed by 11 km at ~20 km/h gave a true ratio of
+// 2.04 (187 teams, spread 0.10), which the cap threw away — every team on
+// that segment fell back to the old method at half its real speed.
 const RATIO_MIN = 0.3;
-const RATIO_MAX = 2.0;
+const RATIO_MAX = 3.0;
 const SPREAD_MAX = 0.5;
 const KMH_MIN = 2;
 const KMH_MAX = 60;

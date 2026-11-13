@@ -103,10 +103,12 @@ describe('fieldSpeed guards — anything doubtful → null, the old method runs'
     expect(fieldSpeed(table.map((s) => ({ ...s, ratio: 'abc' })), rider, 4008)).toBeNull();
     expect(fieldSpeed(table.map((s) => ({ ...s, km: 0 })), rider, 4008)).toBeNull();
   });
-  test('ratio outside 0.3–2.0, spread over 50 %, or thin field', () => {
+  test('ratio outside 0.3–3.0, spread over 50 %, or thin field', () => {
     const tweak = (patch) => table.map((s) => (s.to === 'WP3' ? { ...s, ...patch } : s));
     expect(fieldSpeed(tweak({ ratio: 0.2 }), rider, 4008)).toBeNull();
-    expect(fieldSpeed(tweak({ ratio: 2.5 }), rider, 4008)).toBeNull();
+    expect(fieldSpeed(tweak({ ratio: 3.5 }), rider, 4008)).toBeNull();
+    // A doubled speed after a neutralised opener is real (Shiraz Stage 1).
+    expect(fieldSpeed(tweak({ ratio: 2.04 }), rider, 4008)).not.toBeNull();
     expect(fieldSpeed(tweak({ spread: 0.6 }), rider, 4008)).toBeNull();
     expect(fieldSpeed(tweak({ n: 5 }), rider, 4008)).toBeNull();
     expect(fieldSpeed(tweak({ ready: false, ratio: null }), rider, 4008)).toBeNull();
