@@ -1,0 +1,715 @@
+{
+ "name": "Sample live API | 100km-Duathlon",
+ "location": "🇩🇪 Dresden",
+ "startTime": "2026-11-15T18:41:07Z",
+ "endTime": "2026-11-15T22:40:31Z",
+ "timekeepings": [
+  {
+   "name": "Start",
+   "offset": 500.0,
+   "position": [
+    13.704676761428434,
+    51.023111754848,
+    198.0
+   ],
+   "id": "66bf4319d1c783279d183f9c"
+  },
+  {
+   "name": "Split 1",
+   "offset": 8490.0,
+   "position": [
+    13.720569999999952,
+    50.98503000000001,
+    327.0
+   ],
+   "id": "66bf4319d1c783279d183fab"
+  },
+  {
+   "name": "VP1",
+   "offset": 18800.0,
+   "position": [
+    13.805320000000052,
+    50.93460999999999,
+    337.0
+   ],
+   "id": "66bf431ad1c783279d183fb9"
+  },
+  {
+   "name": "Split 3",
+   "offset": 36750.0,
+   "position": [
+    13.923530000000028,
+    51.00098999999995,
+    169.0
+   ],
+   "id": "66bf431ad1c783279d183fc6"
+  },
+  {
+   "name": "VP2",
+   "offset": 44970.0,
+   "position": [
+    13.885479245672531,
+    51.04663478892499,
+    292.0
+   ],
+   "id": "66bf431ad1c783279d183fed"
+  },
+  {
+   "name": "Split 5",
+   "offset": 49220.0,
+   "position": [
+    13.881129999999985,
+    51.07525,
+    250.0
+   ],
+   "id": "66bf431ad1c783279d183ffa"
+  },
+  {
+   "name": "VP3",
+   "offset": 64970.0,
+   "position": [
+    13.78183843920776,
+    51.11115112555888,
+    213.0
+   ],
+   "id": "66bf431ad1c783279d184007"
+  },
+  {
+   "name": "Split 7",
+   "offset": 81670.0,
+   "position": [
+    13.605189999999991,
+    51.09469999999996,
+    105.0
+   ],
+   "id": "66bf431ad1c783279d184014"
+  },
+  {
+   "name": "VP4",
+   "offset": 84370.0,
+   "position": [
+    13.601380000000065,
+    51.07747999999999,
+    249.0
+   ],
+   "id": "66bf431ad1c783279d184021"
+  },
+  {
+   "name": "Split 9",
+   "offset": 92510.0,
+   "position": [
+    13.647179999999937,
+    51.03682,
+    259.0
+   ],
+   "id": "66bf431ad1c783279d18402e"
+  },
+  {
+   "name": "Finish",
+   "offset": 99000.0,
+   "position": [
+    13.70400409285181,
+    51.029136970062225,
+    145.0
+   ],
+   "id": "66bf431ad1c783279d18403b"
+  }
+ ],
+ "starters": [
+  {
+   "id": "66bf4318d1c783279d183e21",
+   "importId": null,
+   "startNumber": "036",
+   "name": "Lehrer",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e29",
+   "importId": null,
+   "startNumber": "042",
+   "name": "Die Bummler",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:54:09.783Z",
+      "distanceToSplit": 44.37
+     },
+     {
+      "time": "2026-11-15T18:54:19.783Z",
+      "distanceToSplit": 7.64
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e4f",
+   "importId": null,
+   "startNumber": "037",
+   "name": "Wolfsrudel - Männer",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e33",
+   "importId": null,
+   "startNumber": "049",
+   "name": "Der Weg ist das Ziel e.V.",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:47:19.783Z",
+      "distanceToSplit": 18.85
+     },
+     {
+      "time": "2026-11-15T18:47:29.783Z",
+      "distanceToSplit": 31.37
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3d",
+   "importId": null,
+   "startNumber": "📢",
+   "name": "Vorausfahrer",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e37",
+   "importId": null,
+   "startNumber": "051",
+   "name": "Eierschecke",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:45:09.783Z",
+      "distanceToSplit": 30.74
+     },
+     {
+      "time": "2026-11-15T18:45:29.783Z",
+      "distanceToSplit": 14.15
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3f",
+   "importId": null,
+   "startNumber": "🧹",
+   "name": "Nachfahrer",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e31",
+   "importId": null,
+   "startNumber": "048",
+   "name": "PLAN:LOS",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:48:19.783Z",
+      "distanceToSplit": 15.86
+     },
+     {
+      "time": "2026-11-15T18:48:39.783Z",
+      "distanceToSplit": 24.15
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e2d",
+   "importId": null,
+   "startNumber": "044",
+   "name": "Von Null Auf Einhundert",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:52:29.783Z",
+      "distanceToSplit": 44.37
+     },
+     {
+      "time": "2026-11-15T18:52:49.783Z",
+      "distanceToSplit": 4.07
+     },
+     {
+      "time": "2026-11-15T18:52:59.783Z",
+      "distanceToSplit": 43.72
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e41",
+   "importId": null,
+   "startNumber": "🧹",
+   "name": "Nachfahrer",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e27",
+   "importId": null,
+   "startNumber": "041",
+   "name": "Vitzthum-Gymnasium",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:55:29.783Z",
+      "distanceToSplit": 31.12
+     },
+     {
+      "time": "2026-11-15T18:55:39.783Z",
+      "distanceToSplit": 17.12
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e47",
+   "importId": null,
+   "startNumber": "011",
+   "name": "Bike Passion Pirna",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e35",
+   "importId": null,
+   "startNumber": "050",
+   "name": "Nicht ohne (m)eine Karte",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:46:19.783Z",
+      "distanceToSplit": 33.66
+     },
+     {
+      "time": "2026-11-15T18:46:29.783Z",
+      "distanceToSplit": 8.79
+     },
+     {
+      "time": "2026-11-15T18:46:49.783Z",
+      "distanceToSplit": 46.1
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3b",
+   "importId": null,
+   "startNumber": "053",
+   "name": "Wolfsrudel Mädels",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:43:39.783Z",
+      "distanceToSplit": 37.05
+     },
+     {
+      "time": "2026-11-15T18:43:49.783Z",
+      "distanceToSplit": 10.31
+     },
+     {
+      "time": "2026-11-15T18:43:59.783Z",
+      "distanceToSplit": 15.27
+     },
+     {
+      "time": "2026-11-15T18:44:09.783Z",
+      "distanceToSplit": 38.73
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e0f",
+   "importId": null,
+   "startNumber": "026",
+   "name": "Die vier lustigen fünf",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e0d",
+   "importId": null,
+   "startNumber": "025",
+   "name": "5 gegen die anderen Willies",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e43",
+   "importId": null,
+   "startNumber": "007",
+   "name": "Wildwechsel",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e4b",
+   "importId": null,
+   "startNumber": "022",
+   "name": "Harzer Roller Club",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e51",
+   "importId": null,
+   "startNumber": "039",
+   "name": "Dude, where's the finish line?",
+   "times": {
+    "66bf4319d1c783279d183f9c": [],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e2f",
+   "importId": null,
+   "startNumber": "046",
+   "name": "SG Turbine Gottleubatal",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:50:09.783Z",
+      "distanceToSplit": 49.2
+     },
+     {
+      "time": "2026-11-15T18:50:19.783Z",
+      "distanceToSplit": 21.31
+     },
+     {
+      "time": "2026-11-15T18:50:29.783Z",
+      "distanceToSplit": 10.21
+     },
+     {
+      "time": "2026-11-15T18:50:39.783Z",
+      "distanceToSplit": 34.67
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e55",
+   "importId": null,
+   "startNumber": "047",
+   "name": "Team HASSELHOFF",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:49:39.783Z",
+      "distanceToSplit": 13.81
+     },
+     {
+      "time": "2026-11-15T18:49:59.783Z",
+      "distanceToSplit": 24.7
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e39",
+   "importId": null,
+   "startNumber": "052",
+   "name": "KU200",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:44:39.783Z",
+      "distanceToSplit": 39.18
+     },
+     {
+      "time": "2026-11-15T18:44:49.783Z",
+      "distanceToSplit": 8.59
+     },
+     {
+      "time": "2026-11-15T18:44:59.783Z",
+      "distanceToSplit": 8.72
+     },
+     {
+      "time": "2026-11-15T18:45:09.783Z",
+      "distanceToSplit": 34.72
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e4d",
+   "importId": null,
+   "startNumber": "031",
+   "name": "Team Pirate und Gäste",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e2b",
+   "importId": null,
+   "startNumber": "043",
+   "name": "pass the baton",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:52:39.783Z",
+      "distanceToSplit": 15.86
+     },
+     {
+      "time": "2026-11-15T18:52:49.783Z",
+      "distanceToSplit": 45.96
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e25",
+   "importId": null,
+   "startNumber": "040",
+   "name": "Ladies first aka D.E.K.S.",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:56:09.783Z",
+      "distanceToSplit": 15.99
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e45",
+   "importId": null,
+   "startNumber": "008",
+   "name": "USC Magdeburg",
+   "times": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e53",
+   "importId": null,
+   "startNumber": "045",
+   "name": "Greyhound-Express",
+   "times": {
+    "66bf4319d1c783279d183f9c": [
+     {
+      "time": "2026-11-15T18:51:09.783Z",
+      "distanceToSplit": 37.97
+     },
+     {
+      "time": "2026-11-15T18:51:19.783Z",
+      "distanceToSplit": 13.71
+     }
+    ],
+    "66bf4319d1c783279d183fab": [],
+    "66bf431ad1c783279d183fb9": [],
+    "66bf431ad1c783279d183fc6": [],
+    "66bf431ad1c783279d183fed": [],
+    "66bf431ad1c783279d183ffa": [],
+    "66bf431ad1c783279d184007": [],
+    "66bf431ad1c783279d184014": [],
+    "66bf431ad1c783279d184021": [],
+    "66bf431ad1c783279d18402e": [],
+    "66bf431ad1c783279d18403b": []
+   }
+  }
+ ]
+}

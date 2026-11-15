@@ -1,0 +1,1413 @@
+{
+ "name": "Sample live API | 100km-Duathlon",
+ "location": "🇩🇪 Dresden",
+ "startTime": "2026-11-15T18:41:07Z",
+ "endTime": "2026-11-15T22:40:31Z",
+ "timekeepings": [
+  {
+   "name": "Start",
+   "offset": 500.0,
+   "position": [
+    13.704676761428434,
+    51.023111754848,
+    198.0
+   ],
+   "id": "66bf4319d1c783279d183f9c"
+  },
+  {
+   "name": "Split 1",
+   "offset": 8492.49,
+   "position": [
+    13.720569999999952,
+    50.98503000000001,
+    327.0
+   ],
+   "id": "66bf4319d1c783279d183fab"
+  },
+  {
+   "name": "VP1",
+   "offset": 18802.7,
+   "position": [
+    13.805320000000052,
+    50.93460999999999,
+    337.0
+   ],
+   "id": "66bf431ad1c783279d183fb9"
+  },
+  {
+   "name": "Split 3",
+   "offset": 36745.1,
+   "position": [
+    13.923530000000028,
+    51.00098999999995,
+    169.0
+   ],
+   "id": "66bf431ad1c783279d183fc6"
+  },
+  {
+   "name": "VP2",
+   "offset": 44967.53,
+   "position": [
+    13.885479245672531,
+    51.04663478892499,
+    292.0
+   ],
+   "id": "66bf431ad1c783279d183fed"
+  },
+  {
+   "name": "Split 5",
+   "offset": 49222.81,
+   "position": [
+    13.881129999999985,
+    51.07525,
+    250.0
+   ],
+   "id": "66bf431ad1c783279d183ffa"
+  },
+  {
+   "name": "VP3",
+   "offset": 64967.53,
+   "position": [
+    13.78183843920776,
+    51.11115112555888,
+    213.0
+   ],
+   "id": "66bf431ad1c783279d184007"
+  },
+  {
+   "name": "Split 7",
+   "offset": 81668.89,
+   "position": [
+    13.605189999999991,
+    51.09469999999996,
+    105.0
+   ],
+   "id": "66bf431ad1c783279d184014"
+  },
+  {
+   "name": "VP4",
+   "offset": 84366.54,
+   "position": [
+    13.601380000000065,
+    51.07747999999999,
+    249.0
+   ],
+   "id": "66bf431ad1c783279d184021"
+  },
+  {
+   "name": "Split 9",
+   "offset": 92508.23,
+   "position": [
+    13.647179999999937,
+    51.03682,
+    259.0
+   ],
+   "id": "66bf431ad1c783279d18402e"
+  },
+  {
+   "name": "Finish",
+   "offset": 99000.0,
+   "position": [
+    13.70400409285181,
+    51.029136970062225,
+    145.0
+   ],
+   "id": "66bf431ad1c783279d18403b"
+  }
+ ],
+ "starters": [
+  {
+   "id": "66bf4318d1c783279d183e3d",
+   "name": "Vorausfahrer",
+   "startNumber": "📢",
+   "tags": {
+    "class": "Orga",
+    "status": "DNS"
+   },
+   "markerColor": "#32c4f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": true,
+   "progress": 98500.00000296278,
+   "currentDuration": 1170000,
+   "activeDuration": 1000000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:41:07Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    {
+     "id": "66bf4319d1c783279d183fab",
+     "time": "2026-11-15T19:32:35.178Z",
+     "type": "duration",
+     "relativeProgress": 3088178,
+     "relativeDeltaProgress": 3088178
+    },
+    {
+     "id": "66bf431ad1c783279d183fb9",
+     "time": "2026-11-15T20:35:04.344Z",
+     "type": "duration",
+     "relativeProgress": 6837344,
+     "relativeDeltaProgress": 3749166
+    },
+    {
+     "id": "66bf431ad1c783279d183fc6",
+     "time": "2026-11-15T22:23:48.855Z",
+     "type": "duration",
+     "relativeProgress": 13361855,
+     "relativeDeltaProgress": 6524511
+    },
+    {
+     "id": "66bf431ad1c783279d183fed",
+     "time": "2026-11-15T23:13:38.827Z",
+     "type": "duration",
+     "relativeProgress": 16351827,
+     "relativeDeltaProgress": 2989972
+    },
+    {
+     "id": "66bf431ad1c783279d183ffa",
+     "time": "2026-11-15T23:39:26.204Z",
+     "type": "duration",
+     "relativeProgress": 17899204,
+     "relativeDeltaProgress": 1547377
+    },
+    {
+     "id": "66bf431ad1c783279d184007",
+     "time": "2026-11-16T01:14:51.554Z",
+     "type": "duration",
+     "relativeProgress": 23624554,
+     "relativeDeltaProgress": 5725350
+    },
+    {
+     "id": "66bf431ad1c783279d184014",
+     "time": "2026-11-16T02:56:04.776Z",
+     "type": "duration",
+     "relativeProgress": 29697776,
+     "relativeDeltaProgress": 6073222
+    },
+    {
+     "id": "66bf431ad1c783279d184021",
+     "time": "2026-11-16T03:12:25.741Z",
+     "type": "duration",
+     "relativeProgress": 30678741,
+     "relativeDeltaProgress": 980965
+    },
+    {
+     "id": "66bf431ad1c783279d18402e",
+     "time": "2026-11-16T04:01:46.355Z",
+     "type": "duration",
+     "relativeProgress": 33639355,
+     "relativeDeltaProgress": 2960614
+    },
+    {
+     "id": "66bf431ad1c783279d18403b",
+     "time": "2026-11-16T04:41:07Z",
+     "type": "duration",
+     "relativeProgress": 36000000,
+     "relativeDeltaProgress": 2360645
+    }
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e3f",
+   "name": "Nachfahrer",
+   "startNumber": "🧹",
+   "tags": {
+    "class": "Orga",
+    "status": "DNS"
+   },
+   "markerColor": "#32c4f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": true,
+   "progress": 98500.00000296278,
+   "currentDuration": 1180000,
+   "activeDuration": 390000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:41:07Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    {
+     "id": "66bf4319d1c783279d183fab",
+     "time": "2026-11-15T19:32:35.178Z",
+     "type": "duration",
+     "relativeProgress": 3088178,
+     "relativeDeltaProgress": 3088178
+    },
+    {
+     "id": "66bf431ad1c783279d183fb9",
+     "time": "2026-11-15T20:35:04.344Z",
+     "type": "duration",
+     "relativeProgress": 6837344,
+     "relativeDeltaProgress": 3749166
+    },
+    {
+     "id": "66bf431ad1c783279d183fc6",
+     "time": "2026-11-15T22:23:48.855Z",
+     "type": "duration",
+     "relativeProgress": 13361855,
+     "relativeDeltaProgress": 6524511
+    },
+    {
+     "id": "66bf431ad1c783279d183fed",
+     "time": "2026-11-15T23:13:38.827Z",
+     "type": "duration",
+     "relativeProgress": 16351827,
+     "relativeDeltaProgress": 2989972
+    },
+    {
+     "id": "66bf431ad1c783279d183ffa",
+     "time": "2026-11-15T23:39:26.204Z",
+     "type": "duration",
+     "relativeProgress": 17899204,
+     "relativeDeltaProgress": 1547377
+    },
+    {
+     "id": "66bf431ad1c783279d184007",
+     "time": "2026-11-16T01:14:51.554Z",
+     "type": "duration",
+     "relativeProgress": 23624554,
+     "relativeDeltaProgress": 5725350
+    },
+    {
+     "id": "66bf431ad1c783279d184014",
+     "time": "2026-11-16T02:56:04.776Z",
+     "type": "duration",
+     "relativeProgress": 29697776,
+     "relativeDeltaProgress": 6073222
+    },
+    {
+     "id": "66bf431ad1c783279d184021",
+     "time": "2026-11-16T03:12:25.741Z",
+     "type": "duration",
+     "relativeProgress": 30678741,
+     "relativeDeltaProgress": 980965
+    },
+    {
+     "id": "66bf431ad1c783279d18402e",
+     "time": "2026-11-16T04:01:46.355Z",
+     "type": "duration",
+     "relativeProgress": 33639355,
+     "relativeDeltaProgress": 2960614
+    },
+    {
+     "id": "66bf431ad1c783279d18403b",
+     "time": "2026-11-16T04:41:07Z",
+     "type": "duration",
+     "relativeProgress": 36000000,
+     "relativeDeltaProgress": 2360645
+    }
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e41",
+   "name": "Nachfahrer",
+   "startNumber": "🧹",
+   "tags": {
+    "class": "Orga",
+    "status": "DNS"
+   },
+   "markerColor": "#32c4f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": true,
+   "progress": 98500.00000296278,
+   "currentDuration": 1190000,
+   "activeDuration": 560000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:41:07Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    {
+     "id": "66bf4319d1c783279d183fab",
+     "time": "2026-11-15T19:32:35.178Z",
+     "type": "duration",
+     "relativeProgress": 3088178,
+     "relativeDeltaProgress": 3088178
+    },
+    {
+     "id": "66bf431ad1c783279d183fb9",
+     "time": "2026-11-15T20:35:04.344Z",
+     "type": "duration",
+     "relativeProgress": 6837344,
+     "relativeDeltaProgress": 3749166
+    },
+    {
+     "id": "66bf431ad1c783279d183fc6",
+     "time": "2026-11-15T22:23:48.855Z",
+     "type": "duration",
+     "relativeProgress": 13361855,
+     "relativeDeltaProgress": 6524511
+    },
+    {
+     "id": "66bf431ad1c783279d183fed",
+     "time": "2026-11-15T23:13:38.827Z",
+     "type": "duration",
+     "relativeProgress": 16351827,
+     "relativeDeltaProgress": 2989972
+    },
+    {
+     "id": "66bf431ad1c783279d183ffa",
+     "time": "2026-11-15T23:39:26.204Z",
+     "type": "duration",
+     "relativeProgress": 17899204,
+     "relativeDeltaProgress": 1547377
+    },
+    {
+     "id": "66bf431ad1c783279d184007",
+     "time": "2026-11-16T01:14:51.554Z",
+     "type": "duration",
+     "relativeProgress": 23624554,
+     "relativeDeltaProgress": 5725350
+    },
+    {
+     "id": "66bf431ad1c783279d184014",
+     "time": "2026-11-16T02:56:04.776Z",
+     "type": "duration",
+     "relativeProgress": 29697776,
+     "relativeDeltaProgress": 6073222
+    },
+    {
+     "id": "66bf431ad1c783279d184021",
+     "time": "2026-11-16T03:12:25.741Z",
+     "type": "duration",
+     "relativeProgress": 30678741,
+     "relativeDeltaProgress": 980965
+    },
+    {
+     "id": "66bf431ad1c783279d18402e",
+     "time": "2026-11-16T04:01:46.355Z",
+     "type": "duration",
+     "relativeProgress": 33639355,
+     "relativeDeltaProgress": 2960614
+    },
+    {
+     "id": "66bf431ad1c783279d18403b",
+     "time": "2026-11-16T04:41:07Z",
+     "type": "duration",
+     "relativeProgress": 36000000,
+     "relativeDeltaProgress": 2360645
+    }
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e39",
+   "name": "KU200",
+   "startNumber": "052",
+   "tags": {
+    "age": "25",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 1,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 1,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3990.0,
+   "currentDuration": 1180000,
+   "activeDuration": 1150000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:44:49.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e37",
+   "name": "Eierschecke",
+   "startNumber": "051",
+   "tags": {
+    "age": "35",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 2,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 2,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3890.0,
+   "currentDuration": 1190000,
+   "activeDuration": 1090000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:45:24.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e3b",
+   "name": "Wolfsrudel Mädels",
+   "startNumber": "053",
+   "tags": {
+    "age": "45",
+    "class": "Women"
+   },
+   "markerColor": "#f714f4",
+   "importId": null,
+   "rank": 3,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 3,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3730.0,
+   "currentDuration": 1180000,
+   "activeDuration": 1180000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:43:49.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e35",
+   "name": "Nicht ohne (m)eine Karte",
+   "startNumber": "050",
+   "tags": {
+    "age": "30",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 4,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 4,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3420.0,
+   "currentDuration": 1170000,
+   "activeDuration": 1060000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:46:29.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e33",
+   "name": "Der Weg ist das Ziel e.V.",
+   "startNumber": "049",
+   "tags": {
+    "age": "30",
+    "class": "Women"
+   },
+   "markerColor": "#f714f4",
+   "importId": null,
+   "rank": 5,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 5,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3250.0,
+   "currentDuration": 1170000,
+   "activeDuration": 950000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:47:23.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e31",
+   "name": "PLAN:LOS",
+   "startNumber": "048",
+   "tags": {
+    "age": "35",
+    "class": "Men"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": 6,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 6,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 3230.0,
+   "currentDuration": 1180000,
+   "activeDuration": 1000000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:48:26.449Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e55",
+   "name": "Team HASSELHOFF",
+   "startNumber": "047",
+   "tags": {
+    "age": "42",
+    "class": "Men",
+    "status": "DNF"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNF",
+   "online": true,
+   "progress": 2890.0,
+   "currentDuration": 1190000,
+   "activeDuration": 1000000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:49:46.449Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e2f",
+   "name": "SG Turbine Gottleubatal",
+   "startNumber": "046",
+   "tags": {
+    "age": "35",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 7,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 7,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 2600.0,
+   "currentDuration": 840000,
+   "activeDuration": 780000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:50:26.449Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e2b",
+   "name": "pass the baton",
+   "startNumber": "043",
+   "tags": {
+    "age": "25",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 8,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 8,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 2580.0,
+   "currentDuration": 1180000,
+   "activeDuration": 670000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:52:41.449Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e53",
+   "name": "Greyhound-Express",
+   "startNumber": "045",
+   "tags": {
+    "age": "45",
+    "class": "Mixed",
+    "status": "DNF"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNF",
+   "online": true,
+   "progress": 2440.0,
+   "currentDuration": 1180000,
+   "activeDuration": 890000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:51:17.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e2d",
+   "name": "Von Null Auf Einhundert",
+   "startNumber": "044",
+   "tags": {
+    "age": "28",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 9,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 9,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 2020.0,
+   "currentDuration": 1170000,
+   "activeDuration": 740000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:52:49.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e29",
+   "name": "Die Bummler",
+   "startNumber": "042",
+   "tags": {
+    "age": "35",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 10,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 10,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 2010.0,
+   "currentDuration": 1180000,
+   "activeDuration": 780000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:54:22.640Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e25",
+   "name": "Ladies first aka D.E.K.S.",
+   "startNumber": "040",
+   "tags": {
+    "age": "42",
+    "class": "Women"
+   },
+   "markerColor": "#f714f4",
+   "importId": null,
+   "rank": 11,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 11,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 1590.0,
+   "currentDuration": 1180000,
+   "activeDuration": 680000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:56:09.782Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e27",
+   "name": "Vitzthum-Gymnasium",
+   "startNumber": "041",
+   "tags": {
+    "age": "18",
+    "class": "Students"
+   },
+   "markerColor": "#18b307",
+   "importId": null,
+   "rank": 12,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 12,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 1530.0,
+   "currentDuration": 1190000,
+   "activeDuration": 720000,
+   "results": [
+    {
+     "id": "66bf4319d1c783279d183f9c",
+     "time": "2026-11-15T18:55:37.282Z",
+     "type": "duration",
+     "relativeProgress": 0,
+     "relativeDeltaProgress": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e51",
+   "name": "Dude, where's the finish line?",
+   "startNumber": "039",
+   "tags": {
+    "age": "25",
+    "class": "Mixed",
+    "status": "DSQ"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DSQ",
+   "online": true,
+   "progress": 230.0,
+   "currentDuration": 1170000,
+   "activeDuration": 585000,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e0f",
+   "name": "Die vier lustigen fünf",
+   "startNumber": "026",
+   "tags": {
+    "age": "32",
+    "class": "Men"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": 13,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 13,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 30.0,
+   "currentDuration": 1184000,
+   "activeDuration": 213000,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e0d",
+   "name": "5 gegen die anderen Willies",
+   "startNumber": "025",
+   "tags": {
+    "age": "28",
+    "class": "Mixed"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": 13,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 13,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 30.0,
+   "currentDuration": 1185000,
+   "activeDuration": 214000,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e21",
+   "name": "Lehrer",
+   "startNumber": "036",
+   "tags": {
+    "age": "45",
+    "class": "Men"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": 15,
+   "ranks": [
+    {
+     "timing": "elapsed",
+     "position": 1,
+     "total": 15
+    },
+    {
+     "timing": "absolute",
+     "position": 15,
+     "total": 15
+    }
+   ],
+   "state": null,
+   "online": true,
+   "progress": 0.0,
+   "currentDuration": 1170000,
+   "activeDuration": 389000,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e4f",
+   "name": "Wolfsrudel - Männer",
+   "startNumber": "037",
+   "tags": {
+    "age": "25",
+    "class": "Men",
+    "status": "DNS"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e47",
+   "name": "Bike Passion Pirna",
+   "startNumber": "011",
+   "tags": {
+    "age": "38",
+    "class": "Mixed",
+    "status": "DNS"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e43",
+   "name": "Wildwechsel",
+   "startNumber": "007",
+   "tags": {
+    "age": "30",
+    "class": "Men",
+    "status": "DNS"
+   },
+   "markerColor": "#90959e",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e4b",
+   "name": "Harzer Roller Club",
+   "startNumber": "022",
+   "tags": {
+    "age": "45",
+    "class": "Mixed",
+    "status": "DNS"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e4d",
+   "name": "Team Pirate und Gäste",
+   "startNumber": "031",
+   "tags": {
+    "age": "45",
+    "class": "Mixed",
+    "status": "DNS"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "id": "66bf4318d1c783279d183e45",
+   "name": "USC Magdeburg",
+   "startNumber": "008",
+   "tags": {
+    "age": "32",
+    "class": "Mixed",
+    "status": "DNS"
+   },
+   "markerColor": "#f7f7f7",
+   "importId": null,
+   "rank": -1,
+   "ranks": [],
+   "state": "DNS",
+   "online": false,
+   "progress": null,
+   "currentDuration": null,
+   "activeDuration": null,
+   "results": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ]
+}

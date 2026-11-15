@@ -1,0 +1,323 @@
+{
+ "name": "Sample live API | 100km-Duathlon",
+ "location": "🇩🇪 Dresden",
+ "startTime": "2026-11-15T18:41:07Z",
+ "endTime": "2026-11-15T22:40:31Z",
+ "starters": [
+  {
+   "id": "66bf4318d1c783279d183e21",
+   "name": "Lehrer",
+   "startNumber": "036",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:46.013Z",
+    "lng": 13.70475,
+    "lat": 51.0268,
+    "gapDistance": 0.0,
+    "bearing": 0.0
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e29",
+   "name": "Die Bummler",
+   "startNumber": "042",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.69815,
+    "lat": 51.01382,
+    "gapDistance": 1515.32,
+    "bearing": 17.734482775156717
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e4f",
+   "name": "Wolfsrudel - Männer",
+   "startNumber": "037",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e33",
+   "name": "Der Weg ist das Ziel e.V.",
+   "startNumber": "049",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.7135,
+    "lat": 51.01007,
+    "gapDistance": 1958.36,
+    "bearing": -18.20840801568681
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3d",
+   "name": "Vorausfahrer",
+   "startNumber": "📢",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.72748,
+    "lat": 51.01208,
+    "gapDistance": 2281.69,
+    "bearing": -44.158907024752736
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e37",
+   "name": "Eierschecke",
+   "startNumber": "051",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:59.783Z",
+    "lng": 13.72048,
+    "lat": 51.01122,
+    "gapDistance": 2052.2,
+    "bearing": -32.41429040724025
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3f",
+   "name": "Nachfahrer",
+   "startNumber": "🧹",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.69725,
+    "lat": 51.01438,
+    "gapDistance": 1477.3,
+    "bearing": 20.796652043053072
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e31",
+   "name": "PLAN:LOS",
+   "startNumber": "048",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.71332,
+    "lat": 51.01018,
+    "gapDistance": 1942.82,
+    "bearing": -17.968478642795297
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e2d",
+   "name": "Von Null Auf Einhundert",
+   "startNumber": "044",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.69828,
+    "lat": 51.01375,
+    "gapDistance": 1520.01,
+    "bearing": 17.318698676222564
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e41",
+   "name": "Nachfahrer",
+   "startNumber": "🧹",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:59.783Z",
+    "lng": 13.70777,
+    "lat": 51.01208,
+    "gapDistance": 1650.36,
+    "bearing": -7.352722931179494
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e27",
+   "name": "Vitzthum-Gymnasium",
+   "startNumber": "041",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:59.783Z",
+    "lng": 13.69555,
+    "lat": 51.01695,
+    "gapDistance": 1270.28,
+    "bearing": 30.43127593728049
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e47",
+   "name": "Bike Passion Pirna",
+   "startNumber": "011",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e35",
+   "name": "Nicht ohne (m)eine Karte",
+   "startNumber": "050",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.7152,
+    "lat": 51.00928,
+    "gapDistance": 2080.71,
+    "bearing": -20.562994809581717
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e3b",
+   "name": "Wolfsrudel Mädels",
+   "startNumber": "053",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.7186,
+    "lat": 51.01098,
+    "gapDistance": 2008.16,
+    "bearing": -28.83748428626179
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e0f",
+   "name": "Die vier lustigen fünf",
+   "startNumber": "026",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:56.013Z",
+    "lng": 13.70527,
+    "lat": 51.0267,
+    "gapDistance": 38.03,
+    "bearing": -72.99845745522964
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e0d",
+   "name": "5 gegen die anderen Willies",
+   "startNumber": "025",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:43.013Z",
+    "lng": 13.70523,
+    "lat": 51.02667,
+    "gapDistance": 36.55,
+    "bearing": -66.70278306475572
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e43",
+   "name": "Wildwechsel",
+   "startNumber": "007",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e4b",
+   "name": "Harzer Roller Club",
+   "startNumber": "022",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e51",
+   "name": "Dude, where's the finish line?",
+   "startNumber": "039",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:51.013Z",
+    "lng": 13.70527,
+    "lat": 51.02537,
+    "gapDistance": 163.11,
+    "bearing": -12.88262204274567
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e2f",
+   "name": "SG Turbine Gottleubatal",
+   "startNumber": "046",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.70598,
+    "lat": 51.0122,
+    "gapDistance": 1625.73,
+    "bearing": -3.0331198344832195
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e55",
+   "name": "Team HASSELHOFF",
+   "startNumber": "047",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:59.783Z",
+    "lng": 13.70893,
+    "lat": 51.01132,
+    "gapDistance": 1745.95,
+    "bearing": -9.638788633016862
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e39",
+   "name": "KU200",
+   "startNumber": "052",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.72162,
+    "lat": 51.0107,
+    "gapDistance": 2144.06,
+    "bearing": -33.38438920795259
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e4d",
+   "name": "Team Pirate und Gäste",
+   "startNumber": "031",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e2b",
+   "name": "pass the baton",
+   "startNumber": "043",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.70567,
+    "lat": 51.01222,
+    "gapDistance": 1622.5,
+    "bearing": -2.2727192932701645
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e25",
+   "name": "Ladies first aka D.E.K.S.",
+   "startNumber": "040",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:59.783Z",
+    "lng": 13.69602,
+    "lat": 51.01665,
+    "gapDistance": 1283.19,
+    "bearing": 28.411060901227252
+   }
+  },
+  {
+   "id": "66bf4318d1c783279d183e45",
+   "name": "USC Magdeburg",
+   "startNumber": "008",
+   "importId": null,
+   "current": null
+  },
+  {
+   "id": "66bf4318d1c783279d183e53",
+   "name": "Greyhound-Express",
+   "startNumber": "045",
+   "importId": null,
+   "current": {
+    "time": "2026-11-15T19:00:49.783Z",
+    "lng": 13.70367,
+    "lat": 51.01258,
+    "gapDistance": 1583.0,
+    "bearing": 2.7348748835582466
+   }
+  }
+ ]
+}
