@@ -82,7 +82,7 @@ async function nativeConfig(eventId) {
   const { rows: ev } = await pool.query('SELECT id, event_json FROM v2.events WHERE id = $1', [eventId]);
   if (!ev.length) return null;
   const { rows: paths } = await pool.query(
-    `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale,
+    `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale, c.gps_colour,
             k.id AS course_id, k.name AS course_name, k.is_tracking AS course_tracking,
             r.timer_platform, r.sportsplits_live_stage,
             EXTRACT(EPOCH FROM k.updated_at)::bigint AS updated
@@ -125,6 +125,8 @@ async function nativeConfig(eventId) {
         is_tracking: tracked(p),
         updated: Number(p.updated) || 0,
         ...(p.elevation_y_scale != null && +p.elevation_y_scale > 0 ? { elevation_y_scale: +p.elevation_y_scale } : {}),
+        // CMS per-contest GPS dot colour (migration 059); absent = the app's automatic palette.
+        ...(p.gps_colour ? { gps_colour: String(p.gps_colour) } : {}),
       })),
     };
   }
