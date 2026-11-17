@@ -43,6 +43,8 @@ Headers `X-RateLimit-Limit/Remaining`, `429` + `Retry-After`.
 | `GET /v2/athletes/{event}` | startlist / search (`v2.athletes`) |
 | `POST /v2/splits/{event}?id=&bib=&contest=` | athlete detail document (`version2.items`: summary, Legs, splits table). Redis while live, `v2.rr_results` when done. |
 | `POST /v2/tracking/{event}` `{tracks:[ids]}` | positions `{track, location %, speed, path, info, live_racetime, is_counting}`; live window only |
+| `GET /v2/tracking/{event}/gps` | RaceMap field snapshot for the dots layer: `{at, contests:{contest_id: course_km}, rows:[[bib, pct, kmh, athlete_id, name, contest_id]…]}` merged over the event's races (Redis `gps:race:{race}`, written by evento-worker). 404 `No GPS feed` = hide the Field button. ETag/304, `Cache-Control: public, max-age=10` |
+| `GET /v2/tracking/{event}/gps/ops` | crew / support vehicles `{at, rows:[{callsign, kind, lat, lng, speed, pct, km, seen, online}]}` (Redis `gps:race:{race}:ops`). PIN = `v2.events.ops_pin` via header `X-Ops-Pin` or `?pin=`; no pin set / none given / mismatch all 403 `PIN required`; `no-store` |
 | `GET/POST /v2/cheers/…` | no-login cheer board |
 | `GET /v2/stages/{event}?bib=` | stage-race document for a team bib (`stages[]`, `next_start`); Redis `redis_stages:*`, Postgres fallback — see [stage-races.md](stage-races.md) |
 | `GET /v2/photos/{event}/{bib}` | NorthSouth participant photos (`{enabled, gallery, photos:[{image,link}]}`); account key `NORTHSOUTH_AUTH` server-side, per-event key from CMS Settings; 60s cache |

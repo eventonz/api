@@ -1,6 +1,15 @@
 const { buildTracking, buildTrackingV2 } = require('../../services/tracking');
 const pool = require('../../config/database');
 const { platformRacesForEvent } = require('../../services/v2bridge');
+const { gpsFieldSnapshot, gpsOpsSnapshot } = require('../../services/gps');
+const crypto = require('crypto');
+
+/** Constant-time string compare (the ops PIN must not be probable by timing). */
+function pinMatches(given, expected) {
+  const a = Buffer.from(String(given ?? '').trim());
+  const b = Buffer.from(String(expected ?? '').trim());
+  return a.length > 0 && a.length === b.length && crypto.timingSafeEqual(a, b);
+}
 
 /**
  * POST /v2/tracking/:event_id — body { tracks: [athlete_id, ...] }
@@ -78,6 +87,46 @@ async function v2TrackingRoutes(app) {
       return reply.code(200).send(lastMeta);
     }
     return reply.code(200).send({ tracks: merged });
+  });
+
+  /**
+   * GET /v2/tracking/:event_id/gps — RaceMap field snapshot for the dots layer:
+   * { at, contests: { contest_id: course_km }, rows: [[bib, pct, kmh, athlete_id, name, contest_id], …] }
+   * merged across the event's v2 races (written by evento-worker, 5-min TTL).
+   * 404 when no race has a feed — that is what hides the app's Field button.
+   * ETag/304 + 10 s shared cache: the app polls this every ~60 s per open map.
+   */
+  app.get('/:event_id/gps', async (request, reply) => {
+    const { event_id } = request.params;
+    const races = await platformRacesForEvent(event_id);
+    if (!races.length) return reply.code(404).send({ error: 'No GPS feed' });
+    const snap = await gpsFieldSnapshot(races.map((r) => r.id));
+    if (!snap) return reply.code(404).send({ error: 'No GPS feed' });
+    const body = JSON.stringify(snap);
+    const etag = `"${crypto.createHash('md5').update(body).digest('hex')}"`;
+    reply.header('ETag', etag);
+    reply.header('Cache-Control', 'public, max-age=10');
+    if (request.headers['if-none-match'] === etag) return reply.code(304).send();
+    return reply.type('application/json').send(body);
+  });
+
+  /**
+   * GET /v2/tracking/:event_id/gps/ops — crew / support vehicles { at, rows:[…] },
+   * gated by the event's ops PIN (v2.events.ops_pin) given as header X-Ops-Pin
+   * or query ?pin=. No pin set, no pin given or a mismatch all answer the same
+   * 403 so the layer's existence can't be probed. Never cached.
+   */
+  app.get('/:event_id/gps/ops', async (request, reply) => {
+    const { event_id } = request.params;
+    reply.header('Cache-Control', 'no-store');
+    const given = request.headers['x-ops-pin'] ?? request.query?.pin;
+    const { rows } = await pool.query('SELECT ops_pin FROM v2.events WHERE id = $1', [event_id]);
+    const expected = rows[0]?.ops_pin;
+    if (!expected || !pinMatches(given, expected)) return reply.code(403).send({ error: 'PIN required' });
+    const races = await platformRacesForEvent(event_id);
+    const snap = races.length ? await gpsOpsSnapshot(races.map((r) => r.id)) : null;
+    if (!snap) return reply.code(404).send({ error: 'No ops feed' });
+    return reply.code(200).send(snap);
   });
 }
 

@@ -15,6 +15,7 @@ const { raceconfigByRaceId } = require('./raceConfig');
 const pool = require('../config/database');
 const { v2RaceObj } = require('./v2RaceConfig');
 const { fieldSpeed } = require('./trackingRatios');
+const { mergeGpsFixes } = require('./gps');
 
 /** Kill switch for field-based prediction: TRACKING_FIELD_PREDICTION=off. */
 const fieldPredictionEnabled = () => String(process.env.TRACKING_FIELD_PREDICTION ?? 'on').toLowerCase() !== 'off';
@@ -29,6 +30,8 @@ const fieldPredictionEnabled = () => String(process.env.TRACKING_FIELD_PREDICTIO
 function fieldPredictionFor(t, race, contestEv) {
   try {
     if (!fieldPredictionEnabled() || !contestEv || contestEv.field_prediction !== true) return null;
+    // A GPS-anchored track just extrapolates at the GPS speed from the fix.
+    if (t.isgps) return null;
     const table = race?.field_ratios?.[String(t.contest_id)];
     if (!table || !Array.isArray(t.records) || !(Number(t.start_rr_splitid) > 0)) return null;
     return fieldSpeed(table, t.records, Number(t.start_rr_splitid));
@@ -416,9 +419,14 @@ async function buildTrackingV2({ v2RaceId, eventId, tracks }) {
     onlyContests = new Set([ss.sportsplits_live_stage, ss.sportsplits_ebike_live_stage].filter(Boolean).map(String));
     if (!onlyContests.size) onlyContests = null;
   }
-  const latest = await getTracksFromV2RedisSplits(tracks.map(String), v2RaceId, raceobj, onlyContests);
+  const tz = raceobj.timezone || rows[0].time_zone || 'UTC';
+  const ids = tracks.map(String);
+  let latest = await getTracksFromV2RedisSplits(ids, v2RaceId, raceobj, onlyContests);
+  // RaceMap GPS (services/gps.js): a fix fresher than the last mat crossing
+  // re-anchors the marker; GPS-only athletes get a track. One extra MGET.
+  latest = await mergeGpsFixes({ latest, trackIds: ids, v2RaceId, raceobj, tz });
   raceobj.field_ratios = await loadFieldRatios(v2RaceId, raceobj, onlyContests);
-  return { status: 200, body: { tracks: renderTracks(latest, raceobj, raceobj.timezone || rows[0].time_zone || 'UTC') } };
+  return { status: 200, body: { tracks: renderTracks(latest, raceobj, tz) } };
 }
 
 /**

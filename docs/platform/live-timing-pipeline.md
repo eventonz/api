@@ -160,6 +160,14 @@ are rows too (`rr_splitid` = leg id, duration in `split_tod`).
   `percent_course` (accum_km / contest distance), dead-reckoned forward at the
   split speed (never behind the last mat), `path: "p_{contest}"` (legacy;
   app matches by contest). Only while `armed/live/finalising/done`.
+  **RaceMap GPS merge** (`services/gps.js mergeGpsFixes`, one MGET on
+  `gps:race:{race}:athlete:{id}`): a fix newer than the track's last mat
+  crossing (`pushed_at`) and younger than `GPS_MAX_AGE_S` (600) re-anchors the
+  marker — position = `pct`, speed = GPS km/h, `isgps` ("GPS Update, GPS @ HH:MM");
+  older fixes are ignored. GPS-only athletes (no splits) get a track on the
+  fix's contest. A GPS-anchored track skips field prediction but still parks at
+  the next mat when `await_at_split` is on. Field dots + ops vehicles:
+  `GET /v2/tracking/{event}/gps[/ops]` (eventoapi.md).
 - `GET /v2/config/{event}` — for v2-native events built from `v2.contests` ↔
   `v2.courses`: `tracking.paths[]` one per contest with a course (`geojson` CDN
   URL, `contest`, `contest_name`, `course_id`, `is_tracking`), `athletes.url`,
