@@ -13,6 +13,7 @@
 require('dotenv').config();
 
 const RR = 'https://events.raceresult.com';
+const { rrLogin } = require('../src/services/raceresult/login');
 const SOURCE_EVENT = 381218;                 // Test-Event-2026 (owned by the Evento user) — read only (copyOf)
 const TEST_NAME = 'Evento Pipeline Test';
 // The only event this script will ever write raw data into. Hard-coded on purpose.
@@ -21,12 +22,7 @@ const TEST_EVENT_ID = '421131';
 async function login() {
   const key = process.env.RR_TEST_APIKEY;
   if (!key) throw new Error('RR_TEST_APIKEY not set in .env');
-  const r = await fetch(`${RR}/api/public/login`, {
-    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `apikey=${encodeURIComponent(key)}`,
-  });
-  const t = (await r.text()).trim().replace(/^"|"$/g, '');
-  if (!r.ok || !t) throw new Error(`login failed (${r.status})`);
+  const t = await rrLogin(key);
   return { Authorization: `Bearer ${t}` };
 }
 

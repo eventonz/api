@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const pool   = require('../../config/database');
 const timerAuth = require('../../plugins/timer-auth');
+const { rrLogin } = require('../../services/raceresult/login');
 
 // AWS SDK v3 for DigitalOcean Spaces
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
@@ -109,27 +110,12 @@ async function timerEventsRoutes(app) {
       const timerId  = orgRow.timer_id;
       const timerVal = orgRow.timer_value;
 
-      // --- Get RaceResult Bearer Token ---
-      const rrLoginResp = await fetch('https://events.raceresult.com/api/public/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `apikey=${encodeURIComponent(rrApiKey)}`
-      });
-
-      if (!rrLoginResp.ok) {
-        return reply.code(502).send(errorResponse(502, `RaceResult authentication failed. Verify the API key is correct (HTTP ${rrLoginResp.status}).`));
-      }
-
+      // --- Get RaceResult Bearer Token (JWT flow, legacy fallback) ---
       let rrToken;
       try {
-        const rrLoginJson = await rrLoginResp.json();
-        rrToken = rrLoginJson.Token || '';
-      } catch {
-        rrToken = await rrLoginResp.text();
-      }
-
-      if (!rrToken || !rrToken.trim()) {
-        return reply.code(502).send(errorResponse(502, 'RaceResult login succeeded but returned no token.'));
+        rrToken = await rrLogin(rrApiKey);
+      } catch (err) {
+        return reply.code(502).send(errorResponse(502, `${err.message}. Verify the API key is correct.`));
       }
 
       // --- Fetch event details from RaceResult ---

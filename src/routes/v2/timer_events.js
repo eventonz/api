@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const pool   = require('../../config/database');
 const timerAuth = require('../../plugins/timer-auth');
+const { rrLogin } = require('../../services/raceresult/login');
 
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
@@ -426,19 +427,12 @@ async function fetchRREvent(app, v2OrgId, v1OrgId, rrEventId) {
     return { error: 'Could not decrypt the RaceResult API key.', code: 500 };
   }
 
-  const loginResp = await fetch('https://events.raceresult.com/api/public/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `apikey=${encodeURIComponent(apikey)}`,
-  });
-  if (!loginResp.ok) return { error: `RaceResult authentication failed (HTTP ${loginResp.status}).`, code: 502 };
   let token;
   try {
-    token = (await loginResp.clone().json()).Token || '';
-  } catch {
-    token = await loginResp.text();
+    token = await rrLogin(apikey);
+  } catch (err) {
+    return { error: `${err.message}.`, code: 502 };
   }
-  if (!token || !token.trim()) return { error: 'RaceResult login returned no token.', code: 502 };
 
   const detResp = await fetch(`https://events.raceresult.com/_${rrEventId}/api/multirequest`, {
     method: 'POST',

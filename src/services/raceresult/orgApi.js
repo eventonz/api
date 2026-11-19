@@ -2,7 +2,7 @@
  * RaceResult Organisation API client.
  *
  * Endpoint names follow RaceResult's own Go client (github.com/raceresult/go-webapi):
- *   login        POST /api/public/login
+ *   login        POST /api/token/get (JWT; legacy /api/public/login until 31 Dec 2026) — see login.js
  *   contests     GET  /_{event}/api/contests/get
  *   splits       GET  /_{event}/api/splits/get?contest=
  *   lists        GET  /_{event}/api/lists/names|get, POST .../lists/save
@@ -17,6 +17,7 @@ const crypto = require('crypto');
 const pool = require('../../config/database');
 const redis = require('../../config/redis');
 const { cfmxDecryptHex } = require('./cfmx');
+const { rrLogin } = require('./login');
 
 const RR_BASE = 'https://events.raceresult.com';
 const RR_ENCRYPTION_KEY = process.env.RR_ENCRYPTION_KEY || 'evento_rr_2024';
@@ -65,17 +66,7 @@ async function tokenForOrg(orgId) {
   if (cached) return cached;
 
   const apikey = await apiKeyForOrg(orgId);
-  const res = await rrFetch(`${RR_BASE}/api/public/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `apikey=${encodeURIComponent(apikey)}`,
-  });
-  const text = (await res.text()).trim();
-  let token = text;
-  if (text.startsWith('{') || text.startsWith('[')) {
-    try { token = JSON.parse(text).Token || ''; } catch { /* fall through */ }
-  }
-  if (!token) throw new Error('RaceResult login returned an empty token');
+  const token = await rrLogin(apikey, { timeoutMs: TIMEOUT_MS });
 
   await redis.setex(tokenKey(orgId), TOKEN_TTL, token).catch(() => {});
   return token;

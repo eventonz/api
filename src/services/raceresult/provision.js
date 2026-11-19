@@ -22,6 +22,7 @@
 
 const pool = require('../../config/database');
 const rr = require('./orgApi');
+const { rrLogin } = require('./login');
 const { buildListData, buildColumnFields, coverageGaps } = require('./listTemplate');
 
 /**
@@ -115,22 +116,7 @@ async function apiKeyForRace(race) {
 }
 
 async function loginWithKey(apikey) {
-  const res = await fetch('https://events.raceresult.com/api/public/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `apikey=${encodeURIComponent(apikey)}`,
-    signal: AbortSignal.timeout(20000),
-  });
-  if (!res.ok) throw new Error(`RaceResult login failed (HTTP ${res.status})`);
-  const text = (await res.text()).trim();
-  if (text.startsWith('{') || text.startsWith('[')) {
-    try {
-      const token = JSON.parse(text).Token;
-      if (token) return token;
-    } catch { /* fall through */ }
-  }
-  if (!text) throw new Error('RaceResult login returned an empty token');
-  return text;
+  return rrLogin(apikey);
 }
 
 /**
