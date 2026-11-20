@@ -87,7 +87,7 @@ async function nativeConfig(eventId) {
   const { rows: ev } = await pool.query('SELECT id, event_json FROM v2.events WHERE id = $1', [eventId]);
   if (!ev.length) return null;
   const { rows: paths } = await pool.query(
-    `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale, c.gps_colour, c.gps_icon,
+    `SELECT c.contest_id, c.name AS contest_name, c.is_tracking, c.elevation_y_scale, c.gps_colour, c.gps_icon, c.gps_default_on,
             k.id AS course_id, k.name AS course_name, k.is_tracking AS course_tracking,
             r.timer_platform, r.sportsplits_live_stage,
             EXTRACT(EPOCH FROM k.updated_at)::bigint AS updated
@@ -123,6 +123,9 @@ async function nativeConfig(eventId) {
       map_style: 'road',
       // CMS Event Settings → text on the GPS button; absent = the app's "GPS".
       ...(gpsLabel ? { gps_label: gpsLabel } : {}),
+      // CMS contest RaceMap "Show GPS on map open" (migration 061): one GPS layer per
+      // map, so any contest on = on. A viewer's own toggle wins in the app.
+      ...(paths.some((p) => p.gps_default_on === true) ? { gps_on_open: true } : {}),
       paths: paths.map((p) => ({
         geojson: `${CDN}/events/${eventId}/courses/${p.course_id}.geojson`,
         name: `p_${p.contest_id}`,

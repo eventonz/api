@@ -1,11 +1,12 @@
 /** /v2/config for a Sportsplits event builds from the v2 tables, never the linked old race. */
 let mockLive = '2';
+let mockDefaultOn = false;
 jest.mock('../src/config/database', () => ({
   query: jest.fn(async (sql) => {
     if (/FROM v2\.events WHERE id/.test(sql)) return { rows: [{ id: 'chardonnay', event_json: {} }] };
     if (/JOIN v2\.courses/.test(sql)) return { rows: [
       { contest_id: '2', contest_name: 'Stage 1', is_tracking: true, course_id: 30, course_name: 'S1', updated: 1, gps_icon: 'mtb', timer_platform: 'sportsplits', sportsplits_live_stage: mockLive },
-      { contest_id: '3', contest_name: 'Stage 2', is_tracking: true, course_id: 35, course_name: 'S2', updated: 1, timer_platform: 'sportsplits', sportsplits_live_stage: mockLive },
+      { contest_id: '3', contest_name: 'Stage 2', is_tracking: true, course_id: 35, course_name: 'S2', updated: 1, gps_default_on: mockDefaultOn, timer_platform: 'sportsplits', sportsplits_live_stage: mockLive },
     ] };
     return { rows: [] };
   }),
@@ -52,4 +53,12 @@ test('contest gps_icon (migration 060) is passed through; absent stays absent', 
   const d = (await (await build()).inject({ method: 'GET', url: '/v2/config/chardonnay' })).json();
   expect(d.tracking.paths[0].gps_icon).toBe('mtb');
   expect(d.tracking.paths[1]).not.toHaveProperty('gps_icon');
+});
+
+test('RaceMap "Show GPS on map open" on any contest → tracking.gps_on_open; none on = absent', async () => {
+  mockRaces.mockResolvedValue([{ id: 373, timer_platform: 'sportsplits', platform_race_id: 2690 }]);
+  expect((await (await build()).inject({ method: 'GET', url: '/v2/config/chardonnay' })).json().tracking).not.toHaveProperty('gps_on_open');
+  mockDefaultOn = true;
+  expect((await (await build()).inject({ method: 'GET', url: '/v2/config/chardonnay' })).json().tracking.gps_on_open).toBe(true);
+  mockDefaultOn = false;
 });
