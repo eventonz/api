@@ -26,6 +26,27 @@ const LIVE_POLL_SECONDS = 20;
 const FILTER_SEP = '';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * RRPublish v2.1 serves /view as text/event-stream ("retry: …\n\nevent:
+ * update\ndata: {…}"). Return the first data: payload; plain JSON passes
+ * through unchanged.
+ */
+function sseData(body) {
+  const text = str(body);
+  if (text.trimStart().startsWith('{')) return text;
+  const line = text.split('\n').find((l) => l.startsWith('data:'));
+  return line ? line.slice(5).trim() : text;
+}
+
+/**
+ * The SSE update wraps the view one level down: { Checksum, MID, Data:
+ * { Elements, Data: { SplitsAndLegs, … } } }. Unwrap to the pre-2.1 shape.
+ */
+function unwrapView(json) {
+  if (json?.Data && Array.isArray(json.Data.Elements)) return json.Data;
+  return json;
+}
+
 /** proxyGet → parsed JSON object, or null (RR returns text "not found" with 200). */
 async function getJson(rrId, pathAndQuery, opts = {}) {
   let res;
@@ -36,7 +57,7 @@ async function getJson(rrId, pathAndQuery, opts = {}) {
   }
   if (res.status !== 200) return { json: null, stale: false };
   try {
-    const decoded = JSON.parse(res.body);
+    const decoded = JSON.parse(sseData(res.body));
     const json = decoded && typeof decoded === 'object' && !Array.isArray(decoded) ? decoded : null;
     return { json, stale: !!res.stale };
   } catch (_) {
@@ -329,8 +350,9 @@ async function normalizedAthlete(rrId, params = {}) {
   let sc = '';
 
   // Modern: single /view call with layout elements.
-  const { json: view } = await getJson(rrId,
+  const { json: rawView } = await getJson(rrId,
     `${path}/view?${buildQuery([['key', key], ['pid', pid], ['lang', lang]])}`);
+  const view = unwrapView(rawView);
   if (view?.Data && typeof view.Data === 'object') {
     const sal = view.Data.SplitsAndLegs || {};
     rawSplits = splitsMod.normaliseSplitRows(sal.Splits, false);
