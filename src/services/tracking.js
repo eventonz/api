@@ -256,7 +256,9 @@ function renderTracks(latest, race, tz) {
     // runs past it either: the marker holds there until the read arrives.
     try {
       const contestEv = contestEvForTrack;
-      const awaitAtNext = Number(contestEv?.await_at_next_split ?? 0) === 1 || field != null;
+      // A GPS fix runs on at its speed only until the next mat: a stale feed
+      // (dead tracker, no signal) parks the rider there, not past it (Todd, 21 Nov).
+      const awaitAtNext = Number(contestEv?.await_at_next_split ?? 0) === 1 || field != null || !!t.isgps;
       if (awaitAtNext && latestPosition > Number(t.next_splitpercent)) {
         latestPosition = Number(t.next_splitpercent);
         speed = 0;
@@ -284,7 +286,7 @@ function renderTracks(latest, race, tz) {
       split_name:   String(t.splitname ?? ''),
       split_tod:    String(t.splittod ?? '').slice(0, 5),
       predicted:    status === 'split' && Number(latestPosition) > (Number(t.percent_course) || 0),
-      seen_at:      status === 'gps' ? String(t.anchor_at ?? '') : '',   // ISO of the GPS fix — the app's "49 s ago"
+      seen_at:      t.isgps ? String(t.anchor_at ?? '') : '',   // ISO of the GPS fix — the app's "49 s ago"
       marker_text:  String(t.marker_text ?? ''),
       live_racetime: liveTimeData.live_racetime,
       is_counting:  liveTimeData.is_counting,

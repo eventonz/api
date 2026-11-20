@@ -141,6 +141,14 @@ test('a GPS fix newer than the last mat re-anchors the marker: position + speed 
   expect(t.split_tod).toMatch(/^\d\d:\d\d$/);
 });
 
+test('a GPS rider whose feed goes quiet parks at the next mat as "Awaiting Update"', async () => {
+  // Fix at 52 km, 30 km/h, 9 min old → would be 56.5 km, past WP3 at 54 km.
+  const { tracks } = await merge({ matAgoSecs: 900, fix: fixAt(540, { km: 52, pct: 82.54, speed: 30 }) });
+  expect(tracks[0].location).toBeCloseTo(54 / 63 * 100, 1);
+  expect(tracks[0]).toMatchObject({ speed: 0, info: 'Awaiting Update', status: 'awaiting', split_name: 'GPS' });
+  expect(tracks[0].seen_at).not.toBe('');
+});
+
 test('a GPS fix older than the last mat crossing is ignored', async () => {
   const { merged, tracks } = await merge({ matAgoSecs: 60, fix: fixAt(600) });
   expect(merged[0].isgps).toBe(false);
