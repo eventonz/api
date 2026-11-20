@@ -91,7 +91,7 @@ async function v2TrackingRoutes(app) {
 
   /**
    * GET /v2/tracking/:event_id/gps — RaceMap field snapshot for the dots layer:
-   * { at, contests: { contest_id: course_km }, rows: [[bib, pct, kmh, athlete_id, name, contest_id], …] }
+   * { at, contests: { contest_id: course_km }, rows: [[bib, pct, kmh, athlete_id, name, contest_id, fix_at], …] }  (fix_at ISO, added 21 Nov 2026)
    * merged across the event's v2 races (written by evento-worker, 5-min TTL).
    * 404 when no race has a feed — that is what hides the app's Field button.
    * ETag/304 + 10 s shared cache: the app polls this every ~60 s per open map.
