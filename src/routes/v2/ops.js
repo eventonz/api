@@ -147,6 +147,28 @@ async function v2OpsRoutes(app) {
     raceLog(raceId, 'list', `results cleared by CMS — ${results} result rows, ${keys} cache keys removed`);
     return reply.send({ ok: true, race_id: raceId, results_deleted: results, cache_keys_deleted: keys });
   });
+
+  /**
+   * POST /v2/ops/clear-gps/:race_id — delete the race's RaceMap GPS data
+   * (gps:race:{id} field snapshot, :ops vehicles, :athlete:* fixes) so the
+   * dots leave the tracking map now. The contest's RaceMap settings are
+   * untouched: while polling is on the worker writes fresh data within a minute.
+   */
+  app.post('/clear-gps/:race_id', {
+    schema: { params: { type: 'object', properties: { race_id: { type: 'integer' } }, required: ['race_id'] } },
+  }, async (request, reply) => {
+    if (request.auth?.kind !== 'server') return reply.code(403).send({ error: 'Server API key required' });
+    const raceId = request.params.race_id;
+    let keys = await redis.del(`gps:race:${raceId}`, `gps:race:${raceId}:ops`);
+    let cursor = '0';
+    do {
+      const [next, found] = await redis.scan(cursor, 'MATCH', `gps:race:${raceId}:athlete:*`, 'COUNT', 5000);
+      cursor = next;
+      if (found.length) keys += await redis.del(...found);
+    } while (cursor !== '0');
+    raceLog(raceId, 'list', `RaceMap GPS data cleared by CMS — ${keys} cache keys removed`);
+    return reply.send({ ok: true, race_id: raceId, gps_keys_deleted: keys });
+  });
 }
 
 module.exports = v2OpsRoutes;
