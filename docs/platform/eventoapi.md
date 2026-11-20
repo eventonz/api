@@ -52,6 +52,7 @@ Headers `X-RateLimit-Limit/Remaining`, `429` + `Retry-After`.
 | `POST /v2/analytics` | batched app usage events |
 | `POST /v2/app_install` | install counting |
 | `GET /v2/rrpublish/{rrId}/…` | pass-through proxy to my.raceresult.com RRPublish for results-only events |
+| `GET /v2/rrpublish/{rrId}/app/v1/athlete?pid=` | normalised athlete page: `splits`, `legs`, plus `sections[]` — RaceResult's own page layout as ordered typed sections (`text`, `stats`, `splits`, `legs`, `certificates`, `photos`, `comments`, `links`, `table`, `progress`, `chart`, `html`). Clients skip unknown types; `unmapped[]` lists RR elements with no section yet (`normalize/sections.js`) |
 | `POST /v2/timer/events` | timer self-service event: with `rr_event_id` the event's HOME is the results page (`header` + `rr_results` block; header image/colour from RR, else the app's event defaults) — no separate Results page or tab |
 
 ### CMS / worker (server key)

@@ -28,5 +28,11 @@
     },
     "rows": []
   },
-  "hyrox": null
+  "hyrox": null,
+  "brand": {
+    "color": null,
+    "timerUrl": null
+  },
+  "sections": [],
+  "unmapped": []
 }

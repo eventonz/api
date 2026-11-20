@@ -20,6 +20,7 @@ const { extractGroups, extractGroupMore } = require('./rows');
 const { classifyFields } = require('./athleteInfo');
 const splitsMod = require('./splits');
 const { isHyrox, hyroxSteps } = require('./hyrox');
+const { buildSections, listNames, unknownTypes } = require('./sections');
 
 const SCHEMA_VERSION = 1;
 const LIVE_POLL_SECONDS = 20;
@@ -391,6 +392,27 @@ async function normalizedAthlete(rrId, params = {}) {
   const splitCols = splitsMod.resolveColumns(rawSplits, sc);
   const legCols = splitsMod.resolveColumns(rawLegs, sc);
   const hyroxSource = rawSplits.length > 0 ? rawSplits : rawLegs;
+  const splits = { columns: splitCols, rows: splitsMod.deriveRows(rawSplits, splitCols, lang) };
+  const legs = { columns: legCols, rows: splitsMod.deriveRows(rawLegs, legCols, lang) };
+
+  // Page layout as ordered sections (modern /view only). Embedded lists ride
+  // in Data.Lists on RRPublish 2.1; older events need one /list call each.
+  let sections = [];
+  let unmapped = [];
+  if (Array.isArray(view?.Elements)) {
+    unmapped = unknownTypes(view.Elements);
+    if (unmapped.length) console.warn(`[rrpublish] ${rrId} unmapped view elements: ${unmapped.join(', ')}`);
+    const embedded = { ...(view.Data?.Lists || {}) };
+    await Promise.all(listNames(view.Elements).filter((n) => !embedded[n]).map(async (name) => {
+      const { json } = await getJson(rrId, `${path}/list?${buildQuery([
+        ['key', key], ['listname', name], ['page', path], ['r', 'pid'], ['pid', pid]])}`);
+      if (json) embedded[name] = json;
+    }));
+    sections = buildSections(view.Elements, view.Data, {
+      base: `https://${str(view.Server) || 'my.raceresult.com'}/${rrId}`,
+      path, pid, lang, splits, legs, lists: embedded, hideComments: !!view.HideComments,
+    });
+  }
   return {
     status: 200,
     stale,
@@ -399,15 +421,16 @@ async function normalizedAthlete(rrId, params = {}) {
       pid,
       splitConfig: sc,
       show: splitsMod.showFlags(sc),
-      splits: {
-        columns: splitCols,
-        rows: splitsMod.deriveRows(rawSplits, splitCols, lang),
-      },
-      legs: {
-        columns: legCols,
-        rows: splitsMod.deriveRows(rawLegs, legCols, lang),
-      },
+      splits,
+      legs,
       hyrox: isHyrox(hyroxSource) ? hyroxSteps(hyroxSource) : null,
+      brand: {
+        color: str(view?.Color) || null,
+        timerUrl: str(view?.TimerURL) || null,
+      },
+      sections,
+      // RR element types this version has no section for (app ignores)
+      unmapped,
     },
   };
 }

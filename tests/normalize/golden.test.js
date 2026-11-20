@@ -70,6 +70,8 @@ global.__fixtureProxyGet = async (rrId, rawPathAndQuery) => {
     }
   }
   if (p.endsWith('/list')) {
+    // Embedded athlete-page list (r=pid) — not recorded for these events
+    if (q.r === 'pid') return { status: 404, contentType: 'text/plain', body: 'not found', cache: 'MISS' };
     if (q.page === 'participants') return serve('participants-list.json');
     if (q.page === 'live') return serve('live-list.json');
     const idx = eventIndex(rrId);

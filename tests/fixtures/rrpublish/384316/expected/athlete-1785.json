@@ -36,5 +36,29 @@
     },
     "rows": []
   },
-  "hyrox": null
+  "hyrox": null,
+  "brand": {
+    "color": null,
+    "timerUrl": "www.chronoconsult.fr"
+  },
+  "sections": [
+    {
+      "type": "splits",
+      "columns": {
+        "time": [],
+        "rank": []
+      },
+      "rows": [
+        {
+          "name": "Arrivée - km 12,7",
+          "time": "",
+          "segment": null,
+          "delta": null,
+          "values": {}
+        }
+      ],
+      "title": "Splits"
+    }
+  ],
+  "unmapped": []
 }

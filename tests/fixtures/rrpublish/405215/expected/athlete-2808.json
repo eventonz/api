@@ -162,5 +162,11 @@
     },
     "rows": []
   },
-  "hyrox": null
+  "hyrox": null,
+  "brand": {
+    "color": "#3ab2db",
+    "timerUrl": "www.chronoconsult.fr"
+  },
+  "sections": [],
+  "unmapped": []
 }
