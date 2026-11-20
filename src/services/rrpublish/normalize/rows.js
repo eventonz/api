@@ -27,7 +27,7 @@ function rankValue(raw) {
 
 /**
  * One participant row-array → normalized row.
- * ctx: { dataFields, nameIdx, resultIdx, lang }
+ * ctx: { dataFields, nameIdx, resultIdx, lang, fieldLinks? }
  */
 function parseRow(row, ctx) {
   const { dataFields, nameIdx, resultIdx, rankIdx, lang } = ctx;
@@ -58,7 +58,10 @@ function parseRow(row, ctx) {
   for (let i = 2; i < dataFields.length; i++) {
     if (isDirectiveValue(s(i))) continue;      // row styling, not a data field
     const v = i18n(s(i), lang);
-    if (v !== '') p.fields.push({ expr: dataFields[i], value: v });
+    if (v !== '') {
+      const linkIdx = ctx.fieldLinks?.[dataFields[i]];
+      p.fields.push({ expr: dataFields[i], value: v, link: linkIdx != null ? s(linkIdx) : '' });
+    }
     // Video column: a DataField named like "[...Video...]".
     const df = str(dataFields[i]);
     if (df.startsWith('[') && df.toLowerCase().includes('video') && s(i) !== '') {

@@ -41,6 +41,7 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
 
   const candidates = [];
   const fieldLabels = {};
+  const fieldLinks = {};      // DataField → index of the DataField holding its Link URL
   const anchored = [];        // ResponsiveHide -1 AND labelled (original rule)
   const anchoredBare = [];    // ResponsiveHide -1 with no Label
   for (const f of fields) {
@@ -48,6 +49,8 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
     const idx = dfMap.get(expr.toLowerCase());
     if (idx == null) continue;
     const label = i18n(str(f?.Label), lang);
+    const linkIdx = dfMap.get(str(f?.Link).toLowerCase());
+    if (str(f?.Link) !== '' && linkIdx != null) fieldLinks[dataFields[idx]] = linkIdx;
     // EVERY matched, labeled field feeds the detail info table.
     if (label !== '') fieldLabels[dataFields[idx]] = label;
     if (f?.PreviewOnly === true) continue;
@@ -111,7 +114,7 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   // fallback of 2 is only a rank when the DataField sitting there says so —
   // 'RANK4' on STEC TIERP, a flag image or status on other lists.
   const hasRank = visible.length >= 3 || RANK_PATTERN.test(str(dataFields[rankIdx]));
-  return { rankIdx, nameIdx, resultIdx, hasRank, fieldLabels, resultFieldLabel };
+  return { rankIdx, nameIdx, resultIdx, hasRank, fieldLabels, fieldLinks, resultFieldLabel };
 }
 
 module.exports = { extractFieldMetadata };

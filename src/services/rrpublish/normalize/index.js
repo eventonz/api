@@ -274,6 +274,7 @@ async function normalizedList(rrId, params = {}) {
     nameIdx: meta.nameIdx,
     resultIdx: meta.resultIdx,
     rankIdx: meta.hasRank ? meta.rankIdx : -1,
+    fieldLinks: meta.fieldLinks,
     lang,
     groupFilter,
     leadersMode,

@@ -4,7 +4,8 @@
  *
  *   - skip identity fields (id / bib / displayname / name_public)
  *   - skip empty / "-" / "--" and the row's own name/time values
- *   - [img:…] → type "image" (relative src resolved against the RR base)
+ *   - [img:…] whose list column has a Link → type "link" (icon buttons)
+ *   - other [img:…] → type "image" (relative src resolved against the RR base)
  *   - any other [bracket] value is an RR UDF with no useful display → skipped
  *   - URLs (raw or href="…") → type "link" (rendered as chips, never text)
  *   - remaining labeled values → type "text"; unlabeled → skipped
@@ -33,14 +34,14 @@ function extractUrl(value) {
 }
 
 /**
- * @param {Array<{expr,value}>} fields row fields (values already i18n'd)
+ * @param {Array<{expr,value,link?}>} fields row fields (values already i18n'd)
  * @param {object} row  { name, time } of the participant row
  * @param {object} ctx  { fieldLabels, detailBase, lang }
  * @returns {Array<{type:'text'|'image'|'link', label, value?, url?}>}
  */
 function classifyFields(fields, row, ctx) {
   const out = [];
-  for (const { expr, value: raw } of fields) {
+  for (const { expr, value: raw, link } of fields) {
     const l = str(expr).toLowerCase();
     if (SKIP.some((s) => l.includes(s))) continue;
     const value = str(raw).trim();
@@ -48,6 +49,14 @@ function classifyFields(fields, row, ctx) {
       || value === row.time || value === row.name) continue;
     const label = ctx.fieldLabels[expr] || '';
     const imgSrc = extractImgSrc(value, ctx.detailBase);
+    // An icon whose list column carries a Link (photos / video buttons) is
+    // the link, not a picture worth showing.
+    const linkUrl = imgSrc ? extractUrl(str(link).trim()) : null;
+    if (linkUrl) {
+      const name = label || (/(picture|photo)/.test(l) ? 'Photos' : /video/.test(l) ? 'Video' : '');
+      if (name !== '') out.push({ type: 'link', label: name, url: linkUrl });
+      continue;
+    }
     if (imgSrc) {
       out.push({ type: 'image', label, url: imgSrc });
       continue;
