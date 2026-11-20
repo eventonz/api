@@ -284,6 +284,7 @@ function renderTracks(latest, race, tz) {
       split_name:   String(t.splitname ?? ''),
       split_tod:    String(t.splittod ?? '').slice(0, 5),
       predicted:    status === 'split' && Number(latestPosition) > (Number(t.percent_course) || 0),
+      seen_at:      status === 'gps' ? String(t.anchor_at ?? '') : '',   // ISO of the GPS fix — the app's "49 s ago"
       marker_text:  String(t.marker_text ?? ''),
       live_racetime: liveTimeData.live_racetime,
       is_counting:  liveTimeData.is_counting,
