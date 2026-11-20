@@ -58,14 +58,19 @@ async function v2ConfigRoutes(app) {
  */
 async function applyV2EventSettings(doc, eventId) {
   const { rows } = await pool.query(
-    `SELECT event_json->>'avatar' AS avatar, event_json->'liveActivities' AS live FROM v2.events WHERE id = $1`, [eventId]);
-  if (!doc.athletes) return doc;
-  const avatar = String(rows[0]?.avatar || '').trim().toLowerCase();
-  // CMS Event Settings → Live Activities (iOS Lock Screen cards); default on.
-  const live = rows[0]?.live !== false;
+    `SELECT event_json->>'avatar' AS avatar, event_json->'liveActivities' AS live,
+            event_json->>'gpsLabel' AS gps_label FROM v2.events WHERE id = $1`, [eventId]);
   let changed = '';
-  if (avatar && doc.athletes.avatar !== avatar) { doc.athletes.avatar = avatar; changed += `|avatar=${avatar}`; }
-  if (doc.athletes.live_activities !== live) { doc.athletes.live_activities = live; changed += `|live=${live}`; }
+  // CMS Event Settings → text on the tracking map's GPS button; absent = "GPS".
+  const gpsLabel = String(rows[0]?.gps_label || '').trim();
+  if (doc.tracking && gpsLabel && doc.tracking.gps_label !== gpsLabel) { doc.tracking.gps_label = gpsLabel; changed += `|gps=${gpsLabel}`; }
+  if (doc.athletes) {
+    const avatar = String(rows[0]?.avatar || '').trim().toLowerCase();
+    // CMS Event Settings → Live Activities (iOS Lock Screen cards); default on.
+    const live = rows[0]?.live !== false;
+    if (avatar && doc.athletes.avatar !== avatar) { doc.athletes.avatar = avatar; changed += `|avatar=${avatar}`; }
+    if (doc.athletes.live_activities !== live) { doc.athletes.live_activities = live; changed += `|live=${live}`; }
+  }
   if (changed && typeof doc._hash === 'string') {
     doc._hash = crypto.createHash('sha256').update(`${doc._hash}${changed}`).digest('hex');
   }
@@ -111,10 +116,13 @@ async function nativeConfig(eventId) {
     && (p.timer_platform !== 'sportsplits' || !p.sportsplits_live_stage
         || String(p.contest_id) === String(p.sportsplits_live_stage));
   if (paths.length) {
+    const gpsLabel = String(ev[0].event_json?.gpsLabel || '').trim();
     doc.tracking = {
       update_freq: 30,
       data: `${v2}/tracking/${eventId}`,
       map_style: 'road',
+      // CMS Event Settings → text on the GPS button; absent = the app's "GPS".
+      ...(gpsLabel ? { gps_label: gpsLabel } : {}),
       paths: paths.map((p) => ({
         geojson: `${CDN}/events/${eventId}/courses/${p.course_id}.geojson`,
         name: `p_${p.contest_id}`,

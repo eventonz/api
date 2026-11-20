@@ -46,6 +46,14 @@ test('/gps is 404 "No GPS feed" when no race has a snapshot (hides the Field but
   await app.close();
 });
 
+test('/gps is 404 when the feed has no riders (only ops vehicles) — no GPS button', async () => {
+  const app = await build();
+  mockRedis.mget.mockResolvedValue([JSON.stringify({ ...snap158, rows: [] }), null]);
+  const res = await app.inject({ method: 'GET', url: '/v2/tracking/epic-2026/gps' });
+  expect(res.statusCode).toBe(404);
+  await app.close();
+});
+
 test('/gps merges the races into one body with ETag + 10 s cache, and 304s on a matching ETag', async () => {
   const app = await build();
   mockRedis.mget.mockResolvedValue([JSON.stringify(snap158), JSON.stringify(snap159)]);

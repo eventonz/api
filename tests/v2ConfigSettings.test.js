@@ -1,6 +1,6 @@
 /** CMS Event Settings folded into /v2/config: avatar mode + Live Activities flag. */
 let mockEventJson = {};
-jest.mock('../src/config/database', () => ({ query: jest.fn(async () => ({ rows: [{ avatar: mockEventJson.avatar ?? null, live: mockEventJson.liveActivities ?? null }] })) }));
+jest.mock('../src/config/database', () => ({ query: jest.fn(async () => ({ rows: [{ avatar: mockEventJson.avatar ?? null, live: mockEventJson.liveActivities ?? null, gps_label: mockEventJson.gpsLabel ?? null }] })) }));
 jest.mock('../src/services/v2bridge', () => ({ platformRacesForEvent: jest.fn() }));
 const { applyV2EventSettings } = require('../src/routes/v2/config');
 
@@ -20,4 +20,17 @@ test('CMS switches Live Activities off → flag false and a different hash', asy
   mockEventJson = { liveActivities: true, avatar: 'raceno' };
   const d2 = await applyV2EventSettings(doc(), 'ev');
   expect(d2._hash).not.toBe(d._hash);
+});
+
+test('CMS GPS button text → tracking.gps_label (only when the doc has tracking), hash changes', async () => {
+  mockEventJson = { gpsLabel: 'Live riders' };
+  const d = await applyV2EventSettings({ ...doc(), tracking: { paths: [] } }, 'ev');
+  expect(d.tracking.gps_label).toBe('Live riders');
+  mockEventJson = {};
+  const plain = await applyV2EventSettings({ ...doc(), tracking: { paths: [] } }, 'ev');
+  expect(plain.tracking.gps_label).toBeUndefined();
+  expect(plain._hash).not.toBe(d._hash);
+  mockEventJson = { gpsLabel: 'Live riders' };
+  const noTracking = await applyV2EventSettings(doc(), 'ev');
+  expect(noTracking.tracking).toBeUndefined();
 });

@@ -33,8 +33,9 @@ function newestAt(docs) {
 
 /**
  * Field snapshot for an event: gps:race:{id} for each of its v2 races merged
- * into one { at, contests, rows }. null when no race has a feed (the app hides
- * its Field button on the resulting 404).
+ * into one { at, contests, rows }. null when no race has a feed or no rider is
+ * on it — e.g. only ops vehicles tracked (the app hides its Field button on the
+ * resulting 404).
  */
 async function gpsFieldSnapshot(raceIds) {
   const ids = (raceIds || []).map(String).filter(Boolean);
@@ -47,6 +48,9 @@ async function gpsFieldSnapshot(raceIds) {
     Object.assign(contests, d.contests && typeof d.contests === 'object' ? d.contests : {});
     if (Array.isArray(d.rows)) rows.push(...d.rows);
   }
+  // Crew vehicles live in the :ops key, so no rider rows = nothing for the
+  // public Field button to show; 404 hides it.
+  if (!rows.length) return null;
   return { at: newestAt(docs), contests, rows };
 }
 
