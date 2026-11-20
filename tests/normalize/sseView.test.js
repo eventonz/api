@@ -34,3 +34,29 @@ test('SSE /view body yields splits and SplitConfig', async () => {
   expect(res.body.show.splits).toBe(true);
   expect(res.body.splits.rows.length).toBe(3);
 });
+
+jest.mock('../../src/config/redis', () => ({}));
+jest.mock('../../src/config/database', () => ({}));
+
+describe('readBody', () => {
+  const { readBody } = jest.requireActual('../../src/services/rrpublish/client');
+
+  test('returns the first SSE event without waiting for the stream to close', async () => {
+    const enc = new TextEncoder();
+    // Never closes — mirrors RR holding /view open ~30 s after the update.
+    const body = new ReadableStream({
+      start(c) {
+        c.enqueue(enc.encode('retry: 3000\n\nevent: update\ndata: {"a"'));
+        c.enqueue(enc.encode(':1}\n\n'));
+      },
+    });
+    const res = new Response(body, { headers: { 'content-type': 'text/event-stream' } });
+    const text = await readBody(res);
+    expect(text).toContain('data: {"a":1}');
+  });
+
+  test('plain JSON bodies read as text', async () => {
+    const res = new Response('{"b":2}', { headers: { 'content-type': 'application/json' } });
+    expect(await readBody(res)).toBe('{"b":2}');
+  });
+});

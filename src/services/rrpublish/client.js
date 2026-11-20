@@ -84,6 +84,30 @@ async function fetchWithTimeout(url, headers) {
 }
 
 /**
+ * Response body as text. RRPublish v2.1 /view is text/event-stream: the
+ * first update arrives at once but the stream is held open ~30 s, which
+ * would blow FETCH_TIMEOUT_MS — keep only the first complete event.
+ */
+async function readBody(response) {
+  const type = response.headers.get('content-type') || '';
+  if (!type.includes('text/event-stream') || !response.body) return response.text();
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      text += decoder.decode(value, { stream: true });
+      if (/^data:.*\n\n/m.test(text.replace(/\r/g, ''))) break;
+    }
+  } finally {
+    reader.cancel().catch(() => {});
+  }
+  return text;
+}
+
+/**
  * Load CMS display overrides for an event, Redis-cached 60 s.
  * Returns the parsed overrides object or null when none configured.
  */
@@ -206,7 +230,7 @@ async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}, opts = {}) {
   let response, body;
   try {
     response = await fetchWithTimeout(url, headers);
-    body = await response.text();
+    body = await readBody(response);
   } catch (err) {
     observe(rrId, 'upstream_errors');
     if (isConfig) {
@@ -268,4 +292,4 @@ async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}, opts = {}) {
   return { ...result, cache: 'MISS' };
 }
 
-module.exports = { proxyGet, applyOverrides, isConfigPath, configPage, cacheTtl, PROXY_SERVER };
+module.exports = { proxyGet, readBody, applyOverrides, isConfigPath, configPage, cacheTtl, PROXY_SERVER };
