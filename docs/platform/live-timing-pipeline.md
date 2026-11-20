@@ -197,3 +197,15 @@ participants, 3 legs (IDs 23–25). `node-api/scripts/rr-test-event.js`
 `rawdata/addmanual` are NOT processed by RaceResult** (Result -255) — use
 RaceResult's **RaceSim** in the desktop software, which also fires the exporter.
 Non-activated participants render masked; activate some for clean feeds.
+
+**Race Sim (no RaceResult needed).** `node scripts/race-sim.js` plays a whole field
+through the real pipeline. `setup` clones the Pipeline Test race (653, 104 athletes,
+3 contests) into event `race-sim` on dev app 901, with made-up RR id 9990001 and no
+feed (the scheduler never pulls or finalises it). `run [--scale 10] [--gps 15
+--gps-dead 0.3] [--seed n]` clears last run's splits/results/GPS, sets the race live and
+POSTs Evento-exporter crossings to `/v2/tracks/raceresult/9990001` as each athlete
+reaches each mat (DNS/DNF/missed mats included), and writes fake RaceMap fixes to
+`gps:race:{id}*` for the GPS riders. `stop` sets it done. Open it in the sim with
+`simctl launch booted nz.netproject.evento -event race-sim -tab tracking`. `--scale`
+makes athletes faster (times stay real); judge prediction at ×1–×3, because before the
+first mat a rider moves at the contest default speed, not their ×10 pace.
