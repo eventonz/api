@@ -137,6 +137,8 @@ test('a GPS fix newer than the last mat re-anchors the marker: position + speed 
   expect(t.location).toBeCloseTo((41 + 20 / 60) / 63 * 100, 1);
   expect(t.info).toMatch(/^GPS Update, GPS @ \d\d:\d\d/);
   expect(t.info).toContain('Speed: 20 km/h');
+  expect(t).toMatchObject({ status: 'gps', split_name: 'GPS', predicted: false });
+  expect(t.split_tod).toMatch(/^\d\d:\d\d$/);
 });
 
 test('a GPS fix older than the last mat crossing is ignored', async () => {
@@ -145,6 +147,8 @@ test('a GPS fix older than the last mat crossing is ignored', async () => {
   expect(merged[0].percent_course).toBeCloseTo(36 / 63 * 100, 1);
   expect(tracks[0].info).toMatch(/^Last Timing Split, WP2/);
   expect(tracks[0].speed).toBe(16);
+  // Structured status for the app's 3-line card: 60 s past WP2 at 16 km/h is a prediction.
+  expect(tracks[0]).toMatchObject({ status: 'split', split_name: 'WP2', predicted: true });
 });
 
 test('a GPS fix older than GPS_MAX_AGE_S is ignored even with no newer mat', async () => {

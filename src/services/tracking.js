@@ -221,6 +221,10 @@ function renderTracks(latest, race, tz) {
         speed:        0,
         path,
         info:         'FINISHED ',
+        status:       'finished',
+        split_name:   String(t.splitname ?? ''),
+        split_tod:    String(t.splittod ?? '').slice(0, 5),
+        predicted:    false,
         marker_text:  String(t.marker_text ?? ''),
         live_racetime: finalRacetime,
         is_counting:  false,
@@ -238,6 +242,7 @@ function renderTracks(latest, race, tz) {
     // Never behind the last mat actually crossed (guards clock skew, simulated
     // or replayed times, and a missing/zero speed).
     if (!(latestPosition >= Number(t.percent_course))) latestPosition = Number(t.percent_course) || 0;
+    let status = t.isgps ? 'gps' : 'split';
     let message = t.isgps
       ? `GPS Update, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} \nSpeed: ${speed} km/h`
       : `Last Timing Split, ${t.splitname} @ ${String(t.splittod).slice(0, 5)} `;
@@ -256,6 +261,7 @@ function renderTracks(latest, race, tz) {
         latestPosition = Number(t.next_splitpercent);
         speed = 0;
         message = 'Awaiting Update';
+        status = 'awaiting';
       }
       if (latestPosition > 100) latestPosition = 100;
     } catch { /* swallow */ }
@@ -271,6 +277,13 @@ function renderTracks(latest, race, tz) {
       speed:        Number(speed.toFixed(1)),
       path,
       info:         message,
+      // Structured twins of `info` (21 Nov 2026) so apps can lay the status
+      // out over lines instead of truncating one sentence. `info` stays for
+      // older apps. predicted = position extrapolated past the last mat.
+      status,
+      split_name:   String(t.splitname ?? ''),
+      split_tod:    String(t.splittod ?? '').slice(0, 5),
+      predicted:    status === 'split' && Number(latestPosition) > (Number(t.percent_course) || 0),
       marker_text:  String(t.marker_text ?? ''),
       live_racetime: liveTimeData.live_racetime,
       is_counting:  liveTimeData.is_counting,
