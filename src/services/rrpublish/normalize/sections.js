@@ -11,7 +11,7 @@
  * alignment and a coarse text role survive.
  *
  * Section types: text · stats · html · splits · legs · certificates · photos ·
- * comments · links · table · progress · chart
+ * comments · links · table · entries · progress · chart
  */
 
 const { str } = require('./util');
@@ -177,7 +177,14 @@ function table(el, ctx) {
   if (!rows.length) return null;
 
   if (columns.length === 1 && columns[0].label === '' && rows.length === 1) {
-    return { type: 'text', role: 'body', align: columns[0].align, text: rows[0][0].trim() };
+    const prose = rows[0][0].trim();
+    // Blank-line separated blocks of 2+ lines are records (ITRA palmarès:
+    // race / date / place) — a list the app can collapse, not a text wall.
+    const blocks = prose.split(/\n\s*\n/).map((b) => b.split('\n').map((l) => l.trim()).filter(Boolean));
+    if (blocks.length >= 3 && blocks.every((b) => b.length >= 2)) {
+      return { type: 'entries', items: blocks.map(([title, ...lines]) => ({ title, lines })) };
+    }
+    return { type: 'text', role: 'body', align: columns[0].align, text: prose };
   }
   return { type: 'table', columns, rows };
 }

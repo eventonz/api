@@ -50,7 +50,7 @@ test('Belfast 5K: splits, certificate PDF, photographer photos in RR order', asy
   expect(body.unmapped).toEqual([]);
 });
 
-test('Trail: course progress, prose list, link with logo, comments outside the tree', async () => {
+test('Trail: course progress, palmarès entries, link with logo, comments outside the tree', async () => {
   const { body } = await normalizedAthlete('423397', { pid: '1406' });
   const progress = one(body, 'progress');
   expect(progress.points).toHaveLength(6);
@@ -58,8 +58,10 @@ test('Trail: course progress, prose list, link with logo, comments outside the t
   expect(one(body, 'links').items[0]).toMatchObject({
     label: 'Profil ITRA', url: 'https://itra.run/RunnerSpace/2365397',
   });
-  // single unlabelled multi-line list cell → text, not a one-cell table
-  expect(body.sections.some((s) => s.type === 'text' && s.text.includes('UTMB'))).toBe(true);
+  // single unlabelled multi-line list cell → collapsible entries, not a one-cell table
+  const entries = one(body, 'entries');
+  expect(entries.items[0].title).toContain('UTMB');
+  expect(entries.items[0].lines).toEqual(['25/08/2026', 'Place : 14 / Temps : 1:25:14']);
   expect(types(body)).not.toContain('table');
   expect(one(body, 'comments').items.length).toBeGreaterThan(0);
 });
