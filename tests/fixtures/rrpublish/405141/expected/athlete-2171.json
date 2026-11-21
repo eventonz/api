@@ -160,12 +160,6 @@
   },
   "sections": [
     {
-      "type": "text",
-      "role": "heading",
-      "align": "center",
-      "text": "Finisher"
-    },
-    {
       "type": "splits",
       "columns": {
         "time": [
@@ -297,18 +291,8 @@
           }
         }
       ]
-    },
-    {
-      "type": "html",
-      "text": "Cliquez sur l'image pour télécharger le visuel à partager sur vos réseaux",
-      "links": [],
-      "images": [
-        {
-          "url": "https://api.raceresult.com/405141/1OEYFKYHT4S7D63WSG6940RBP6LSKLG5?bib=366",
-          "link": "https://api.raceresult.com/405141/1OEYFKYHT4S7D63WSG6940RBP6LSKLG5?bib=366"
-        }
-      ]
     }
   ],
+  "sourceUrl": "https://my.raceresult.com/405141/resultatpart?pid=2171&lang=en",
   "unmapped": []
 }

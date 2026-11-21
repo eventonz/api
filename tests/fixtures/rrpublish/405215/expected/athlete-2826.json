@@ -923,18 +923,8 @@
         }
       ],
       "title": "Legs"
-    },
-    {
-      "type": "html",
-      "text": "Click on the picture to share on your social network",
-      "links": [],
-      "images": [
-        {
-          "url": "https://api.raceresult.com/405215/PSARTVAWO4Y54TQOKHR3CCJPWQVQHE8B?bib=10009",
-          "link": "https://api.raceresult.com/405215/PSARTVAWO4Y54TQOKHR3CCJPWQVQHE8B?bib=10009"
-        }
-      ]
     }
   ],
+  "sourceUrl": "https://my.raceresult.com/405215/details0?pid=2826&lang=en",
   "unmapped": []
 }

@@ -20,7 +20,7 @@ const { extractGroups, extractGroupMore } = require('./rows');
 const { classifyFields } = require('./athleteInfo');
 const splitsMod = require('./splits');
 const { isHyrox, hyroxSteps } = require('./hyrox');
-const { buildSections, listNames, unknownTypes } = require('./sections');
+const { buildSections, appSections, listNames, unknownTypes } = require('./sections');
 
 const SCHEMA_VERSION = 1;
 const LIVE_POLL_SECONDS = 20;
@@ -413,6 +413,8 @@ async function normalizedAthlete(rrId, params = {}) {
       base: `https://${str(view.Server) || 'my.raceresult.com'}/${rrId}`,
       path, pid, lang, splits, legs, lists: embedded, hideComments: !!view.HideComments,
     });
+    // params.allSections is internal (tests, debugging) — never set by the route
+    if (!params.allSections) sections = appSections(sections);
   }
   return {
     status: 200,
@@ -430,6 +432,8 @@ async function normalizedAthlete(rrId, params = {}) {
         timerUrl: str(view?.TimerURL) || null,
       },
       sections,
+      // The organiser's own page — everything the app leaves out lives here
+      sourceUrl: `https://my.raceresult.com/${rrId}/${path}?${buildQuery([['pid', pid], ['lang', lang]])}`,
       // RR element types this version has no section for (app ignores)
       unmapped,
     },

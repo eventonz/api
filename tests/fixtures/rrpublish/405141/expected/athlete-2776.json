@@ -160,12 +160,6 @@
   },
   "sections": [
     {
-      "type": "text",
-      "role": "heading",
-      "align": "center",
-      "text": "DNS"
-    },
-    {
       "type": "splits",
       "columns": {
         "time": [
@@ -299,5 +293,6 @@
       ]
     }
   ],
+  "sourceUrl": "https://my.raceresult.com/405141/resultatpart?pid=2776&lang=en",
   "unmapped": []
 }

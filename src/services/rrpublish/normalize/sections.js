@@ -382,4 +382,15 @@ function unknownTypes(elements) {
   return [...found].sort();
 }
 
-module.exports = { buildSections, listNames, unknownTypes, htmlParts, textRole };
+/**
+ * What the app's athlete page shows. Evento draws its own page (header,
+ * splits); from the organiser's layout only these ride along — the rest
+ * (status/ranking tiles, text, tables, charts, comments) stays on RaceResult
+ * behind the "Full details" link. Add a type here to bring it back: no app
+ * build needed.
+ */
+const APP_SECTIONS = new Set(['splits', 'legs', 'photos', 'certificates', 'links', 'entries']);
+
+const appSections = (sections) => sections.filter((s) => APP_SECTIONS.has(s.type));
+
+module.exports = { buildSections, appSections, APP_SECTIONS, listNames, unknownTypes, htmlParts, textRole };

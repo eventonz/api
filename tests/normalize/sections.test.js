@@ -36,8 +36,32 @@ const { buildSections, unknownTypes, htmlParts } =
 const types = (body) => body.sections.map((s) => s.type);
 const one = (body, type) => body.sections.find((s) => s.type === type);
 
+describe('what the app is sent', () => {
+  // Evento draws its own page; only these ride along from the organiser's layout.
+  test('trail page keeps splits, ITRA link and past results; drops progress, text, comments', async () => {
+    const { body } = await normalizedAthlete('423397', { pid: '1406' });
+    const kept = new Set(types(body));
+    expect(kept.has('links')).toBe(true);
+    expect(kept.has('entries')).toBe(true);
+    for (const t of ['progress', 'comments', 'text', 'stats', 'table', 'chart', 'html']) {
+      expect(kept.has(t)).toBe(false);
+    }
+    expect(body.sourceUrl).toMatch(/^https:\/\/my\.raceresult\.com\/423397\/[^?]+\?pid=1406/);
+  });
+
+  test('triathlon page drops stat tiles and chart', async () => {
+    const { body } = await normalizedAthlete('434234', { pid: '101' });
+    expect(types(body).filter((t) => t === 'stats' || t === 'chart')).toEqual([]);
+  });
+
+  test('Belfast keeps splits, certificate and photos', async () => {
+    const { body } = await normalizedAthlete('434149', { pid: '2973' });
+    expect(types(body)).toEqual(['splits', 'certificates', 'photos']);
+  });
+});
+
 test('Belfast 5K: splits, certificate PDF, photographer photos in RR order', async () => {
-  const { body } = await normalizedAthlete('434149', { pid: '2973' });
+  const { body } = await normalizedAthlete('434149', { pid: '2973', allSections: true });
   expect(types(body)).toEqual(['text', 'splits', 'certificates', 'photos']);
   expect(one(body, 'splits').title).toBe('Splits');
   expect(one(body, 'certificates').items[0]).toEqual({
@@ -51,7 +75,7 @@ test('Belfast 5K: splits, certificate PDF, photographer photos in RR order', asy
 });
 
 test('Trail: course progress, palmarès entries, link with logo, comments outside the tree', async () => {
-  const { body } = await normalizedAthlete('423397', { pid: '1406' });
+  const { body } = await normalizedAthlete('423397', { pid: '1406', allSections: true });
   const progress = one(body, 'progress');
   expect(progress.points).toHaveLength(6);
   expect(progress.points[5]).toMatchObject({ distanceM: 59399, reached: true });
@@ -67,7 +91,7 @@ test('Trail: course progress, palmarès entries, link with logo, comments outsid
 });
 
 test('Triathlon: titled fields group into stat tiles; splitrank chart', async () => {
-  const { body } = await normalizedAthlete('434234', { pid: '101' });
+  const { body } = await normalizedAthlete('434234', { pid: '101', allSections: true });
   const stats = body.sections.filter((s) => s.type === 'stats');
   expect(stats).toHaveLength(2);
   expect(stats[0].items[0]).toEqual({ label: 'TempsArrivée', value: '4:26:40' });
