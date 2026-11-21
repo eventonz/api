@@ -1,0 +1,230 @@
+{
+ "event": "Ventouxman",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([AUTORANK.p])",
+  "AfficherNom",
+  "NATION.IOCNAME",
+  "CustomFlag",
+  "if([SEX]=\"f\";[SexeMF])",
+  "ucase([CLUB])",
+  "if([STATUS]<>2;[Swim])",
+  "if([STATUS]<>2;[Swim.OVERALL.p])",
+  "if([STATUS]<>2;[Transition1])",
+  "if([STATUS]<>2;[Transition1.OVERALL.p])",
+  "if([STATUS]<>2;[Bike])",
+  "if([STATUS]<>2;[Bike.OVERALL.p])",
+  "if([STATUS]<>2;[Transition2])",
+  "if([STATUS]<>2;[Transition2.OVERALL.p])",
+  "if([STATUS]<>2;[Run])",
+  "if([STATUS]<>2;[Run.OVERALL.p])",
+  "OuStatut([TIME])",
+  "Icone(\"photos\")",
+  "[LienPhotos]"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([AUTORANK.p])",
+    "Label": "Clt.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "Doss.",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "Nom",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "NATION.IOCNAME",
+    "Label": "Nat.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "CustomFlag",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": true,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([SEX]=\"f\";[SexeMF])",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "ucase([CLUB])",
+    "Label": "Club",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Swim])",
+    "Label": "Natation",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Swim.OVERALL.p])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Transition1])",
+    "Label": "T1",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Transition1.OVERALL.p])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Bike])",
+    "Label": "Vélo",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Bike.OVERALL.p])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Transition2])",
+    "Label": "T2",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Transition2.OVERALL.p])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Run])",
+    "Label": "Course",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]<>2;[Run.OVERALL.p])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "OuStatut([TIME])",
+    "Label": "Arrivée",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "Icone(\"photos\")",
+    "Label": "",
+    "ResponsiveHide": -1,
+    "Link": "[LienPhotos]",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "197",
+  "590",
+  "1.",
+  "GOUAULT Pierre",
+  "FRA",
+  "[img:https://timit.pro/events/graphics/flags/png/fr_black.png]",
+  "",
+  "BEAUNE TRIATHLON",
+  "31:21",
+  "17.",
+  "01:56",
+  "31.",
+  "3:25:05",
+  "1.",
+  "00:50",
+  "2.",
+  "1:15:56",
+  "7.",
+  "4:49:29",
+  "[img:photos.png|height:12px]",
+  "https://www.photorunning.com/events/ventouxman-2026-2026-09-19"
+ ],
+ "expected": {
+  "name": "GOUAULT Pierre",
+  "result": "4:49:29",
+  "resultLabel": "Arrivée"
+ }
+}

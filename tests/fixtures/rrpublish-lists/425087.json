@@ -1,0 +1,118 @@
+{
+ "event": "L'Enfer des Canaux",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([ClassementGénéral.p])",
+  "AfficherNom",
+  "SexeMF",
+  "NATION.FLAG",
+  "CLUB",
+  "if([CatégorieSUP]=\"\";;[CatégorieSUP]&if([ClassementCatégorie]>0;\" (\"&[ClassementCatégorie]&\")\"))",
+  "TIME1",
+  "GapTimeTop(1; 1;\"\"; \"+H:mm:ss\")"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([ClassementGénéral.p])",
+    "Label": "Pos.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "Dossard",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "Nom Prénom",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "SexeMF",
+    "Label": "Sexe",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "NATION.FLAG",
+    "Label": "Nat.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "CLUB",
+    "Label": "Club",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "if([CatégorieSUP]=\"\";;[CatégorieSUP]&if([ClassementCatégorie]>0;\" (\"&[ClassementCatégorie]&\")\"))",
+    "Label": "Catégorie",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "TIME1",
+    "Label": "Temps",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "GapTimeTop(1; 1;\"\"; \"+H:mm:ss\")",
+    "Label": "Ecart",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "57",
+  "44",
+  "1.",
+  "K2 LOODTS-SCHULZE",
+  "",
+  "",
+  "",
+  "",
+  "4:34:47",
+  ""
+ ],
+ "expected": {
+  "name": "K2 LOODTS-SCHULZE",
+  "result": "4:34:47",
+  "resultLabel": "Temps"
+ }
+}

@@ -30,40 +30,17 @@ jest.mock('../../src/services/rrpublish/client', () => {
 });
 
 const { normalizedAthlete } = require('../../src/services/rrpublish/normalize');
-const { buildSections, unknownTypes, htmlParts } =
-  require('../../src/services/rrpublish/normalize/sections');
+const { buildSections } = require('../../src/services/rrpublish/normalize/sections');
 
 const types = (body) => body.sections.map((s) => s.type);
 const one = (body, type) => body.sections.find((s) => s.type === type);
 
-describe('what the app is sent', () => {
-  // Evento draws its own page; only these ride along from the organiser's layout.
-  test('trail page keeps splits, ITRA link and past results; drops progress, text, comments', async () => {
-    const { body } = await normalizedAthlete('423397', { pid: '1406' });
-    const kept = new Set(types(body));
-    expect(kept.has('links')).toBe(true);
-    expect(kept.has('entries')).toBe(true);
-    for (const t of ['progress', 'comments', 'text', 'stats', 'table', 'chart', 'html']) {
-      expect(kept.has(t)).toBe(false);
-    }
-    // contest _ list id _ details page _ pid — RRPublish's own athlete fragment
-    expect(body.sourceTag).toMatch(/^\d+_[0-9A-F]{6}_results-details_1406$/);
-  });
-
-  test('triathlon page drops stat tiles and chart', async () => {
-    const { body } = await normalizedAthlete('434234', { pid: '101' });
-    expect(types(body).filter((t) => t === 'stats' || t === 'chart')).toEqual([]);
-  });
-
-  test('Belfast keeps splits, certificate and photos', async () => {
-    const { body } = await normalizedAthlete('434149', { pid: '2973' });
-    expect(types(body)).toEqual(['splits', 'certificates', 'photos']);
-  });
-});
+// Evento draws its own athlete page; from the timer's RaceResult page only
+// splits, legs, photos, certificates, links and entries ride along.
 
 test('Belfast 5K: splits, certificate PDF, photographer photos in RR order', async () => {
-  const { body } = await normalizedAthlete('434149', { pid: '2973', allSections: true });
-  expect(types(body)).toEqual(['text', 'splits', 'certificates', 'photos']);
+  const { body } = await normalizedAthlete('434149', { pid: '2973' });
+  expect(types(body)).toEqual(['splits', 'certificates', 'photos']);
   expect(one(body, 'splits').title).toBe('Splits');
   expect(one(body, 'certificates').items[0]).toEqual({
     label: 'Finisher Certificate',
@@ -72,82 +49,56 @@ test('Belfast 5K: splits, certificate PDF, photographer photos in RR order', asy
   });
   expect(one(body, 'photos').items).toHaveLength(5);
   expect(body.brand.color).toBe('#b3191f');
-  expect(body.unmapped).toEqual([]);
 });
 
-test('Trail: course progress, palmarès entries, link with logo, comments outside the tree', async () => {
-  const { body } = await normalizedAthlete('423397', { pid: '1406', allSections: true });
-  const progress = one(body, 'progress');
-  expect(progress.points).toHaveLength(6);
-  expect(progress.points[5]).toMatchObject({ distanceM: 59399, reached: true });
+test('Trail: ITRA link with logo and palmarès entries; course map, text and comments are not sent', async () => {
+  const { body } = await normalizedAthlete('423397', { pid: '1406' });
+  expect(types(body)).toEqual(expect.arrayContaining(['splits', 'links', 'entries']));
   expect(one(body, 'links').items[0]).toMatchObject({
     label: 'Profil ITRA', url: 'https://itra.run/RunnerSpace/2365397',
   });
-  // single unlabelled multi-line list cell → collapsible entries, not a one-cell table
+  // single unlabelled multi-line list cell → collapsible entries
   const entries = one(body, 'entries');
   expect(entries.items[0].title).toContain('UTMB');
   expect(entries.items[0].lines).toEqual(['25/08/2026', 'Place : 14 / Temps : 1:25:14']);
-  expect(types(body)).not.toContain('table');
-  expect(one(body, 'comments').items.length).toBeGreaterThan(0);
+  // contest _ list id _ details page _ pid — RRPublish's own athlete fragment
+  expect(body.sourceTag).toMatch(/^\d+_[0-9A-F]{6}_results-details_1406$/);
 });
 
-test('Triathlon: titled fields group into stat tiles; splitrank chart', async () => {
-  const { body } = await normalizedAthlete('434234', { pid: '101', allSections: true });
-  const stats = body.sections.filter((s) => s.type === 'stats');
-  expect(stats).toHaveLength(2);
-  expect(stats[0].items[0]).toEqual({ label: 'TempsArrivée', value: '4:26:40' });
-  expect(stats[1].title).toBe('Rankings');
-  expect(stats[1].items.map((i) => i.label)).toEqual(['Total', 'Féminin', '30-34 W']);
+test('Triathlon: legs and splits only — stat tiles and the rank chart stay on the timer\'s page', async () => {
+  const { body } = await normalizedAthlete('434234', { pid: '101' });
   expect(one(body, 'legs').rows).toHaveLength(5);
-  const chart = one(body, 'chart');
-  expect(chart.chart).toBe('splitrank');
-  expect(chart.points.every((p) => Number.isInteger(p.rank))).toBe(true);
+  expect(types(body).every((t) => ['splits', 'legs', 'photos', 'certificates', 'links', 'entries'].includes(t))).toBe(true);
 });
 
-test('unknown element types are skipped and reported', () => {
-  const els = [{ Type: 'hologram', Config: {} }, { Type: 'text', Config: { Text: 'Hi' } }];
-  expect(buildSections(els, {}, { lang: 'en' })).toEqual([
-    { type: 'text', role: 'body', align: 'left', text: 'Hi' },
+test('elements the app does not mirror produce nothing; a box title lands on what it contains', () => {
+  const els = [
+    { Type: 'hologram', Config: {} },
+    { Type: 'text', Config: { Text: 'Hi' } },
+    { Type: 'field', Config: { Field: '1', Title: 'Rank', DisplayMode: 'titleabove' } },
+    { Type: 'box', Config: { Label: '{EN:Timing points|FR:Passages}' }, Children: [{ Type: 'splits' }] },
+  ];
+  const splits = { columns: { time: [], rank: [] }, rows: [{ name: 'Finish', time: '1:00:00' }] };
+  expect(buildSections(els, {}, { lang: 'en', splits })).toEqual([
+    { type: 'splits', ...splits, title: 'Timing points' },
   ]);
-  expect(unknownTypes(els)).toEqual(['hologram']);
 });
 
-test('html element reduces to text, links and linked images', () => {
-  const parts = htmlParts('<p>Click &amp; share</p><p><a href="https://x.test/a"><img src="https://x.test/i.png"></a>'
-    + ' <a href="https://x.test/b">More</a></p>');
-  expect(parts).toEqual({
-    text: 'Click & share\nMore',
-    links: [{ label: 'More', url: 'https://x.test/b' }],
-    images: [{ url: 'https://x.test/i.png', link: 'https://x.test/a' }],
-  });
+test('an ordinary embedded table is not entries', () => {
+  const lists = { Laps: { DataFields: ['Lap', 'Time'], List: { Fields: [
+    { Expression: 'Lap', Label: 'Lap' }, { Expression: 'Time', Label: 'Time' }] },
+  Data: [['1', '5:00'], ['2', '5:10']] } };
+  expect(buildSections([{ Type: 'list', Config: { List: 'Laps' } }], {}, { lang: 'en', lists })).toEqual([]);
 });
 
-describe('organiser rows and labels (Race Across Spain shapes)', () => {
+describe('labels and list columns (Race Across Spain shapes)', () => {
   const { i18n } = require('../../src/services/rrpublish/normalize/i18n');
   const { extractFieldMetadata } = require('../../src/services/rrpublish/normalize/columns');
-  const field = (title, value) => ({ Type: 'field',
-    Config: { Field: value, Title: title, DisplayMode: 'titleabove' } });
-
   test('3-letter lead language code decodes', () => {
     const label = '{CAT:Nom|DE:Name|EN:Name|ES:Nombre|FR:Nom}';
     expect(i18n(label, 'en')).toBe('Name');
     expect(i18n(label, 'fr')).toBe('Nom');
     expect(i18n('{EN:Finish|DE:Ziel}', 'de')).toBe('Ziel');
-  });
-
-  test('stats keep the flexbox rows; "--" tiles and trailing colons go', () => {
-    const els = [{ Type: 'box', Config: { Label: 'Ranking' }, Children: [
-      { Type: 'flexbox', Children: [field('Overall Ranking', '1'), field('Gender Ranking', '2')] },
-      { Type: 'flexbox', Children: [field('Gap Leader', '--'), field('Last update:', 'Arrivé')] },
-    ] }];
-    const [stats] = buildSections(els, {}, { lang: 'en' });
-    expect(stats.title).toBe('Ranking');
-    expect(stats.rows).toEqual([
-      [{ label: 'Overall Ranking', value: '1' }, { label: 'Gender Ranking', value: '2' }],
-      [{ label: 'Last update', value: 'Arrivé' }],
-    ]);
-    expect(stats.items).toHaveLength(3);
-    expect(JSON.stringify(stats)).not.toContain('_row');
   });
 
   test('lone pinned name + hidden columns → the columns left showing are the layout', () => {

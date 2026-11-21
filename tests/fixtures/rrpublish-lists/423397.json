@@ -1,0 +1,109 @@
+{
+ "event": "Trails du Sancy",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "[OuStatut([ClassementGénéral.p])]",
+  "DisplayBib",
+  "CustomFlag",
+  "AfficherNom",
+  "ucase([SEX]) & if([ClassementMF.P]>0;\" (\" & [ClassementMF.P] & \")\";\"\")",
+  "[AGEGROUP.NAMESHORT] & if([ClassementCatégorie.P]>0;\" (\" & [ClassementCatégorie.P] & \")\";\"\")",
+  "IfStatut([TempsFinal])",
+  "GapTimeTop(1;1;\"\";\"+HH:MM:ss\")"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "[OuStatut([ClassementGénéral.p])]",
+    "Label": "Place",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "DisplayBib",
+    "Label": "Dos.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "CustomFlag",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "Prénom NOM",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "ucase([SEX]) & if([ClassementMF.P]>0;\" (\" & [ClassementMF.P] & \")\";\"\")",
+    "Label": "M/F",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "[AGEGROUP.NAMESHORT] & if([ClassementCatégorie.P]>0;\" (\" & [ClassementCatégorie.P] & \")\";\"\")",
+    "Label": "Cat.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "IfStatut([TempsFinal])",
+    "Label": "Tps",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "GapTimeTop(1;1;\"\";\"+HH:MM:ss\")",
+    "Label": "+",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "3001",
+  "1406",
+  "1.",
+  "3001",
+  "[img:https://chronoconsult.fr/resultat/flags/fr_black.png]",
+  "Quentin MEYLEU",
+  "M (1.)",
+  "SEM (1.)",
+  "5:34:51",
+  ""
+ ],
+ "expected": {
+  "name": "Quentin MEYLEU",
+  "result": "5:34:51",
+  "resultLabel": "Tps"
+ }
+}

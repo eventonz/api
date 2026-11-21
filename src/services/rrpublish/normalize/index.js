@@ -20,7 +20,7 @@ const { extractGroups, extractGroupMore } = require('./rows');
 const { classifyFields } = require('./athleteInfo');
 const splitsMod = require('./splits');
 const { isHyrox, hyroxSteps } = require('./hyrox');
-const { buildSections, appSections, listNames, unknownTypes } = require('./sections');
+const { buildSections, listNames } = require('./sections');
 
 const SCHEMA_VERSION = 1;
 const LIVE_POLL_SECONDS = 20;
@@ -396,13 +396,11 @@ async function normalizedAthlete(rrId, params = {}) {
   const splits = { columns: splitCols, rows: splitsMod.deriveRows(rawSplits, splitCols, lang) };
   const legs = { columns: legCols, rows: splitsMod.deriveRows(rawLegs, legCols, lang) };
 
-  // Page layout as ordered sections (modern /view only). Embedded lists ride
+  // What the app takes from the timer's page (modern /view only): splits,
+  // legs, photos, certificates, links, entries. Embedded lists ride
   // in Data.Lists on RRPublish 2.1; older events need one /list call each.
   let sections = [];
-  let unmapped = [];
   if (Array.isArray(view?.Elements)) {
-    unmapped = unknownTypes(view.Elements);
-    if (unmapped.length) console.warn(`[rrpublish] ${rrId} unmapped view elements: ${unmapped.join(', ')}`);
     const embedded = { ...(view.Data?.Lists || {}) };
     await Promise.all(listNames(view.Elements).filter((n) => !embedded[n]).map(async (name) => {
       const { json } = await getJson(rrId, `${path}/list?${buildQuery([
@@ -411,10 +409,8 @@ async function normalizedAthlete(rrId, params = {}) {
     }));
     sections = buildSections(view.Elements, view.Data, {
       base: `https://${str(view.Server) || 'my.raceresult.com'}/${rrId}`,
-      path, pid, lang, splits, legs, lists: embedded, hideComments: !!view.HideComments,
+      path, pid, lang, splits, legs, lists: embedded,
     });
-    // params.allSections is internal (tests, debugging) — never set by the route
-    if (!params.allSections) sections = appSections(sections);
   }
   return {
     status: 200,
@@ -438,8 +434,6 @@ async function normalizedAthlete(rrId, params = {}) {
       // Legacy events (details path "RRPublish/data") have no athlete page to open.
       sourceTag: list?.ID && !path.includes('/')
         ? `${str(list.Contest) || '0'}_${str(list.ID)}_${path}_${pid}` : null,
-      // RR element types this version has no section for (app ignores)
-      unmapped,
     },
   };
 }

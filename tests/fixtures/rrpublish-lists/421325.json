@@ -1,0 +1,133 @@
+{
+ "event": "Tour of Slovakia",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "ifRankPositive(GCRank([SELECTORTIME]))",
+  "UpDownSame(PlacesGained(GCRank(if([SELECTORID]=1;30;[SELECTORID]-1));GCRank([SELECTORID])))",
+  "PlusMinus(PlacesGained(GCRank(if([SELECTORID]=1;30;[SELECTORID]-1));GCRank([SELECTORID])))",
+  "DisplayNameAsterisk",
+  "CustomFlag",
+  "DisplayBib",
+  "CLUB",
+  "ChampionOrTeamJerseyTop3Big(GCRank([SELECTORTIME]))",
+  "if(BunchPosition([SELECTORID];\"GC\")=1;GapTimeTop([SELECTORID]+100;[SELECTORID]+100;[SELECTORTIME2TEXT];\"+H\\hMM'Ss''\"))",
+  "\"\"",
+  "BunchColor(BunchRank([SELECTORID];\"GC\");StageStatus([SELECTORID]))"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "ifRankPositive(GCRank([SELECTORTIME]))",
+    "Label": "Rank",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "UpDownSame(PlacesGained(GCRank(if([SELECTORID]=1;30;[SELECTORID]-1));GCRank([SELECTORID])))",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "PlusMinus(PlacesGained(GCRank(if([SELECTORID]=1;30;[SELECTORID]-1));GCRank([SELECTORID])))",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "DisplayNameAsterisk",
+    "Label": "Name",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "CustomFlag",
+    "Label": "Nation",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "DisplayBib",
+    "Label": "Bib",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "CLUB",
+    "Label": "Team",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "ChampionOrTeamJerseyTop3Big(GCRank([SELECTORTIME]))",
+    "Label": "Jersey",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "if(BunchPosition([SELECTORID];\"GC\")=1;GapTimeTop([SELECTORID]+100;[SELECTORID]+100;[SELECTORTIME2TEXT];\"+H\\hMM'Ss''\"))",
+    "Label": "Time",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "\"\"",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "15",
+  "2121",
+  "1.",
+  "[img:Arrows_Same.png|height:16px]",
+  "",
+  "Lennert VAN EETVELT",
+  "[img:https://timit.pro/events/graphics/flags/png/be_black.png|height:1rem]",
+  "15",
+  "LOTTO INTERMARCHÉ",
+  "[img:Team_LOI.png|height:2rem]",
+  "21h07'29''",
+  "",
+  "BG(#E41E26)"
+ ],
+ "expected": {
+  "name": "Lennert VAN EETVELT",
+  "result": "21h07'29''",
+  "resultLabel": "Time"
+ }
+}

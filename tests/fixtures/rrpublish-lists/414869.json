@@ -1,0 +1,85 @@
+{
+ "event": "Ultra Trail du Beaujolais Vert",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([ClassementMF.P])",
+  "AfficherNom",
+  "#[ClassementCatégorie.P] [AGEGROUP.NAMESHORT]",
+  "OuStatut([Finish])",
+  "Finish.OVERALL.GapTop"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([ClassementMF.P])",
+    "Label": "Rang",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "#",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "Prénom NOM",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "#[ClassementCatégorie.P] [AGEGROUP.NAMESHORT]",
+    "Label": "Cat.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "OuStatut([Finish])",
+    "Label": "Temps",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "Finish.OVERALL.GapTop",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "105",
+  "1813",
+  "1.",
+  "LAURENT-ATTHALIN Célestine",
+  "1. SEF",
+  "8:48:06",
+  "+1:04:21"
+ ],
+ "expected": {
+  "name": "LAURENT-ATTHALIN Célestine",
+  "result": "8:48:06",
+  "resultLabel": "Temps"
+ }
+}

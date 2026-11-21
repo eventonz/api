@@ -1,0 +1,122 @@
+{
+ "event": "Marseille-Cassis",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([AUTORANK.p])",
+  "AfficherNom",
+  "CustomFlag",
+  "NATION.IOCNAME",
+  "if([Masquer]=0;[ClubOuGroupe];\"Autorisation Manquante\")",
+  "if([Masquer]=0;Icone(\"photos\"))",
+  "if([Masquer]=0;Icone(\"stats\"))",
+  "OuStatut([Finish])",
+  "LienPhotos",
+  "[LienStats]"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([AUTORANK.p])",
+    "Label": "{EN:Rank|FR:Pos.}",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "{EN:Bib|FR:Dos.}",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "{FR:Nom|EN:Name}",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "CustomFlag",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "NATION.IOCNAME",
+    "Label": "{EN:Nat.|FR:Nat.}",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([Masquer]=0;[ClubOuGroupe];\"Autorisation Manquante\")",
+    "Label": "{FR:Club|EN:Team}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([Masquer]=0;Icone(\"photos\"))",
+    "Label": "Photos",
+    "ResponsiveHide": 0,
+    "Link": "LienPhotos",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "if([Masquer]=0;Icone(\"stats\"))",
+    "Label": "Stats",
+    "ResponsiveHide": -1,
+    "Link": "[LienStats]",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "OuStatut([Finish])",
+    "Label": "{EN:Time|FR:Temps}",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "3",
+  "9980",
+  "1.",
+  "Kiprop KIMUTAI",
+  "[img:https://my.raceresult.com/405109/elements/picture.php?eventid=405109&name=my%5Cke_black.png]",
+  "KEN",
+  "",
+  "[img:photos.png|height:12px]",
+  "[img:stats.png|height:12px]",
+  "58' 36\"",
+  "https://www.flash-sport.com/FR/photos/marseille-cassis-ag2r-la-mondiale-2026/3143-3.html",
+  "https://www.runpix.co/arace13/89/pg49_vfr.php?pg=FO&mt=mar26&dt=20&id=3"
+ ],
+ "expected": {
+  "name": "Kiprop KIMUTAI",
+  "result": "58' 36\"",
+  "resultLabel": "Time"
+ }
+}

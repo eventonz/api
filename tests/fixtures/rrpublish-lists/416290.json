@@ -1,0 +1,120 @@
+{
+ "event": "24 Heures Vélo",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([ClassementGénéral.p])",
+  "ucase([LASTNAME])",
+  "if([STATUS]=4;[CatégorieCOurt];\" (\" & [ClassementCatégorieVélo.p] & \") \" & [CatégorieCourt])",
+  "if([STATUS]=4;\"\";[ToursTotal])",
+  "DistanceTotale",
+  "TIME",
+  "if([RANK1.TOP.T6]=T6;GapTimeTop(1;1;\"-\";\"+ss.kk\");(T6-[RANK1.TOP.T6]) & \" LAP\")",
+  "GapTimePrev(1;1;\"--\";\"+Mm:ss\")",
+  "Switch([CatégorieCourt]=\"SoloH\";\"C(0,204,255)\";[CatégorieCourt]=\"SoloF\";\"C(255,153,204)\";[CatégorieCourt]=\"2_H\";\"C(255,204,153)\";[CatégorieCourt]=\"2_M\";\"C(242,220,219)\";[CatégorieCourt]=\"4_H\";\"C(0,176,240)\";[CatégorieCourt]=\"4_F\";\"C(218,150,148)\";[CatégorieCourt]=\"6_H\";\"C(146,208,80)\";[CatégorieCourt]=\"6_F\";\"C(255,102,255)\";[CatégorieCourt]=\"6_M\";\"C(153,255,51)\";[CatégorieCourt]=\"8_H\";\"C(196,215,155)\";[CatégorieCourt]=\"8_M\";\"C(220,230,241)\";[CatégorieCourt]=\"8_F\";\"C(253,233,217)\")"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([ClassementGénéral.p])",
+    "Label": "Pos.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "Num.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "ucase([LASTNAME])",
+    "Label": "Team",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]=4;[CatégorieCOurt];\" (\" & [ClassementCatégorieVélo.p] & \") \" & [CatégorieCourt])",
+    "Label": "Cat.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]=4;\"\";[ToursTotal])",
+    "Label": "Tours",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "DistanceTotale",
+    "Label": "Km",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "TIME",
+    "Label": "Temps",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([RANK1.TOP.T6]=T6;GapTimeTop(1;1;\"-\";\"+ss.kk\");(T6-[RANK1.TOP.T6]) & \" LAP\")",
+    "Label": "Ecart",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "GapTimePrev(1;1;\"--\";\"+Mm:ss\")",
+    "Label": "Préc.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "6248",
+  "549",
+  "1.",
+  "TEAM MATERIEL-VELO.COM FTS",
+  " (1.) 6_H",
+  "253",
+  "1058.81",
+  "24:02:10",
+  "-",
+  "--",
+  "C(146,208,80)"
+ ],
+ "expected": {
+  "name": "TEAM MATERIEL-VELO.COM FTS",
+  "result": "24:02:10",
+  "resultLabel": "Temps"
+ }
+}

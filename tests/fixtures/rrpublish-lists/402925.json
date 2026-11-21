@@ -1,0 +1,129 @@
+{
+ "event": "6h/3h Roller Rosières",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "OuStatut([ClassementGénéral.p])",
+  "if([AfficherNom]=\" \";ucase([NomEquipe]);ucase([NomEquipe]) & \" - \" & [AfficherNom])",
+  "ucase([CLUB])",
+  "NombreDeTours",
+  "DistanceTotale",
+  "MoyenneRoller",
+  "TIME",
+  "if([RANK1.TOP.T6]=T6;GapTimeTop(1;1;\"-\";\"+mm:ss\");(T6-[RANK1.TOP.T6]) & \" Tours\")",
+  "ucase([CatégorieRoller]) & \" (\" & [ClassementCatégorieRoller.P] & \")\""
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "OuStatut([ClassementGénéral.p])",
+    "Label": "Rang",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "BIB",
+    "Label": "Dos.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "if([AfficherNom]=\" \";ucase([NomEquipe]);ucase([NomEquipe]) & \" - \" & [AfficherNom])",
+    "Label": "Nom",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "ucase([CLUB])",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 2
+   },
+   {
+    "Expression": "NombreDeTours",
+    "Label": "Tours",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "DistanceTotale",
+    "Label": "Dist.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "MoyenneRoller",
+    "Label": "Moy.",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "TIME",
+    "Label": "Temps",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([RANK1.TOP.T6]=T6;GapTimeTop(1;1;\"-\";\"+mm:ss\");(T6-[RANK1.TOP.T6]) & \" Tours\")",
+    "Label": "",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "ucase([CatégorieRoller]) & \" (\" & [ClassementCatégorieRoller.P] & \")\"",
+    "Label": "Catégorie",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "821",
+  "179",
+  "1.",
+  "USMVILLEPARISIS",
+  "USMVILLEPARISIS",
+  "73",
+  "186.88",
+  "30.98",
+  "6:02:03",
+  "-",
+  "VEX (1.)"
+ ],
+ "expected": {
+  "name": "USMVILLEPARISIS",
+  "result": "73",
+  "resultLabel": "Tours"
+ }
+}

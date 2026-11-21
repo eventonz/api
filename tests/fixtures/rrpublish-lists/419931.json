@@ -1,0 +1,168 @@
+{
+ "event": "Race Across Spain",
+ "recorded": "2026-11-21",
+ "DataFields": [
+  "BIB",
+  "ID",
+  "if([STATUS]=0;UpDownSame(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL])) ;\"\")",
+  "if([STATUS]=0;switch([{Selector.Splits}.NAME]=[Finish.NAME];OuStatut([ClassementGénéral.P]);[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.OVERALL.P]) & if(PlusMoins(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL]))<>0;\" (\" & PlusMoins(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL])) & \")\");[STATUSTEXT])",
+  "\"#\" & [BibUsed]",
+  "switch([Pénalité1]=\"Carton rouge\";\"[img:red-card.png|height:35px]\";[Pénalité1]=\"Carton orange\";\"[img:orange-card.png|height:35px]\";[Pénalité1]=\"Drapeau jaune\";\"[img:Flag-yellow.png|height:35px]\";[Pénalité1]=\"Drapeau orange\";\"[img:Flag-orange.png|height:35px]\";[Pénalité1]=\"Carton vert\";\"[img:green-card.png|height:35px]\")",
+  "NATION.FLAG",
+  "AfficherNom",
+  "if([CatégorieRAS]=\"solo\";trim(switch([{Selector.Splits}.NAME]=[Finish.NAME];[ClassementMF.P];[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.GENDER.P]) & \" \" & [SexeMF]);\"\")",
+  "if([CatégorieRAS]=\"solo\";trim(switch([{Selector.Splits}.NAME]=[Finish.NAME];[ClassementCatégorie.P];[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.AGEGROUP.P]) & \" \" & [AGEGROUP1.NAMESHORT]);\"\")",
+  "\"[img:iconmonstr-map-5-240.png|height:20px]\"",
+  "[{Selector.Splits}.CHIP]",
+  "[BonusMalus]",
+  "format([{Selector.Splits}.CHIP.DECIMAL]+nz([BonusMalus.DECIMAL]);\"hh:mm:ss\")",
+  "switch([CONTEST] IN \"1,2,3\";switch([Finish.CHIP]=\"\" AND [STATUS]=0;format([TempsArrêtSlotCourant];\"hh:mm:ss\");[Finish.CHIP]<>\"\" AND [STATUS]=0;format([TempsArrêtFull.DECIMAL];\"hh:mm:ss\"));[CONTEST] IN \"4,5\" AND [STATUS]=0;format([TIME1001.DECIMAL];\"hh:mm:ss\");-1;\"\")",
+  "[URL]",
+  "switch([STATUS]<>0 OR [FINISHED]=1;\"\";[CONTEST] IN \"4,5\";if([STATUS]=0 AND [FINISHED]=0 AND [TIME1001.DECIMAL]<14400;\"BG(#FF0000);C(#FFFFFF)\";\"BG(#11b900);C(#FFFFFF)\";\"\");[CONTEST] IN \"2,3\";if([STATUS]=0 AND [FINISHED]=0 AND [TempsArrêtSlotCourant]<14400;\"BG(#FF0000);C(#FFFFFF)\";\"BG(#11b900);C(#FFFFFF)\";\"\"))"
+ ],
+ "list": {
+  "Fields": [
+   {
+    "Expression": "if([STATUS]=0;UpDownSame(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL])) ;\"\")",
+    "Label": "",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "if([STATUS]=0;switch([{Selector.Splits}.NAME]=[Finish.NAME];OuStatut([ClassementGénéral.P]);[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.OVERALL.P]) & if(PlusMoins(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL]))<>0;\" (\" & PlusMoins(GainPlace([{Selector.Splits}.Prev.OVERALL];[{Selector.Splits}.OVERALL])) & \")\");[STATUSTEXT])",
+    "Label": "{CAT:Pos.|DE:Pl.|EN:Rank|ES:Pos.|FR:Rang|IT:Pos.|NL:Rang|PT:Pos.}",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "\"#\" & [BibUsed]",
+    "Label": "{CAT:Dorsal|DE:Startnr|EN:Bib|ES:Dorsal|FR:Dos.|IT:Pett.|NL:Startnr.|PT:Dorsal}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "switch([Pénalité1]=\"Carton rouge\";\"[img:red-card.png|height:35px]\";[Pénalité1]=\"Carton orange\";\"[img:orange-card.png|height:35px]\";[Pénalité1]=\"Drapeau jaune\";\"[img:Flag-yellow.png|height:35px]\";[Pénalité1]=\"Drapeau orange\";\"[img:Flag-orange.png|height:35px]\";[Pénalité1]=\"Carton vert\";\"[img:green-card.png|height:35px]\")",
+    "Label": "{CAT:Penalització|DE:Strafe|EN:Penalty|ES:Penalización|IT:Penalità|NL:Straf|PT:Penalização}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "NATION.FLAG",
+    "Label": "{CAT:NAT|DE:NAT|EN:NAT|ES:NAT|FR:Nation|IT:NAT|NL:NAT|PT:NAT}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 3,
+    "Line": 1
+   },
+   {
+    "Expression": "AfficherNom",
+    "Label": "{CAT:Nom|DE:Name|EN:Name|ES:Nombre|FR:Nom|IT:Nome|NL:Naam|PT:Nome}",
+    "ResponsiveHide": -1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 1,
+    "Line": 1
+   },
+   {
+    "Expression": "if([CatégorieRAS]=\"solo\";trim(switch([{Selector.Splits}.NAME]=[Finish.NAME];[ClassementMF.P];[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.GENDER.P]) & \" \" & [SexeMF]);\"\")",
+    "Label": "{CAT:Sexe|DE:M/W|EN:Gender|ES:Sexo|FR:Sexe|IT:Sesso|NL:Geslacht|PT:Sexo}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "if([CatégorieRAS]=\"solo\";trim(switch([{Selector.Splits}.NAME]=[Finish.NAME];[ClassementCatégorie.P];[{Selector.Splits}.NAME]<>[Start.NAME];[{Selector.Splits}.AGEGROUP.P]) & \" \" & [AGEGROUP1.NAMESHORT]);\"\")",
+    "Label": "{CAT:Cat.|DE:AK|EN:AG|ES:Cat.|FR:Cat.|IT:Cat.|NL:Cat.|PT:Cat.}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "\"[img:iconmonstr-map-5-240.png|height:20px]\"",
+    "Label": "{CAT:Seguiment GPS|DE:GPS-Tracking|EN:GPS tracking|ES:Seguimiento GPS|FR:Suivi GPS|IT:Tracciamento GPS|NL:GPS-tracking|PT:Rastreamento GPS}",
+    "ResponsiveHide": 1,
+    "Link": "[URL]",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "[{Selector.Splits}.CHIP]",
+    "Label": "{CAT:Temps|DE:Zeit|EN:Time|ES:Tiempo|FR:Temps|IT:Tempo|NL:Tijd|PT:Tempo}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "[BonusMalus]",
+    "Label": "BonusMalus",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "format([{Selector.Splits}.CHIP.DECIMAL]+nz([BonusMalus.DECIMAL]);\"hh:mm:ss\")",
+    "Label": "Temps Total",
+    "ResponsiveHide": 0,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   },
+   {
+    "Expression": "switch([CONTEST] IN \"1,2,3\";switch([Finish.CHIP]=\"\" AND [STATUS]=0;format([TempsArrêtSlotCourant];\"hh:mm:ss\");[Finish.CHIP]<>\"\" AND [STATUS]=0;format([TempsArrêtFull.DECIMAL];\"hh:mm:ss\"));[CONTEST] IN \"4,5\" AND [STATUS]=0;format([TIME1001.DECIMAL];\"hh:mm:ss\");-1;\"\")",
+    "Label": "{CAT:Temps d'aturada|DE:Stoppzeit|EN:Stop time|ES:Tiempo de parada|FR:Temps d'arrêt|IT:Tempo di sosta|NL:Stoptijd|PT:Tempo de paragem}",
+    "ResponsiveHide": 1,
+    "Link": "",
+    "PreviewOnly": false,
+    "Alignment": 2,
+    "Line": 1
+   }
+  ]
+ },
+ "row": [
+  "1041",
+  "46",
+  "[img:Same.png|height:16px]",
+  "1.",
+  "#1041",
+  "",
+  "[img:/graphics/flags/BE.svg]",
+  "DE TERWANGNE Victor",
+  "1. M",
+  "1. U29M",
+  "[img:iconmonstr-map-5-240.png|height:20px]",
+  "41:47:58",
+  "",
+  "41:47:58",
+  "04:33:29",
+  "https://racemap.com/player/6aa81eb624023230fb9b7d54#selectedStartNumber=1041&showAllFlags=false",
+  ""
+ ],
+ "expected": {
+  "name": "DE TERWANGNE Victor",
+  "result": "41:47:58",
+  "resultLabel": "Temps Total"
+ }
+}
