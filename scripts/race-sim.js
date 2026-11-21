@@ -14,6 +14,9 @@
  *   --gps 15          fake RaceMap GPS trackers on that many athletes in tracking contests
  *   --gps-dead 0.3    share of those trackers that die mid-race (tests the stale / "?" paths)
  *   --gps-every 15    seconds between GPS fixes
+ *   --gps-bibs 2,5    put the trackers on these bibs instead of the first N
+ *   --join            GPS only, onto the race already running (same seed/scale/limit
+ *                     as that run): no reset, no crossings pushed
  *   --seed 1          same seed = same race
  *   --target URL      API that receives the pushes (default https://eventoapi.com)
  *   --dry-run         print the plan, push nothing
@@ -197,7 +200,10 @@ async function run(opts) {
   const target = String(opts.target || 'https://eventoapi.com').replace(/\/$/, '');
   const url = `${target}/v2/tracks/raceresult/${race.rr_raceid}`;
   const { athletes, contests, splits } = await loadRace(race, Number(opts.limit) || 0);
-  const startMs = Date.now() + 20000; // gun in 20 s: time to open the map
+  // --join rebuilds the running race's plan from the gun time it saved.
+  const saved = opts.join ? Number(await redis.get(`race-sim:gun:${race.id}`)) : 0;
+  if (opts.join && !saved) throw new Error('no running race to join (race-sim:gun not set)');
+  const startMs = saved || Date.now() + 20000; // gun in 20 s: time to open the map
   const seed = Number(opts.seed) || 1;
   const plan = planRace({ athletes, contests, splits, startMs, tz: race.time_zone, scale, seed });
 
@@ -205,7 +211,9 @@ async function run(opts) {
   const tracking = new Set(contests.filter((c) => c.is_tracking).map((c) => String(c.contest_id)));
   const gpsN = Number(opts.gps) || 0;
   const deadShare = Number(opts['gps-dead']) || 0;
-  const trackers = plan.athletes.filter((a) => a.status !== 'dns' && tracking.has(a.contest_id)).slice(0, gpsN).map((p, i, all) => {
+  const bibs = opts['gps-bibs'] ? String(opts['gps-bibs']).split(',').map((b) => b.trim()) : null;
+  const trackers = plan.athletes.filter((a) => a.status !== 'dns' && tracking.has(a.contest_id) && (!bibs || bibs.includes(a.bib)))
+    .slice(0, bibs ? undefined : gpsN).map((p, i, all) => {
     const start = p.points[0].at; const end = p.points[p.points.length - 1].at;
     const dies = i < Math.round(all.length * deadShare);
     return { plan: p, deadAt: dies ? start + (end - start) * (0.3 + 0.4 * rand()) : Infinity };
@@ -216,12 +224,14 @@ async function run(opts) {
   console.log(summary(plan, contests));
   if (trackers.length) console.log(`GPS: ${trackers.length} trackers (${trackers.filter((t) => t.deadAt < Infinity).map((t) => `#${t.plan.bib}`).join(', ') || 'none'} die mid-race)`);
   if (opts['dry-run']) return;
+  if (opts.join) return gpsOnly(race, trackers, contestKm, (Number(opts['gps-every']) || 15) * 1000);
 
   // Reset: last run's splits, results and GPS, then Go live.
   const cleared = await delKeys(`redis_splits:${race.id}:*`) + await delKeys(`gps:race:${race.id}*`);
   await pool.query('DELETE FROM v2.rr_results WHERE race_id = $1', [race.id]);
   await pool.query(`UPDATE v2.races SET live_state = 'live', live_from = NOW(), live_until = NOW() + interval '12 hours', last_data_at = NULL WHERE id = $1`, [race.id]);
   await redis.del(`v2:tracks:rr_event:${race.rr_raceid}`); // the push route's 30 s state cache
+  await redis.set(`race-sim:gun:${race.id}`, String(startMs), 'EX', 86400);
   console.log(`reset (${cleared} Redis keys), race live — gun at ${new Date(startMs).toLocaleTimeString()}`);
 
   let next = 0; let pushed = 0; let lastGps = 0; let lastLog = 0; let errors = 0;
@@ -247,6 +257,18 @@ async function run(opts) {
   console.log(`done: ${pushed} crossings pushed. Race left LIVE so you can look — end it with: node scripts/race-sim.js stop`);
 }
 
+/** --join: only the fake RaceMap poller, alongside a run that is already pushing crossings. */
+async function gpsOnly(race, trackers, contestKm, every) {
+  if (!trackers.length) throw new Error('no GPS trackers (bibs not in a tracking contest?)');
+  const until = Math.max(...trackers.map((t) => t.plan.points[t.plan.points.length - 1].at)) + 60000;
+  console.log(`joined race ${race.id}: GPS on ${trackers.map((t) => `#${t.plan.bib}`).join(', ')} every ${every / 1000}s`);
+  while (Date.now() < until) {
+    await writeGps(race.id, trackers, contestKm, Date.now());
+    await sleep(every);
+  }
+  console.log('GPS done');
+}
+
 async function stop() {
   const race = await simRace();
   await pool.query(`UPDATE v2.races SET live_state = 'done', live_until = NOW() WHERE id = $1`, [race.id]);
@@ -260,7 +282,7 @@ async function main() {
   if (cmd === 'setup') await setup(opts);
   else if (cmd === 'run') await run(opts);
   else if (cmd === 'stop') await stop();
-  else console.log('usage: node scripts/race-sim.js setup [--rebuild] | run [--scale 10] [--limit 100] [--gps 15] [--gps-dead 0.3] [--seed 1] [--target URL] [--dry-run] | stop');
+  else console.log('usage: node scripts/race-sim.js setup [--rebuild] | run [--scale 10] [--limit 100] [--gps 15] [--gps-dead 0.3] [--gps-bibs 2,5] [--join] [--seed 1] [--target URL] [--dry-run] | stop');
 }
 
 main().then(() => process.exit(0)).catch((e) => { console.error(e.message); process.exit(1); });
