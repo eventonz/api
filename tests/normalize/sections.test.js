@@ -164,3 +164,37 @@ describe('organiser rows and labels (Race Across Spain shapes)', () => {
     expect(meta.resultFieldLabel).toBe('Total');
   });
 });
+
+describe('list name column (timers pin columns that are not the name)', () => {
+  const { extractFieldMetadata } = require('../../src/services/rrpublish/normalize/columns');
+  const f = (Expression, Label, ResponsiveHide = 0) => ({ Expression, Label, ResponsiveHide });
+
+  test("lone time anchor stays result-only: name by pattern, not the bib (L'Enfer des Canaux)", () => {
+    const df = ['BIB', 'ID', 'OuStatut([ClassementGénéral.p])', 'AfficherNom', 'CLUB', 'TIME1', 'GapTimeTop(1)'];
+    const meta = extractFieldMetadata({ Fields: [
+      f(df[2], 'Pos.'), f('BIB', 'Dossard'), f('AfficherNom', 'Nom Prénom'), f('CLUB', 'Club', 1),
+      f('TIME1', 'Temps', -1), f(df[6], 'Ecart'),
+    ] }, df, 'en');
+    expect(meta.nameIdx).toBe(3);
+    expect(meta.resultIdx).toBe(5);
+    expect(meta.resultFieldLabel).toBe('Temps');
+  });
+
+  test('laps + time pinned: the team column is the name, not the lap count (24 Heures Vélo)', () => {
+    const df = ['BIB', 'ID', 'RANK', 'ucase([LASTNAME])', 'ToursTotal', 'TIME'];
+    const meta = extractFieldMetadata({ Fields: [
+      f('RANK', 'Pos.'), f('BIB', 'Num.'), f(df[3], 'Team'), f('ToursTotal', 'Tours', -1), f('TIME', 'Temps', -1),
+    ] }, df, 'en');
+    expect(meta.nameIdx).toBe(3);
+    expect(meta.resultIdx).toBe(5);
+  });
+
+  test('icon + time pinned: the name column wins over the icon (Marseille-Cassis)', () => {
+    const df = ['BIB', 'ID', 'RANK', 'AfficherNom', 'Icone("stats")', 'OuStatut([Finish])'];
+    const meta = extractFieldMetadata({ Fields: [
+      f('RANK', 'Rank'), f('BIB', 'Bib'), f('AfficherNom', 'Name'), f(df[4], 'Stats', -1), f(df[5], 'Time', -1),
+    ] }, df, 'en');
+    expect(meta.nameIdx).toBe(3);
+    expect(meta.resultIdx).toBe(5);
+  });
+});

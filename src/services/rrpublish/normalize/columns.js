@@ -34,6 +34,18 @@ function namesMatch(field, pattern) {
   return hay.includes(pattern);
 }
 
+/** Column labels that mean "who" when the expression gives no clue. */
+const NAME_LABELS = ['nom', 'name', 'team', 'equipe', 'équipe', 'athlete', 'athlète',
+  'coureur', 'participant'];
+
+/** A list column that holds the athlete / team name, by expression or label. */
+function isNameColumn(col) {
+  const expr = col.expr.toLowerCase();
+  const label = col.label.toLowerCase();
+  return NAME_PATTERNS.some((p) => namesMatch(expr, p))
+    || NAME_LABELS.some((p) => namesMatch(label, p));
+}
+
 function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   const fields = Array.isArray(listFormat?.Fields) ? listFormat.Fields : [];
   const dfMap = new Map();
@@ -60,12 +72,12 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
     // never anchor the compact layout (this is what put "BG(#FCE62D)" in the
     // time column: both events end on a directive DataField).
     if (isDirectiveExpr(expr) || isEmptyExpr(expr)) continue;
-    candidates.push({ idx, label });
+    candidates.push({ idx, label, expr });
     const rh = typeof f?.ResponsiveHide === 'number' ? f.ResponsiveHide : 0;
     if (rh > 0) hidesSome = true;
-    else if (label !== '') narrow.push({ idx, label });
+    else if (label !== '') narrow.push({ idx, label, expr });
     if (rh !== -1) continue;
-    (label === '' ? anchoredBare : anchored).push({ idx, label });
+    (label === '' ? anchoredBare : anchored).push({ idx, label, expr });
   }
 
   // Labelled ResponsiveHide -1 columns anchor the compact layout (Flutter
@@ -81,7 +93,11 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   // 0 and hides the rest — reading the lone anchor as "result only" put the
   // athlete name in the time column and the rank in the name column.
   // Lists with NO anchor keep the positional fallback (start lists rely on it).
-  if (visible.length === 1 && hidesSome && narrow.length >= 2) visible = narrow;
+  // Only when the lone anchor IS the name: L'Enfer des Canaux pins only the
+  // time, and widening there put the bib in the name column and the gap in
+  // the time column — a lone time anchor stays "result only".
+  if (visible.length === 1 && hidesSome && narrow.length >= 2
+      && isNameColumn(visible[0])) visible = narrow;
 
   // ≥3 → rank/name/result; 2 → name/result; 1 → result only.
   let rankIdx; let nameIdx; let resultIdx;
@@ -106,6 +122,15 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
       }
     }
     rankIdx = 2; nameIdx = -1; resultIdx = last;
+  }
+  // The anchors say which columns matter, not which one is the name: timers
+  // pin laps + time (24 Heures Vélo) or a stats icon + time (Marseille-
+  // Cassis), and the positional pick then showed a lap count or an icon as
+  // the athlete. When the picked column isn't a name and the list has one, use it.
+  const picked = visible.find((c) => c.idx === nameIdx);
+  if (picked && !isNameColumn(picked)) {
+    const real = candidates.find((c) => isNameColumn(c));
+    if (real) nameIdx = real.idx;
   }
   if (nameIdx < 0) {
     const found = dataFields.findIndex((df) => {
