@@ -46,7 +46,8 @@ describe('what the app is sent', () => {
     for (const t of ['progress', 'comments', 'text', 'stats', 'table', 'chart', 'html']) {
       expect(kept.has(t)).toBe(false);
     }
-    expect(body.sourceUrl).toMatch(/^https:\/\/my\.raceresult\.com\/423397\/[^?]+\?pid=1406/);
+    // contest _ list id _ details page _ pid — RRPublish's own athlete fragment
+    expect(body.sourceTag).toMatch(/^\d+_[0-9A-F]{6}_results-details_1406$/);
   });
 
   test('triathlon page drops stat tiles and chart', async () => {

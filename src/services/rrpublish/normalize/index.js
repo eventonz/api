@@ -432,8 +432,12 @@ async function normalizedAthlete(rrId, params = {}) {
         timerUrl: str(view?.TimerURL) || null,
       },
       sections,
-      // The organiser's own page — everything the app leaves out lives here
-      sourceUrl: `https://my.raceresult.com/${rrId}/${path}?${buildQuery([['pid', pid], ['lang', lang]])}`,
+      // Fragment that opens this athlete on ANY page embedding RRPublish
+      // (RRPublish.js: "#" + contest + "_" + listID + "_" + detailsPath + "_" + pid).
+      // The route joins it to the timer's own results page as `sourceUrl`.
+      // Legacy events (details path "RRPublish/data") have no athlete page to open.
+      sourceTag: list?.ID && !path.includes('/')
+        ? `${str(list.Contest) || '0'}_${str(list.ID)}_${path}_${pid}` : null,
       // RR element types this version has no section for (app ignores)
       unmapped,
     },

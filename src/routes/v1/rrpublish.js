@@ -14,7 +14,7 @@
  * it here costs nothing and stops the proxy being an open RR relay.
  */
 
-const { proxyGet } = require('../../services/rrpublish/client');
+const { proxyGet, resultsPageUrl } = require('../../services/rrpublish/client');
 const { normalizedConfig, normalizedList, normalizedAthlete } =
   require('../../services/rrpublish/normalize');
 
@@ -93,9 +93,25 @@ async function rrpublishRoutes(app) {
         required: ['pid'],
       },
     },
-  }, normalizedHandler(normalizedAthlete, (q) => ({
-    pid: q.pid, listname: q.listname, lang: q.lang,
-  })));
+  }, async (request, reply) => {
+    const q = request.query || {};
+    try {
+      const res = await normalizedAthlete(request.params.rrId,
+        { pid: q.pid, listname: q.listname, lang: q.lang });
+      if (res.status === 200 && res.body) {
+        // "Full results" link: the timer's own page + RRPublish's athlete fragment.
+        const { sourceTag, ...body } = res.body;
+        const page = sourceTag
+          ? await resultsPageUrl(request.params.rrId, request.apiKey?.app_id).catch(() => '')
+          : '';
+        res.body = { ...body, sourceUrl: page ? `${page}#${sourceTag}` : null };
+      }
+      return sendNormalized(reply, res);
+    } catch (err) {
+      request.log.error({ err, rrId: request.params.rrId }, 'rrpublish normalize failure');
+      return reply.code(502).send({ error: 'Upstream RaceResult request failed' });
+    }
+  });
   app.get('/:rrId/*', {
     schema: {
       params: {

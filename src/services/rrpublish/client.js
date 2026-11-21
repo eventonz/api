@@ -146,6 +146,36 @@ async function getOverrides(rrId) {
 }
 
 /**
+ * The timer's OWN results page for an event — where the app's "Full results"
+ * row goes (never my.raceresult.com: timers don't want RaceResult named).
+ *   1. per event: v2.rr_display_config overrides.resultsUrl (CMS results display)
+ *   2. per app:   v2.apps.event_defaults.resultsUrl, "{id}" = the RR event id
+ * Returns '' when neither is set — the app then shows no row.
+ */
+async function resultsPageUrl(rrId, appId) {
+  const clean = (u) => {
+    const url = String(u || '').trim().replace(/\{id\}/gi, String(rrId)).split('#')[0];
+    return /^https:\/\//i.test(url) ? url : '';
+  };
+  const own = clean((await getOverrides(rrId))?.resultsUrl);
+  if (own || !appId) return own;
+  const key = `rrpublish:resultsurl:app:${appId}`;
+  let pattern = await redis.get(key).catch(() => null);
+  if (pattern == null) {
+    try {
+      const { rows } = await pool.query(
+        "SELECT event_defaults->>'resultsUrl' AS url FROM v2.apps WHERE id = $1", [appId]);
+      pattern = rows[0]?.url || '';
+    } catch (err) {
+      console.error('[rrpublish] results url lookup failed:', err.message);
+      return '';
+    }
+    await redis.setex(key, TTL.override, pattern).catch(() => {});
+  }
+  return clean(pattern);
+}
+
+/**
  * Apply v1 display overrides to every list array found in a config payload
  * (legacy `lists`, modern `TabConfig.Lists`). Fail-soft: override keys that
  * match no list in the live config are ignored and logged.
@@ -292,4 +322,4 @@ async function proxyGet(rrId, rawPathAndQuery, requestHeaders = {}, opts = {}) {
   return { ...result, cache: 'MISS' };
 }
 
-module.exports = { proxyGet, readBody, applyOverrides, isConfigPath, configPage, cacheTtl, PROXY_SERVER };
+module.exports = { proxyGet, readBody, applyOverrides, resultsPageUrl, isConfigPath, configPage, cacheTtl, PROXY_SERVER };
