@@ -141,6 +141,18 @@ test('a GPS fix newer than the last mat re-anchors the marker: position + speed 
   expect(t.split_tod).toMatch(/^\d\d:\d\d$/);
 });
 
+test('a GPS fix carries the mat race time forward, so the live clock keeps the time between mat and fix', async () => {
+  // WP2 at 2:15:00, 10 min ago; fix 60 s ago → 2:24:00 at the fix, 2:25:00 now.
+  const { merged, tracks } = await merge({ matAgoSecs: 600, fix: fixAt(60) });
+  expect(merged[0].racetime).toBe('2:24:00');
+  expect(tracks[0].live_racetime).toMatch(/^2:25:0[0-2]$/);
+  expect(tracks[0].is_counting).toBe(true);
+  // Pulled record (no receive time): the gap is split time of day → fix time of day in the race timezone.
+  const { raceTimeAtFix } = require('../src/services/gps');
+  expect(raceTimeAtFix('02:15:00', NaN, '10:15:00', Date.UTC(2026, 10, 16, 10, 35, 30), 'UTC')).toBe('2:35:30');
+  expect(raceTimeAtFix('', NaN, '10:15:00', Date.now(), 'UTC')).toBe('');
+});
+
 test('a GPS rider whose feed goes quiet parks at the next mat as "Awaiting Update"', async () => {
   // Fix at 52 km, 30 km/h, 9 min old → would be 56.5 km, past WP3 at 54 km.
   const { tracks } = await merge({ matAgoSecs: 900, fix: fixAt(540, { km: 52, pct: 82.54, speed: 30 }) });

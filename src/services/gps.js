@@ -79,6 +79,41 @@ function fixTimeHHMM(iso, tz) {
   }
 }
 
+/** "H:MM:SS" / "MM:SS" → seconds (same reading as tracking.js hmsToSecs). */
+function durationSecs(hms) {
+  const parts = String(hms || '').split('.')[0].split(':').map((n) => Number(n) || 0);
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length >= 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return 0;
+}
+
+/**
+ * A mat race time carried forward to a later GPS fix: the track's clock is
+ * re-anchored on the fix, so its race time must be the time AT the fix, or the
+ * live clock loses everything between the mat and the fix. The gap is
+ * fix − mat receive time (anchor_at); pulled records have no anchor, so there
+ * it is the wall-clock gap between the split's time of day and the fix in the
+ * race timezone. '' (not started) stays ''.
+ */
+function raceTimeAtFix(racetime, anchorMs, splittod, fixMs, tz) {
+  if (!racetime || String(racetime).trim() === '') return racetime ?? '';
+  let gap;
+  if (!Number.isNaN(anchorMs)) gap = (fixMs - anchorMs) / 1000;
+  else {
+    if (!splittod) return racetime;
+    let fixTod;
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', { timeZone: tz || 'UTC', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).formatToParts(new Date(fixMs));
+      const get = (t) => Number(parts.find((x) => x.type === t)?.value || 0);
+      fixTod = (get('hour') % 24) * 3600 + get('minute') * 60 + get('second');
+    } catch { return racetime; }
+    gap = fixTod - durationSecs(splittod);
+  }
+  if (!(gap > 0)) return racetime;
+  const t = Math.floor(durationSecs(racetime) + gap);
+  return `${Math.floor(t / 3600)}:${String(Math.floor((t % 3600) / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+}
+
 /** Percent of the first configured (non-leg) split past `pct`, else 100 — the await-at-next-split cap. */
 function nextSplitPercentAfter(ev, pct) {
   const total = Number(ev?.distance) || 0;
@@ -139,6 +174,7 @@ async function mergeGpsFixes({ latest, trackIds, v2RaceId, raceobj, tz }) {
       // Never behind the last mat actually crossed.
       if (pct < Number(existing.percent_course)) continue;
       Object.assign(existing, {
+        racetime: raceTimeAtFix(existing.racetime, anchorMs, existing.splittod, fixMs, tz),
         percent_course: Number(pct.toFixed(2)),
         distance: Number(fix.km) || (Number(existing.course_distance) || 0) * pct / 100,
         speed: Number(fix.speed) || 0,
@@ -171,4 +207,4 @@ async function mergeGpsFixes({ latest, trackIds, v2RaceId, raceobj, tz }) {
   return out;
 }
 
-module.exports = { gpsFieldSnapshot, gpsOpsSnapshot, mergeGpsFixes, fixTimeHHMM, nextSplitPercentAfter, gpsMaxAgeSecs };
+module.exports = { gpsFieldSnapshot, gpsOpsSnapshot, mergeGpsFixes, fixTimeHHMM, nextSplitPercentAfter, gpsMaxAgeSecs, raceTimeAtFix };
