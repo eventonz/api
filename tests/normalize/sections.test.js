@@ -96,3 +96,47 @@ test('html element reduces to text, links and linked images', () => {
     images: [{ url: 'https://x.test/i.png', link: 'https://x.test/a' }],
   });
 });
+
+describe('organiser rows and labels (Race Across Spain shapes)', () => {
+  const { i18n } = require('../../src/services/rrpublish/normalize/i18n');
+  const { extractFieldMetadata } = require('../../src/services/rrpublish/normalize/columns');
+  const field = (title, value) => ({ Type: 'field',
+    Config: { Field: value, Title: title, DisplayMode: 'titleabove' } });
+
+  test('3-letter lead language code decodes', () => {
+    const label = '{CAT:Nom|DE:Name|EN:Name|ES:Nombre|FR:Nom}';
+    expect(i18n(label, 'en')).toBe('Name');
+    expect(i18n(label, 'fr')).toBe('Nom');
+    expect(i18n('{EN:Finish|DE:Ziel}', 'de')).toBe('Ziel');
+  });
+
+  test('stats keep the flexbox rows; "--" tiles and trailing colons go', () => {
+    const els = [{ Type: 'box', Config: { Label: 'Ranking' }, Children: [
+      { Type: 'flexbox', Children: [field('Overall Ranking', '1'), field('Gender Ranking', '2')] },
+      { Type: 'flexbox', Children: [field('Gap Leader', '--'), field('Last update:', 'Arrivé')] },
+    ] }];
+    const [stats] = buildSections(els, {}, { lang: 'en' });
+    expect(stats.title).toBe('Ranking');
+    expect(stats.rows).toEqual([
+      [{ label: 'Overall Ranking', value: '1' }, { label: 'Gender Ranking', value: '2' }],
+      [{ label: 'Last update', value: 'Arrivé' }],
+    ]);
+    expect(stats.items).toHaveLength(3);
+    expect(JSON.stringify(stats)).not.toContain('_row');
+  });
+
+  test('lone pinned name + hidden columns → the columns left showing are the layout', () => {
+    const dataFields = ['BIB', 'ID', 'Arrow', 'RankExpr', 'AfficherNom', 'Club', 'TotalTime'];
+    const fields = [
+      { Expression: 'Arrow', Label: '', ResponsiveHide: 1 },
+      { Expression: 'RankExpr', Label: 'Rank', ResponsiveHide: 0 },
+      { Expression: 'AfficherNom', Label: 'Name', ResponsiveHide: -1 },
+      { Expression: 'Club', Label: 'Club', ResponsiveHide: 1 },
+      { Expression: 'TotalTime', Label: 'Total', ResponsiveHide: 0 },
+    ];
+    const meta = extractFieldMetadata({ Fields: fields }, dataFields, 'en');
+    expect([meta.rankIdx, meta.nameIdx, meta.resultIdx]).toEqual([3, 4, 6]);
+    expect(meta.hasRank).toBe(true);
+    expect(meta.resultFieldLabel).toBe('Total');
+  });
+});

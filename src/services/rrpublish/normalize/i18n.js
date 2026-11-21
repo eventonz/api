@@ -1,7 +1,8 @@
 /**
  * RaceResult i18n text decoding (port of iOS RRText).
  *
- * Encoded strings look like "{EN:Foo|DE:Bar}" or "{EN:Foo}{DE:Bar}".
+ * Encoded strings look like "{EN:Foo|DE:Bar}", "{EN:Foo}{DE:Bar}" or, with a
+ * 3-letter lead code, "{CAT:Foo|EN:Bar}".
  * Picks the requested language, falls back EN → first. "///" → space.
  */
 
@@ -11,7 +12,8 @@ function i18n(raw, lang) {
   let s = str(raw);
   if (s.includes('{') && s.includes(':')) {
     const translations = [];
-    const re = /\{([A-Za-z]{2}):([^{}]*)\}/g;
+    // codes are 2 letters, or 3 for languages RR has no 2-letter slot for (CAT)
+    const re = /\{([A-Za-z]{2,3}):([^{}]*)\}/g;
     let m;
     while ((m = re.exec(s)) !== null) {
       const code = m[1].toLowerCase();
@@ -22,8 +24,8 @@ function i18n(raw, lang) {
       if (bar !== -1) {
         for (const part of inner.slice(bar + 1).split('|')) {
           const colon = part.indexOf(':');
-          if (colon === 2) {
-            translations.push([part.slice(0, 2).toLowerCase(), part.slice(3)]);
+          if ((colon === 2 || colon === 3) && /^[A-Za-z]+$/.test(part.slice(0, colon))) {
+            translations.push([part.slice(0, colon).toLowerCase(), part.slice(colon + 1)]);
           }
         }
       }

@@ -44,6 +44,8 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   const fieldLinks = {};      // DataField → index of the DataField holding its Link URL
   const anchored = [];        // ResponsiveHide -1 AND labelled (original rule)
   const anchoredBare = [];    // ResponsiveHide -1 with no Label
+  const narrow = [];          // labelled, not hidden on narrow screens (≤ 0)
+  let hidesSome = false;      // the organiser marked columns to hide (> 0)
   for (const f of fields) {
     const expr = str(f?.Expression);
     const idx = dfMap.get(expr.toLowerCase());
@@ -60,6 +62,8 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
     if (isDirectiveExpr(expr) || isEmptyExpr(expr)) continue;
     candidates.push({ idx, label });
     const rh = typeof f?.ResponsiveHide === 'number' ? f.ResponsiveHide : 0;
+    if (rh > 0) hidesSome = true;
+    else if (label !== '') narrow.push({ idx, label });
     if (rh !== -1) continue;
     (label === '' ? anchoredBare : anchored).push({ idx, label });
   }
@@ -70,7 +74,14 @@ function extractFieldMetadata(listFormat, dataFields, lang, sampleRow = null) {
   // anchor: Swiss Epic flags rank/team/last-split as -1 with empty Labels,
   // and without this the whole set was discarded and the result column fell
   // to the last DataField — a "BG(#hex)" styling directive.
-  const visible = anchored.length > 0 ? anchored : anchoredBare;
+  let visible = anchored.length > 0 ? anchored : anchoredBare;
+  // A lone -1 anchor is not a layout. When the organiser also hides columns
+  // on narrow screens, the columns they left showing ARE the phone layout:
+  // Race Across Spain pins only the name (-1), leaves rank and total time at
+  // 0 and hides the rest — reading the lone anchor as "result only" put the
+  // athlete name in the time column and the rank in the name column.
+  // Lists with NO anchor keep the positional fallback (start lists rely on it).
+  if (visible.length === 1 && hidesSome && narrow.length >= 2) visible = narrow;
 
   // ≥3 → rank/name/result; 2 → name/result; 1 → result only.
   let rankIdx; let nameIdx; let resultIdx;

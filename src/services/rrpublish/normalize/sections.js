@@ -234,18 +234,27 @@ function chart(el, ctx) {
  */
 function groupStats(sections) {
   const out = [];
-  for (const s of sections) {
+  let lastRow = null;
+  for (const { _row, ...s } of sections) {
     const tile = s.type === 'text' && s.label;
     const last = out[out.length - 1];
+    // "--" is RR's empty marker (gap to leader, for the leader): no tile.
+    if (tile && /^-+$/.test(s.text.trim())) continue;
+    const item = tile ? { label: s.label.replace(/\s*:\s*$/, ''), value: s.text } : null;
     if (tile && last?.type === 'stats' && !s.title) {
-      last.items.push({ label: s.label, value: s.text });
+      last.items.push(item);
+      // `rows` keeps the organiser's own grouping: tiles that shared an RR
+      // row (flexbox / columns) stay side by side in the app.
+      if (_row != null && _row === lastRow) last.rows[last.rows.length - 1].push(item);
+      else last.rows.push([item]);
     } else if (tile) {
-      const group = { type: 'stats', items: [{ label: s.label, value: s.text }] };
+      const group = { type: 'stats', items: [item], rows: [[item]] };
       if (s.title) group.title = s.title;
       out.push(group);
     } else {
       out.push(s);
     }
+    lastRow = tile ? _row : null;
   }
   return out;
 }
@@ -304,10 +313,13 @@ function leaf(el, data, ctx) {
  */
 function buildSections(elements, data, ctx) {
   const out = [];
-  const walk = (els, title) => {
+  let rowSeq = 0;
+  const walk = (els, title, row) => {
     let pending = title;
     for (const el of Array.isArray(els) ? els : []) {
       if (!el || typeof el !== 'object') continue;
+      // each flexbox / columns container is one visual row of its children
+      const childRow = el.Type === 'flexbox' || el.Type === 'columns' ? ++rowSeq : row;
       let own = '';
       if (el.Type === 'box') {
         const cfg = el.Config || {};
@@ -317,8 +329,8 @@ function buildSections(elements, data, ctx) {
       }
       const before = out.length;
       const section = leaf(el, data || {}, ctx);
-      if (section) out.push(section);
-      walk(el.Children, own || pending);
+      if (section) out.push(row != null ? { ...section, _row: row } : section);
+      walk(el.Children, own || pending, childRow);
       if (out.length > before) {
         const first = out[before];
         if (!first.title && (own || pending)) first.title = own || pending;
@@ -326,7 +338,7 @@ function buildSections(elements, data, ctx) {
       }
     }
   };
-  walk(elements, '');
+  walk(elements, '', null);
   // RRPublish 2.1 shows comments outside the element tree unless hidden.
   if (!ctx.hideComments && !out.some((s) => s.type === 'comments')) {
     const extra = comments(data || {});
